@@ -1,0 +1,112 @@
+<div class="l_paixun">
+	<div class="pl_px">
+		<a id="l_pl_h" href="#">排序</a>
+		#if($!style=="1")
+		<a  href="javaScript:void(0)" onclick="gotoPage1('1')"><span style="color: red">默认排序</span>
+			<font></font>
+		</a>
+		<a  href="javaScript:void(0)" onclick="gotoPage1('2')">销量
+			<font></font>
+		</a>
+		<a href="javaScript:void(0)" onclick="gotoPage1('3')">价格
+			<font></font>
+		</a>
+		#end
+		#if($!style=="2")
+		<a  href="javaScript:void(0)" onclick="gotoPage1('1')">默认排序
+			<font></font>
+		</a>
+		<a  href="javaScript:void(0)" onclick="gotoPage1('2')"><span style="color: red">销量</span>
+			<font></font>
+		</a>
+		<a href="javaScript:void(0)" onclick="gotoPage1('3')">价格
+			<font></font>
+		</a>
+		#end
+		#if($!style=="3")
+		<a  href="javaScript:void(0)" onclick="gotoPage1('1')">默认排序
+			<font></font>
+		</a>
+		<a  href="javaScript:void(0)" onclick="gotoPage1('2')">销量
+			<font></font>
+		</a>
+		<a href="javaScript:void(0)" onclick="gotoPage1('3')"><span style="color: red">价格</span>
+			<font></font>
+		</a>
+		#end
+		<div class="pl_px_zkjd"><input name="ziying" onchange="gotoPage2()" id="ziying" type="checkbox" value="$!ziying" #if($!ziying&&$!ziying==true) checked="checked" #end />仅看自营</div>
+	</div>
+</div>
+<script>
+	function gotoPage2() {
+		var area_id=$('#area_id').val();
+		var area2_id=$('#area2_id').val();
+		var store_price_begin=$('#store_price_begin').val();
+		var store_price_end=$('#store_price_end').val();
+		var orderType=$('#orderType').val();
+		var keyword=$('#keyword').val();
+		var gc_id=$('#gc_id').val();
+
+		var brand_id=$('#brand_id').val();
+		var guigeming_id=$('#guigeming_id').val();
+		var guigezhi_id=$('#guigezhi_id').val();
+		var ziying=document.getElementById("ziying").checked;
+
+		jQuery.post('$!webPath/searchDiv.htm',{"currentPage":"1","salenum":"goods_salenum","price":"store_price"
+			,"keyword":keyword,"area_id":area_id,"area2_id":area2_id,"store_price_begin":store_price_begin
+			,"store_price_end":store_price_end,"recommend":"$!recommend","style":$!style,"orderType":orderType,"brand_id":brand_id
+			,"guigeming_id":guigeming_id,"guigezhi_id":guigezhi_id,ziying:ziying,"gc_id":gc_id},function(data){
+			$("#goods").html(data);
+		});
+	}
+</script>
+<div class="index_sptj_nr">
+<ul id="desc" >
+	#if($!objs.size()>0)
+	#foreach($obj in $objs)
+	#if($!obj.goods_main_photo)
+	#set($img="$!imageWebServer/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}")
+	#else
+	#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+	#end
+	#set($goods_url="$!webPath/goods_$!{obj.id}.htm")
+	#if($!config.second_domain_open)
+	#set($goods_url="http://$!{obj.goods_store.store_second_domain}.$!{domainPath}/goods_$!{obj.id}.htm")
+	#end
+	<li class="item " style="margin-right: 0px">
+		<div class="goods-content" id="taotian">
+			<div class="goods-pic">
+				<a isconvert="1" data-itemid="544015300167" href="$!goods_url" target="_blank">
+					<img data-original="images/lh_06.jpg" title="" alt="" class="lazy" style="display: inline;" _hover-ignore="1" src="$!img">
+				</a>
+			</div>
+			<div class="goods-info">
+				<div class="goods-name">
+					<a isconvert="1" data-itemid="544015300167" href="$!goods_url" target="_blank">$!obj.goods_name</a>
+				</div>
+				#if($!obj.store_price)
+				<div class="goods-price">
+					<em class="sale-price">¥$!{obj.store_price}</em>
+					<span class="yuanjia"><a href="">¥$!{obj.goods_price}</a></span>
+					<span class="goods_buy">$!{obj.goods_salenum}</span>
+				</div>
+				#end
+			</div>
+		</div>
+	</li>
+	#end
+	#else
+	<div style="text-align: center;"><font color="red" size="5px">暂无商品</font></div>
+	#end
+</ul>
+
+<div class="w-page">
+	<div class="fenyes">
+		$!gotoPageFormHTML
+	</div>
+</div>
+
+
+
+
+</div>

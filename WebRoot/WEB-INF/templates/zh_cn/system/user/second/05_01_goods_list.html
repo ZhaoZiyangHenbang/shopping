@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/public_auto.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/index.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/DataLazyLoad.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.lazyload.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.common.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.validate.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery-ui-1.8.21.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.validate.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.KinSlideshow.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+
+	</head>
+
+	<body>
+	<!-- top -->
+	$!httpInclude.include("/second/topZ.htm")
+	<!-- top结束 -->
+
+	<!-- heard -->
+	$!httpInclude.include("/second/head_index.htm")
+	<!-- heard结束 -->
+
+
+	#if($!bc_location==1)
+	$!httpInclude.include("/nav1.htm")
+	#end
+	#if($!bc_location==3)
+	$!httpInclude.include("/nav_tt.htm")
+	#end
+	#if($!bc_location==2)
+	$!httpInclude.include("/nav_lr.htm")
+	#end
+	#if($!bc_location==6)
+	$!httpInclude.include("/nav_xs.htm")
+	#end
+	#if($!bc_location==5)
+	$!httpInclude.include("/nav_sxy.htm")
+	#end
+	#if($!bc_location==4)
+	$!httpInclude.include("/nav_ty.htm")
+	#end
+
+	<form action="$!webPath/store_goods_list.htm?gc_id=$!gc_id"  method="post" id="ListForm">
+
+	<div class="main">
+
+			<div class="h_seat">
+				<a href="">全部搜索结果</a>>
+				<a href="">商品搜索关键词</a>
+			</div>
+
+			<div class="bd_cx_nav">
+				<script>
+					function brand(id) {
+						/*alert(id);*/
+					$('#buO').attr('class','');
+					$('.brandO0').attr('class','brandO0');
+					$('#'+id).attr('class','brandO0 on');
+						/*alert('#'+id);*/
+					}
+					function cba() {
+						$('.brandO0').attr('class','brandO0');
+						$('#buO').attr('class','on');
+					}
+				</script>
+				#if($!gt.size()>0)
+				<div class="cx_nav1">
+					<h3>品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：</h3>
+					<p>
+						<a  class="on" id="buO" onclick="cba()">不限</a>
+						#foreach($obj in $gt)
+						#foreach($obbb in $obj.gbs)
+						<a  onclick="brand(this.id)" class="brandO0" id="GB$!obbb.id">$!obbb.name</a>
+						#end
+						#end
+					</p>
+				</div>
+				#end
+
+				#if($!gt.size()>0)
+				<div class="cx_nav2">
+					<div class="cx_nav1">
+						<h3>属&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性：</h3>
+						<p>
+							<a href="" class="aaa on" id="bu1" onclick="shu0()">不限</a>
+							#foreach($obj in $gt)
+							#foreach($ob in $obj.properties)
+							<a href="javaScript:video(0)" onclick="xianshi(this.id)" id="P$!ob.id" class="guigeQ">$!ob.name</a>
+							#end
+							#end
+						</p>
+					</div>
+				</div>
+				#end
+				<script>
+					function shu0() {
+						$('.guigeQ').attr('class','guigeQ')
+						$('#bu1').attr('class','aaa on');
+						$('.yincang').hide();
+					}
+					function xianshi(id) {
+
+						$('#bu1').attr('class','aaa');
+						$('.guigeQ').attr('class','guigeQ')
+						$('.yincang').hide();
+						$('#'+id).attr('class','guigeQ on');
+						$('#show_'+id).show();
+					}
+					function aaa(id) {
+						$('.zhi').attr('class','zhi');
+						$('._shuxingzhi').attr('class','_shuxingzhi');
+						$('#'+id).attr('class','_shuxingzhi on');
+					}
+					 function bbb() {
+						$('.zhi').attr('class','zhi on');
+						$('._shuxingzhi').attr('class','_shuxingzhi');
+					}
+
+				</script>
+				#foreach($obj in $gt)
+				#foreach($ob in $obj.properties)
+				<div class="cx_nav2 yincang" style="display: none" class="xian" id="show_P$!ob.id">
+					<div class="cx_nav1">
+						<h3>属&nbsp;&nbsp;性&nbsp;&nbsp;值：</h3>
+						<p>
+							<a href="" class="zhi on" id="" onclick="bbb()">不限</a>
+							#foreach($o in $CommUtil.splitByChar("$!ob.value",","))
+							<a href="javaScript:video(0)" class="_shuxingzhi" id="_Pp$!o" onclick="aaa(this.id)">$!o</a>
+							#end
+						</p>
+					</div>
+				</div>
+				#end
+				#end
+
+				#if($!gt.size()>0)
+				<div class="cx_nav2">
+					<div class="cx_nav1">
+						<h3>规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：</h3>
+						<p>
+							<a href="" class="on" id="bu2" onclick="abc()">不限</a>
+							#foreach($obj in $gt)
+							#foreach($obb in $obj.gss)
+							<a href="javaScript:video(0)" onclick="show1(this.id)" id="$!obb.id" class="gugeW">$!obb.name</a>
+							#end
+							#end
+						</p>
+					</div>
+				</div>
+				#end
+					<script>
+						function show1(id) {
+							$('#bu2').attr('class','');
+							$('.gugeW').attr('class','guegeW');
+							$('#'+id).attr('class','gugeW on');
+							$('.yincang2').hide();
+							$('#guige_'+id).show();
+						}
+						function abc() {
+							$('#bu2').attr('class','on');
+							$('.gugeW').attr('class','guegeW');
+							$('.yincang2').hide();
+						}
+						function guizhi(id) {
+							$('.gui').attr('class','gui');
+							$('.guizhi').attr('class','guizhi');
+							$('#'+id).attr('class','guizhi on');
+						}
+						function gui() {
+
+							$('.gui').attr('class','gui on');
+							$('.guizhi').attr('class','guizhi');
+						}
+
+					</script>
+				#if($!gt.size()>0)
+				#foreach($obj in $gt)
+				#foreach($ob in $obj.gss)
+				<div class="cx_nav2 yincang2" style="display: none" id="guige_$!ob.id">
+					<div class="cx_nav1">
+						<h3>规&nbsp;&nbsp;格&nbsp;&nbsp;值：</h3>
+						<p>
+							<a href="" class="gui on" onclick="gui()">不限</a>
+							#foreach($o in $ob.properties.value)
+							<a href="javaScript:video(0)" id="Z$!o.id" onclick="guizhi(this.id)" class="guizhi">$!o.value</a>
+							#end
+						</p>
+					</div>
+				</div>
+				#end
+				#end
+				#end
+
+
+				<script>
+					function choose(id) {
+
+						$('.qingkong_').attr('class','qingkong_');
+						$("#buxian").attr("class","");
+						$('#'+id).attr('class','qingkong_ on');
+						$('.yincang').attr("style","display:none")
+						$('#zengjia_'+id).show();
+                         document.getElementById("area_id").value=id;
+					}
+					function choose2() {
+						$('.qingkong_').attr('class','qingkong_');
+						$("#buxian").attr("class","on");
+						$('.yincang').attr("style","display:none")
+					}
+
+					function choose3() {
+						$('.qingkong2_').attr('class','qingkong2_')
+						$('.choo').attr('class','choo on')
+					}
+					function choose4(id) {
+
+						$('.qingkong2_').attr('class','qingkong2_');
+						$('.choo').attr("class","choo");
+						$('#'+id).attr('class','qingkong2_ on');
+						document.getElementById("area2_id").value=id;
+					}
+
+				</script>
+#if($areas.size()>0)
+				<form action="$!webPath/store_goods_list.htm?gc_id=$!gc_id" method="post">
+					<div class="cx_nav1">
+						<h3>所在区域：</h3>
+						<p>
+							<a href="javaScript:;" class="choose on" id="buxian" onclick="choose2()">不限</a>
+							#foreach($area in $areas)
+							<a  name="qingkong_" id="$!area.id" onclick="choose(this.id)" class="qingkong_">$!area.areaName</a>
+                                <input id="area_id" name="area_id" type="hidden" value="$!area_id">
+							#end
+						</p>
+					</div>
+
+					#foreach($area in $!areas)
+					<div class="cx_nav1 yincang" id="zengjia_$!area.id" style="display: none">
+						<h3>城&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市：</h3>
+						<p>
+							<a href="javaScript:;" class="choo on" id="bu" onclick="choose3()">不限</a>
+							#foreach($area2 in $area.childs)
+							<a     class="qingkong2_" id="$!area2.id" onclick="choose4(this.id)">$!area2.areaName</a>
+							<input id="area2_id" name="area2_id" type="hidden" value="$!area2_id">
+							#end
+						</p>
+					</div>
+					#end
+					#end
+				<div class="cx_nav1">
+					<h3>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：</h3>
+					<div class="query">
+
+							<div class="query_date">
+								<input type="text" placeholder="最低价格" name="store_price_begin" value="$!store_price_begin">
+							</div>
+							<div class="query_date_zj bort"></div>
+							<div class="query_date">
+								<input type="text" placeholder="最高价格" name="store_price_end" value="$!store_price_end">
+							</div>
+							<div class="query_date_bom">
+								<input  class="query_date_bom" type="submit" value="查询" onmousedown="area()" style="color: white">
+							</div>
+
+					</div>
+				</div>
+	</form>
+			</div>
+
+			<div class="l_paixun">
+				<div class="pl_px">
+					<a id="l_pl_h" href="#">排序</a>
+					<a  href="$!webPath/store_goods_list.htm?gc_id=$!gc_id&area_id=$!area_id&area2_id=$!area2_id&store_price_begin=$!p_begin&store_price_end=$!p_end" >默认排序
+						<font></font>
+					</a>
+					<a  href="$!webPath/store_goods_list.htm?salenum=goods_salenum&gc_id=$!gc_id&area_id=$!area_id&area2_id=$!area2_id&store_price_begin=$!store_price_begin&store_price_end=$!store_price_end" >销量
+						<font></font>
+					</a>
+					<a href="$!webPath/store_goods_list.htm?price=store_price&gc_id=$!gc_id&area_id=$!area_id&area2_id=$!area2_id&store_price_begin=$!store_price_begin&store_price_end=$!store_price_end" >价格
+						<font></font>
+					</a>
+					<div class="pl_px_zkjd"><input name="" type="radio" value="" />仅看自营</div>
+				</div>
+			</div>
+
+			<div class="index_sptj_nr">
+						<ul id="desc" >
+							#foreach($obj in $objs)
+							#if($!obj.goods_main_photo)
+							#set($img="$!imageWebServer/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}")
+							#else
+							#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+							#end
+							#set($goods_url="$!webPath/goods_$!{obj.id}.htm")
+							#if($!config.second_domain_open)
+							#set($goods_url="http://$!{obj.goods_store.store_second_domain}.$!{domainPath}/goods_$!{obj.id}.htm")
+							#end
+							<li class="item " style="margin-right: 0px">
+								<div class="goods-content" id="taotian">
+									<div class="goods-pic">
+										<a isconvert="1" data-itemid="544015300167" href="$!goods_url" target="_blank">
+											<img data-original="images/lh_06.jpg" title="" alt="" class="lazy" style="display: inline;" _hover-ignore="1" src="$!img">
+										</a>
+									</div>
+									<div class="goods-info">
+										<div class="goods-name">
+											<a isconvert="1" data-itemid="544015300167" href="$!goods_url" target="_blank">$!obj.goods_name</a>
+										</div>
+										<div class="goods-price">
+											<em class="sale-price">¥$!{obj.store_price}</em>
+											<span class="yuanjia"><a href="">¥$!{obj.goods_price}</a></span>
+											<span class="goods_buy">$!{obj.goods_salenum}</span>
+										</div>
+									</div>
+								</div>
+							</li>
+							#end
+						</ul>
+
+				<div class="w-page">
+					<div class="fenyes">
+					<input name="area_id" type="hidden" value="$!area.id" />
+						<input name="area2_id" type="hidden" id="gs_ids" value="$!area2_id" />
+				<!--		<input name="store_price_begin" type="hidden" id="brand_ids" value="$!store_price_begin" />
+								<input name="store_price_end" type="hidden" id="properties" value="$!store_price_end" />-->
+						<!--<input name="keyword" type="hidden" id="keyword" value="$!keyword" />-->
+						<input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+						<input type="hidden" name="goods_view" id="goods_view" value="$!goods_view" />
+						<input name="orderBy" type="hidden" id="orderBy" value="$!orderBy" />
+						<input name="orderType" type="hidden" id="orderType" value="$!orderType" />
+					<!--	<input name="all_property_status" type="hidden" id="all_property_status" value="$!all_property_status" />
+						<input name="detail_property_status" type="hidden" id="detail_property_status" value="$!detail_property_status" />-->
+						$!gotoPageFormHTML
+					</div>
+				</div>
+
+			</div>
+
+
+</div>
+</div>
+	</form>
+
+
+
+
+	<!--footer开始-->
+	$!httpInclude.include("/second/footZ.htm")
+	<!--footer结束-->
+
+	<!-- 右侧 -->
+	$!httpInclude.include("/second/rightZ.htm")
+	<!-- 右侧结束 -->
+	</body>
+
+</html>

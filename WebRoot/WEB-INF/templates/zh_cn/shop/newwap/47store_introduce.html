@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+		<!--二维码-->
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/qrcode.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/layer/layer.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script>
+			$(function () {
+				var url=window.document.location.href;
+				$("#my").attr("href","$!webPath/second/fenxiao.htm?url="+url);
+			})
+		</script>
+	</head>
+
+	<body>
+		<header>
+			<div class="lh_hdindex">
+				<span class="lh_back" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i> </span>
+				<span>店铺详情</span>
+				<span class="lh_xiala" id="stateBut" data-show="hide"><i class="icon iconfont">&#xe67b;</i></span>
+				<div id="class1content" style="display: none;">
+					$!httpInclude.include("/wap/wap_navv.htm")
+				</div>
+			</div>
+		</header>
+		<div class="clear"></div>
+		<div class="shangjia">
+			#if($!store.store_logo)
+			#set($store_logo="$!webPath/$!{store.store_logo.path}/$!{store.store_logo.name}")
+			#else
+			#set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+			#end
+			<div class="shangjia_img"><img src="$!store_logo" /> </div>
+			<div class="shangjia_tex">
+
+				<h3>$!{store.store_name}</h3>
+				<p>$!CommUtil.substring("$!{store.store_info}",18)</p>
+			</div>
+			<div class="shangjia_icon">
+				<div style="float: left;width: 50px;height: 40px">
+				<a href="#" onclick="guanzhu()">
+					<i class="icon iconfont" style="font-size: 1.2rem;" id="a">&#xe639;</i>
+					<i class="icon iconfont" style="font-size: 1.2rem;color: red;display: none" id="aa">&#xe639;</i></a>
+					<a href="javaScript:;" onclick="fenx()" class="bshare-more bshare-more-icon more-style-addthis"><i class="icon iconfont" >&#xe627;</i></a>
+					<script>
+                        function fenx() {
+                            var a=$("#fen").attr("class");
+                            if(1==a){
+                                $("#fen").show();
+                                var a=$("#fen").attr("class",0);
+                            }else{
+                                $("#fen").hide();
+                                var a=$("#fen").attr("class",1);
+                            }
+                        }
+					</script>
+				</div>
+
+			</div>
+			<div style="display: none; background: #FFF;" id="fen" class="1">
+				<a href="javaScript:;" id="hide01" ><i class="icon iconfont"><ol  >
+					<li class="row" style="padding: 0;">
+						<div id="share-2"></div>
+					</li>
+				</ol></i></a>
+			</div>
+
+			<link rel="stylesheet" href="$!webPath/resources/new/css/share.min.css">
+			<style>
+				.row { padding: 20px 0 0 20px }
+				.row-pad { padding: 20px 0 0 60px }
+			</style>
+			<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+			<script src="$!webPath/resources/new/js/jquery.share.min.js"></script>
+			<script>
+                $('#share-1').share();
+                $('#share-2').share({sites: ['qzone', 'qq', 'weibo','wechat']});
+                $('#share-3').share();
+                $('#share-4').share();
+			</script>
+
+		</div>
+		<div class="dpxq_list">
+			<ul>
+				<li class="on3" onclick="window.location.href='$!webPath/goods_list.htm?store_id=$!{store.id}'">$!{goodsStoreAll}<br />全部商品 </li>
+				<li>$!{store.favorite_count}<br />关注量 </li>
+				<li style="border: none;">$!grade<br />商品评分 </li>
+			</ul>
+		</div>
+		<div class="dpxq_cont">
+			<dl>
+				<dt><i class="icon iconfont">&#xe62f;</i></dt>
+				<dd>
+					<h3 class="fl">商家电话</h3>
+					<p class="fl">$!{store.store_telephone}</p>
+				</dd>
+			</dl>
+			<dl>
+				<dt><i class="icon iconfont">&#xe624;</i></dt>
+				<dd>
+
+					<h3>店铺介绍</h3>
+					<p>$!{store.store_info}</p>
+				</dd>
+			</dl>
+			<dl>
+				<dt><i class="icon iconfont">&#xe61a;</i></dt>
+				<dd>
+					<h3 class="fl">公司名称</h3>
+					<p class="fl"></p>
+				</dd>
+			</dl>
+			<dl>
+				<dt><i class="icon iconfont">&#xe6b5;</i></dt>
+				<dd>
+					<h3 class="fl">所在地区</h3>
+					<p class="fl">$!areaViewTools.generic_area_info("$!store.area.id")</p>
+				</dd>
+			</dl>
+			<dl>
+				<dt><i class="icon iconfont">&#xe713;</i></dt>
+				<dd>
+					<h3 class="fl">开店时间</h3>
+					<p class="fl">$!CommUtil.formatShortDate($!store.addTime)</p>
+				</dd>
+			</dl>
+			<dl>
+				<dt><i class="icon iconfont">&#xe60b;</i></dt>
+				<dd>
+					<h3>授权品牌  </h3>
+					<p>
+						#foreach($img in $goodsBrand)
+						<img src="$!imageWebServer/$!img.path/$!{img.name}_small.$!{img.ext}" />
+						#end
+					</p>
+				</dd>
+			</dl>
+		</div>
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span>
+			</a>
+		</div>
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+		<script>
+			function guanzhu() {
+				if("$!user"!=null && "$!user"!=""){
+					if("$!user.id"=="$!store.user.id"){
+						alert("不能收藏自己的店铺");
+					}else{
+						jQuery.post("$!webPath/add_store_favorite.htm",{"id":"$!store.id"},function(data){
+							if(data==0){
+								alert("店铺收藏成功！");
+								$("#aa").show();
+								$("#a").hide()
+							}
+							if(data==1){
+								alert("该店铺已经被收藏！");
+								$("#a").show();
+								$("#aa").hide();
+							}
+						},"text");
+					}
+				}else{
+					window.location.href = "$!webPath/user/login.htm";
+				}
+			}
+		</script>
+	</body>
+
+</html>

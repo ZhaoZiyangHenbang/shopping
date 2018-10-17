@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded j_huibg">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/j_master.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script>
+            jQuery(document).ready(function(){
+
+                jQuery("#top_goods_salenum").addClass("this");
+
+                if(jQuery("#orderBy").val()=="store_price"){
+                    if("desc"==jQuery("#orderType").val()){
+                        jQuery("#top_store_price img").attr("src","$!webPath/resources/style/system/front/wap/images/goodsclass_down.png");
+                    }else{
+                        jQuery("#top_store_price img").attr("src","$!webPath/resources/style/system/front/wap/images/goodsclass_up.png");
+                    }
+                }else{
+                    jQuery("#top_goods_salenum img").attr("src","$!webPath/resources/style/system/front/wap/images/goodsclass_down.png");
+                }
+
+                var begin_count=2;
+                var ret = 1;
+                jQuery(window).scroll(function(){
+
+                    if (jQuery(document).scrollTop() >= jQuery(document).height() - jQuery(window).height()&&ret==1) {
+
+                        jQuery.ajax({
+                            type:'POST',
+                            url:'$!webPath/search_ajax.htm',
+                            data:{"currentPage":begin_count,
+                                "keyword":encodeURIComponent(jQuery("#keyword").val()),
+                                "orderBy":jQuery("#orderBy").val(),
+                                "orderType":jQuery("#orderType").val()
+                            },
+                            beforeSend:function(){
+                                jQuery("#loading_none").hide();
+                                jQuery("#loading").show();
+                                ret = 0;
+                            },
+                            success:function(data){
+                                var result=eval("("+data+")");
+                                var currentPage = result.currentPage;
+                                var totalPage = result.totalPage;
+
+                                jQuery("#loading").hide();
+                                //alert(begin_count+",totalPage="+totalPage+",currentPage="+currentPage);
+                                if(begin_count <= totalPage){
+                                    begin_count = begin_count +1;
+                                    //最后一页
+                                    if(currentPage >= totalPage){
+                                        ret = 0;
+                                        jQuery("#loading_none").show();
+                                    }
+                                    if(currentPage < totalPage){
+                                        ret = 1;
+                                    }
+                                    else {
+                                        ret = 0;
+                                        jQuery("#loading_none").show();
+                                    }
+
+                                    jQuery("#orderBy").val(result.orderBy);
+                                    jQuery("#orderType").val(result.orderType);
+                                    jQuery("#currentPage").val(result.currentPage);
+                                    jQuery("#totalPage").val(result.totalPage);
+                                    jQuery(".group_list").find("a").last().after(result.ajaxLoadHtml);
+                                    jQuery(".group_list img").lazyload({effect:"fadeIn",width:90,height:90});
+                                } else {
+                                    ret = 0;
+                                    jQuery("#loading_none").show();
+                                }
+
+                            }
+                        });
+                    }
+                });
+                //排序
+                jQuery(".group_top li").click(function(){
+                    var orderBy = jQuery(this).attr("id").substring(4);
+                    var orderType = jQuery(this).attr("orderType");
+                    var key = encodeURIComponent(jQuery("#keyword").val());
+                    jQuery("#orderBy").val(orderBy);
+                    jQuery("#orderType").val(orderType);
+                    if(orderBy=="store_price"){
+                        if("asc"==orderType){
+                            window.location.href="$!webPath/search.htm?keyword="+key+"&orderBy="+orderBy+"&orderType=desc";
+                        }else{
+                            window.location.href="$!webPath/search.htm?keyword="+key+"&orderBy="+orderBy+"&orderType=asc";
+                        }
+                        window.location.href="$!webPath/search.htm?keyword="+key+"&orderBy="+orderBy+"&orderType="+orderType;
+                    }else{
+                        window.location.href="$!webPath/search.htm?keyword="+key+"&orderBy="+orderBy;
+                    }
+                })
+	#if($!orderBy)
+                jQuery(".group_top li").removeClass("this");
+                jQuery(".group_top li[orderBy='$!orderBy']").addClass("this");
+	#end
+
+                //图片延迟加载
+                jQuery(".group_list img").lazyload({effect:"fadeIn",width:90,height:90});
+
+            });
+
+            function search_form(){
+                jQuery("#theForm").submit();
+            }
+
+		</script>
+
+	<!--	<script>
+			window.onload(function () {
+				$("#recommend").show();
+				$("#desc").hide();
+				$("#xiaoliang").hide();
+				$("#price").hide();
+			})
+			$(function () {
+
+				$("#recommend").show();
+				$("#desc").hide();
+				$("#xiaoliang").hide();
+				$("#price").hide();
+			})
+			function desc() {
+				$("#desc").show();
+				$("#xiaoliang").hide();
+				$("#price").hide();
+				$("#recommend").hide();
+			}
+			function xiaoliang() {
+				$("#desc").hide();
+				$("#xiaoliang").show();
+				$("#price").hide();
+				$("#recommend").hide();
+			}
+			function price() {
+				$("#desc").hide();
+				$("#xiaoliang").hide();
+				$("#price").show();
+				$("#recommend").hide();
+			}
+			function recommend() {
+				$("#desc").hide();
+				$("#xiaoliang").hide();
+				$("#price").hide();
+				$("#recommend").show();
+			}
+			</script>-->
+	</head>
+
+	<body>
+		<!--//header开始-->
+		<header>
+			<div class="j_hdindex">
+				<a href="$!webPath/sousuo.htm" style="color: grey"><span class="lh_back" ><i class="icon iconfont">&#xe601;</i></span></a>
+				<form action="$!webPath/search.htm" method="post" target="_self" id="searchForm">
+					<div class="j_search_bg_k">
+						<select name="type" class="j_sea_xx">
+							<option value="goods"> <li class="this" type="goods"><a href="javascript:void(0);">商品<s></s></a></li></option>
+							<option value="store">  <li style="display:none" type="store"><a href="javascript:void(0);">店铺</a></li></option>
+						</select>
+						<input name="keyword" type="search" id="keyword"
+							   x-webkit-speech lang="zh-CN" onwebkitspeechchange="jQuery('#searchForm').submit()"
+							   class="input1" style="line-height: 0.6rem;   height: 0.6rem; background:none;  font-size: 0.6rem;padding:0;border: none;width:70%;float: left;margin-top: 0.4rem;
+"  placeholder="请输入要搜索的内容" value="$!keyword">
+					</div>
+					<!--<div>
+						<input name="input" type="button" value="搜索" style="cursor:pointer;" onclick="search_form();" class="toph_sear_btn" />
+					</div>-->
+					<input type="hidden" id="recommend" name="recommend">
+					<input type="hidden" id="area_id" name="area_id" value="$!area_id">
+					<input type="hidden" id="area2_id" name="area2_id" value="$!area2_id">
+					<input type="hidden" id="store_price_begin" name="store_price_begin" value="$!p_begin">
+					<input type="hidden" id="store_price_end" name="store_price_end" value="$!p_end">
+					<input type="hidden" id="salenum" name="salenum">
+					<input type="hidden" id="price" name="price">
+
+				</form>
+				<span class="lh_xiala" id="stateBut" data-show="hide"><i class="icon iconfont">&#xe67b;</i></span>
+				<div id="class1content" style="display: none;">
+					$!httpInclude.include("/wap/wap_navv.htm")
+				</div>
+			</div>
+		</header>
+		<!--header结束//-->
+
+		<!--//商铺列表开始-->
+		<div class="clear"></div>
+		<script>
+			function key(type) {
+				if (type=='1') {
+					$("#recommend").val("true");
+				}
+				if (type=='2'){
+					$("#salenum").val("goods_salenum");
+				}
+				if (type=='3'){
+					$("#price").val("store_price");
+				}
+				$("#searchForm").submit();
+			}
+		</script>
+		<div class="j_splb">
+			<div class="shangjia_meau">
+				<ul>
+					<li>
+						<a href="javaScript:void(0)" onclick="key('1')" >推荐</a>
+					</li>
+					<li>
+						<a href="javaScript:void(0)" onclick="key('2')" >销量<i class="icon iconfont">&#xe609;</i></a>
+					</li>
+					<li>
+						<a href="javaScript:void(0)" onclick="key('4')">新品</a>
+					</li>
+					<li style="border: none;">
+						<a href="javaScript:void(0)" onclick="key('3')">价格<i class="icon iconfont">&#xe613;</i></a>
+					</li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+
+			#if($!objs.size()>0)
+			<div class="lh_xsms_nr" >
+				<ul >
+				#foreach($obj in $objs)
+				#if($!obj.goods_main_photo)
+				#set($img="$!imageWebServer/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}_small.$!{obj.goods_main_photo.ext}")
+				#else
+				#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+				#end
+				#set($goods_url="$!webPath/goods_$!{obj.id}.htm")
+				#if($!config.second_domain_open)
+				#set($goods_url="http://$!{obj.goods_store.store_second_domain}.$!{domainPath}/goods_$!{obj.id}.htm")
+				#end
+
+					<li >
+						<div class="img01"><a href="$!WebPath/goods_$!{obj.id}.htm"><img src="$!img"></a></div>
+						<!--<div class="jieshao01"><span>仅剩$!obj.goods_inventory件</span></div>-->
+						<div class="xq01">
+							<div class="xq01_title"><a href="$!WebPath/goods_$!{obj.id}.htm">$!obj.goods_name</a></div>
+							<div class="xq01_jg">
+								<span class="pr0">¥$!obj.store_price</span><em>¥$!{obj.goods_price}</em>
+								<a>销量:$!{obj.goods_salenum}</a>
+							</div>
+						</div>
+					</li>
+
+				#end
+					</ul>
+
+			</div>
+
+			#else
+			<div class="starshop_list">
+				<div class="sigh"> <span><img src="$!imageWebServer/resources/style/system/front/default/images/sigh.png" width="120" height="109" /></span> <b>对不起，没有对应的数据!</b> </div>
+			</div>
+			#end
+
+			<div class="loading" id="loading" style="display: none;">
+				<ul>
+					<li><img src="$!webPath/resources/style/system/front/wap/images/loading.gif" height="16" width="16"></li>
+					<li>正在加载....</li>
+				</ul>
+			</div>
+			<!--<div class="loading" id="loading_none" style="display: block;">
+				<ul>
+					<li>没有更多了....</li>
+				</ul>
+			</div>-->
+
+		</div>
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+		<!--通用头尾  add by lizhenyou 2015-3-30 -->
+	</body>
+
+</html>

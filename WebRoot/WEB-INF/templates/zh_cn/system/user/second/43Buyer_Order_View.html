@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+	<!-- top -->
+	$!httpInclude.include("/second/topZ.htm")
+	<!-- top结束 -->
+
+	<!-- heard -->
+	$!httpInclude.include("/second/headZ.htm")
+	<!-- heard结束 -->
+
+
+	<div style="background: #f6f6f6;">
+			<div class="main">
+				<div class="h_seat">
+					<a href="">首页</a>>
+					<a href="">买家中心</a>
+				</div>
+				<!--我是买家-->
+				$!httpInclude.include("/second/left_buy.htm")
+					<div class="l-fr">
+						<div class="w-title">
+							<h3>我的订单</h3>
+						</div>
+						<div class="kuang0902">
+							#if($!obj.order_status==0)
+							#set($status="已取消")
+							#end
+							#if($!obj.order_status==10)
+							#set($status="待付款")
+							#end
+							#if($!obj.order_status==15)
+							#set($status="线下支付待审核")
+							#end
+							#if($!obj.order_status==16)
+							#set($status="货到付款待发货")
+							#end
+							#if($!obj.order_status==20)
+							#set($status="已付款,待发货")
+							#end
+
+							#if($!obj.order_status==21)
+							#set($status="申请退款中")
+							#end
+							#if($!obj.order_status==22)
+							#set($status="卖家已经退款")
+							#end
+
+
+							#if($!obj.order_status==30)
+							#set($status="已发货")
+							#end
+							#if($!obj.order_status==40)
+							#set($status="已收货")
+							#end
+							#if($!obj.order_status==45)
+							#set($status="已收货，申请退货中")
+							#end
+							#if($!obj.order_status==46)
+							#set($status="卖家同意退货")
+							#end
+							#if($!obj.order_status==47)
+							#set($status="卖家确认退货，正在退款中")
+							#end
+							#if($!obj.order_status==48)
+							#set($status="卖家拒绝退货申请")
+							#end
+							#if($!obj.order_status==49)
+							#set($status="退货失败")
+							#end
+
+
+							#if($!obj.order_status==50)
+							#set($status="已完成,已评价")
+							#end
+							#if($!obj.order_status==60)
+							#set($status="已结束")
+							#end
+							<div class="title0902"><span>订单号：$!obj.order_id</span> <span class="ml16">状态：<font class="color_green">$!status</font></span> <span class="ml16 fw100 color_gray2">下单日期：$!CommUtil.formatLongDate($!obj.addTime)</span> <span class="ml16">
+								#if($!obj.order_status==40)<a class="color_blue fw100" href="javascript:void(0);" dialog_uri="$!webPath/buyer/order_return_apply.htm?id=$!obj.id&view=" dialog_title="申请退货">申请退货</a>#end</span>
+								#set($remain=$!{obj.totalPrice}-$!CommUtil.null2Double($!{obj.refund}))
+								<span class="ml16">#if($!obj.order_status==20&& $!remain>0)<a class="color_blue fw100" href="javascript:void(0);" dialog_uri="$!webPath/seller/order_refund_apply.htm?id=$!obj.id&view=" dialog_title="申请退款" dialog_id="order_cancel">申请退款</a>#end</span>
+							</div>
+							#if($!obj.order_status>=30)
+							<div class="title0902">卖家备注：<span class="fw100">$!obj.ofls.state_info</span></div>
+							#end
+							<div class="ml40"></div>
+						</div>
+						#if($!obj.order_status>=30)
+						<div class="kuang0902">
+							<div class="title0902">订单跟踪</div>
+							<div>
+								<table class="table0902" width="100%" border="0" cellspacing="0" cellpadding="0">
+									<thead>
+										<tr>
+											<td>处理时间</td>
+											<td>处理信息</td>
+											<td>操作人</td>
+										</tr>
+									</thead>
+									<tbody>
+										<!--<tr>
+											<td>$!CommUtil.formatLongDate($!obj.return_shipTime)</td>
+											<td>您的订单已经拣货完毕，待出库交付$!obj.ec.company_name，运单号;$!obj.shipCode</td>
+											<td>$!obj.store.store_name</td>
+										</tr>-->
+										#if($!transInfo.status==1)
+										#foreach($info in $transInfo.data)
+										<tr>
+											<td>$!CommUtil.formatLongDate($!info.time)</td>
+											<td>$!info.context</td>
+											<td></td>
+											<!--<td>$!obj.store.store_name</td>-->
+										</tr>
+									#end
+									#end
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+						#end
+
+						<div class="kuang0902">
+							<div class="title0902">收货人信息</div>
+							<div>
+								<table class="table0902" width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tbody>
+										<tr>
+											<td width="150">收货人姓名</td>
+											<td>
+												<p class="fl">$!obj.addr.trueName</p>
+											</td>
+										</tr>
+										<tr>
+											<td width="150">地址</td>
+											<td>
+												<p class="fl">$!{obj.addr.area.parent.parent.areaName} $!{obj.addr.area.parent.areaName} $!{obj.addr.area.areaName} $!{obj.addr.area_info}</p>
+											</td>
+										</tr>
+										<tr>
+											<td width="150">电话</td>
+											<td>
+												<p class="fl">$!{obj.addr.telephone}</p>
+											</td>
+										</tr>
+										<tr>
+											<td width="150">手机号</td>
+											<td>
+												<p class="fl">$!{obj.addr.mobile}</p>
+											</td>
+										</tr>
+										<tr>
+											<td width="150">送货时间</td>
+											<td>
+												<p class="fl">$!CommUtil.formatLongDate($!obj.shipTime)</p>
+											</td>
+										</tr>
+										<tr>
+											<td width="150">备注信息</td>
+											<td>
+												<p class="fl">$!obj.msg</p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						#if($!{obj.invoice} && $!{obj.invoice}!="")
+						<div class="kuang0902">
+							<div class="title0902">发票信息</div>
+							<div>
+								<table class="table0902" width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tbody>
+										<tr>
+											<td width="150">发票类型</td>
+											<td>
+												<p class="fl">#if($!obj.invoiceType==0)个人 #else 单位#end</p>
+											</td>
+										</tr>
+										<tr>
+											<td width="150">发票抬头</td>
+											<td>
+												#if($!{obj.invoice} && $!{obj.invoice}!="")	<p class="fl">$!obj.invoice</p>#end
+											</td>
+										</tr>
+										<tr>
+											<td width="150">发票内容</td>
+											<td>
+												<p class="fl">$!obj.invoice</p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						#end
+						<div class="kuang0902">
+							<div class="title0902">支付及配送</div>
+							<div>
+								<table class="table0902" width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tbody>
+									#set($payment="未支付")
+									#if($!obj.payment.mark=="alipay")
+									#set($payment="支付宝")
+									#end
+									#if($!obj.payment.mark=="alipay_wap")
+									#set($payment="手机网页支付宝")
+									#end
+									#if($!obj.payment.mark=="wxcodepay")
+									#set($payment="微信扫码支付")
+									#end
+									<!--#if($!obj.payment.mark=="weixin_wap")
+									#set($payment="微信公众号支付")
+									#end-->
+									<!--#if($!obj.payment.mark=="chinabank")
+									#set($payment="网银在线")
+									#end
+									#if($!obj.payment.mark=="outline")
+									#set($payment="线下支付")
+									#end
+									#if($!obj.payment.mark=="payafter")
+									#set($payment="货到付款")
+									#end
+									#if($!obj.payment.mark=="balance")
+									#set($payment="预存款支付")
+									#end
+									#if($!obj.payment.mark=="paypal")
+									#set($payment="paypal")
+									#end-->
+									<tr>
+											<td width="150">支付方式</td>
+											<td>
+												<p class="fl">$!payment</p>
+											</td>
+										</tr>
+										<tr>
+											<td width="150">运费</td>
+											<td>
+												<p class="fl">¥$!CommUtil.null2Float($!{obj.ship_price})#if($!obj.transport)[$!{obj.transport}]#end</p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="kuang0902">
+							<div class="title0902">商品清单</div>
+							<div>
+								<table class="table0902" width="100%" border="0" cellspacing="0" cellpadding="0">
+									<thead>
+										<tr>
+											<td>商品编号</td>
+											<td>商品信息</td>
+											<td>数量</td>
+											<td>单价</td>
+										</tr>
+									</thead>
+									#foreach($gc in $obj.gcs)
+									<tbody>
+									#if($!gc.goods.goods_main_photo)
+									#set($img="$!webPath/$!{gc.goods.goods_main_photo.path}/$!{gc.goods.goods_main_photo.name}_small.$!{gc.goods.goods_main_photo.ext}")
+									#else
+									#set($img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+									#end
+										<tr>
+											<td>$!{gc.goods.id}<br><a href="$!webPath/buyer/recommend_chakan.htm?id=$!gc.goods.id&gc_id=$!gc.id">我要推荐</a></td>
+											<td>
+												<img class="fl" src="$!img" width="135" height="83">
+												<p class="fl ml10">
+													<a class="color_blue" href="$!webPath/goods_$!{gc.goods.id}.htm">$!{gc.goods.goods_name}</a>
+
+												</p>
+											</td>
+											<td>$!gc.count</td>
+											<td>
+												<p class="color_red1">¥$!gc.price</p>
+											</td>
+										</tr>
+
+									</tbody>
+									#end
+									<tfoot>
+									<tr>
+										<td colspan="4" style="line-height:35px;">
+											<p class="t_r f14">总商品金额：¥$!{obj.totalPrice}</p>
+											<p class="t_r f15">运费：¥$!CommUtil.null2Float($!{obj.ship_price})#if($!obj.transport)[$!{obj.transport}]#end</p>
+											#if($!{obj.ci}!="")
+												<p class="t_r f15">优惠券费：¥$!{obj.ci.coupon.coupon_amount}</p>
+											#else
+												<p class="t_r f15">优惠券费：¥0</p>
+											#end
+											<p class="t_r f15">积分抵现：¥$!obj.inte_money</p>
+											<h2 class="t_r" style="font-size: 20px;">应付总额：<span class="color_red1">¥$!{obj.totalPrice}</span></h2>
+										</td>
+									</tr>
+									</tfoot>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--我是买家-->
+
+		</div>
+		</div>
+	<!--footer开始-->
+	$!httpInclude.include("/second/footZ.htm")
+	<!--footer结束-->
+
+	<!-- 右侧 -->
+	$!httpInclude.include("/second/rightZ.htm")
+	<!-- 右侧结束 -->
+
+	</body>
+
+</html>

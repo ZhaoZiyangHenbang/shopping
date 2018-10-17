@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/public_auto.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/index.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/DataLazyLoad.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.lazyload.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.common.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.validate.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery-ui-1.8.21.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.validate.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.KinSlideshow.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+
+	</head>
+
+	<body>
+	<!-- top -->
+	$!httpInclude.include("/second/topZ.htm")
+	<!-- top结束 -->
+
+	<!-- heard -->
+	$!httpInclude.include("/second/head_index.htm")
+	<!-- heard结束 -->
+
+	<!-- 导航 -->
+			<div class="nav">
+                <div class="nav_center">
+                    <div class="nav_left">
+                        <h2><a href="$!webPath/goods_class.htm"><span>颐家超市分类<em><img src="$!webPath/resources/new_pc/images/nav_left.png"></em></span></a></h2>
+                        <div id="other_menu" class="other_menu" style="display: none;">
+                            <div class="left_menu" id="left_menu">
+								#foreach($gc in $!gcs)
+								#set($icon_img="$!webPath/resources/style/common/images/icon/default_icon.png")
+								<dl sc_color="#E60012" style="position:relative;" id="$!gc.id" child_count="$!gc.childs.size()" class="left_menu_dl">
+
+									<dt id="dts_15" class="left_menu_dt">
+										#if($!gc.icon_type==0)
+										#if($!gc.icon_sys!="")
+										#set($icon_img="$!webPath/resources/style/common/images/icon/icon_$!{gc.icon_sys}.png")
+										#end
+										#else
+										#if($!gc.icon_acc)
+										#set($icon_img="$!webPath/$!gc.icon_acc.path/$!gc.icon_acc.name")
+										#end
+										#end
+										<i class="left_menu_i"><img width="16" height="16" src="$!icon_img"></i>
+										<strong class="left_menu_str">
+											<a href="$!webPath/store_goods_list_$!{gc.id}.htm">$!gc.className</a>
+										</strong>
+									</dt>
+
+									<dd id="child_$!gc.id" style="display: none;" class="left_menu_dd">
+										<div id="left_menu_con_15" class="left_menu_con this ">
+				    <span class="left_menu_sp">
+					    <div class="left_menu_con_center">
+					        <div class="menu_con_right_top" style="background-color: rgb(230, 0, 18);">
+					        <dl>
+					          <dt>
+					          #foreach($gc1 in $gc.childs)
+	                    		  #if($!gc1.display)
+						          <span><a href="$!webPath/store_goods_list_$!{gc1.id}.htm" target="_blank">$!gc1.className</a></span>
+						          #end
+					          #end
+					          </dt>
+					        </dl>
+					      </div>
+
+					      <div class="left_menu_con_center_left">
+					      	  #foreach($gc1 in $gc.childs)
+	                    		  #if($!gc1.display)
+							          <dl>
+								          <dt><b> &gt; </b><a href="$!webPath/store_goods_list_$!{gc1.id}.htm" target="_blank">$!gc1.className</a></dt>
+								          <dd>
+								          #foreach($gc2 in $gc1.childs)
+					                          #if($!gc2.display)
+					                          <a href="$!webPath/store_goods_list_$!{gc2.id}.htm" target="_blank">$!gc2.className</a>
+					                          #end
+				                          #end
+								          </dd>
+							          </dl>
+						          #end
+					          #end
+					       </div>
+					    </div>
+				    </span>
+										</div>
+									</dd>
+
+								</dl>
+								#end
+							</div>
+            </div>
+            </div>
+            <ul id="navul">
+                <!--<li>
+                    <a id="65537" href="#" target="_blank" original_url=""><span>天天上新</span></a>
+                </li>
+                <li>
+                    <a id="65538" href="#" target="_blank" original_url=""><span>限时抢购</span></a>
+                </li>
+                <li>
+                    <a id="2" href="#" target="_blank" original_url=""><span>零利润</span></a>
+                </li>
+                <li>
+                    <a id="65536" href="#" target="_blank" original_url=""><span>有好货</span></a>
+                </li>
+                <li>
+                    <a id="32768" href="#" target="_blank" original_url=""><span>商学院</span></a>
+                </li>
+                <li>
+                    <a id="229377" href="#" target="_blank" original_url=""><span>颐佳超市 </span></a>
+                </li>
+                <li>
+                    <a id="229379" href="#" target="_blank" original_url=""><span>品牌街</span></a>
+                </li>
+                <li style="float: right;">
+                    <a id="229380" href="#" target="_blank" original_url=""><span><img src="images/lh_01.png"/></span></a>
+                </li>-->
+				#set($navs=$!navTools.queryNav(0,-1))
+
+				#foreach($nav in $navs)
+
+				#if($!CommUtil.indexOf("$!nav.url","http://")>=0)
+				#set($url="$!nav.url")
+				#else
+				#set($url="$!webPath/$!{nav.url}")
+				#end
+				<li><a id="$!nav.id" #if($!nav.new_win==1)target="_blank"#end original_url="$!nav.original_url" href="$!url"><span>$!{nav.title}</span></a></li>
+
+				#end
+            </ul>
+            </div>
+            </div>
+            <!-- 导航结束 -->
+	<!--<div id="nav">
+		<script>
+			jQuery(document).ready(function(){
+				jQuery("#navul li").each(function(){
+					var original_url=jQuery(this).attr("original_url");
+					if("/index.htm".indexOf(original_url)>=0){
+						jQuery(this).addClass("this");
+					}
+				});
+				//
+				jQuery(".left_menu_dl").live("mouseover",function(){
+					var sc_id=jQuery(this).attr("id");
+					var sc_color=jQuery(this).attr("sc_color");
+					var child_count = jQuery(this).attr("child_count");
+					var eq =jQuery(this).index();
+					/*if(jQuery(".left_menu_dd[id=child_"+sc_id+"]").html()==null){
+					 jQuery.ajax({type:'POST',url:'$!webPath/nav_data.htm',data:{"sc_id":sc_id},
+					 success:function(data){
+					 if(jQuery(".left_menu_dd[id=child_"+sc_id+"]").html()==null){
+					 jQuery(".left_menu_dt[id=dts_"+sc_id+"]").after(data);
+					 }
+					 if(child_count>0){
+					 jQuery("#dts_"+sc_id).addClass("left_menu_this").removeClass("left_menu_dt");
+					 jQuery("#child_"+sc_id).show();
+					 }
+					 jQuery("#left_menu_con_"+sc_id).attr("style","border:1px solid "+sc_color+"; border-left:1px solid "+sc_color+";").find(".menu_con_right_top").css("background-color",sc_color);
+					 var z = -35;
+					 var x = eq*z;
+					 jQuery("#left_menu_con_"+sc_id).css('margin-top',x+'px');
+					 jQuery(".left_menu_dd[id=child_"+sc_id+"]").show();
+					 }});
+					 }else{
+					 if(child_count>0){
+					 jQuery("#dts_"+sc_id).addClass("left_menu_this").removeClass("left_menu_dt");
+					 jQuery("#child_"+sc_id).show();
+					 }
+					 jQuery("#left_menu_con_"+sc_id).attr("style","border:1px solid "+sc_color+"; border-left:1px solid "+sc_color+";").find(".menu_con_right_top").css("background-color",sc_color);
+					 var z = -35;
+					 var x = eq*z;
+					 jQuery("#left_menu_con_"+sc_id).css('margin-top',x+'px');
+					 jQuery(".left_menu_dd[id=child_"+sc_id+"]").show();
+					 } */
+					if(child_count>0){
+						jQuery("#dts_"+sc_id).addClass("left_menu_this").removeClass("left_menu_dt");
+						jQuery("#child_"+sc_id).show();
+					}
+					jQuery("#left_menu_con_"+sc_id).attr("style","border:1px solid "+sc_color+"; border-left:1px solid "+sc_color+";").find(".menu_con_right_top").css("background-color",sc_color);
+					var z = -35;
+					var x = eq*z;
+					jQuery("#left_menu_con_"+sc_id).css('margin-top',x+'px');
+					jQuery(".left_menu_dd[id=child_"+sc_id+"]").show();
+
+				}).live("mouseleave",function(){
+					jQuery("dt[id^=dts_]").removeAttr("style");
+					jQuery("div[id^=left_menu_con_]").removeAttr("style");
+					var child_count = jQuery(this).attr("child_count");
+					jQuery("dt[id^=dts_]").removeClass("left_menu_this").addClass("left_menu_dt");
+					jQuery(".left_menu_dd[id^=child_]").hide();
+				});
+				//
+			});
+
+		</script>
+
+		<div class="nav">
+
+			<div class="nav_center">
+
+				<div class="nav_left">
+
+					<h2><a href="$!webPath/goods_class.htm"><span>颐家超市分类<em><img src="$!webPath/resources/style/system/front/default/images/nav_left.png"></em></span></a></h2>
+
+					<div class="index_topleft">
+
+						<div id="left_menu" class="left_menu">
+
+							#foreach($gc in $!gcs)
+							#set($icon_img="$!webPath/resources/style/common/images/icon/default_icon.png")
+							<dl sc_color="#E60012" style="position:relative;" id="$!gc.id" child_count="$!gc.childs.size()" class="left_menu_dl">
+
+								<dt id="dts_15" class="left_menu_dt">
+									#if($!gc.icon_type==0)
+									#if($!gc.icon_sys!="")
+									#set($icon_img="$!webPath/resources/style/common/images/icon/icon_$!{gc.icon_sys}.png")
+									#end
+									#else
+									#if($!gc.icon_acc)
+									#set($icon_img="$!webPath/$!gc.icon_acc.path/$!gc.icon_acc.name")
+									#end
+									#end
+									<i class="left_menu_i"><img width="16" height="16" src="$!icon_img"></i>
+									<strong class="left_menu_str">
+										<a href="$!webPath/store_goods_list_$!{gc.id}.htm">$!gc.className</a>
+									</strong>
+								</dt>
+
+								<dd id="child_$!gc.id" style="display: none;" class="left_menu_dd">
+									<div id="left_menu_con_15" class="left_menu_con this ">
+				    <span class="left_menu_sp">
+					    <div class="left_menu_con_center">
+					        <div class="menu_con_right_top" style="background-color: rgb(230, 0, 18);">
+					        <dl>
+					          <dt>
+					          #foreach($gc1 in $gc.childs)
+	                    		  #if($!gc1.display)
+						          <span><a href="$!webPath/store_goods_list_$!{gc1.id}.htm" target="_blank">$!gc1.className</a></span>
+						          #end
+					          #end
+					          </dt>
+					        </dl>
+					      </div>
+
+					      <div class="left_menu_con_center_left">
+					      	  #foreach($gc1 in $gc.childs)
+	                    		  #if($!gc1.display)
+							          <dl>
+								          <dt><b> &gt; </b><a href="$!webPath/store_goods_list_$!{gc1.id}.htm" target="_blank">$!gc1.className</a></dt>
+								          <dd>
+								          #foreach($gc2 in $gc1.childs)
+					                          #if($!gc2.display)
+					                          <a href="$!webPath/store_goods_list_$!{gc2.id}.htm" target="_blank">$!gc2.className</a>
+					                          #end
+				                          #end
+								          </dd>
+							          </dl>
+						          #end
+					          #end
+					       </div>
+					    </div>
+				    </span>
+									</div>
+								</dd>
+
+							</dl>
+							#end
+						</div>
+
+					</div>
+				</div>
+
+				<ul id="navul">
+
+					#set($navs=$!navTools.queryNav(0,-1))
+
+					#foreach($nav in $navs)
+
+					#if($!CommUtil.indexOf("$!nav.url","http://")>=0)
+					#set($url="$!nav.url")
+					#else
+					#set($url="$!webPath/$!{nav.url}")
+					#end
+					<li><a id="$!nav.id" #if($!nav.new_win==1)target="_blank"#end original_url="$!nav.original_url" href="$!url"><span>$!{nav.title}</span></a></li>
+
+					#end
+				</ul>
+
+			</div>
+
+		</div>
+
+	</div>-->
+
+		<div class="main">
+			<div class="h_seat">
+				<a href="">颐佳超市</a>>
+				<a href="">优惠券</a>
+			</div>
+			<div class="slideTxtBox">
+				<div class="index_ppj_tab hd" id="index_ppj_tab">
+					<ul>
+						<li class="on" id="goodscase2" goods_random="1">全部<s></s></li>
+						<li id="goodscase2" goods_random="1">已领<s></s></li>
+					</ul>
+				</div>
+				<div class="index_sptj_nr bd">
+					<ul>
+						#if($!objs.size()>0)
+						#foreach($obj in $objs)
+						#if($!obj.coupon_count>0)
+						<div class="quan-sk-item quan-d-sk-item fl">
+							<div class="sk-img">
+								<img src="$!imageWebServer/$!{obj.goods.goods_main_photo.path}/$!{obj.goods.goods_main_photo.name}"  class="err-product">
+							</div>
+							<div class="q-type">
+								<div class="q-price">
+									<em>￥</em>
+									<strong class="num">$!obj.coupon_amount</strong>
+									<div class="txt">
+										<div class="typ-txt">
+											优惠券$!obj.coupon_amount
+										</div>
+									</div>
+								</div>
+								<div class="limit">
+									<span class="quota">$!obj.goods.goods_name</span>
+								</div>
+							</div>
+							<div class="q-opbtns">
+								<b class="semi-circle"></b>
+								<div class="canvas-qcode-box">
+									<div class="canvas-box">
+										<a href="javascript:void(0);" id="$!obj.id" name="$!obj.goods.id" onclick="lingquan(this.id,this.name)" #if(!$!user)dialog_uri="$!webPath/user_dialog_login.htm" dialog_title="会员登录" dialog_width="450" dialog_height="100" dialog_id="user_login"#end class="q-btn get-coupon" clstag="pageclick|keycount|aladdin_201605165|5">
+											<span class="txt">立即领取</span><b></b></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<script>
+							function lingquan(id,name) {
+								jQuery.ajax({
+									type:'post',
+									url:'$!webPath/second/youhuiquanlingqu.htm?coupon_id='+id+'&goods_id='+name,
+									beforeSend:function () {
+
+									},
+									success:function (data) {
+										var result=eval("("+data+")");
+										var ss = result.save;
+										alert(ss);
+										/*$("#aaa").remove();
+										$("#lingquan").html("<a>满"+man+"减"+jian+"已领</a>");*/
+									}
+								})
+							}
+
+
+						</script>
+						#else
+						<div class="quan-sk-item quan-d-sk-item fr">
+							<div class="sk-img">
+								<img src="$!imageWebServer/$!{obj.goods.goods_main_photo.path}/$!{obj.goods.goods_main_photo.name}"  class="err-product">
+							</div>
+							<div class="q-type">
+								<div class="q-price" style="color: #999;">
+									<em>￥</em>
+									<strong class="num">$!obj.coupon_amount</strong>
+									<div class="txt">
+										<div class="typ-txt">
+											优惠券
+										</div>
+									</div>
+								</div>
+								<div class="limit">
+									<span class="quota">$!obj.goods.goods_name</span>
+								</div>
+							</div>
+							<div class="q-opbtns" style="background: #ccc;">
+								<b class="semi-circle"></b>
+								<div class="canvas-qcode-box">
+									<div class="canvas-box">
+										<a href="javascript:void(0);" class="q-btn get-coupon" clstag="pageclick|keycount|aladdin_201605165|5">
+											<span class="txt">已领完</span><b></b></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						#end
+						#end
+						#else
+						<div style="height: 200px;width: 1200px;text-align:center">暂时没有优惠券信息</div>
+						#end
+
+
+						<!--<div class="w-page fr">
+							<a href="">首页</a>
+							<a href="" class="on">1</a>
+							<a href="">2</a>
+							<a href="">3</a>
+							<a href="">末页</a>
+						</div>-->
+					</ul>
+					<ul>
+						#if($!obj.size()>0)
+						#foreach($obj in $obj)
+						#if($!velocityCount%2==0)
+						<div class="quan-sk-item quan-d-sk-item fl">
+							<div class="sk-img">
+								<img src="$!imageWebServer/$!{obj.coupon.goods.goods_main_photo.path}/$!{obj.goods.goods_main_photo.name}"  class="err-product">
+							</div>
+							<div class="q-type">
+								<div class="q-price">
+									<em>￥</em>
+									<strong class="num">$!obj.coupon.coupon_amount</strong>
+									<div class="txt">
+										<div class="typ-txt">
+											优惠券
+										</div>
+									</div>
+								</div>
+								<div class="limit">
+									<span class="quota">$!obj.coupon.goods.goods_name</span>
+								</div>
+							</div>
+							<div class="q-opbtns">
+								<b class="semi-circle"></b>
+								<div class="canvas-qcode-box">
+									<div class="canvas-box">
+										<a href="$!webPath/goods_$!{obj.coupon.goods.id}.htm" class="q-btn get-coupon" clstag="pageclick|keycount|aladdin_201605165|5">
+											<span class="txt">去使用</span><b></b></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						#else
+						<div class="quan-sk-item quan-d-sk-item fr">
+							<div class="sk-img">
+								<img src="$!imageWebServer/$!{obj.coupon.goods.goods_main_photo.path}/$!{obj.goods.goods_main_photo.name}"  class="err-product">
+							</div>
+							<div class="q-type">
+								<div class="q-price">
+									<em>￥</em>
+									<strong class="num">$!obj.coupon.coupon_amount</strong>
+									<div class="txt">
+										<div class="typ-txt">
+											优惠券
+										</div>
+									</div>
+								</div>
+								<div class="limit">
+									<span class="quota">$!obj.coupon.goods.goods_name</span>
+								</div>
+							</div>
+							<div class="q-opbtns">
+								<b class="semi-circle"></b>
+								<div class="canvas-qcode-box">
+									<div class="canvas-box">
+										<a href="$!webPath/goods_$!{obj.coupon.goods.id}.htm" class="q-btn get-coupon" clstag="pageclick|keycount|aladdin_201605165|5">
+											<span class="txt">去使用</span><b></b></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						#end
+						#end
+						#else
+						<div style="height: 200px;width: 1200px;text-align:center">暂时没有优惠券信息</div>
+						#end
+						<!--<div class="quan-sk-item quan-d-sk-item fr">
+							<div class="sk-img">
+								<img src="images/lh_11.jpg"  class="err-product">
+							</div>
+							<div class="q-type">
+								<div class="q-price" >
+									<em>￥</em>
+									<strong class="num">60</strong>
+									<div class="txt">
+										<div class="typ-txt">
+											东券
+										</div>
+									</div>
+								</div>
+								<div class="limit">
+									<span class="quota">消费满168元可用</span>
+								</div>
+							</div>
+							<div class="q-opbtns">
+								<b class="semi-circle"></b>
+								<div class="canvas-qcode-box">
+									<div class="canvas-box">
+										<a href="javascript:void(0);" class="q-btn get-coupon" clstag="pageclick|keycount|aladdin_201605165|5">
+											<span class="txt">去使用</span><b></b></a>
+									</div>
+								</div>
+							</div>
+						</div>-->
+						<!--<div class="w-page fr">
+							<a href="">首页</a>
+							<a href="" class="on">1</a>
+							<a href="">2</a>
+							<a href="">3</a>
+							<a href="">末页</a>
+						</div>-->
+					</ul>
+
+				</div>
+				<script type="text/javascript">
+					jQuery(".slideTxtBox").slide();
+				</script>
+			</div>
+		</div>
+
+		<!--footer开始-->
+	$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+	$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+
+	</body>
+
+</html>

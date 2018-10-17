@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>$!config.title</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta content="telephone=no" name="format-detection">
+	<meta name="keywords" content="济南浩星装饰工程有限公司">
+	<meta name="description" content="济南浩星装饰工程有限公司">
+	<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+	<meta name="msapplication-navbutton-color" content="#DB1011">
+	<link href="$!webPath/resources/style/system/front/default/css/public.css" type="text/css" rel="stylesheet" />
+	<link href="$!webPath/resources/style/system/front/default/css/user.css" type="text/css" rel="stylesheet" />
+	<link  href="$!webPath/resources/style/common/css/jquery-ui-1.8.22.custom.css" type=text/css rel=stylesheet>
+	<script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+	<script src="$!webPath/resources/js/jquery-ui-1.8.21.js"></script>
+	<script src="$!webPath/resources/js/jquery.zh.cn.js"></script>
+	<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+	<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+	<!--<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />-->
+	<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+	<style type="text/css">
+		@font-face {
+			font-family: "iconfont";
+			src: url('$!webPath/resources/new/font/iconfont.eot');
+			/* IE9*/
+			src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+			url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+	</style>
+	<script>
+        jQuery(document).ready(function(){
+            jQuery('#birthday').datepicker({
+                dateFormat:"yy-mm-dd",
+                yearRange:"1950:2020",
+                changeMonth: true,
+                changeYear: true
+            });
+            jQuery(":radio[value=$!user.sex]").attr("checked",true);
+
+            //获取下级地区信息
+            jQuery("select[id^=areas_]").change(function(){
+                var areaMark = jQuery(this).attr("areaMark");
+                var parent_id = jQuery("#areas_"+areaMark).val();
+                jQuery.post("$!webPath/buyer/account_getAreaChilds.htm",{
+                    "parent_id":parent_id,
+                    "areaMark":areaMark
+                },function(data){
+                    if(areaMark=="province"){
+                        jQuery("#area_id").html("<option>请选择...</option>");
+                        jQuery("#areas_city").html(data);
+                    }
+                    if(areaMark=="city"){
+                        jQuery("#area_id").html(data);
+                    }
+                },"text");
+            });
+	  #if($!user.area)
+            jQuery("#areas_province").val("$!user.area.parent.parent.id");
+            jQuery("#areas_city").html("<option>$!user.area.parent.areaName</option>");
+            jQuery("#area_id").html("<option>$!user.area.areaName</option>");
+	  #end
+        });
+		function checkname() {
+		var  a=	$("#trueName").val();
+           if (a!=""){
+			   return  true;
+		   }
+			alert("请填写真实姓名");
+			$("#trueName").focus();
+			return  false;
+		}
+		function checkbir() {
+		var b=	$("#birthday").val();
+			if(b!=""){
+				return true;
+			}
+			alert("请填写出生年月日");
+			$("#birthday").focus();
+			return false;
+		}
+
+		function checkall() {
+			return checkname()&&checkbir();
+		}
+	</script>
+</head>
+<body>
+<header>
+	<div class="hdindex">
+		<span class="lh_back" a href="#" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i></span>
+		<span>个人资料</span><a href="account_edit.htm">
+		<span class="lh_xiala" id="stateBut" data-show="hide" style="display: none;">编辑</span></a>
+	</div>
+</header>
+						<div class="ordercon">
+							<div class="addnav">
+
+									<table width="705" border="0" cellspacing="0" cellpadding="0" class="addnavtable">
+										#if($!user.photo)
+										#set($img="$!webPath/$!user.photo.path/$!user.photo.name")
+										#else
+										#set($img="$!webPath/$!config.memberIcon.path/$!config.memberIcon.name")
+										#end
+										<tr>
+											<td width="28%" align="right">头像：</td>
+											<td class="px10"><img src="$!img" style="width: 5rem;height: 2.5rem;border-radius:50%;">
+												<form action="$!webPath/buyer/upload_avatar_wap.htm" method="post" enctype="multipart/form-data">
+												<input type="file" name="file" style="font-size:0.6rem; margin-top:0.2rem;"/>
+													<input type="submit" value="上传" style="font-size:0.6rem; margin-top:0.2rem; padding:0.1rem 0.2rem;">
+
+												</form>
+											</td>
+
+										</tr>
+										<form action="$!webPath/buyer/account_saveweb.htm" method="post" name="theForm" id="theForm" onsubmit=" return checkall()">
+
+
+										<tr>
+											<td width="28%" align="right">名称：</td>
+											<td class="px10">$!user.userName</td>
+										</tr>
+										<tr>
+											<td width="28%" align="right">证件：</td>
+											<td class="px10">$!user.sfz</td>
+										</tr>
+									<!--	<tr>
+											<td align="right">可用余额：</td>
+											<td class="px10">¥#if($!{user.availableBalance})$!{user.availableBalance}#else 0 #end</td>
+										</tr>
+										<tr>
+											<td align="right">冻结余额：</td>
+											<td class="px10">¥#if($!{user.freezeBlance})$!{user.freezeBlance}#else 0 #end</td>
+										</tr>
+										<tr>
+											<td align="right">金币余额：</td>
+											<td class="px10">$!{user.gold}</td>
+										</tr>-->
+										<!--<tr>
+											<td align="right">电子邮箱：</td>
+
+											<td class="px10">$!user.email#if($!user.email)<span style="color:#FF0000">[已绑定]</span><span style="color:#0000FF"><a href="$!webPath/buyer/account_email.htm">[修改]</a></span>#end</td>
+										</tr>-->
+										<!--<tr>
+											<td align="right">手机号码：</td>
+											<td class="px10">$!user.mobile#if($!user.mobile)<span style="color:#FF0000">[已绑定]</span><span style="color:#0000FF"><a href="$!webPath/buyer/account_mobile.htm">[修改]</a></span>#else<a href="$!webPath/buyer/account_mobile.htm">[去绑定]</a>#end</td>
+										</tr>-->
+										<!--<tr>
+											<td align="right">身份证：</td>
+											<td class="px10"><span class="setinput">
+                                   <input name="trueName" type="text" id="trueName" value="$!user.trueName" onblur="checkname()"/>
+                                   </span></td>
+										</tr>-->
+										<tr>
+											<td align="right">性别：</td>
+											<td class="px10">
+												<label>
+													<input type="radio" name="sex" id="radio" value="-1" />
+													保密
+												</label> &nbsp; &nbsp;
+												<label>
+													<input type="radio" name="sex" id="radio" value="1" />
+													男
+												</label>
+												&nbsp; &nbsp;
+												<label>
+													<input type="radio" name="sex" id="radio" value="0" />
+													女
+												</label></td>
+										</tr>
+										<tr>
+											<td align="right" valign="top">生日：</td>
+											<td  class="px10"><span class="setinput">
+                        <input name="birthday" type="text" id="birthday" value="$!CommUtil.formatShortDate($!user.birthday)" readonly="true"/>
+                        </span></td>
+										</tr>
+										<tr>
+											<td align="right" valign="top">地区：</td>
+											<td  class="px10"><span class="setinput">
+                       <select id="areas_province" areaMark="province" name="address">
+                       <option>请选择...</option>
+                       #foreach($area in $areas)
+                       <option value="$!area.id">$!area.areaName</option>
+                       #end
+                       </select>
+
+                         <select id="areas_city" areaMark="city" >
+                       <option value="">请选择...</option>
+                       </select>
+
+                        <select id="area_id" name="area_id">
+                       <option value="">请选择...</option>
+                       </select>
+                        </span></td>
+										</tr>
+										<tr>
+											<td align="right" valign="top">QQ：</td>
+											<td  class="px10"><span class="setinput">
+                        <input name="qq" type="text" id="qq" value="$!user.QQ" />
+                        </span></td>
+										</tr>
+										<!--<tr>
+											<td align="right" valign="top">阿里旺旺：</td>
+											<td  class="px10"><span class="setinput">
+                        <input name="WW" type="text" id="WW" value="$!user.WW" />
+                        </span></td>
+										</tr>
+										<tr>
+											<td align="right" valign="top">MSN：</td>
+											<td  class="px10"><span class="setinput">
+                        <input name="MSN" type="text" id="MSN" value="$!user.MSN" />
+                        </span></td>
+										</tr>-->
+										<tr>
+											<td align="right" valign="top">WX：</td>
+											<td  class="px10"><span class="setinput">
+                        <input name="WX" type="text" id="WX" value="$!user.WX" />
+                        </span></td>
+										</tr>
+										<tr>
+
+											<td class="px10" colspan="2"><span class="setsub">
+                        <input class="lx_btn" name="" type="submit"  value="提交" />
+                        </span></td>
+										</tr>
+										</form>
+									</table>
+
+							</div>
+						</div>
+					</div></td>
+			</tr>
+		</table>
+	</div>
+
+</div>
+</body>
+</html>

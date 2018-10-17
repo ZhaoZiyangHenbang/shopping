@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link href="$!webPath/resources/style/system/front/default/css/public.css" type="text/css" rel="stylesheet" />
+		<link href="$!webPath/resources/style/system/front/default/css/goods.css" type="text/css" rel="stylesheet" />
+		<script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/js/jquery.validate.min.js"></script>
+		<script>
+			jQuery(document).ready(function(){
+				jQuery("#theForm").validate({
+					errorPlacement:function(error, element) {
+						error.appendTo(element.parent().parent());
+					},
+					rules: {
+						userName: {required:true},
+						email: {required:true,email:true},
+						code:{required:true,
+							remote:{
+								url: "$!webPath/verify_code.htm",     //后台处理程序
+								type: "post",               //数据发送方式
+								dataType: "json",           //接受数据格式
+								data: {                     //要传递的数据
+									"code": function(){return jQuery("#code").val();}
+								}
+							}
+						}
+					},
+					messages: {
+						userName: {required:"用户名不能为空"},
+						email: {required:"邮箱不能为空",email:"邮箱格式不对"},
+						code:{required:"验证码不能为空",remote:"验证码不正确"}
+					}
+				});
+			});
+			function refreshCode(){
+				jQuery("#code_img").attr("src","$!webPath/verify.htm?d"+new Date().getTime());
+			}
+		</script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script>
+			/*获取验证码*/
+			function getCode(e){
+				var userName=$("#userName").val();
+				if (userName==null||userName=="") {
+					alert("请输入手机号或邮箱!");
+					$('#userName').focus();
+				}else {
+					jQuery.ajax({type:'post',url:'$!webPath/sms.htm?userName='+userName,
+						beforeSend:function(){
+						},
+						success:function(data){
+							var result=eval("("+data+")");
+							document.getElementById("sendYzm").value=result.yzm;
+						}
+					});
+					resetCode(); //倒计时
+				};
+			}
+			//倒计时
+			function resetCode(){
+				$('#J_getCode').hide();
+				$('#J_second').html('60');
+				$('#J_second').show();
+				var second = 60;
+				var timer = null;
+				timer = setInterval(function(){
+					second -= 1;
+					if(second >0 ){
+						$('#J_second').html(second);
+					}else{
+						clearInterval(timer);
+						$('#J_getCode').html("重新发送");
+						$('#J_getCode').show();
+						$('#J_second').hide();
+					}
+				},1000);
+			}
+			function send() {
+				var userName=$("#userName").val();
+				if (userName==null||userName=="") {
+					alert("请输入手机号或邮箱!");
+				}else {
+					jQuery.ajax({type:'post',url:'$!webPath/sms.htm?userName='+userName,
+						beforeSend:function(){
+						},
+						success:function(data){
+							var result=eval("("+data+")");
+							document.getElementById("sendYzm").value=result.yzm;
+						}
+					})
+				}
+			}
+			function resetPassword() {
+				var userName=$("#userName").val();
+				var yzm=$("#yzm").val();
+				var password=$("#password").val();
+				var password1=$("#password1").val();
+				if (userName==null||userName=="") {
+					alert("请输入手机号或邮箱!");
+				}else if(password==null||password==""){
+					alert("请输入新密码!");
+				}else if(password1==null||password1==""){
+					alert("请输入确认密码!");
+				}else if (yzm==null||yzm=="") {
+					alert("请输入验证码!");
+				}else if (password!=password1) {
+					alert("两次密码输入不一致!");
+				}else {
+					jQuery('#theForm').submit();
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<!-- heard -->
+		<div id="header_form" style="border-bottom: 2px solid #c7171e;">
+			<div class="head_width" id="head_h">
+				<div class="head clearfix">
+					<div class="logo">
+						<a href="$!webPath/index.htm"><img src="$!webPath/resources/new_pc/images/logo.png" border="0"> </a>
+					</div>
+					<div class="lh_touxiang"><img src="$!webPath/resources/new_pc/images/lh_13.jpg" /></div>
+					<div class="lh_zcdl">重设密码</div>
+					<div class="lh_zcdl_right">感谢您对我们的认可！</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- heard结束 -->
+
+		<div class="h_enroll">
+			<div class="h_enroll_t"><span>重设密码</span></div>
+			<div class="login_cont_ny_r1" style="margin: 70px auto; float: none; height: auto;">
+				<form action="$!webPath/resetPassword.htm" method="post" name="theForm" id="theForm">
+				<div class="login_cont_ny_r_m1">
+					<input name="userName" id="userName" type="text" placeholder="手机号/邮箱"  class="login_bk1" />
+					<input name="password" id="password" type="text" placeholder="新密码"  class="login_bk11" />
+					<input name="password1" id="password1" type="text" placeholder="确认密码"  class="login_bk11" />
+					<input name="yzm" id="yzm" type="text" placeholder="验证码"  class="login_yzm1" />
+					<input type="hidden" id="sendYzm" name="sendYzm">
+					<div class="login_yzm_dx on" id="J_resetCode" style="display: none;">重新发送</div>
+
+					<div class="login_yzm_dx on" id="J_second" style="display: none;">60</div>
+					<div class="login_yzm_dx" onclick="getCode(this)" id="J_getCode">获取验证码</div>
+				</div>
+				<div class="">
+					<input type="button" onclick="resetPassword()" value="确定" class="login_cont_ny_r_b1">
+				</div>
+				</form>
+				<div class="login_cont_ny_r_wz1">
+					<a href="$!webPath/user/login.htm"style="text-align: right;">登录</a>
+					<a href="$!webPath/register.htm"  style="text-align: left;">注册</a>
+				</div>
+			</div>
+			<div class="clear"></div>
+</div>
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		$!uc_logout_js
+		<!--footer结束-->
+
+	</body>
+
+</html>

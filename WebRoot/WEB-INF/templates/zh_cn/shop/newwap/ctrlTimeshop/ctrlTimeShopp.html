@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>$!config.title</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta content="telephone=no" name="format-detection">
+	<meta name="keywords" content="济南浩星装饰工程有限公司">
+	<meta name="description" content="济南浩星装饰工程有限公司">
+	<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+	<meta name="msapplication-navbutton-color" content="#DB1011">
+	<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+	<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="$!webPath/resources/new/css/mui.min.css" />
+	<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+	<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+	<!--加载动画-->
+	<link rel="stylesheet" type="text/css" href="$!webPath/resources/new/css/loading.css" />
+
+	<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+	<style>
+		/*#fenlei a:link{*/
+			/*color:#6a6969; */
+		/*}*/
+/*#fenlei a:hover{*/
+	/*color: blue;*/
+/*}*/
+/*#fenlei a:active{*/
+	/*color: orange;*/
+/*}*/
+/*#fenlei a:visited{*/
+			/*color: red;*/
+/*}*/
+
+		@font-face {
+			font-family: "iconfont";
+			src: url('$!webPath/resources/new/font/iconfont.eot');
+			/* IE9*/
+			src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+			url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+	</style>
+	<script>
+		$(function () {
+			var url=window.document.location.href;
+			$("#my").attr("href","$!webPath/second/fenxiao.htm?url="+url);
+		})
+	</script>
+	<script type="text/javascript">
+
+		function timeCount(remain_id){
+			function _fresh(){
+				var nowDate = new Date(),                                    //当前时间
+						endDate = new Date($('#'+remain_id).attr('endtime')),    //截止时间
+						totalS  = parseInt((endDate.getTime() - nowDate.getTime()) / 1000);     //总秒数
+				_day    = parseInt(totalS / 3600 / 24);
+				_hour   = parseInt((totalS / 3600) % 24);
+				_minute = parseInt((totalS / 60) % 60);
+				_second = parseInt(totalS % 60);
+				jQuery('#'+remain_id).html('<em>' + _day +'</em>天<em>' + _hour + '</em>小时<em>' + _minute + '</em>分<em>' + _second + '</em>秒后结束');
+				if( totalS <= 0){
+					jQuery('#'+remain_id).html('该团购已结束');
+					clearInterval(sh);
+				}
+			}
+			_fresh();
+			var sh = setInterval(_fresh,1000);
+		}
+		function group_sel(field,val){
+			jQuery("#"+field).val(val);
+			jQuery("#ListForm").submit();
+		}
+		function group_order(field1,val1,field2,val2){
+			jQuery("#"+field1).val(val1);
+			jQuery("#"+field2).val(val2);
+			jQuery("#ListForm").submit();
+		}
+		jQuery(document).ready(function(){
+			timeCount("time_down_info");
+			jQuery(".gp_listimg img").lazyload({effect:"fadeIn",width:278,height:278});
+			jQuery(".gp_scort a").removeClass("this");
+			jQuery(".gp_scort a[id^=$!order_type]").addClass("this");
+  #if($!orderType=="desc")
+			jQuery(".gp_scort a[id^=$!order_type] i").addClass("scort_d");
+  #else
+			jQuery(".gp_scort a[id^=$!order_type] i").addClass("scort_c");
+  #end
+			jQuery(".gp_cm a").removeClass("this");
+			jQuery(".gp_cm a[id=price_$!{gpr_id}]").addClass("this");
+			jQuery(".gp_cm a[id=gc_$!{gc_id}]").addClass("this");
+		});
+	</script>
+</head>
+
+<body>
+<!--//header开始-->
+<header>
+	<div class="lh_hdindex" style="background-color: #e63b53;color: #fdfcfc">
+		<span class="lh_back" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i> </span>
+		<span>限时抢购</span>
+		<span class="lh_xiala" id="stateBut" data-show="hide" ><i class="icon iconfont">&#xe67b;</i></span>
+		<div id="class1content" style="display: none;">
+			$!httpInclude.include("/wap/wap_navv.htm")
+		</div>
+	</div>
+</header>
+<!--header结束//-->
+<!--//nav-wrap开始-->
+<nav id="nav-wrap">
+	<div class="nav-content" style="position: relative; top: 0px;">
+		<div class="item all ">
+			<a href="#"><span style="">推荐</span></a>
+		</div>
+		<div id="nav-list"  class="swiper-container" >
+			<div class="nav-list-wrap swiper-wrapper" style="width: 1295px; transition-property: transform; transform-origin: 0px 0px 0px; transform: translate(0px, 0px) scale(1) translateZ(0px);">
+				<ul class="swiper-slide">
+					#foreach($gc in $!gcs)
+					<li style="display: inline-block;height: 1.45067rem;vertical-align: top;margin-left: 5px;margin-right: 5px" data-id="69990">
+						<span  id="fenlei"style=" display: block; height: 1.38667rem;margin: 0 .59733rem;line-height: 1.45067rem;font-size: .59733rem;color: #6a6969;"><a style="isplay: block;width: 100%;height: 1.45067rem;overflow: hidden; color: #6a6969;" href="$!webPath/second/ctrltime.htm?gc_id=$!{gc.id}">$!gc.gc_name</a></span>
+
+						<!--<a href="javascript:void(0);" onclick="group_sel('gc_id','$!gc.id')" id="gc_$!{gc.id}"><span>$!gc.gc_name</span></a>-->
+					</li>
+					#end
+				</ul>
+			</div>
+		</div>
+		<div id="drop-down" data-show="0">
+			<div class="drop-down-bg-wrap">
+				<div class="drop-down-bg"><i class="icon iconfont">&#xe62d;</i></div>
+			</div>
+			<div class="drop-down-content">
+				<div class="drop-down-content-choose">选择分类</div>
+				<div class="drop-down-content-tag">
+					<ul class="drop-down-tag-list">
+						#foreach($gc in $!gcs)
+						<li class="index drop-down-item  " data-id="69990">
+							<a href="$!webPath/second/ctrltime.htm?gc_id=$!{gc.id}"><span>$!gc.gc_name</span></a>
+						</li>
+						#end
+					</ul>
+				</div>
+			</div>
+			<div class="opacity"></div>
+		</div>
+	</div>
+</nav>
+<!--nav-wrap结束//-->
+<div class="xs-gg active-eee clearfix">
+	<div class="left">距离本期结束</div>
+	<div class="right"  id="time_down_info" endTime="$!CommUtil.formatTime('MM/dd/yyyy HH:mm:ss',$!group.endTime)"><em>366</em>天<em>9</em>小时<em>50</em>分<em>46</em>秒</div>
+</div>
+<div class="main" style="background: #fff;">
+	<div class="img_list" id="img_list">
+		<ul>
+			#if($!objs.size()>0 && $!group)
+			#foreach($obj in $objs)
+			#if($!obj.gg_goods.goods_main_photo)
+			#set($img="$!imageWebServer/$!{obj.gg_goods.goods_main_photo.path}/$!{obj.gg_goods.goods_main_photo.name}")
+			#else
+			#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+			#end
+
+
+			<li>
+				<div class="img_list_pic"><a href="$!webPath/goods_$!{obj.gg_goods.id}.htm?gg_id=$!obj.id"><img src="$!img" /></a></div>
+				<div class="img_list_tex">
+					<p ><a href="$!webPath/goods_$!{obj.gg_goods.id}.htm" style="color: black">$!CommUtil.substring("$!obj.gg_goods.goods_name",18)</a></p>
+					<p class="img_list_price lh_xsqg_jg" >抢购价：￥$!{obj.gg_price}</p>
+					#if($!{obj.gg_count}==0)
+					<a class="lh_xsqg_an"  style="background: #666">抢购结束</a>
+					#else
+					<a class="lh_xsqg_an" href="$!webPath/goods_$!{obj.gg_goods.id}.htm?gg_id=$!obj.id">立即抢购</a>#end
+					<p class="lh_xsqg_yj">原价：￥$!{obj.gg_goods.goods_price}</p>
+					<p class="lh_xsqg_djs">抢购数量：$!{obj.gg_count}</p>
+					<!--<p class="lh_xsqg_djs">已经购买：$!buyer_count 人</p>-->
+				</div>
+			</li>
+
+			#end
+			#end
+
+		</ul>
+	</div>
+
+	<div class="weui-loadmore" style="width: 100%;text-align: center;clear: both">
+		<div class="loading-wrap" style="width: 30%;line-height: 0.5rem;margin-left:40%;">
+			<i class="weui-loading" style="float: left;">
+				<div class="sk-circle">
+					<div class="sk-circle1 sk-child"></div>
+					<div class="sk-circle2 sk-child"></div>
+					<div class="sk-circle3 sk-child"></div>
+					<div class="sk-circle4 sk-child"></div>
+					<div class="sk-circle5 sk-child"></div>
+					<div class="sk-circle6 sk-child"></div>
+					<div class="sk-circle7 sk-child"></div>
+					<div class="sk-circle8 sk-child"></div>
+					<div class="sk-circle9 sk-child"></div>
+					<div class="sk-circle10 sk-child"></div>
+					<div class="sk-circle11 sk-child"></div>
+					<div class="sk-circle12 sk-child"></div>
+				</div>
+			</i>
+			<span class="weui-loadmore__tips">正在加载</span>
+		</div>
+	</div>
+	<div class="weui-loadmore2" style="display: none;width: 100%;text-align: center;clear: both">
+		<!--<i class="weui-loading"></i>-->
+		<span class="weui-loadmore2__tips">已加载全部</span>
+	</div>
+
+	<div class="qg_foot" style="margin-top: 30px">
+		<ul>
+			<li>
+                <a href="$!webPath/second/everydaygoods.htm?bg_nav=限时抢购" class="on"><i class="icon iconfont ">&#xe644;</i>当前抢购</a>
+            </li>
+			<li style="width: 290px;float: left;margin-left: 50px">
+				<a href="$!webPath/second/ctrltimeshopstart.htm" ><i class="icon iconfont">&#xe644;</i>即将开始</a>
+
+			</li>
+			<!--<li style="width: 150px;float: left" >
+				<a href="$!webPath/second/ctrltime.htm"><i class="icon iconfont ">&#xe644;</i>立即抢购</a>
+			</li>-->
+		</ul>
+
+	</div>
+</div>
+
+
+<div class="cbtn-top">
+	<a href="javascript:;">
+		<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span></a>
+</div>
+
+
+<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+
+
+<!--通用头尾  add by lizhenyou 2015-3-30 -->
+<script>
+	$(document).ready(function() {
+		var mchb = new MCommonHeaderBottom();
+		var _head_cfg_title = "限时抢购";
+		var _head_cfg_sid = "";
+		var _head_cfg_isShowShortCut = false;
+		var _head_cfg_selectedShortCut = "";
+		var _head_cfg_isShowShortCutButton = true;
+
+		var headerArg = {
+			hrederId: 'm_common_header',
+			title: _head_cfg_title,
+			sid: _head_cfg_sid,
+			isShowShortCut: _head_cfg_isShowShortCut,
+			selectedShortCut: _head_cfg_selectedShortCut,
+			isShowShortCutButton: _head_cfg_isShowShortCutButton
+		}
+		mchb.header(headerArg);
+
+	});
+</script>
+<script>
+function getClientHeight() {
+    var clientHeight = 0;
+    if(document.body.clientHeight && document.documentElement.clientHeight) {
+        var clientHeight = (document.body.clientHeight < document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+    } else {
+        var clientHeight = (document.body.clientHeight > document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+    }
+    return clientHeight;
+}
+//取窗口滚动条高度
+function getScrollTop() {
+    var scrollTop = 0;
+    if(document.documentElement && document.documentElement.scrollTop) {
+        scrollTop = document.documentElement.scrollTop;
+    } else if(document.body) {
+        scrollTop = document.body.scrollTop;
+    }
+    return scrollTop;
+}
+//取文档内容实际高度
+function getScrollHeight() {
+    return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+}
+window.onscroll = function() {
+    var height = getClientHeight();
+    var theight = getScrollTop();
+    var rheight = getScrollHeight();
+    var bheight = rheight - theight - height;
+    console.log(height);
+    console.log(theight);
+    console.log(rheight);
+    console.log(bheight);
+    if(bheight <= 0) {
+        //alert("我已经到底部了")
+        $(".weui-loadmore").css("display","block");
+        $(".weui-loadmore2").css("display","none");
+        var currentPag=0;
+        var arr = new Array();
+        var  arr=$(":input[name=currentPage]").each(function () {
+            $(this).val()
+        });
+        currentPag=(arr.length+2)+"";
+        if(currentPag!=undefined&&currentPag>$!totalPage){
+            $(".weui-loadmore").css("display","none");
+            $(".weui-loadmore2").css("display","block");
+            return;
+        }
+        jQuery.ajax({type:'post',async: false,url:'$!webPath/second/ctrltime_ajax.htm',data:{"gc_id":"$!gc_id","gpr_id":"$!gpr_id","orderBy":"$!orderBy","orderType":"$!orderType","ga_id":"$!ga_id","orderBy":"$!orderBy","currentPage":currentPag},
+            beforeSend:function(){
+            },
+            success:function(data){
+                //alert(data);
+                $(".img_list ul").append(data);
+            }
+        });
+
+
+    }
+}
+
+</script>
+
+</body>
+
+</html>

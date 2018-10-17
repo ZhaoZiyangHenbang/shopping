@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script>
+			jQuery(document).ready(function(){
+				jQuery("#theForm").validate({
+					rules: {
+						password:{required:true},
+						email:{required:true,
+							email:true,
+							remote:{
+//								url: "$!webPath/verify_email.htm",     //后台处理程序
+//								type: "post",               //数据发送方式
+//								dataType: "json",           //接受数据格式
+//								data: {                     //要传递的数据
+//									"email": function(){return jQuery("#email").val();},"id":"$!user.id"							}
+							}
+						}
+					},
+					messages: {
+						password:{required:"当前密码不能为空"},
+						email:{required:"邮箱不能为空",
+							email:"邮箱格式不对"}
+					}
+				});
+			});
+		</script>
+		<script>
+			function updateEmail() {
+				var email=$("#email").val();
+				var yzm=$("#yzm").val();
+				var password=$("#password").val();
+				if(password==null||password==""){
+					alert("请输入登录密码!");
+				}else if (email==null||email=="") {
+					alert("请输入新邮箱!");
+				}else if (yzm==null||yzm=="") {
+					alert("请输入验证码!");
+				}else {
+					jQuery('#theForm').submit();
+				}
+			}
+			/*获取验证码*/
+			var isEmail = 1;
+			function getCode(e) {
+                checkEmail();
+                if (isEmail) {
+
+                    var email = $("#email").val();
+					jQuery.ajax({type:'post',async: false,url:'$!webPath/sendYzm/email.htm?email='+email,
+						beforeSend:function(){
+						},
+						success:function(data){
+							var result=eval("("+data+")");
+							document.getElementById("emailStatus").value=result.info;
+						}
+					});
+					var emailStatus=$("#emailStatus").val();
+					//alert("telephoneStatus="+telephoneStatus);
+					if (emailStatus=='0') {
+						alert("该邮箱号已经注册");
+						return;
+					}
+                    resetCode();//倒计时
+                jQuery.ajax({
+                    type: 'post', url: '$!webPath/buyer/account_email_sms.htm?email=' + email,
+                    beforeSend: function () {
+                    },
+                    success: function (data) {
+                        var result = eval("(" + data + ")");
+                        document.getElementById("sendYzm").value = result.yzm;
+                    }
+                });
+            }else {
+						$('#email').focus();
+//					}
+			}
+			//验证邮箱
+			function checkEmail() {
+                var email=$("#email").val();
+                var reg_e=/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+                isEmail=1;
+                if (email==null||email=="") {
+                    alert("请输入新邮箱!");
+                    isEmail=0;
+                    return;
+                }
+                if(!reg_e.test(email)){
+                    alert("请输入正确的邮箱格式!");
+                    isEmail=0;
+                    return;
+                }
+            }
+			//倒计时
+			function resetCode(){
+				$('#J_getCode').css('color:red')
+				$('#J_getCode').hide();
+				$('#J_second').html('60');
+				$('#J_second').show();
+				var second = 60;
+				var timer = null;
+				timer = setInterval(function(){
+					second -= 1;
+					if(second >0 ){
+						$('#J_second').html(second);
+					}else{
+						clearInterval(timer);
+						$('#J_getCode').html("重新发送");
+						$('#J_getCode').show();
+						$('#J_second').hide();
+					}
+				},1000);
+			}
+			}
+		</script>
+	</head>
+
+	<body>
+		<!--//header开始-->
+		<header>
+			<div class="hdindex">
+				<span class="lh_back" a href="#" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i></span>
+				<span>邮箱绑定</span>
+			</div>
+		</header>
+		<!--header结束//-->
+			<form class="lh_password" action="$!webPath/buyer/account_email_save_wap.htm"  method="post" id="theForm" name="theForm" >
+					<div class="lh_password_m">
+						<label>登录密码</label>
+						<input type="password" id="password" name="password"  placeholder="请输入您的登录密码">
+					</div>
+					<div class="lh_password_m">
+						<label>邮箱</label>
+						<input type="text" id="email" name="email" placeholder="请输入您的新邮箱">
+					</div>
+					<div class="lh_password_m w70 fl">
+						<label>验证码</label>
+						<input type="text" size="20" id="yzm" name="yzm" class="h_datum_input" placeholder="验证码号">
+						<input type="hidden" name="sendYzm" id="sendYzm">
+						<input type="hidden" id="emailStatus" name="emailStatus">
+					</div>
+					<div class="fr lxx_huoqu on" id="J_resetCode" style="display: none;">重新发送</div>
+					<div class="fr lxx_huoqu on" id="J_second" style="display: none;">60</div>
+					<a style="background-color:#e54249"  class="fr lxx_huoqu"  onclick="getCode(this)" id="J_getCode">获取验证码</a>
+				</form>
+		<div class="clear"></div>
+		<button class="lx_btn"  onclick="updateEmail()">保存</button>
+
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span></a>
+		</div>
+
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+
+	</body>
+
+</html>

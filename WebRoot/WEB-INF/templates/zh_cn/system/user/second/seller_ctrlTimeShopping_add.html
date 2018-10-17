@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/headZ.htm")
+		<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				<!-- 左侧nav -->
+				$!httpInclude.include("/second/leftZ.htm")
+				<!-- 左侧nav结束 -->
+					<div class="l-fr">
+						<div class="w-title">
+							<h3>限时抢购管理</h3>
+						</div>
+					</div>
+					<div class="l-fr1 tgar">
+						<div class="slideTxtBox">
+							<div class="hd">
+								<ul>
+									<li ><a href="$!webPath/seller/group.htm">抢购列表</a></li>
+									<li class="on">新增抢购商品</li>
+								</ul>
+							</div>
+							<script>
+								function checkall() {
+									var a=	$("#goods_id").val();
+									var b=$("#gg_price").val();
+									var c=$("#gg_count").val();
+									var d=$("#gc_id").val();
+									var e=$("#gg_max_count").val();
+									if(a==""&&b==""&&c==""&&d==""&&e==""){
+										alert("请填好每一项")
+										return  false;
+
+									}
+									return true;
+
+								}
+								function checkgood() {
+									var a=	$("#goods_id").val();
+									if(a==""){
+										alert("请选择抢购商品");
+										return false;
+									}
+									return true;
+								}
+								function checkprice() {
+									var b=$("#gg_price").val();
+									if(b==""){
+										alert("请设置抢购价格")
+										return false;
+									}
+									return true;
+								}
+								function checknum() {
+									var c=$("#gg_count").val();
+									if(c==""){
+										alert("请设置抢购数量");
+										$("#gg_count").focus();
+										return false;
+									}
+									return true;
+								}
+								function checkclass() {
+									var d=$("#gc_id").val();
+									if(d==""){
+										alert("请选择分类");
+										return false;
+									}
+									return true;
+								}
+								function checknumb() {
+									var e=$("#gg_max_count").val();
+									var c=$("#gg_count").val();
+									if(e==""){
+										alert("请设置限购数量");
+										return false;
+									}
+									if(parseInt(e)>parseInt(c)){
+										alert("限购数量不能大于抢购数量");
+										$("#gg_max_count").focus();
+										return false;
+									}
+									return true;
+								}
+							</script>
+
+
+
+
+							<div class="bd">
+								<form action="$!webPath/seller/group_goods_save.htm" method="post" enctype="multipart/form-data" name="theForm" id="theForm" onsubmit="return checkall()">
+								<ul>
+
+
+									<div class="h_revise">
+										<dl>
+											<dt>抢购期数：</dt>
+											<dd><select name="group_id" id="group_id">
+												#foreach($group in $groups)
+												#set($time="$!CommUtil.formatTime('yyyy年MM月dd日 HH:mm',$!{group.beginTime}) - $!CommUtil.formatTime('yyyy年MM月dd日 HH:mm',$!{group.endTime})")
+												<option value="$!group.id">$!{group.group_name}[$!time]</option>
+												#end
+											</select>
+												<input name="id" type="hidden" id="id" value="$!obj.id" /></dd>
+										</dl>
+										<dl>
+											<dt>抢购商品：</dt>
+											<dd><input class="h_datum_input" name="goods_name" type="text" id="goods_name"  value="$!obj.gg_goods.goods_name" size="38" readonly="readonly" dialog_uri="$!webPath/seller/group_goods.htm" dialog_title="选择抢购商品" dialog_width="450" dialog_height="200" dialog_id="group_goods" ></dd>
+											<input name="goods_id" type="hidden" id="goods_id" value="$!obj.gg_goods.id" onblur="checkgood()"/>
+										</dl>
+										<dl>
+											<dt>抢购价格：</dt>
+											<dd><input name="gg_price" id="gg_price" value="$!obj.gg_price" type="text" size="38" class="h_datum_input" onblur="checkprice()"/></dd>
+										</dl>
+
+										<dl>
+											<dt>抢购数量：</dt>
+											<dd><input name="gg_count" type="text" id="gg_count" value="$!obj.gg_count" size="38" class="h_datum_input" onblur="checknum()" /></dd>
+										</dl>
+										<dl>
+											<dt>抢购类别：</dt>
+											<dd><select name="gc_id" id="gc_id" onblur="checkclass()">
+												<option value="">请选择团购类别...</option>
+												#foreach($gc in $gcs)
+												<option value="$!gc.id">$!gc.gc_name</option>
+												#end
+											</select></dd>
+										</dl>
+										<dl>
+											<dt>限购数量：</dt>
+											<dd><input name="gg_max_count" type="text" id="gg_max_count" value="$!obj.gg_max_count" size="38" class="h_datum_input" onblur="checknumb()" /></dd>
+										</dl>
+										<dl><dt></dt><i class="red">注：</i>审核通过后商家不能取消。</dl>
+										<dl>
+											<dt></dt>
+											<!--<dd><button type="button" class="btn btn-danger">　　确认　　</button></dd>-->
+											<dd><input name="提交" type="submit"  value="保存"  class="btn btn-danger"/></dd>
+										</dl>
+										
+									</div>
+								</ul>
+									</form>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<!--我是卖家_限时抢购管理结束-->
+
+			</div>
+		</div>
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+		
+	</body>
+
+</html>

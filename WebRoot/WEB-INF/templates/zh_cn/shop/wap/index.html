@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<link href="$!webPath/resources/style/system/front/wap/css/style.css" rel="stylesheet" type="text/css">
+	<!--<script src="$!webPath/resources/style/system/front/wap/js/jquery-1.10.2.min.js"></script>-->
+	<script src="$!webPath/resources/style/system/front/wap/js/TouchSlide.1.1.js"></script>
+	<!--<script src="$!webPath/resources/style/system/front/wap/js/jquery.SuperSlide.2.1.1.js"></script>-->
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>$!config.title</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta content="telephone=no" name="format-detection">
+	<meta name="keywords" content="济南浩星装饰工程有限公司">
+	<meta name="description" content="济南浩星装饰工程有限公司">
+	<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+	<meta name="msapplication-navbutton-color" content="#DB1011">
+	<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+	<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="$!webPath/resources/new/css/mui.min.css" />
+	<!--加载动画-->
+	<link rel="stylesheet" type="text/css" href="$!webPath/resources/new/css/loading.css" />
+	<!--导航栏滑动-->
+	<link rel="stylesheet" type="text/css" href="$!webPath/resources/huadongdaohang/css/huadongdaohang.css"/>
+	<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+
+	<script>
+        function timeCount(remain_id) {
+            function _fresh() {
+                var nowDate = new Date(), //当前时间
+                    endDate = new Date($('.' + remain_id).attr('endtime')), //截止时间
+                    totalS = parseInt((endDate.getTime() - nowDate.getTime()) / 1000); //总秒数
+                _day = parseInt(totalS / 3600 / 24) + "";
+                _hour = parseInt(totalS / 3600 % 24) + "";
+                _minute = parseInt((totalS / 60) % 60) + "";
+                _second = parseInt(totalS % 60) + "";
+                d_html = "";
+                if (_day.length < 2) {
+                    d_html = "<b>0</b>";
+                }
+                for (var n = 0; n < _day.length; n++) {
+                    var q = _day.substring(n, n + 1);
+                    d_html = d_html + '<b>' + q + '</b>';
+                }
+                d_html = d_html + "<b>天</b>"
+                h_html = "";
+                if (_hour.length < 2) {
+                    h_html = "<b>0</b>";
+                }
+                for (var n = 0; n < _hour.length; n++) {
+                    var q = _hour.substring(n, n + 1);
+                    h_html = h_html + '<b>' + q + '</b>';
+                }
+                h_html = h_html + "<b>时</b>"
+                m_html = "";
+                if (_minute.length < 2) {
+                    m_html = "<b>0</b>";
+                }
+                for (var n = 0; n < _minute.length; n++) {
+                    var q = _minute.substring(n, n + 1);
+                    m_html = m_html + '<b>' + q + '</b>'
+                }
+                m_html = m_html + "<b>分</b>"
+                s_html = "";
+                if (_second.length < 2) {
+                    s_html = "<b>0</b>";
+                }
+                for (var n = 0; n < _second.length; n++) {
+                    var q = _second.substring(n, n + 1);
+                    s_html = s_html + '<b>' + q + '</b>'
+                }
+                s_html = s_html + "<b>秒后结束</b>"
+                jQuery('.' + remain_id).html(
+                    d_html + '<strong>:</strong>' + h_html
+                    + '<strong>:</strong>' + m_html
+                    + '<strong>:</strong>' + s_html);
+                if (totalS <= 0) {
+                    jQuery('#' + remain_id).html('该0元试用已结束');
+                    clearInterval(sh);
+                }
+            }
+            _fresh();
+            var sh = setInterval(_fresh, 1000);
+        }
+
+        jQuery(document).ready(function() {
+            jQuery("li[id=gc_]").each(function(index, element) {
+                if (jQuery(this).find(".fl").html().length > 5) {
+                    var a = jQuery(this).find(".fl").html().substring(0, 5);
+                    jQuery(this).find(".fl").html(a);
+                }
+            });
+
+            if (isWeiXin()) {
+                jQuery(".phone_top").hide();
+            } else {
+                jQuery(".phone_top").show();
+            }
+        });
+        function search_form() {
+            jQuery("#theForm").submit();
+        }
+        function isWeiXin() {
+            var ua = window.navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function group_sel(field,val){
+            jQuery("#"+field).val(val);
+            jQuery("#ListForm").submit();
+        }
+        function group_order(field1,val1,field2,val2){
+            jQuery("#"+field1).val(val1);
+            jQuery("#"+field2).val(val2);
+            jQuery("#ListForm").submit();
+        }
+        jQuery(document).ready(function(){
+            timeCount("time_down_info");
+            jQuery(".gp_listimg img").lazyload({effect:"fadeIn",width:278,height:278});
+            jQuery(".gp_scort a").removeClass("this");
+            jQuery(".gp_scort a[id^=$!order_type]").addClass("this");
+  #if($!orderType=="desc")
+            jQuery(".gp_scort a[id^=$!order_type] i").addClass("scort_d");
+  #else
+            jQuery(".gp_scort a[id^=$!order_type] i").addClass("scort_c");
+  #end
+            jQuery(".gp_cm a").removeClass("this");
+            jQuery(".gp_cm a[id=price_$!{gpr_id}]").addClass("this");
+            jQuery(".gp_cm a[id=gc_$!{gc_id}]").addClass("this");
+        });
+
+
+	</script>
+
+
+	<style type="text/css">
+		@font-face {
+			font-family: "iconfont";
+			src: url('$!webPath/resources/new/font/iconfont.eot');
+			/* IE9*/
+			src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+			url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+	</style>
+
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+    <script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+
+    <link rel="stylesheet" href="$!webPath/resources/new/css/drawer.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="$!webPath/resources/new/css/style2.css" />--><!--导致首页左上角冲突-->
+   <!-- <script src="$!webPath/resources/new/js/jquery.min.js"></script>--><!--会导致广告滚动冲突,没有的话分页不管用-->
+    <script src="$!webPath/resources/new/js/iscroll.js"></script>
+    <script src="$!webPath/resources/new/js/jquery.drawer.min.js"></script>
+	<!--<script>
+        alert(1211);
+        $(document).ready(function() {
+            alert(1111);
+            $(document).ready(function() {
+                $(window).scroll(function() {
+                    if($(document).scrollTop() <= 0) {
+                        alert("我已经到顶了，我可以刷新");
+                    }
+                    if($(document).scrollTop() >= $(document).height() - $(window).height()) {
+                        alert("我已经到底了，我需要加载更多");
+                    }
+                });
+            });
+        });
+
+	</script>-->
+</head>
+<body class="index_bg">
+<header>
+	<div class="hdindex">
+		<span class="search"><i class="icon iconfont"><a href="$!webPath/sousuo.htm">&#xe674;</a></i></span>
+		<span>官方商城</span>
+		<span class="service"><i class="icon iconfont"><a href="$!webPath/second/service.htm">&#xe622;</a></i></span>
+	</div>
+</header>
+<!--<nav id="nav-wrap">
+	<div class="nav-content" style="position: relative; top: 0px;">
+		<div class="item all ">
+			<a href="#"><span style="">推荐</span></a>
+		</div>
+		<div id="nav-list" class="swiper-container" style="overflow: hidden;">
+			<div class="nav-list-wrap swiper-wrapper" style="width: 1295px; transition-property: transform; transform-origin: 0px 0px 0px; transform: translate(0px, 0px) scale(1) translateZ(0px);">
+
+
+				<ul class="swiper-slide">
+					#foreach($gc in $!gcs)
+					#foreach($gc1 in $gc.childs)
+					#foreach($gc2 in $gc1.childs)
+					#if($!gc2.recommend)
+					<li class="item" data-id="69990">
+						<a href="$!webPath/store_goods_list_$!{gc2.id}.htm?bc_location=1"><span>$!gc2.className</span></a>
+					</li>
+					#end
+					#end
+					#end
+					#end
+
+				</ul>
+			</div>
+		</div>
+		<div id="drop-down" data-show="0">
+			<div class="drop-down-bg-wrap">
+				<div class="drop-down-bg"><i class="icon iconfont">&#xe62d;</i></div>
+			</div>
+			<div class="drop-down-content">
+				<div class="drop-down-content-choose">选择分类</div>
+				<div class="drop-down-content-tag">
+					<ul class="drop-down-tag-list">
+						#foreach($gc in $!gcs)
+						#foreach($gc1 in $gc.childs)
+						#foreach($gc2 in $gc1.childs)
+						#if($!gc2.recommend)
+						<li class="index drop-down-item  " data-id="69990">
+							<a href="$!webPath/store_goods_list_$!{gc2.id}.htm?bc_location=1"><span>$!gc2.className</span></a>
+						</li>
+						#end
+						#end
+						#end
+						#end
+					</ul>
+					<div class="drop-down-content-more-wrap">
+						<a class="drop-down-content-more" href="$!webPath/second/goodclasslist.htm">更多分类<i class="icon iconfont">&#xe608;</i></a>
+					</div>
+				</div>
+			</div>
+			<div class="opacity"></div>
+		</div>
+	</div>
+</nav>-->
+<nav id="nav-wrap">
+	<div class="wrapper02" id="demo06">
+		<div class="scroller">
+			<ul class="clearfix">
+				<li>
+                    <a href="javaScript:;">推荐</a>
+                </li>
+				#foreach($gc in $!gcs)
+				#foreach($gc1 in $gc.childs)
+				#foreach($gc2 in $gc1.childs)
+				#if($!gc2.recommend)
+				<li>
+					<a href="$!webPath/store_goods_list_$!{gc2.id}.htm?bc_location=1">$!gc2.className</a>
+				</li>
+				#end
+				#end
+				#end
+				#end
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<!--幻灯-->
+<div class="focusBox" id="focusBox">
+	<script src="$!webPath/advert_invoke.htm?id=262157"></script>
+</div>
+
+<!--导航菜单-->
+<div class="main">
+	<div class="l_nav bj_white">
+		<ul>
+			#set($navs=$!navTools.queryNav(2,-1))
+
+			#foreach($nav in $navs)
+
+			#if($!CommUtil.indexOf("$!nav.url","http://")>=0)
+			#set($url="$!nav.url")
+			#else
+			#set($url="$!webPath/$!{nav.url}")
+			#end
+			<li>
+				<a id="$!nav.id"  original_url="$!nav.original_url" href="$!url">
+					<p class="l_nav_icon index_bj1" style="background:url($!imageWebServer/$!nav.icon.path/$!nav.icon.name) no-repeat ;background-size:100%;"></p>
+					<p>$!{nav.title}</p>
+				</a>
+			</li>
+			#end
+
+			<div class="clear"></div>
+		</ul>
+	</div>
+
+	<div class="qj-hot active-eee clearfix">
+		<a href="$!webPath/articlewap.htm"><div class="left">今日公告</div></a>
+		<div class="right txtMarquee-top">
+			<div class="qj-hot-con bd">
+				<ul>
+					#foreach($article in $articles)
+					#if($!article.url!="")
+					#set($url="$!article.url")
+					#else
+					#set($url="$!webPath/article_$!{article.id}.htm")
+					#end
+					<!--<li><b><a href="$!url" target="_blank">$!CommUtil.formatShortDate($!article.addTime)</a></b><a href="$!url" target="_blank">$!CommUtil.substring("$!article.title",19)</a></li>
+					-->
+					<li>
+						<a tjjj="m_index_news_0" href="$!url">$!CommUtil.formatShortDate($!article.addTime) $!CommUtil.substring("$!article.title",19)</a>
+					</li>
+					#end
+
+				</ul>
+			</div>
+			<script type="text/javascript">
+                jQuery(".txtMarquee-top").slide({
+                    mainCell: ".bd ul",
+                    autoPlay: true,
+                    effect: "topMarquee",
+                    vis: 1,
+                    interTime: 40
+                });
+			</script>
+		</div>
+	</div>
+	<!--公告结束-->
+	<!--//会员天地开始-->
+	<div class="lh_user">
+		<div class="lh_user_title index_bj9">会员天地</div>
+		<div class="lh_user_nr">
+			<ul>
+				<li>
+					<a href="$!webPath/second/teststore.htm"><img src="$!webPath/resources/new/images/lh_01.png" /><span></span></a>
+				</li>
+				<li>
+					<a href="$!webPath/second/membershool.htm"><img src="$!webPath/resources/new/images/lh_02.png" /></a>
+				</li>
+				<li>
+					<a href="$!webPath/second/createwoke.htm"><img src="$!webPath/resources/new/images/lh_03.png" /></a>
+				</li>
+				<div class="clear"></div>
+			</ul>
+		</div>
+	</div>
+	<!--会员天地结束//-->
+	<!--//限时秒杀开始-->
+	<div class="lh_xsms">
+		<div style=" width: 100%;">
+			<div class="lh_xsms_title index_bj10">限时秒杀</div>
+			<div class="lh_xsms_title_wz">抢购中，先下单先得</div>
+
+		</div>
+		<div class="clear"></div>
+		<div class="lh_xsms_nr">
+			<ul>
+				#if($!objs.size()>0 && $!group)
+				#foreach($obj in $objs)
+
+				#if($!obj.gg_goods && $!obj.gg_goods.goods_main_photo)
+				#set($img="$!imageWebServer/$!{obj.gg_goods.goods_main_photo.path}/$!{obj.gg_goods.goods_main_photo.name}")
+				#else
+				#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+				#end
+				<li #if($!velocityCount>4)style="display:none;"#end>
+					<div class="img01"><a href="$!webPath/goods_$!{obj.gg_goods.id}.htm?gg_id=$!obj.id"><img src="$!img" /></a></div>
+					<div class="jieshao01"><span class="time_down_info" endtime="$!CommUtil.formatTime('MM/dd/yyyy HH:mm:ss',$!group.endTime)"><i class="icon iconfont">&#xe652;</i></span></div>
+					<div class="xq01">
+						<div class="xq01_title">$!CommUtil.substring("$!obj.gg_name",12)</div>
+						<div class="xq01_jg">
+							<span>￥$!{obj.gg_price}</span><i>￥$!{obj.gg_goods.goods_price}</i>
+							<a href="$!webPath/goods_$!{obj.gg_goods.id}.htm?gg_id=$!obj.id"><button type="button" class="mui-btn mui-btn-danger">立即抢购</button></a>
+						</div>
+					</div>
+				</li>
+
+				#end
+				#end
+
+
+				<div class="clear"></div>
+			</ul>
+		</div>
+	</div>
+	<!--限时秒杀结束//-->
+	<!--//banner开始 品牌街上方-->
+	<!--<div class="focusBox" id="focusBox">
+		<script src="$!webPath/advert_invoke.htm?id=262189"></script>
+
+	</div>-->
+	<!--banner开始//-->
+	<!--<div class="lh_ggt"><img src="$!webPath/resources/new/images/lh_05.png" /></div>-->
+	<div class="lh_ggt"><script src="$!webPath/advert_invoke.htm?id=262158"></script></div>
+	<div class="lh_ppj"><img src="$!webPath/resources/new/images/lh_06.png" /></div>
+	<div class="lh_ppj_nr">
+		<div class="lh_ppj_nr_top">
+			<div class="lh_ppj_nr_top_left">
+				<!--	<a href="$!webPath/brand_first.htm"><img src="$!webPath/resources/new/images/lh_09.png" /></a>-->
+				<script src="$!webPath/advert_invoke.htm?id=262159"></script>
+			</div>
+			<div class="lh_ppj_nr_top_right">
+				<ul id="banners">
+					#foreach($gb in $gbs)
+					<li #if($!velocityCount>9)style="display:none;"#end>
+						<a href="$!webPath/brand_goods_$!{gb.id}.htm" target="_blank"><img src="$!imageWebServer/$!gb.brandLogo.path/$!gb.brandLogo.name" width="88" height="44" /></a>
+					</li>
+					#end
+				</ul>
+			</div>
+
+		</div>
+		<div class="lh_ppj_nr_bottom">
+			<ul>
+				<li>
+					<div><script src="$!webPath/advert_invoke.htm?id=262160"></script></div>
+				</li>
+				<li>
+					<div><script src="$!webPath/advert_invoke.htm?id=262161"></script></div>
+
+				</li>
+				<li>
+					<div><script src="$!webPath/advert_invoke.htm?id=262162"></script></div>
+					<!--<a class="xq02">冰洁超级品牌日 2件8折</a>-->
+				</li>
+				<li>
+					<div><script src="$!webPath/advert_invoke.htm?id=262163"></script></div>
+					<!--<div><img src="$!webPath/resources/new/images/lh_11.png" /></div>
+					<a class="xq02">冰洁超级品牌日 2件8折</a>-->
+				</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<!--品牌街结束//-->
+
+	<!--//商品推荐开始-->
+
+	<div class="lh_ggt"><script src="$!webPath/advert_invoke.htm?id=262164"></script></div>
+	<div class="lh_ppj"><img src="$!webPath/resources/new/images/lh_08.png" /></div>
+
+
+
+	<div class="lh_xplb" style="margin-bottom:2rem;">
+		<ul>
+			#foreach($!store_reommend_good in $store_reommend_goods)
+			#if($!store_reommend_good.goods_main_photo)
+			#set($img="$!imageWebServer/$!{store_reommend_good.goods_main_photo.path}/$!{store_reommend_good.goods_main_photo.name}_middle.$!{store_reommend_good.goods_main_photo.ext}")
+			#else
+			#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+			#end
+
+			#set($goods_url="$!webPath/goods_$!{store_reommend_good.id}.htm")
+			#if($!config.second_domain_open)
+			#set($goods_url="http://$!{store_reommend_good.goods_store.store_second_domain}.$!{domainPath}/goods_$!{store_reommend_good.id}.htm")
+			#end
+			<li>
+				<a href="$!goods_url">
+					<div class="lh_img01"><img src="$!img"></div>
+					<div class="lh_jieshao01"><span>仅剩$!{store_reommend_good.goods_inventory}件</span></div>
+					<div class="lh_xq01">
+						<div class="lh_xq01_title">$!CommUtil.substring("$!store_reommend_good.goods_name",11)</div>
+						<div class="lh_xq01_jg">
+							<span>¥$!{store_reommend_good.goods_current_price}</span>
+							<!--<i>￥$!store_reommend_good.goods_price</i>-->
+							<em>$!store_reommend_good.goods_store.area.parent.areaName</em>
+						</div>
+						<div class="lh_xq01_xl">
+							<span>销量$!{store_reommend_good.goods_salenum}</span>
+							<em>好评度$!GoodsViewTools.haopinglv("$!{store_reommend_good.id}")%</em>
+						</div>
+					</div>
+				</a>
+			</li>
+			#end
+			<!--//猜喜欢的商品-->
+			#foreach($!niCai in $goodskeyw)
+			#if($!niCai.goods_main_photo)
+			#set($img="$!imageWebServer/$!{niCai.goods_main_photo.path}/$!{niCai.goods_main_photo.name}_middle.$!{niCai.goods_main_photo.ext}")
+			#else
+			#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+			#end
+			#set($goods_url="$!webPath/goods_$!{niCai.id}.htm")
+			#if($!config.second_domain_open)
+			#set($goods_url="http://$!{niCai.goods_store.store_second_domain}.$!{domainPath}/goods_$!{niCai.id}.htm")
+			#end
+			<li>
+				<a href="$!goods_url">
+					<div class="lh_img01"><img src="$!img"></div>
+					<div class="lh_jieshao01"><span>仅剩$!{niCai.goods_inventory}件</span></div>
+					<div class="lh_xq01">
+						<div class="lh_xq01_title">$!CommUtil.substring("$!niCai.goods_name",11)</div>
+						<div class="lh_xq01_jg">
+							<span>¥$!{niCai.goods_current_price}</span>
+							<!--<i>￥$!store_reommend_good.goods_price</i>-->
+							<em>$!niCai.goods_store.area.parent.areaName</em>
+						</div>
+						<div class="lh_xq01_xl">
+							<span>销量$!{niCai.goods_salenum}</span>
+							<em>好评度$!GoodsViewTools.haopinglv("$!{niCai.id}")%</em>
+						</div>
+					</div>
+				</a>
+			</li>
+			#end
+			<div class="weui-loadmore" style="width: 100%;text-align: center;clear: both">
+				<div class="loading-wrap" style="width: 30%;line-height: 0.5rem;margin-left:40%;display: none">
+					<i class="weui-loading" style="float: left;">
+						<div class="sk-circle">
+							<div class="sk-circle1 sk-child"></div>
+							<div class="sk-circle2 sk-child"></div>
+							<div class="sk-circle3 sk-child"></div>
+							<div class="sk-circle4 sk-child"></div>
+							<div class="sk-circle5 sk-child"></div>
+							<div class="sk-circle6 sk-child"></div>
+							<div class="sk-circle7 sk-child"></div>
+							<div class="sk-circle8 sk-child"></div>
+							<div class="sk-circle9 sk-child"></div>
+							<div class="sk-circle10 sk-child"></div>
+							<div class="sk-circle11 sk-child"></div>
+							<div class="sk-circle12 sk-child"></div>
+						</div>
+					</i>
+					<span class="weui-loadmore__tips">正在加载</span>
+				</div>
+			</div>
+			<div class="weui-loadmore2" style="display: none;width: 100%;text-align: center;clear: both">
+				<i class="weui-loading"></i>
+				<span class="weui-loadmore2__tips">已加载全部</span>
+			</div>
+			<div class="clear"></div>
+		</ul>
+	</div>
+
+
+	<!--商品推荐结束//-->
+
+
+	<!--//foot开始-->
+	<div class="footer bj_white">
+		<ul>
+			<li>
+				<a href="$!webPath/wap/index.htm" >
+					<p><i class="icon iconfont ">&#xe600;</i></p>
+					<p style="font-size: 0.62rem">首页</p>
+				</a>
+			</li>
+			<li>
+				<a href="$!webPath/second/brandcomee.htm">
+					<p><i class="icon iconfont">&#xe729;</i></p>
+					<p style="font-size: 0.62rem">品牌入驻</p>
+				</a>
+			</li>
+			<li class="footer_img"><!--<img src="$!webPath/resources/new/images/lh_13.jpg" />-->
+				#if($!user.photo.id)
+				<img src="$!imageWebServer/$!{user.photo.path}/$!{user.photo.name}" />
+				#else
+				<img src="$!webPath/resources/new_pc/images/lh_13.jpg" />
+				#end
+			</li>
+			<li>
+				<a href="$!webPath/goods_cart1.htm">
+					<p><i class="icon iconfont footer_font">&#xe62e;</i></p>
+					<p  style="font-size: 0.62rem">购物车</p>
+				</a>
+			</li>
+			<li>
+				<a href="$!webPath/second/fenxiao.htm">
+					<p><i class="icon iconfont">&#xe611;</i></p>
+					<p  style="font-size: 0.62rem">我的</p>
+				</a>
+			</li>
+			<div class="clear"></div>
+		</ul>
+	</div>
+	<div class="cbtn-top">
+		<a href="javascript:;">
+			<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span>
+		</a>
+	</div>
+	<!--foot结束//-->
+
+	<!--加载10次开始-->
+	<!--<script src="$!webPath/resources/new/js/index.js"></script>-->
+	<script>
+        /*$(document).ready(function() {
+            $('.drawer').drawer();
+            $('.js-trigger').click(function() {
+                $('.drawer').drawer("open");
+            });
+        });
+
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if ($(document).scrollTop() <= 0) {
+                    // alert("我已经到顶了，我可以刷新");
+                }
+                if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+                    $(".weui-loadmore").css("display","block");
+                    $(".weui-loadmore2").css("display","none");
+                    var currentPag=0;
+                    var arr = new Array();
+                    var  arr=$(":input[name=currentPage]").each(function () {
+                        $(this).val();
+                    });
+                    currentPag=(arr.length+1)+"";
+                   /!* alert(currentPag);*!/
+                    if(currentPag!=undefined&&currentPag==10){
+                        $(".weui-loadmore").css("display","none");
+                        $(".weui-loadmore2").css("display","block");
+                        return;
+                    }
+                    jQuery.ajax({type:'post',async: false,url:'$!webPath/wap/index_ajax.htm',data:{"currentPage":currentPag},
+                        beforeSend:function(){
+                        },
+                        success:function(data){
+                            $(".lh_xplb ul").append(data);
+                        }
+                    });
+
+                }
+            });
+        });*/
+
+        function getClientHeight() {
+            var clientHeight = 0;
+            if(document.body.clientHeight && document.documentElement.clientHeight) {
+                var clientHeight = (document.body.clientHeight < document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+            } else {
+                var clientHeight = (document.body.clientHeight > document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+            }
+            return clientHeight;
+        }
+        //取窗口滚动条高度
+        function getScrollTop() {
+            var scrollTop = 0;
+            if(document.documentElement && document.documentElement.scrollTop) {
+                scrollTop = document.documentElement.scrollTop;
+            } else if(document.body) {
+                scrollTop = document.body.scrollTop;
+            }
+            return scrollTop;
+        }
+        //取文档内容实际高度
+        function getScrollHeight() {
+            return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+        }
+        window.onscroll = function() {
+            var height = getClientHeight();
+            var theight = getScrollTop();
+            var rheight = getScrollHeight();
+            var bheight = rheight - theight - height;
+            console.log(height);
+            console.log(theight);
+            console.log(rheight);
+            console.log(bheight);
+            if(bheight <= 0) {
+
+                $(".weui-loadmore").css("display","block");
+                $(".weui-loadmore2").css("display","none");
+                var currentPage=0;
+                var arr = new Array();
+                var  arr=$(":input[name=currentPage]").each(function () {
+                    $(this).val();
+                });
+                currentPage=(arr.length+2)+"";
+                /* alert(currentPag);*/
+                if(currentPage!=undefined&&currentPage==10){
+                    $(".weui-loadmore").css("display","none");
+                    $(".weui-loadmore2").css("display","block");
+                    return;
+                }
+                jQuery.ajax({type:'post',async: false,url:'$!webPath/wap/index_ajax.htm',data:{"currentPage":currentPage},
+                    beforeSend:function(){
+                    },
+                    success:function(data){
+                        //alert(data)
+                        $(".lh_xplb ul").append(data);
+                    }
+                });
+            }
+        }
+	</script>
+
+	<!--加载10次结束-->
+</div>
+</body>
+<!--导航滑动-->
+<script type="text/javascript" src="$!webPath/resources/huadongdaohang/js/jquery.min.js"></script>
+<script type="text/javascript" src="$!webPath/resources/huadongdaohang/js/flexible.js"></script>
+<script type="text/javascript" src="$!webPath/resources/huadongdaohang/js/iscroll.js"></script>
+<script type="text/javascript" src="$!webPath/resources/huadongdaohang/js/navbarscroll.js"></script>
+<script type="text/javascript">
+    $(function(){
+        //demo示例六 通过id调取
+        $('#demo06').navbarscroll({
+            defaultSelect:3,
+            scrollerWidth:1,
+            fingerClick:1,
+            endClickScroll:function(obj){
+                console.log(obj.text())
+            }
+        });
+    });
+</script>
+</html>

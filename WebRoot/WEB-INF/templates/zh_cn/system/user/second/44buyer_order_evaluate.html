@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<script src="$!webPath/resources/js/jquery.metadata.js"></script>
+		<script src="$!webPath/resources/js/jquery.rating.pack.js" type="text/javascript" language="javascript"></script>
+		<link href="$!webPath/resources/style/common/css/jquery.rating.css" type="text/css" rel="stylesheet"/>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script>
+			jQuery(document).ready(function(){
+				jQuery('input.description_evaluate').rating({
+					callback: function(value, link){
+						var id=jQuery(this).attr("name");
+						jQuery("#"+id).val(value);
+					},
+					focus:function(value, link){
+						var gc_id=jQuery(this).attr("gc_id");
+						var title=jQuery(this).attr("title");
+						jQuery("#description_evaluate_text"+gc_id).text(title);
+					},
+					blur:function(value, link){
+
+					}
+				});
+				jQuery('input.service_evaluate').rating({
+					callback: function(value, link){
+						var id=jQuery(this).attr("name");
+						jQuery("#"+id).val(value);
+					},
+					focus: function(value, link){
+						var gc_id=jQuery(this).attr("gc_id");
+						var title=jQuery(this).attr("title");
+						jQuery("#service_evaluate_text"+gc_id).text(title);
+					}
+				});
+				jQuery('input.ship_evaluate').rating({
+					callback: function(value, link){
+						var id=jQuery(this).attr("name");
+						jQuery("#"+id).val(value);
+					},
+					focus: function(value, link){
+						var gc_id=jQuery(this).attr("gc_id");
+						var title=jQuery(this).attr("title");
+						jQuery("#ship_evaluate_text"+gc_id).text(title);
+					}
+				});
+				//
+			});
+			function save_form(){
+				var evaluate_order_info=$("#evaluate_order_info").val();
+				if (evaluate_order_info==null||evaluate_order_info=="") {
+					alert("请输入订单评价内容");
+					return;
+				}
+				#foreach($gc in $!obj.gcs)
+					var evaluate_info=$("#evaluate_info_"+$!gc.goods.id).val();
+				if (evaluate_info==null||evaluate_info=="") {
+					alert("请输入商品评价内容");
+					return;
+				}
+				#end
+				if(confirm("评价后不可修改，是否确定评价？")){
+					jQuery("#theForm").submit();
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+	<!-- top -->
+	$!httpInclude.include("/second/topZ.htm")
+	<!-- top结束 -->
+
+	<!-- heard -->
+	$!httpInclude.include("/second/headZ.htm")
+	<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				<div class="h_seat">
+					<a href="">首页</a>>
+					<a href="">买家中心</a>
+				</div>
+				<!--我是买家-->
+				<div class="h_content">
+					$!httpInclude.include("/second/left_buy.htm")
+					<div class="l-fr ">
+						<div class="w-title">
+							<h3>订单评论</h3>
+						</div>
+					<form action="$!webPath/buyer/order_evaluate_save.htm" method="post" id="theForm" enctype="multipart/form-data">
+						<div class="kuang0902">
+							<div class="title0902">订单详情</div>
+							<input name="id" type="hidden" id="id" value="$!obj.id" />
+							<div class="mt5">
+								<table class="table0902" width="100%" border="0" cellspacing="0" cellpadding="0">
+									<thead>
+										<tr>
+											<td>订单编号</td>
+											<td>订单金额</td>
+											<td>状态</td>
+											<td>下单时间</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>$!obj.order_id</td>
+											<td>￥$!obj.totalPrice</td>
+											<td>已收货</td>
+											<td>$!obj.addTime</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="kuang0902">
+							<div class="lh_my_order_eva">
+								<div class="lh_my_order_eva_tit">
+									满意度：
+									<input name="service_evaluate$!{obj.id}" type="hidden" id="service_evaluate$!{obj.id}" value="3" />
+									<b id="service_evaluate_text$!{obj.id}">一般</b><em>
+									<input class="service_evaluate {split:1}" type="radio" name="service_evaluate$!{obj.id}" gc_id="$!{obj.id}" value="1" title="非常不满"/>
+									<input class="service_evaluate {split:1}" type="radio" name="service_evaluate$!{obj.id}" gc_id="$!{obj.id}" value="2" title="不满意"/>
+									<input class="service_evaluate {split:1}" type="radio" name="service_evaluate$!{obj.id}" gc_id="$!{obj.id}" value="3" title="一般" checked="checked"/>
+									<input class="service_evaluate {split:1}" type="radio" name="service_evaluate$!{obj.id}" gc_id="$!{obj.id}" value="4" title="满意"/>
+									<input class="service_evaluate {split:1}" type="radio" name="service_evaluate$!{obj.id}" gc_id="$!{obj.id}" value="5" title="非常满意"/>
+									</em>
+								</div>
+									<textarea name="evaluate_order_info" id="evaluate_order_info" cols="" rows="" placeholder="请输入订单评价内容"></textarea>
+							</div>
+						</div>
+						<div class="kuang0902">
+							<div class="title0902">商品清单</div>
+							<div class="mt5">
+								<table class="table0902" width="100%" border="0" cellspacing="0" cellpadding="0">
+									<thead>
+										<tr>
+											<td>商品编号</td>
+											<td>商品信息</td>
+											<td>评论</td>
+											<td>上传图片</td>
+										</tr>
+									</thead>
+									<tbody>
+									#foreach($gc in $obj.gcs)
+										#if($!gc.goods.goods_main_photo)
+										#set($img="$!webPath/$!{gc.goods.goods_main_photo.path}/$!{gc.goods.goods_main_photo.name}_small.$!{gc.goods.goods_main_photo.ext}")
+										#else
+										#set($img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+										#end
+									<tr>
+										<td>$!gc.goods.id<br><a href="$!webPath/buyer/recommend_chakan.htm?id=$!gc.goods.id&gc_id=$!gc.id">我要推荐</a></td>
+										<td>
+											<img class="fl" src="$!img" width="135" height="83">
+											<p class="fl ml10">
+												<a class="color_blue" href="#">$!gc.goods.goods_name</a>
+											</p>
+										</td>
+										<td width="230">
+											<input name="description_evaluate$!{gc.id}" type="hidden" id="description_evaluate$!{gc.id}" value="3" />
+											<b id="description_evaluate_text$!{gc.id}">一般</b><em>
+											<input class="description_evaluate {split:1}" type="radio" name="description_evaluate$!{gc.id}" gc_id="$!{gc.id}" value="1" title="非常不满"/>
+											<input class="description_evaluate {split:1}" type="radio" name="description_evaluate$!{gc.id}" gc_id="$!{gc.id}" value="2" title="不满意"/>
+											<input class="description_evaluate {split:1}" type="radio" name="description_evaluate$!{gc.id}" gc_id="$!{gc.id}" value="3" title="一般" checked="checked"/>
+											<input class="description_evaluate {split:1}" type="radio" name="description_evaluate$!{gc.id}" gc_id="$!{gc.id}" value="4" title="满意"/>
+											<input class="description_evaluate {split:1}" type="radio" name="description_evaluate$!{gc.id}" gc_id="$!{gc.id}" value="5" title="非常满意"/>
+										</em>
+											<p class="t_l mt5"><textarea class="bd0902" name="evaluate_info_$!{gc.id}" cols="" rows="" id="evaluate_info_$!{gc.goods.id}" placeholder="请输入商品评价内容"></textarea></p>
+										</td>
+										<td>
+											<input name="brandLogo$!{gc.id}" id="brandLogo" type="file">
+										</td>
+									</tr>
+									#end
+									</tbody>
+								</table>
+							</div>
+						    <div class="fr mt15">
+						    	<input name="" value="提交评论" style="cursor:pointer;" type="button" onclick="save_form();" class="btn-danger">
+						    </div>
+						</div>
+					</form>
+					</div>
+				</div>
+			</div>
+			<!--我是买家-->
+
+		</div>
+		</div>
+	<!--footer开始-->
+	$!httpInclude.include("/second/footZ.htm")
+	<!--footer结束-->
+
+	<!-- 右侧 -->
+	$!httpInclude.include("/second/rightZ.htm")
+	<!-- 右侧结束 -->
+
+	</body>
+</html>

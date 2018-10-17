@@ -1,0 +1,990 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="pixel-ratio-1">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>产品详情</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+		<link rel="stylesheet" href="$!webPath/resources/new/pro/css/weui.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/pro/css/jquery-weui.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/pro/css/style.css">
+		<script src="$!webPath/resources/new/pro/js/jquery-2.js"></script>
+		<script src="$!webPath/resources/new/pro/js/modernizr.js"></script>
+		<script src="$!webPath/resources/new/js/affix.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			
+			.item-active {
+				color: #e21323;
+				font-weight: bold;
+				background-color: inherit;
+				border-bottom: 2px solid #e21323;
+			}
+			.activing{
+				color: #e21323;
+				font-weight: bold;
+				background-color: inherit;
+				border-bottom: 2px solid #e21323;
+			}
+		</style>
+	</head>
+
+	<body ontouchstart="" data-spy="scroll" data-target="#myScrollspy">
+		<!--主体-->
+		<div class="weui-content">
+			<!--商品-->
+			<div class="weui-tab">
+				<div class="weui-navbar">
+					<span class="lh_back"><i class="icon iconfont">&#xe601;</i></span>
+					<a class="weui-navbar__item proinfo-tab-tit item-active" href="#data1" id="nav1">商品</a>
+					<a class="weui-navbar__item proinfo-tab-tit" href="#data2" id="nav2">详情</a>
+					<a class="weui-navbar__item proinfo-tab-tit" href="#data3" id="nav3">评价</a>
+					<span class="lh_xiala" id="stateBut" onclick="$use()"><i class="icon iconfont">&#xe67b;</i></span>
+				</div>
+				<a id="data1"></a>
+				<div class=" proinfo-tab-con">
+					<div id="tab1" class="">
+						<!--主图轮播-->
+						<div class="swiper-container swiper-zhutu swiper-container-horizontal">
+							<div class="swiper-wrapper" style="transform: translate3d(-330px, 0px, 0px); transition-duration: 0ms;">
+								<div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="4" style="width: 330px;"><img src="pro/img/zhutu05.jpg"></div>
+								<div class="swiper-slide swiper-slide-active" data-swiper-slide-index="0" style="width: 330px;"><img src="pro/img/zhutu01.jpg"></div>
+								<div class="swiper-slide swiper-slide-next" data-swiper-slide-index="1" style="width: 330px;"><img src="pro/img/zhutu02.jpg"></div>
+								<div class="swiper-slide" data-swiper-slide-index="2" style="width: 330px;"><img src="pro/img/zhutu03.jpg"></div>
+								<div class="swiper-slide" data-swiper-slide-index="3" style="width: 330px;"><img src="pro/img/zhutu04.jpg"></div>
+								<div class="swiper-slide" data-swiper-slide-index="4" style="width: 330px;"><img src="pro/img/zhutu05.jpg"></div>
+								<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="width: 330px;"><img src="pro/img/zhutu01.jpg"></div>
+							</div>
+							<div class="swiper-pagination swiper-zhutu-pagination swiper-pagination-fraction"><span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">5</span></div>
+
+							<!-- cd-popup-container -->
+
+						</div>
+					</div>
+					<div class="proCountDown" style="display: block;">
+						<p class="proCountDownTime">
+							<span><i class="icon iconfont">&#xe652;</i></span> 距结束仅剩 <span class="proCountDownHour hour_show">20</span>
+							<span class="proCountDownMinu minute_show">20</span>
+							<span class="proCountDownSecond second_show">12</span>
+
+						</p>
+					</div>
+					<div class="huodong huodongN borb">
+						<div class="titleW">
+							<h1><span>自营</span>冬季保暖轻薄女羽绒服</h1>
+							<div class="share_picN fr bdsharebuttonbox" data-tag="share_1">
+								<a href="javascript:;" id="show-toast" class="ishare bds_tsina" style="font-size: 1.2rem;"><i class="icon iconfont">&#xe639;</i></a>
+								<a href="#" class="ishare bds_tsina"><i class="icon iconfont">&#xe627;</i></a>
+							</div>
+						</div>
+						<ul class="pro_sku clearfix borb1">
+							<li class="proSalePrice"><span class="price">￥150.00 </span></li>
+							<li class="marketprice"><del>¥1099</del></li>
+							<li class="proJuanSend"><span>不可用优惠券</span></li>
+						</ul>
+						<div class="lh_notes">
+							<dl>
+								<dt>销量</dt>
+								<dd>5000</dd>
+							</dl>
+							<dl>
+								<dt>收藏</dt>
+								<dd>5000</dd>
+							</dl>
+							<dl>
+								<dt>快递</dt>
+								<dd>12.00</dd>
+							</dl>
+							<dl style="border-right: none;">
+								<dt>地址</dt>
+								<dd>济南</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="lh_yhjf">
+						<ul>
+							<li>
+								<div class="lh_yhjf_bt">积分</div>
+								<div class="lh_yhjf_nr">购物可获得50积分</div>
+							</li>
+							<li>
+								<div class="lh_yhjf_bt">领卷</div>
+								<div class="lh_yhjf_nr">满199减30，满299减60</div>
+								<div class="lh_yhjf_nn">
+									<a href="javascript:;" class=" open-popup" data-target="#selcet_sku1">
+										<p>领卷</p>
+									</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="wy-media-box2 weui-media-box_text">
+						<div class="weui-media-box_appmsg">
+							<div class="weui-media-box__hd proinfo-txt-l"><span class="promotion-label-tit">尺码</span></div>
+							<div class="weui-media-box__bd">
+								<div class="promotion-sku clear">
+									<ul>
+										<li>
+											<a href="javascript:;">25</a>
+										</li>
+										<li>
+											<a href="javascript:;">30</a>
+										</li>
+										<li>
+											<a href="javascript:;">34</a>
+										</li>
+										<li>
+											<a href="javascript:;">40</a>
+										</li>
+										<li>
+											<a href="javascript:;">45</a>
+										</li>
+										<li>
+											<a href="javascript:;">50</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="weui-media-box_appmsg">
+							<div class="weui-media-box__hd proinfo-txt-l"><span class="promotion-label-tit">颜色</span></div>
+							<div class="weui-media-box__bd">
+								<div class="promotion-sku clear">
+									<ul>
+										<li>
+											<a href="javascript:;">黑色</a>
+										</li>
+										<li>
+											<a href="javascript:;">红色</a>
+										</li>
+										<li>
+											<a href="javascript:;">白色</a>
+										</li>
+										<li>
+											<a href="javascript:;">蓝色</a>
+										</li>
+										<li>
+											<a href="javascript:;">橘黄色</a>
+										</li>
+										<li>
+											<a href="javascript:;">绿色</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="lh_spxq_fw">
+						<ul>
+							<li>
+								<div class="lh_spxq_fw_bt">选择</div>
+								<div class="lh_spxq_fw_nr">
+									<ul>
+										<li><span>七天包退</span>七天无条件退货</li>
+										<li><span>及时发货</span>24小时内发货</li>
+										<li><span>100%正品</span>所售商品由平台监管</li>
+									</ul>
+								</div>
+
+							</li>
+						</ul>
+					</div>
+					<div class="lh_spxq_dp">
+						<div class="lh_spxq_dp_top">
+							<div class="lh_spxq_dp_tx"><img src="images/lh_13.jpg" /></div>
+							<d iv class="lh_spxq_dp_bt">浩星自营旗舰店<span>自营</span></div>
+						<div class="lh_spxq_dp_js">商家简介商家简介商家简介商家简介商家简介商家简介商家简介商家简介商家</div>
+					</div>
+					<div class="lh_spxq_dp_bottom">
+						<a class="lh_spxq_dp_bottom_an"><i class="icon iconfont">&#xe6a5;</i>全部商品</a>
+						<a class="lh_spxq_dp_bottom_an on"><i class="icon iconfont">&#xe645;</i>进入店铺</a>
+					</div>
+				</div>
+			</div>
+
+			<!--详情-->
+
+			<div class=" proinfo-tab-con">
+
+				<!--<div class="" style="width: 100%;display: block;">-->
+				<a id="data2"></a>
+				<div class="pro-detail">
+					<img src="pro/img/xq1.jpg"><img src="pro/img/xq2.jpg"><img src="pro/img/xq3.jpg"><img src="pro/img/xq4.jpg"><img src="pro/img/xq5.jpg"><img src="pro/img/xq6.jpg"><img src="pro/img/xq7.jpg"><img src="pro/img/xq8.jpg"><img src="pro/img/xq9.jpg">
+				</div>
+				<!--</div>-->
+
+			</div>
+			<!--评价-->
+			<a id="data3"></a>
+			<div class=" proinfo-tab-con item3" style="width: 100%; float: left;">
+				<div class="dianpu_meau">
+					<ul>
+						<li class="on2">
+							<p><span>全部</span></p>
+							<p>100</p>
+						</li>
+						<li>
+							<p><span>好评</span></p>
+							<p>100</p>
+						</li>
+						<li>
+							<p><span>中评</span></p>
+							<p>50</p>
+						</li>
+						<li>
+							<p><span>差评</span></p>
+							<p>0</p>
+						</li>
+						<li style="border: none;">
+							<p><span>有图</span></p>
+							<p>50</p>
+						</li>
+					</ul>
+				</div>
+
+				<div class="" style="display: block;">
+					<!--评价-->
+					<div class="weui-panel__bd">
+						<div class="wy-media-box weui-media-box_text">
+							<div class="weui-cell nopd weui-cell_access">
+								<div class="weui-cell__bd weui-cell_primary">
+									<p style="color: #0062CC;">151****1512</p>
+								</div>
+								<span class="weui-cell__time">2017-02-06</span>
+							</div>
+
+							<p>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span><i class="icon iconfont">&#xe625;</i></span>
+							</p>
+							<p class="weui-media-box__desc">面料不错，码数也正常 男朋友穿的很合适。</p>
+							<ul class="weui-uploader__files clear mg-com-img">
+								<li class="weui-uploader__file" style="background-image: url(pro/img/pro3.jpg)"></li>
+								<li class="weui-uploader__file" style="background-image:url(pro/img/pro3.jpg)"></li>
+								<li class="weui-uploader__file" style="background-image:url(pro/img/pro3.jpg)"></li>
+							</ul>
+							<div style=" padding: 15px 0; font-size: 12px; color: #af874d;"><span style=" color: #bbbbbb;">[回复]</span>亲，感谢您对小店的支持！如果收到宝贝有什么问题，请即刻与我们联系，我们！</div>
+						</div>
+					</div>
+					<div class="weui-panel__bd">
+						<div class="wy-media-box weui-media-box_text">
+							<div class="weui-cell nopd weui-cell_access">
+								<div class="weui-cell__bd weui-cell_primary">
+									<p style="color: #0062CC;">151****1512</p>
+								</div>
+								<span class="weui-cell__time">2017-02-06</span>
+							</div>
+
+							<p>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span><i class="icon iconfont">&#xe625;</i></span>
+							</p>
+							<p class="weui-media-box__desc">面料不错，码数也正常 男朋友穿的很合适。</p>
+							<ul class="weui-uploader__files clear mg-com-img">
+								<li class="weui-uploader__file" style="background-image: url(pro/img/pro3.jpg)"></li>
+								<li class="weui-uploader__file" style="background-image:url(pro/img/pro3.jpg)"></li>
+								<li class="weui-uploader__file" style="background-image:url(pro/img/pro3.jpg)"></li>
+							</ul>
+						</div>
+					</div>
+					<div class="weui-panel__bd">
+						<div class="wy-media-box weui-media-box_text">
+							<div class="weui-cell nopd weui-cell_access">
+								<div class="weui-cell__bd weui-cell_primary">
+									<p style="color: #0062CC;">151****1512</p>
+								</div>
+								<span class="weui-cell__time">2017-02-06</span>
+							</div>
+
+							<p>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span><i class="icon iconfont">&#xe625;</i></span>
+							</p>
+							<p class="weui-media-box__desc">面料不错，码数也正常 男朋友穿的很合适。</p>
+							<ul class="weui-uploader__files clear mg-com-img">
+								<li class="weui-uploader__file" style="background-image: url(pro/img/pro3.jpg)"></li>
+								<li class="weui-uploader__file" style="background-image:url(pro/img/pro3.jpg)"></li>
+								<li class="weui-uploader__file" style="background-image:url(pro/img/pro3.jpg)"></li>
+							</ul>
+						</div>
+					</div>
+					<div class="weui-panel__bd">
+						<div class="wy-media-box weui-media-box_text">
+							<div class="weui-cell nopd weui-cell_access">
+								<div class="weui-cell__bd weui-cell_primary">
+									<p style="color: #0062CC;">151****1512</p>
+								</div>
+								<span class="weui-cell__time">2017-02-06</span>
+							</div>
+
+							<p>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span><i class="icon iconfont">&#xe625;</i></span>
+							</p>
+							<p class="weui-media-box__desc">面料不错，码数也正常 男朋友穿的很合适。</p>
+							<ul class="weui-uploader__files clear mg-com-img">
+								<li class="weui-uploader__file" style="background-image: url(pro/img/pro3.jpg)"></li>
+								<li class="weui-uploader__file" style="background-image:url(pro/img/pro3.jpg)"></li>
+								<li class="weui-uploader__file" style="background-image:url(pro/img/pro3.jpg)"></li>
+							</ul>
+						</div>
+					</div>
+					<div class="weui-panel__bd">
+						<div class="wy-media-box weui-media-box_text">
+							<div class="weui-cell nopd weui-cell_access">
+								<div class="weui-cell__bd weui-cell_primary">
+									<p style="color: #0062CC;">151****1512</p>
+								</div>
+								<span class="weui-cell__time">2017-02-06</span>
+							</div>
+
+							<p>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+								<span><i class="icon iconfont">&#xe625;</i></span>
+							</p>
+							<p class="weui-media-box__desc">面料不错，码数也正常 男朋友穿的很合适。</p>
+							<ul class="weui-uploader__files clear mg-com-img">
+								<li class="weui-uploader__file" style="background-image: url(pro/img/pro3.jpg)"></li>
+								<li class="weui-uploader__file" style="background-image:url(pro/img/pro3.jpg)"></li>
+								<li class="weui-uploader__file" style="background-image:url(pro/img/pro3.jpg)"></li>
+							</ul>
+						</div>
+					</div>
+					<div class="j_jzgd">
+						<a href="#">下拉加载更多...</a>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		</div>
+		<!--底部导航-->
+		<div class="foot-black"></div>
+		<div class="weui-tabbar wy-foot-menu">
+			<a href="javascript:;" class="promotion-foot-menu-items">
+				<p style="font-size: 24px; color: #666;"><i class="icon iconfont">&#xe622;</i></p>
+				<p class="weui-tabbar__label">客服</p>
+			</a>
+			<a href="#" class="promotion-foot-menu-items">
+				<p style="font-size: 24px; color: #666;"><i class="icon iconfont">&#xe645;</i></p>
+				<p class="weui-tabbar__label">进店</p>
+			</a>
+			<a href="#" class="promotion-foot-menu-items">
+				<span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+				<p style="font-size: 24px; color: #666;"><i class="icon iconfont">&#xe6e4;</i></p>
+				<p class="weui-tabbar__label">购物车</p>
+			</a>
+			<a href="javascript:;" class="weui-tabbar__item yellow-color open-popup" data-target="#join_cart">
+				<p class="promotion-foot-menu-label">加入购物车</p>
+			</a>
+			<a href="javascript:;" class="weui-tabbar__item red-color open-popup" data-target="#selcet_sku">
+				<p class="promotion-foot-menu-label">立即购买</p>
+			</a>
+		</div>
+		<div id="join_cart" class="weui-popup__container popup-bottom" style="z-index:600;">
+			<div class="weui-popup__overlay" style="opacity:1;"></div>
+			<div class="weui-popup__modal">
+				<div class="modal-content">
+					<div class="weui-msg" style="padding-top:0;">
+						<div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+						<div class="weui-msg__text-area">
+							<h2 class="weui-msg__title">成功加入购物车</h2>
+							<p class="weui-msg__desc">亲爱的用户，您的商品已成功加入购物车，为了保证您的商品快速送达，请您尽快到购物车结算。</p>
+						</div>
+						<div class="weui-msg__opr-area">
+							<p class="weui-btn-area">
+								<a href="#" class="weui-btn weui-btn_primary">去购物车结算</a>
+								<a href="javascript:;" class="weui-btn weui-btn_default close-popup">不，我再看看</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="selcet_sku" class="weui-popup__container popup-bottom" style="z-index:600;">
+			<div class="weui-popup__overlay" style="opacity:1;"></div>
+			<div class="weui-popup__modal">
+				<div class="toolbar">
+					<div class="toolbar-inner">
+						<a href="javascript:;" class="picker-button close-popup">关闭</a>
+						<h1 class="title">商品属性</h1>
+					</div>
+				</div>
+				<div class="modal-content">
+					<div class="weui-msg" style="padding-top:0;">
+						<div class="wy-media-box2 weui-media-box_text" style="margin:0;">
+							<div class="weui-media-box_appmsg">
+								<div class="weui-media-box__hd proinfo-txt-l"><span class="promotion-label-tit">尺码</span></div>
+								<div class="weui-media-box__bd">
+									<div class="promotion-sku clear">
+										<ul>
+											<li>
+												<a href="javascript:;">25</a>
+											</li>
+											<li>
+												<a href="javascript:;">30</a>
+											</li>
+											<li>
+												<a href="javascript:;">34</a>
+											</li>
+											<li>
+												<a href="javascript:;">40</a>
+											</li>
+											<li>
+												<a href="javascript:;">45</a>
+											</li>
+											<li>
+												<a href="javascript:;">50</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="weui-media-box_appmsg">
+								<div class="weui-media-box__hd proinfo-txt-l"><span class="promotion-label-tit">颜色</span></div>
+								<div class="weui-media-box__bd">
+									<div class="promotion-sku clear">
+										<ul>
+											<li>
+												<a href="javascript:;">黑色</a>
+											</li>
+											<li>
+												<a href="javascript:;">红色</a>
+											</li>
+											<li>
+												<a href="javascript:;">白色</a>
+											</li>
+											<li>
+												<a href="javascript:;">蓝色</a>
+											</li>
+											<li>
+												<a href="javascript:;">橘黄色</a>
+											</li>
+											<li>
+												<a href="javascript:;">绿色</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="weui-msg__opr-area">
+							<p class="weui-btn-area">
+								<a href="#" class="weui-btn weui-btn_primary">立即购买</a>
+								<a href="javascript:;" class="weui-btn weui-btn_default close-popup">不，我再看看</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="selcet_sku1" class="weui-popup__container popup-bottom" style="z-index:600;">
+			<div class="weui-popup__overlay" style="opacity:1;"></div>
+			<div class="weui-popup__modal">
+				<div class="toolbar">
+					<div class="toolbar-inner">
+						<a href="javascript:;" class="picker-button close-popup">关闭</a>
+						<h1 class="title">浩星旗舰店</h1>
+					</div>
+				</div>
+				<div class="modal-content">
+					<div class="weui-msg" style="padding-top:0;">
+						<ul class="tabs">
+							<li>
+								<a href="#" name=".tab1_1">可领</a>
+							</li>
+							<li>
+								<a href="#" name=".tab1_2">已领</a>
+							</li>
+
+						</ul>
+
+						<div class="content">
+							<div class="tab1_1">
+								<ul>
+									<li>
+										<div class="left01">
+											<div class="left01_top"><span>￥</span>100</div>
+											<div class="left01_bottom">满100元使用</div>
+										</div>
+										<div class="center01">
+											<div class="title01">浩星旗舰店</div>
+											<div class="date01">2017.1.12-2017.12.31</div>
+										</div>
+										<div class="right01">
+											<a href="#">点击领取</a>
+										</div>
+									</li>
+									<li>
+										<div class="left01">
+											<div class="left01_top"><span>￥</span>100</div>
+											<div class="left01_bottom">满100元使用</div>
+										</div>
+										<div class="center01">
+											<div class="title01">浩星旗舰店</div>
+											<div class="date01">2017.1.12-2017.12.31</div>
+										</div>
+										<div class="right01">
+											<a href="#">点击领取</a>
+										</div>
+									</li>
+									<li>
+										<div class="left01">
+											<div class="left01_top"><span>￥</span>100</div>
+											<div class="left01_bottom">满100元使用</div>
+										</div>
+										<div class="center01">
+											<div class="title01">浩星旗舰店</div>
+											<div class="date01">2017.1.12-2017.12.31</div>
+										</div>
+										<div class="right01">
+											<a href="#">点击领取</a>
+										</div>
+									</li>
+									<li>
+										<div class="left01">
+											<div class="left01_top"><span>￥</span>100</div>
+											<div class="left01_bottom">满100元使用</div>
+										</div>
+										<div class="center01">
+											<div class="title01">浩星旗舰店</div>
+											<div class="date01">2017.1.12-2017.12.31</div>
+										</div>
+										<div class="right01">
+											<a href="#">点击领取</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="tab1_2">
+								<ul>
+									<li>
+										<div class="left01">
+											<div class="left01_top"><span>￥</span>100</div>
+											<div class="left01_bottom">满100元使用</div>
+										</div>
+										<div class="center01">
+											<div class="title01">浩星旗舰店</div>
+											<div class="date01">2017.1.12-2017.12.31</div>
+										</div>
+										<div class="right01">
+											<a href="#">去使用</a>
+										</div>
+									</li>
+									<li>
+										<div class="left01">
+											<div class="left01_top"><span>￥</span>100</div>
+											<div class="left01_bottom">满100元使用</div>
+										</div>
+										<div class="center01">
+											<div class="title01">浩星旗舰店</div>
+											<div class="date01">2017.1.12-2017.12.31</div>
+										</div>
+										<div class="right01">
+											<a href="#">去使用</a>
+										</div>
+									</li>
+									<li>
+										<div class="left01">
+											<div class="left01_top"><span>￥</span>100</div>
+											<div class="left01_bottom">满100元使用</div>
+										</div>
+										<div class="center01">
+											<div class="title01">浩星旗舰店</div>
+											<div class="date01">2017.1.12-2017.12.31</div>
+										</div>
+										<div class="right01">
+											<a href="#">去使用</a>
+										</div>
+									</li>
+									<li>
+										<div class="left01">
+											<div class="left01_top"><span>￥</span>100</div>
+											<div class="left01_bottom">满100元使用</div>
+										</div>
+										<div class="center01">
+											<div class="title01">浩星旗舰店</div>
+											<div class="date01">2017.1.12-2017.12.31</div>
+										</div>
+										<div class="right01">
+											<a href="#">去使用</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="images/top.png" alt="" /></span></a>
+		</div>
+		<script type="text/javascript" src="js/nav.js"></script>
+		<script type="text/javascript">
+			jQuery(".lh_liangjuan_slideTxtBox").slide();
+		</script>
+		<script type="text/javascript" src="js/haoxing1.js"></script>
+		<script src="pro/js/fastclick.js"></script>
+		<script src="pro/js/tabScript.js"></script>
+		<script>
+			$(function() {
+				loadTab();
+			});
+		</script>
+		<!--<script type="text/javascript" src="js/shoppingcart.js" ></script>-->
+
+		<script type="text/javascript">
+			var intDiff = parseInt(60); //倒计时总秒数量
+			function timer(intDiff) {
+				window.setInterval(function() {
+					var day = 0,
+						hour = 0,
+						minute = 0,
+						second = 0; //时间默认值
+					if(intDiff > 0) {
+						day = Math.floor(intDiff / (60 * 60 * 24));
+						hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+						minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+						second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+					}
+					if(minute <= 9) minute = '0' + minute;
+					if(second <= 9) second = '0' + second;
+					$('.hour_show').html('<s id="h"></s>' + hour + '时');
+					$('.minute_show').html('<s></s>' + minute + '分');
+					$('.second_show').html('<s></s>' + second + '秒');
+					intDiff--;
+				}, 1000);
+			}
+			$(function() {
+				timer(intDiff);
+			});
+		</script>
+		<script>
+			$(function() {
+				FastClick.attach(document.body);
+			});
+		</script>
+		<script src="pro/js/jquery-weui.js"></script>
+		<script src="pro/js/swiper.js"></script>
+		<script>
+			$(".swiper-zhutu").swiper({
+				loop: true,
+				paginationType: 'fraction',
+				autoplay: 5000
+			});
+		</script>
+		<script>
+			$(function() {
+				$(".promotion-sku li").click(function() {
+					$(this).addClass("active").siblings("li").removeClass("active");
+				})
+			})
+		</script>
+		<script>
+			$(document).on("click", "#show-toast", function() {
+				$.toast("收藏成功", function() {
+					console.log('close');
+				});
+			})
+		</script>
+		<script>
+			$(document).on("open", ".weui-popup-modal", function() {
+				console.log("open popup");
+			}).on("close", ".weui-popup-modal", function() {
+				console.log("close popup");
+			});
+		</script>
+		<script>
+			$(function() {
+				initTopHoverTree("tophov" + "ertree", 30, 10, 10);
+			})
+		</script>
+		<script>
+			function initTopHoverTree(hvtid, times, right, bottom) {
+				$("#" + hvtid).css("right", right).css("bottmo", bottom);
+				$("#" + hvtid).on("click", function() {
+					goTopHovetree(times);
+				})
+				$(window).scroll(function() {
+					if($(window).scrollTop() > 268) {
+						$("#" + hvtid).fadeIn(100);
+					} else {
+						$("#" + hvtid).fadeOut(100);
+					}
+				});
+			}
+			//返回顶部动画
+			//goTop(500);//500ms内滚回顶部
+			function goTopHovetree(times) {
+				if(!!!times) {
+					$(window).scrollTop(0);
+					return;
+				}
+				var sh = $('body').scrollTop(); //移动总距离
+				var inter = 13.333; //ms,每次移动间隔时间
+				var forCount = Math.ceil(times / inter); //移动次数
+				var stepL = Math.ceil(sh / forCount); //移动步长
+				var timeId = null;
+
+				function aniHovertree() {
+					!!timeId && clearTimeout(timeId);
+					timeId = null;
+					//console.log($('body').scrollTop());
+					if($('body').scrollTop() <= 0 || forCount <= 0) { //移动端判断次数好些，因为移动端的scroll事件触发不频繁，有可能检测不到有<=0的情况
+						$('body').scrollTop(0);
+						return;
+					}
+					forCount--;
+					sh -= stepL;
+					$('body').scrollTop(sh);
+					timeId = setTimeout(function() {
+						aniHovertree();
+					}, inter);
+				}
+				aniHovertree();
+			}
+		</script>
+		<style>
+			.img-replace {
+				/* replace text with an image */
+				display: inline-block;
+				overflow: hidden;
+				text-indent: 100%;
+				color: transparent;
+				white-space: nowrap;
+			}
+			/* -------------------------------- 
+
+Main components 
+
+-------------------------------- */
+			
+			.cd-popup-trigger {
+				display: block;
+				width: 34px;
+				height: 33px;
+				float: right;
+				color: #FFF;
+				font-weight: bold;
+				text-transform: uppercase;
+				background: url(images/Bushop_03.png) no-repeat;
+				box-shadow: 0 3px 0 rgba(0, 0, 0, 0.07);
+				position: absolute;
+				top: 14rem;
+				z-index: 99;
+				right: 1.0rem;
+			}
+			
+			@media only screen and (min-width: 1170px) {
+				.cd-popup-trigger {
+					margin: 6em auto;
+				}
+			}
+			
+			@media only screen and (max-width: 320px) {
+				.cd-popup-trigger {
+					top: 10.5rem;
+				}
+			}
+			/* -------------------------------- 
+
+xpopup 
+
+-------------------------------- */
+			
+			.cd-popup {
+				position: fixed;
+				left: 0;
+				top: 0;
+				height: 100%;
+				width: 100%;
+				background-color: rgba(94, 110, 141, 0.9);
+				opacity: 0;
+				visibility: hidden;
+				-webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+				-moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+				transition: opacity 0.3s 0s, visibility 0s 0.3s;
+				z-index: 999;
+			}
+			
+			.cd-popup.is-visible {
+				opacity: 1;
+				visibility: visible;
+				-webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+				-moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+				transition: opacity 0.3s 0s, visibility 0s 0s;
+			}
+			
+			.cd-popup-container {
+				position: relative;
+				width: 90%;
+				max-width: 400px;
+				margin: 4em auto;
+				background: #FFF;
+				border-radius: .25em .25em .4em .4em;
+				text-align: center;
+				box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+				-webkit-transform: translateY(-40px);
+				-moz-transform: translateY(-40px);
+				-ms-transform: translateY(-40px);
+				-o-transform: translateY(-40px);
+				transform: translateY(-40px);
+				/* Force Hardware Acceleration in WebKit */
+				-webkit-backface-visibility: hidden;
+				-webkit-transition-property: -webkit-transform;
+				-moz-transition-property: -moz-transform;
+				transition-property: transform;
+				-webkit-transition-duration: 0.3s;
+				-moz-transition-duration: 0.3s;
+				transition-duration: 0.3s;
+			}
+			
+			.cd-popup-container p {
+				padding: 3em 1em;
+			}
+			
+			.cd-popup-container .cd-buttons:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			
+			.cd-popup-container .cd-buttons li {
+				float: left;
+				width: 50%;
+			}
+			
+			.cd-popup-container .cd-buttons a {
+				display: block;
+				height: 60px;
+				line-height: 60px;
+				text-transform: uppercase;
+				color: #FFF;
+				-webkit-transition: background-color 0.2s;
+				-moz-transition: background-color 0.2s;
+				transition: background-color 0.2s;
+			}
+			
+			.cd-popup-container .cd-buttons li:first-child a {
+				background: #fc7169;
+				border-radius: 0 0 0 .25em;
+			}
+			
+			.no-touch .cd-popup-container .cd-buttons li:first-child a:hover {
+				background-color: #fc8982;
+			}
+			
+			.cd-popup-container .cd-buttons li:last-child a {
+				background: #b6bece;
+				border-radius: 0 0 .25em 0;
+			}
+			
+			.no-touch .cd-popup-container .cd-buttons li:last-child a:hover {
+				background-color: #c5ccd8;
+			}
+			
+			.cd-popup-container .cd-popup-close {
+				position: absolute;
+				top: 8px;
+				right: 8px;
+				width: 30px;
+				height: 30px;
+			}
+			
+			.cd-popup-container .cd-popup-close::before,
+			.cd-popup-container .cd-popup-close::after {
+				content: '';
+				position: absolute;
+				top: 12px;
+				width: 14px;
+				height: 3px;
+				background-color: #8f9cb5;
+			}
+			
+			.cd-popup-container .cd-popup-close::before {
+				-webkit-transform: rotate(45deg);
+				-moz-transform: rotate(45deg);
+				-ms-transform: rotate(45deg);
+				-o-transform: rotate(45deg);
+				transform: rotate(45deg);
+				left: 8px;
+			}
+			
+			.cd-popup-container .cd-popup-close::after {
+				-webkit-transform: rotate(-45deg);
+				-moz-transform: rotate(-45deg);
+				-ms-transform: rotate(-45deg);
+				-o-transform: rotate(-45deg);
+				transform: rotate(-45deg);
+				right: 8px;
+			}
+			
+			.is-visible .cd-popup-container {
+				-webkit-transform: translateY(0);
+				-moz-transform: translateY(0);
+				-ms-transform: translateY(0);
+				-o-transform: translateY(0);
+				transform: translateY(0);
+			}
+			
+			@media only screen and (min-width: 1170px) {
+				.cd-popup-container {
+					margin: 8em auto;
+				}
+			}
+		</style>
+		<a href="#0" class="cd-popup-trigger"></a>
+		<div class="cd-popup" role="alert">
+			<div class="cd-popup-container">
+
+				<p><img src="images/ewm1.jpg " /></p>
+
+				<a href="#0" class="cd-popup-close img-replace">Close</a>
+
+			</div>
+			<script src="pro/js/main.js"></script>
+	</body>
+
+</html>

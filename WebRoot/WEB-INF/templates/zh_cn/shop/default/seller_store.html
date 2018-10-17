@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/public_auto.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/index.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/DataLazyLoad.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.lazyload.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.common.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.validate.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery-ui-1.8.21.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.validate.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.KinSlideshow.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/head_index.htm")
+		<!-- heard结束 -->
+		
+		<!-- 商家店铺 -->
+		<div class="lh_sjdp">
+			$!httpInclude.include("/seller_store_top.htm?id=$!store.id")
+
+			<input type="hidden" name="store_id" value="$!store.id">
+			<div class="lh_ban sj_banner spxq_banner" style="margin-top: 50px;height: 580px">
+
+				<script src="$!webPath/advert_invoke.htm?id=262221&&store_id=$store.id"></script>
+
+			</div>
+
+		    <div class="lh_sjdp_lj">
+		    	<div class="main">
+
+		    		<div class="lh_sjdp_lj_zj">
+		    		  <ul>
+
+						  #foreach($obj in $cou)
+		    		  	<li>
+		    		  		<div class="lh_sjdp_lj_zj_left">
+		    		  			<i>￥</i>
+		    		  			<span>$!CommUtil.StringInt($!obj.coupon_amount)</span>
+		    		  		</div>
+		    		  		<div class="lh_sjdp_lj_zj_right">
+		    		  			<i>满$!obj.coupon_order_amount元使用</i>
+		    		  			<span id="lingquan$!obj.id" ><a id="lingquanle" href="javaScript:;" #if(!$!user)dialog_uri="$!webPath/user_dialog_login.htm" dialog_title="会员登录" dialog_width="450" dialog_height="100" dialog_id="user_login"#end onclick="lingquan($!obj.id)">立即领取</a></span>
+		    		  		</div>
+		    		  	</li>
+						#end
+						<script>
+							function lingquan(id) {
+						jQuery.ajax({
+							type:'post',
+							url:'$!webPath/second/youhuiquanlingqu.htm?coupon_id='+id,
+							beforeSend:function () {
+
+							},
+							success:function (data) {
+								var result=eval("("+data+")");
+								var ss = result.save;
+								alert(ss);
+									$("#lingquanle").remove();
+									$("#lingquan"+id).append("已领取");
+							}
+						})
+							}
+						</script>
+		    		  </ul>
+		    		</div>
+		    	</div>
+		    </div>
+		    <div class="lh_sjdp_nr">
+				<!-- 优惠券下方一-->
+			   <div class="pc_gg_01">
+					<script src="$!webPath/advert_invoke.htm?id=262222&&store_id=$store.id"></script>
+			   </div>
+				<!-- 优惠券下方二-->
+				<div class="pc_gg_02">
+				<script src="$!webPath/advert_invoke.htm?id=262223&&store_id=$!store.id"></script>
+				</div>
+
+				<!-- 广告一标题--->
+                <div class="pc_gg_03">
+				<script src="$!webPath/advert_invoke.htm?id=262224&&store_id=$!store.id"></script>
+			    </div>
+				<!-- 广告一图片一--->
+		    	<div class="pc_gg_04">
+				<script src="$!webPath/advert_invoke.htm?id=262225&&store_id=$!store.id"></script>
+				</div>
+				<div class="pc_gg_05">
+				<script src="$!webPath/advert_invoke.htm?id=262226&&store_id=$!store.id"></script>
+				</div>
+
+				<!-- 广告二标题--->
+				<div class="pc_gg_03">
+					<script src="$!webPath/advert_invoke.htm?id=262227&&store_id=$!store.id"></script>
+				</div>
+				<!-- 广告二图片一--->
+				<div class="pc_gg_07">
+				<script src="$!webPath/advert_invoke.htm?id=262228&&store_id=$!store.id"></script>
+				</div >
+				<div class="pc_gg_08">
+					<script src="$!webPath/advert_invoke.htm?id=262258&&store_id=$!store.id"></script>
+				</div >
+
+				<!-- 广告三标题--->
+				<div class="pc_gg_03">
+					<script src="$!webPath/advert_invoke.htm?id=262229&&store_id=$!store.id"></script>
+				</div>
+				<!-- 广告三图片一--->
+				<div class="pc_gg_09">
+					<script src="$!webPath/advert_invoke.htm?id=262230&&store_id=$!store.id"></script>
+				</div>
+				<!-- <div class="pc_gg_09">
+					<script src="$!webPath/advert_invoke.htm?id=262231&&store_id=$!store.id"></script>
+				</div>--->
+
+				<!-- 广告四标题--->
+				<!--<div class="pc_gg_03">
+					<script src="$!webPath/advert_invoke.htm?id=262234&&store_id=$!store.id"></script>
+				</div>
+
+		    	<div class="lh_sjdp_nr_cp">
+					<script src="$!webPath/advert_invoke.htm?id=262232&&store_id=$!store.id"></script>
+					<script src="$!webPath/advert_invoke.htm?id=262233&&store_id=$!store.id"></script>
+		    		&lt;!&ndash;<ul class="main">
+		    			<li><script src="$!webPath/advert_invoke.htm?id=262230&&store_id=$!store.id"></script></li>
+		    			<li><script src="$!webPath/advert_invoke.htm?id=262231&&store_id=$!store.id"></script></li>
+		    			<li><script src="$!webPath/advert_invoke.htm?id=262232&&store_id=$!store.id"></script></li>
+		    			<li><script src="$!webPath/advert_invoke.htm?id=262233&&store_id=$!store.id"></script></li>
+		    		</ul>&ndash;&gt;
+		    	</div>-->
+
+				<!-- 广告五标题--->
+				<!--<div class="pc_gg_03">
+					<script src="$!webPath/advert_invoke.htm?id=262239&&store_id=$!store.id"></script>
+				</div>-->
+		    	<div class="lh_sjdp_nr_cp">
+					<script src="$!webPath/advert_invoke.htm?id=262234&&store_id=$!store.id"></script>
+					<!--<script src="$!webPath/advert_invoke.htm?id=262239&&store_id=$!store.id"></script>-->
+		    		<ul class="main">
+		    			<li><script src="$!webPath/advert_invoke.htm?id=262236&&store_id=$!store.id"></script></li>
+		    			<li><script src="$!webPath/advert_invoke.htm?id=262237&&store_id=$!store.id"></script></li>
+		    			<li><script src="$!webPath/advert_invoke.htm?id=262238&&store_id=$!store.id"></script></li>
+		    			<li><script src="$!webPath/advert_invoke.htm?id=262235&&store_id=$!store.id"></script></li>
+		    		</ul>
+		    	</div>
+				<!-- 广告六--->
+				<div class="pc_gg_ls">
+				<script src="$!webPath/advert_invoke.htm?id=262239&&store_id=$!store.id"></script>
+				</div>
+		    </div>
+		</div><!---->
+		<!-- 商家店铺结束 -->
+		
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+
+	</body>
+
+</html>

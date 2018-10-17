@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/public_auto.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/index.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/DataLazyLoad.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.lazyload.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.common.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.validate.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery-ui-1.8.21.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.validate.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.KinSlideshow.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script>
+			function save_order(){
+				//alert(jQuery("#zzy").val());
+				/*if(jQuery("#zzy").val()==null||jQuery("#zzy").val()==""){
+					alert("请选择优惠券！");
+					return;
+				}*/
+				if($("#zzy1").val()==-1){
+					alert("请选择配送方式或地址！");
+					return;
+				}
+				if($("#addr_id").val()==null||$("#addr_id").val()==""){
+					alert("请选择配送地址！");
+					return;
+				}
+				$('#cartForm').submit();
+			}
+		</script>
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/head_index.htm")
+		<!-- heard结束 -->
+
+		<!-- 导航 -->
+		$!httpInclude.include("/nav1.htm")
+		<!-- 导航结束 -->
+	<form action="$!webPath/goods_cart3.htm" method="post" name="cartForm" id="cartForm">
+		<div class="main">
+			<div class="lh_wdgwc">
+				<div class="lh_wdgwc_top fl">
+					<span class="fl">填写并核对订单信息</span>
+					<ul class="lh_wdgwc_top_right fr">
+						<li>1.我的购物车</li>
+						<li class="cartcur">2.确认订单</li>
+						<li>3.支付订单</li>
+					</ul>
+				</div>
+				<div class="order-address addr-much" id="address_1">
+					<div class="list">
+						#set($addr_id="")
+						#foreach($addr in $addrs)
+						#if($!velocityCount==1)
+						#set($default_address_info="$!{addr.area.parent.parent.areaName}$!{addr.area.parent.areaName}$!{addr.area.areaName}$!{addr.area_info}")
+						#set($addr_id="$!{addr.area.id}")
+						#set($default_person_info="$!{addr.trueName} $!{addr.mobile}")
+						#end
+
+							#if($!addr.isdefaut==1)
+						<div class="addr suggest-address addr-cur addr-def" id="$!{addr.id}">
+							#set($addr_id="$!{addr.area.id}")
+							<input type="hidden" name="addr_id" id="addr_id" value="$!{addr.id}">
+							<div class="inner">
+								<div class="addr-hd" ><!--title="山东 济南 (张某收)"-->
+									<span class="prov">$!{addr.area.parent.parent.areaName}</span>
+									<span class="city">$!{addr.area.parent.areaName}</span>
+									<span>（</span>
+									<span class="name">$!{addr.trueName}</span>
+									<span> 收）</span>
+								</div>
+								<div class="addr-bd" ><!--title="山东省济南市槐荫区报业大厦">-->
+									<span class="dist">$!{addr.area.parent.areaName}</span>
+									<span class="town">$!{addr.area.areaName}</span>
+									<span class="addr4tip"></span>
+									<span class="street">$!{addr.area_info}</span>
+									<span class="phone" style="display:inline;">$!{addr.mobile}</span>
+									<span class="last">&nbsp;</span>
+								</div>
+							</div>
+							<div class="curMarker"></div>
+						</div>
+						#else
+						<script>
+							function moren(id) {
+								jQuery.ajax({
+									type:'POST',
+									url:"$!webPath/buyer/address_change.htm?id="+id,
+									beforeSend:function(){
+									},
+									success:function(data){
+										var result=eval("("+data+")");
+										var ss = result.cheng;
+                                        $("#addr_id").val(id);
+										//alert(ss);
+									}
+								})
+							}
+						</script>
+						#set($addr_id="$!{addr.area.id}")
+						<a href="javaScript:;" onclick="moren(${addr.id})">
+						<div class="addr suggest-address" id="$!{addr.id}">
+						<div class="inner">
+							<div class="addr-hd" ><!--title="山东 济南 (张某收)"-->
+								<span class="prov">$!{addr.area.parent.parent.areaName}</span>
+								<span class="city">$!{addr.area.parent.areaName}</span>
+								<span>（</span>
+								<span class="name">$!{addr.trueName}</span>
+								<span> 收）</span>
+							</div>
+							<div class="addr-bd" ><!--title="山东省济南市槐荫区报业大厦">-->
+								<span class="dist">$!{addr.area.parent.areaName}</span>
+								<span class="town">$!{addr.area.areaName}</span>
+								<span class="addr4tip"></span>
+								<span class="street">$!{addr.area_info}</span>
+								<span class="phone" style="display:inline;">$!{addr.mobile}</span>
+								<span class="last">&nbsp;</span>
+							</div>
+						</div>
+						<div class="curMarker"></div>
+					</div>
+						</a>
+					#end
+					#end
+					</div>
+				</div>
+		<div class="control" >
+			<a class="manageAddr" href="$!webPath/buyer/address.htm" >管理收货地址</a>
+		</div>
+
+		<div class="lh_wdgwc_cszdsp">
+			<ul>
+				<div class="lh_wdgwc_w-bond">
+					<div class="lh_wdgwc_w-bond-title">
+						<p class="lh_wdgwc_w-title-name3 fl">商品清单</p>
+						<p class="lh_wdgwc_w-title-mony3 fr" style="text-align: right;margin-right: 10px;"><a href="$!webPath/goods_cart1.htm">返回购物车></a></p>
+					</div>
+				</div>
+				<div class="lh_wdgwc_w-bond" style="padding: 0px;">
+					<div class="lh_wdgwc_w-bond-title">
+						<p class="lh_wdgwc_w-title-qx">
+						</p>
+						<p class="lh_wdgwc_w-title-name3" style="text-align: center;">商品</p>
+						<p class="w-title-time3">单价</p>
+						<p class="lh_wdgwc_w-title-time3">数量</p>
+						<p class="lh_wdgwc_w-title-time3">小计</p>
+						<!--<p class="lh_wdgwc_w-title-mony3">操作</p>-->
+					</div>
+				</div>
+				<script>
+					$(function () {
+						var every=document.getElementsByName("every");
+						var characters=0;
+						if(every.length>0){
+							for(var i=0; i<every.length; i++){
+								if(every[i].checked){
+									//alert(every[i].value);
+									characters+=parseFloat(every[i].value);
+								}
+							}
+							$("#jiliguala").text(characters)
+							$("#shalabaji").text(characters)
+							/*商品数量*/
+							var count=document.getElementsByClassName("Zzy")
+							var count2=0;
+							if(count.length>0){
+								for(var i=0;i<count.length;i++){
+									count2+=parseFloat(count[i].value);
+								}
+							}
+							$("#count").text(count2)
+						}
+
+						/*$("ul input[type='checkbox']").change(function () {
+							alert(22222)
+							var every=document.getElementsByName("every");
+							var characters=0;
+
+							if(every.length>0){
+								for(var i=0; i<every.length; i++){
+
+									if(every[i].checked){
+										//alert(every[i].value);
+										characters+=parseFloat(every[i].value);
+									}
+								}
+								$("#jiliguala").text(characters)
+								$("#shalabaji").text(characters)
+							}
+						})*/
+					})
+				</script>
+				#foreach($!gc1 in $sc)
+				<input name="storeid" type="hidden" id="storeid" value="$!store.id"/>
+				<div class="lh_wdgwc_w-bond-jd">
+					<div class="lh_wdgwc_w-bond-155" style=" width:35px;margin-top: 0px; margin-left: 10px;">
+						<label><input type="checkbox" value="" disabled="disabled" id="$!gc1.store.id" onclick="xuanD(this.id)" name="data[cookie]" checked ="checked"></label>
+					</div>
+					<div class="lh_wdgwc_w-bond-jd_bt">
+						<span>商家名称：$!store.store_name</span>
+						<!--<a href="#">QQ客服</a>-->
+						<a href="http://wpa.qq.com/msgrd?v=3&uin=$!{store.store_qq}&Site=$!{store.store_name}&Menu=yes">QQ客服</a>
+						<!--<a href="#">优惠卷</a>-->
+					</div>
+					<div class="lh_wdgwc_w-bond-jd_jrdp">
+						<a href="$!webPath/store_$!{store.id}.htm">进入店铺></a>
+					</div>
+				</div>
+				#foreach($gc in $gc1.gcs)
+				<div class="lh_wdgwc_w-bond-list1 fl" style=" border-top:2px solid #f9cf75;width: 1198px">
+					<div class="lh_wdgwc_w-bond-info1">
+						<div class="lh_wdgwc_w-bond-155">
+							#set($total_price=$!gc.count * $!gc.price)
+							#if($!gc.goods.gc.bc_location=="4")
+							#foreach($obj in $obj)
+							#if($!obj.goods.id==$!gc.goods.id)
+							#set($total_price=$!gc.count * $!gc.price - $!obj.coupon.coupon_amount)
+							#end
+							#end
+							#end
+							<label><input type="checkbox" id="__$!gc.id" disabled="disabled" name="every" checked="checked	" value="$!total_price" class="_$!gc1.store.id"></label>
+						</div>
+						<div class="lh_wdgwc_w-bond-16" style="width: 370px">
+							<div class="lh_wdgwc_w-bond-img1 fl">
+								<a href="$!webPath/goods_$!{gc.goods.id}.htm"><img src="$!imageWebServer/$!gc.goods.goods_main_photo.path/$!{gc.goods.goods_main_photo.name}_small.$!{gc.goods.goods_main_photo.ext}" /></a>
+							</div>
+							<div class="lh_wdgwc_w-bond-name1 fl">
+								<a href="$!webPath/goods_$!{gc.goods.id}.htm">$!CommUtil.substring("$!{gc.goods.goods_name}",20)</a>
+								<span><i>$!gc.spec_info</i></span>
+							</div>
+							<div class="w-clear"></div>
+						</div>
+						<div class="lh_wdgwc_w-bond-17">
+							<span>$!gc.price</span>
+						</div>
+						<div class="lh_wdgwc_w-bond-17">
+							<span>
+								<input class=" Zzy" style="width: 30px;height: 26px;text-align: center" name="goods_count_$!{gc.id}" type="text" id="goods_count_$!{gc.id}" value="$!gc.count" cart_id="$!gc.id" store_id="$!sc1.store.id" goods_count="$!gc.count" readonly="readonly"/>
+							</span>
+								<!--<button class="mui-btn mui-btn-numbox-minus" type="button" style="width: 24px;">
+									<span><a href="javascript:void(0);" id="count_down_$!gc.id" cart_id="$!gc.id" store_id="$!gc1.store.id"><img src="$!imageWebServer/resources/style/system/front/default/images/jian.jpg" width="12" height="12" /></a></span>
+								</button>-->
+
+								<!--<button class="mui-btn mui-btn-numbox-plus" type="button" style="width: 24px;">-->
+									<!--<span><a href="javascript:void(0);" id="count_up_$!gc.id" cart_id="$!gc.id" store_id="$!gc1.store.id"><img src="$!imageWebServer/resources/style/system/front/default/images/add.jpg" width="12" height="12" /></a></span>-->
+								<!--</button>-->
+						</div>
+						#set($total_price=$!gc.count * $!gc.price)
+						<div class="lh_wdgwc_w-bond-19"id="goods_total_price_$!{gc.id}" style="margin-right: 40px">
+							#if($!gc.goods.gc.bc_location=="4")
+							#foreach($obj in $obj)
+							#if($!obj.goods.id==$!gc.goods.id)
+							#set($total_price=$!gc.count * $!gc.price - $!obj.coupon.coupon_amount)
+							优惠券：$!obj.coupon.coupon_amount<br> #else优惠券：未领取<br>
+							#end
+							#end
+							#end
+							¥$!{total_price}
+						</div>
+						<!--<div class="lh_wdgwc_w-bond-20" style="float: right">
+							<a  href="javascript:void(0);" onclick="cart_remove('$!gc.id','$!gc1.store.id');" class="cart_common">删除</a>
+						</div>-->
+						<div class="w-clear"></div>
+					</div>
+				</div>
+				#end
+
+
+				<div class="lh_wdgwc_w-bond">
+					<div class="lh_wdgwc_w-bond-title01">
+
+						<p class="lh_wdgwc_w-title-name33 fl">店铺优惠
+						  <!-- <select name="" class="lbcd2">
+									<option value="平台商城">不使用优惠劵</option>
+									<option value="平台商城">不使用优惠劵</option>
+									<option value="平台商城">不使用优惠劵</option>
+								</select>-->
+
+							<select name="coupon_idZ" id="zzy" pro="is" onchange="youhuiquan()"  class="lbcd2">
+								<option value="" selected="selected" id="0">请选择优惠券</option>
+								#set($a=1)
+								#if($!li.size()>0)
+								#set($a=2)
+								#end
+								#if($!a==2)
+								#foreach($inf in $li)
+								<option value="$!inf.coupon.coupon_amount" id="$!inf.id">$!inf.coupon.coupon_name[$!inf.coupon.coupon_amount]</option>
+								#end
+								#end
+								#if($!a==1)
+								<option value="0" id="-1">暂无可用的优惠券</option>
+								#end
+							</select>
+						</p>
+
+
+						#if($!goods_delivery)
+						<p class="lh_wdgwc_w-title-mony3 fr" style="text-align: right;margin-right: 20px;">
+						<ul>
+							<li>
+								<span style="margin-bottom:5px;" >配送方式：</span>
+								<select onchange="lalii()" name="ship_price" style="width:110px;" id="zzy1">
+									<option value="-1" selected="selected" id="0" name="cart">请选择配送方式</option>
+									#set($ship_price=0)
+									#foreach($sm in $transportTools.query_cart_trans($!gc1,"$!addr_id"))
+									#if($!velocityCount==1)
+									#set($ship_price=$!sm.value)
+									#end
+									<option value="$!sm.value" id="$!sm.key" name="$!gc1.id">$!sm.key</option>
+									#end
+								</select>
+							</li>
+						</ul>
+							<!--快递￥8.00-->
+						</p>
+						#end
+					</div>
+				</div>
+
+				<!--单店铺结束-->
+
+
+				<div class="lh_wdgwc_w-bond" style=" padding: 0px;">
+					<div class="lh_wdgwc_w-bond-title01">
+						<p class="lh_wdgwc_w-title-name33 fl">给卖家留言：
+						   <input  class="q1" name="liuyan" type="text"  placeholder="对本次交易的说明"  style="border: 0px; background: none;">
+						</p>
+					</div>
+				</div>
+				#end <!--//店铺循环结束-->
+
+				#if($!qian>0)
+				<div class="lh_wdgwc_jf">
+					<span>可用$!integ积分抵￥$!qian</span>
+					<div class="lh_wdgwc_w-bond-155 fr" style=" width:35px;margin-top: 10px; ">
+						<label><input type="checkbox" id="qian" onchange="isN(this.value)" name="jifen" value="$!qian"></label>
+						<input type="hidden" id="qianShu" readonly="readonly">
+					</div>
+				</div>
+				#end
+
+				<div class="lh_wdgwc_tjdd_zong">
+				<div class="lh_wdgwc_tjdd">
+					<p>
+						<span>共<i id="count">0</i>件商品</span>
+						<span>总商品金额：¥<i id="jiliguala">0.00</i></span>
+					</p>
+					<p>
+						<span>运费金额：¥<i id="yunfei">0</i></span>
+					</p>
+					<p>
+						<span>优惠劵金额：¥<i id="yunhui">0</i></span>
+					</p>
+					<p>
+
+						<span>应付金额：¥<i id="shalabaji" style="font-size: 24px;">0</i></span>
+					</p>
+				</div>
+				<div class="lh_wdgwc_tjdd_tjan">
+					<input name="order_save" type="button" value="提交订单" onclick="save_order();" style="width: 180px;height: 45px;background-color: #ff4400;color: white;font-size: 16px" id="order_save"/>
+
+					<input name="idss" type="hidden" id="ca" value="$!ids" />
+					<input name="yingfu" type="hidden" id="yingfujine"/>
+					<!--<input name="goods_amount" type="hidden" id="goods_amount" value="$!{sc.total_price}" />-->
+					<input name="jifenshu" type="hidden" id="jifen" value="$!integ"/>
+					<input name="yunshufangshi" type="hidden" id="yunshufangshi"/>
+					<input name="coupon_id" type="hidden" id="coupon_id"/>
+					<input name="che" type="hidden" id="che" value="$!che"/>
+					<!--<input name="cart_session" type="hidden" id="cart_session" value="$!cart_session" />-->
+					<input name="cart_id" type="hidden" id="" value="$!gc1.id" />
+				</div>
+				</div>
+
+			</ul>
+		</div>
+		</div>
+		</div>
+	</form>
+		<script>
+			//是否积分兑换
+			function isN(count) {
+				if($("#zzy1").val()==-1){
+					if($("input[type='checkbox']").is(':checked')==true){
+						$("#qian").removeAttr("checked");
+					}
+					alert("请先选择配送方式！");
+					$("input[type='checkbox']").attr('checked',false);
+					return;
+				}
+				if($("#qian").is(":checked")){
+					$("#qianShu").val($("#shalabaji").html());
+					var shalabaji = 0;
+					if(parseFloat($("#shalabaji").text())>parseFloat(count)){
+						$("#jifenshu").val(count)
+						shalabaji=parseFloat($("#shalabaji").html()) - parseFloat(count);
+						$("#shalabaji").text(shalabaji);
+						$("#yingfujine").val(shalabaji);
+					}else{
+						$("#jifenshu").val($("#qianShu").val())
+						shalabaji=parseFloat(count) - parseFloat($("#shalabaji").html());
+						$("#shalabaji").text("0");
+						$("#yingfujine").val("0");
+					}
+				}else {
+					$("#jifenshu").val(0)
+					var money = $("#qianShu").val();
+					$("#shalabaji").text(money)
+					$("#qian").removeAttr("checked");
+				}
+			}
+			function lalii() {
+				var money = $("#shalabaji").html();
+				var yunshufangshi=$(":selected","#zzy1").attr("id");
+				if(yunshufangshi!="-1") {
+					$("#yunshufangshi").attr("value", yunshufangshi);
+					//页面加载完毕计算总运费并且写入地方
+					var he = document.getElementsByName("ship_price");
+					var yunfeihe = 0;
+					if (he.length > 0) {
+						for (var i = 0; i < he.length; i++) {
+							yunfeihe += parseFloat(he[i].value);
+						}
+					}
+					var yunfei = $("#yunfei").html();
+					if(yunfei == 0){
+						money = Number(money) - Number(yunfeihe);
+						$("#yunfei").text(yunfeihe);
+					}else{
+						money = Number(money) + Number(yunfei) - Number(yunfeihe);
+						$("#yunfei").text(yunfeihe);
+					}
+					$("#shalabaji").text(money);
+				}else{
+					$("#yunshufangshi").attr("value", "");
+					var yunfei = $("#yunfei").html();
+					money = Number(money) + Number(yunfei);
+					$("#yunfei").text(0);
+					$("#shalabaji").text(money);
+				}
+				$("#yingfujine").val(money);
+			}
+
+			function youhuiquan() {
+				var money = $("#shalabaji").html();
+				var youhuihe=0;
+				/*--------------获取优惠券的id----------------*/
+				var ci_id=$(":selected","#zzy").attr("id");
+				if(ci_id!=0){
+					//把优惠券id赋值传到后台
+					$("#coupon_id").attr("value",ci_id);
+					//优惠券值改变的时候获取所有优惠券的和
+					var you=document.getElementsByClassName("lbcd2");
+					if(you.length>0){
+						for(var i=0;i<you.length;i++){
+							youhuihe+=parseFloat(you[i].value);
+							//alert(you[i].value)
+						}
+					}
+					var yunhui = $("#yunhui").text();
+					if(yunhui == 0 ){
+						money = Number(money) - Number(youhuihe);
+					}else{
+						money = Number(money) + Number(yunhui) - Number(youhuihe);
+					}
+					$("#yunhui").text(youhuihe);
+					$("#shalabaji").text(money);
+				}else{
+					$("#coupon_id").attr("value","");
+					var yunhui = $("#yunhui").html();
+					money = Number(money) + Number(yunhui);
+					$("#yunhui").text(0);
+					$("#shalabaji").text(money);
+				}
+				$("#yingfujine").val(money);
+			}
+		</script>
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+		<script src="$!webPath/resources/new_pc/js/mui.js"></script>
+		<script>
+			mui.init();
+			/*document.getElementById("btn").addEventListener('tap', function(event) {
+				mui.alert('当前值: ' + document.getElementById("box").value, null, "提示");
+			});
+			var testBox = document.getElementById("test");
+			testBox.addEventListener('change', function() {
+				console.log(testBox.value);
+			});*/
+		</script>
+		<script>
+		$(function(){
+			$(".suggest-address").click(function(){
+				$(".suggest-address").removeClass("addr-cur");
+				$(".suggest-address").removeClass("addr-def");
+				$(this).addClass("addr-cur");$(this).addClass("addr-def");
+				$("#addr_id").val($(this).attr("id"))
+//				$(this).addClass("addr-cur").siblings("div").removeClass("addr-cur");
+//				$(this).addClass("addr-def").siblings("div").removeClass("addr-def");
+//				alert($(".addr-cur").attr("id"))
+			})
+		})
+		</script>
+	</body>
+</html>

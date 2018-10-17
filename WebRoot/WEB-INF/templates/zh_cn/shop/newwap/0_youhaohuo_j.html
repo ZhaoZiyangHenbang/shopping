@@ -1,0 +1,25 @@
+#if($!objs.size()>0)
+#foreach($obj in $objs)
+#if($!obj.bg_goods.goods_main_photo)
+#set($img="$!imageWebServer/$!{obj.bg_goods.goods_main_photo.path}/$!{obj.bg_goods.goods_main_photo.name}")
+#else
+#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+#end
+<li>
+	<div class="img_list_pic"><a href="$!webPath/second/veryGoodGoods_detail.htm?id=$!obj.id"><img src="$!img" /></a></div>
+	<div class="img_list_tex">
+		<p><a href="$!webPath/second/veryGoodGoods_detail.htm?id=$!obj.id" style="color: black">$!CommUtil.substring("$!obj.bg_goods.goods_name",20)</a></p>
+		<p class="img_list_price">¥$!{obj.bg_goods.store_price}</p>
+		<p class="mui-icon-extra-like img_list_praise">
+			<a href="javaScript:;" id="$!{obj.bg_goods.id}" onclick="guanzhu(this.id)"  #if(!$!user)dialog_uri="$!webPath/user_dialog_login.htm" dialog_title="会员登录" dialog_width="450" dialog_height="100" dialog_id="user_login"#end>
+				<i class="icon iconfont " style="font-size: 18px; padding-right: 10px;" id="_$!{obj.id}">&#xe6a4;</i>
+				<i class="icon iconfont " style="font-size: 18px; padding-right: 10px;color:red;display: none" id="__$!{obj.id}">&#xe6a4;</i>
+			</a>
+			$!{obj.bg_goods.goods_zan}人点赞</p>
+	</div>
+
+</li>
+
+#end
+#end
+<input type="hidden" value="$!currentPage" name="currentPage" id="currentPag">

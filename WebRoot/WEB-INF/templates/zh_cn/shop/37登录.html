@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script>
+			jQuery(document).ready(function(){
+				jQuery("#theForm").validate({
+					errorPlacement:function(error,element) {
+						error.appendTo(element.parent().find(".login_error_sp"));
+						element.parent().find(".login_error_sp").show('normal');
+					},
+					success:function(label){
+						label.parent().hide();
+					},
+					rules: {
+						username: "required",
+						password: "required"#if($!config.securityCodeLogin),
+				code:"required"#end},
+				messages: {
+					username: "用户名不能为空",
+							password: "密码不能为空"#if($!config.securityCodeLogin),
+					code:"验证码不能为空"#end
+				}
+			});
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<!-- heard -->
+		<div id="header_form" style="border-bottom: 2px solid #c7171e;">
+			<div class="head_width" id="head_h">
+				<div class="head clearfix">
+					<div class="logo">
+						<a href="#"><img src="$!webPath/resources/new_pc/images/logo.png" border="0"> </a>
+					</div>
+					<div class="lh_touxiang"><img src="$!webPath/resources/new_pc/images/lh_13.jpg" /></div>
+					<div class="lh_zcdl">登录</div>
+					<div class="lh_zcdl_right">感谢您对我们的认可！</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- heard结束 -->
+
+		<div class="lh_zcdl_nrbj">
+			<div class="main">
+				<div class="login_cont_ny_r">
+				<div class="login_cont_ny_r_t">
+					<div class="login_cont_ny_r_t_l">登录</div>
+					<div class="login_cont_ny_r_t_r">还未注册,
+						<a href="$!webPath/register.htm"><span style="color:#ff5165;">立即注册</span></a>
+					</div>
+				</div>
+					<form action="$!webPath/shopping_login.htm" method="post" name="theForm" id="theForm">
+				<div class="login_cont_ny_r_m">
+					<!--<input name="" type="text" value="账号" class="login_bk" />-->
+					<input name="username" type="text" id="username" class="login_bk"  value="账号"autocomplete="off" />
+				<!--	<input name="" type="text" value="密码" class="login_bk1" />-->
+					<input name="password" type="password" id="password"  autocomplete="off"  value="密码"class="login_bk1" />
+					<div class="login_cont_ny_r_wz">
+						<div class="login_cont_ny_r_wz_input"><input name="" type="checkbox" value="" />自动登录</div>
+						<a href="$!webPath/forget.htm">忘记密码</a>
+					</div>
+
+				</div>
+				<div class="login_cont_ny_r_b">
+					 <input name="" type="submit" class="login_userbtn" value="登录"/>
+				</div>
+					</form>
+					#if($!{config.sina_login}||$!{config.qq_login})
+					<div class="login_cont_ny_r_xy">使用合作方账号登录：
+						#if($!{config.qq_login}) <a href="$!webPath/qq_login_api.htm" target="_blank"><span><i class="icon iconfont" style="color: #e4393c; font-size: 31px; margin-left: 5px;">&#xe606;</i></span></a>#end
+						#if($!{config.sina_login}) <a href="$!webPath/sina_login_api.htm" target="_blank"><span><i class="icon iconfont" style="color: #0da326; font-size: 28px; margin-left: 5px;">&#xe71d;</i></span></a>#end
+						#end
+					</div>
+
+				<div class="login_cont_ny_r_b on">
+					<a href="$!webPath/register.htm">注册</a>
+				</div>
+			</div>
+		
+			</div>
+		</div>
+
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		$!uc_logout_js
+		<!--footer结束-->
+	</body>
+
+</html>

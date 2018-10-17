@@ -1,0 +1,94 @@
+﻿.tcbj{position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 1;
+    -webkit-transition: opacity .3s;
+    transition: opacity .3s;}
+.gb_resLay { background: #FFFFFF; width: 100%;  margin: 0 auto;  position: fixed; bottom: 0; z-index: 100}
+.gb_res_t { line-height: 1.0rem;height: 1.0rem; position: relative;font-size: 0.65rem;text-align: center;}
+.gb_res_t i { background: #FFEC94; height: 1px; overflow: hidden; left: 32px; top: 30px; right: 32px; position: absolute; }
+.gb_res_t span { background: #FFF; display: inline-block; padding: 0px 6px; position: relative; z-index: 2; }
+.gb_resItms { margin: 3% 4%; }
+.gb_resItms li { text-align: center; float: left; width: 20%; padding-bottom: 15px; font-size: 0.6rem;  padding-top: 10px;}
+.gb_resA img { height: auto; width: 60px; margin-bottom: 10px; }
+
+@media only screen and (max-width: 500px) {
+.gb_resA img { width: 45px; margin-top: 5px; }
+}
+
+@media only screen and (max-width: 470px) {
+.gb_resItms li { width: 33.333%; }
+.gb_resLay { height: 290px; }
+.gb_resA img { width: 60px; margin-top: 0 }
+}
+
+.toolbar {
+  position: relative;
+  width: 100%;
+  font-size: .85rem;
+  line-height: 1.5;
+  color: #3d4145;
+  background: #f7f7f8;
+}
+.toolbar:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: auto;
+  right: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #d9d9d9;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 0%;
+          transform-origin: 50% 0%;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .toolbar:before {
+    -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .toolbar:before {
+    -webkit-transform: scaleY(0.33);
+            transform: scaleY(0.33);
+  }
+}
+.toolbar .toolbar-inner {
+  height: 2.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  text-align: center;
+}
+.toolbar .title {
+  position: absolute;
+  display: block;
+  width: 100%;
+  padding: 0;
+  font-size: .85rem;
+  font-weight: normal;
+  line-height: 2.2rem;
+  color: #3d4145;
+  text-align: center;
+  white-space: nowrap;
+}
+.toolbar .picker-button {
+  position: absolute;
+  right: 0;
+  box-sizing: border-box;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  color: #e63b53;
+  z-index: 1;
+  padding: 0 .5rem; font-family: "微软雅黑";
+}

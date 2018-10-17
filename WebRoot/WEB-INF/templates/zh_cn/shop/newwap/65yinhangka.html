@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script>
+			function tianjia() {
+				$(".main").hide();
+				$("#light").show();
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<!--//header开始-->
+		<header>
+			<div class="hdindex">
+				<span class="lh_back" ><a href="$!webPath/buyer/account.htm"><i class="icon iconfont">&#xe601;</i></a></span>
+				<span>银行卡管理</span>
+			</div>
+		</header>
+		<!--header结束//-->
+		<div class="main">
+			#foreach($obj in $objs)
+			<div class="dizhi_box">
+				<dl>
+					<dt mark="$!obj.id">
+
+					<h3><strong style="margin-right: 200px;">$!obj.trueName</strong> <strong >$!obj.BankCardnumber</strong></h3><b>$!obj.bank_addr</b>
+					<!--#set($address="$!obj.area.parent.parent.areaName $!obj.area.parent.areaName $!obj.area.areaName")-->
+					<!--<span>$!address<br>$!obj.area_info</span>-->
+					</dt>
+					<div class="dizhi_foot">
+
+						<a class="fr" href="$!webPath/buyer/bank_edit.htm?id=$!obj.id" ><i class="icon iconfont">&#xe6e5;</i> 编辑</a>
+						<dd>
+							<a href="javascript:void(0);" id="$!obj.id" onclick="moren(this.id)" #if($!obj.isdefaut==1) class="onn w-mrdz" #else class="onn" #end><input name="radio1" class="checkbox2" type="radio" />默认卡号</a>
+							<span class="fr"><a href="javascript:void(0);" onclick="if(confirm('删除后不可恢复，是否继续?'))window.location.href='$!webPath/buyer/account_bank_del.htm?id=$!obj.id&currentPage=$!currentPage'"><i class="icon iconfont">&#xe602;</i> 删除</a></span>
+						</dd>
+					</div>
+				</dl>
+			</div>
+			#end
+			<button class="lx_btn">+<a href="$!webPath/buyer/account_bank_add_a.htm">添加银行卡</a>
+				</button>
+		</div>
+		<script>
+			function moren(id) {
+				jQuery.ajax({
+					type:'POST',
+					url:"$!webPath/buyer/bank_change.htm?id="+id,
+					beforeSend:function(){
+					},
+					success:function(data){
+						var result=eval("("+data+")");
+						var ss = result.cheng;
+						alert(ss);
+						$(".onn").attr("class","onn")
+						$("#"+id).attr("class","onn w-mrdz")
+					}
+				})
+			}
+			function check() {
+				$("#form").submit();
+			}
+			function checkname() {
+				var names=	$("#name").val();
+				var reg=/^[\u4e00-\u9fa5]{2,4}$/;
+				if (names==""){
+					alert("请输入持卡人姓名");
+					$("#name").focus();
+					return false;
+				}if(!reg.test(names)){
+					alert("请正确输入姓名,必须为中文,至少2个汉字最多4个汉字");
+					$("#name").focus();
+					return false;
+				}
+				return true;
+			}
+		</script>
+
+
+
+		<div id="light" class="fn_sign w-box1 w-box2" style="display:none;">
+			<div class="w-box-tit">
+				<!--<h3>添加/修改银行卡</h3>-->
+				<a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" class="w-close"></a>
+			</div>
+			<form action="$!webPath/buyer/account_bank_add.htm" method="post" id="form">
+				<!--<div class="w-set">
+
+					<div class="h_revise1">
+						<dl>
+							<dt>持卡人:</dt>
+							<dd><input type="text" class="h_datum_input11"  name="trueName" value="$!obj.trueName" style="width: 500px;height: 40px"/>
+								<input type="hidden" name="id" value="$!obj.id">
+								<input type="hidden" name="area_id" value="$!area.id">
+							</dd>
+						</dl>
+						<dl>
+							<dt>银行:</dt>
+							<dd>
+								&lt;!&ndash;<select name="" id="" class="h_revise_select1">&ndash;&gt;
+								&lt;!&ndash;<option value="">中国建设银行</option>&ndash;&gt;
+								&lt;!&ndash;</select>&ndash;&gt;
+								<input type="text" class="h_datum_input11" name="backname" value="$!obj.back" style="width: 500px;height: 40px">
+							</dd>
+						</dl>
+						<dl>
+							<dt>卡号:</dt>
+							<dd><input type="text" class="h_datum_input11" name="backnum" value="$!obj.BankCardnumber"  style="width: 500px;height: 40px"/></dd>
+						</dl>
+
+						<dl>
+							<dt></dt>
+							<dd style="color: #999;">
+								<i><img src="images/icon/icon_41.png"/></i> 手续费（个人所得税及管理费）：2.00元;
+							</dd>
+						</dl>
+						<dl>
+							<dt>开户行:</dt>
+							<dd><input type="text" class="h_datum_input11"  style="width: 500px;height: 40px"/></dd>
+						</dl>
+
+					</div>
+				</div>
+				<div class="w-pro-icon"><input type="submit" value="确定" class="w-cofirm" style="width: 550px;height: 50px;background-color:#e54249;font-size: 20px;"/>
+					</div>-->
+				<div class="huiyuan_xh">
+					<label>持卡人：</label>
+					<input type="text" placeholder="" name="trueName" value="$!obj.trueName"  id="name" onblur="checkname()">
+					<input type="hidden" name="id" value="$!obj.id">
+					<input type="hidden" name="area_id" value="$!area.id">
+				</div>
+				<div class="huiyuan_xh">
+					<label>卡&nbsp;&nbsp;&nbsp;号：</label>
+					<input type="text" placeholder="" name="backnum" value="$!obj.BankCardnumber">
+				</div>
+				<div class="huiyuan_xh">
+					<label>卡类型：</label>
+					<input type="text" placeholder="如招商银行、中国银行" name="backname" value="$!obj.back">
+				</div>
+				<div class="huiyuan_xh">
+					<label>开户行：</label>
+					<input type="text" placeholder="" name="bank_addr" value="$!obj.bank_addr">
+					<input type="hidden" name="type" value="1">
+				</div>
+			</form>
+			<button class="lx_btn" onmousedown="check()">保存</button>
+		</div>
+		<div id="fade" class="black_overlay1"></div>
+
+
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span></a>
+		</div>
+
+
+
+	</body>
+
+</html>

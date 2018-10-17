@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--//header开始-->
+		<header>
+			<div class="hdindex">
+				<span class="lh_back"style="cursor: pointer" onclick="window.location.href='$!webPath/second/fenxiao.htm'"><i class="icon iconfont">&#xe601;</i></span>
+				<span>分销商</span>
+				<span class="lh_xiala" id="stateBut" data-show="hide"><i class="icon iconfont">&#xe67b;</i></span>
+				<div id="class1content" style="display: none;">
+					$!httpInclude.include("/wap/wap_navv.htm")
+				</div>
+			</div>
+		</header>
+		<!--header结束//-->
+
+		<!--//销售提成-->
+		<div class="lh_fxs">
+			<div class="hd">
+				<ul>
+					<li class="firstMerchant">一级分销商</li>
+					<li class="twoMerchant">二级分销商</li>
+					<li class="threeMerchant">三级分销商</li>
+				</ul>
+			</div>
+			<div class="bd">
+				<!--//一级分销商-->
+				<ul>
+					<div class="add tgar">
+						<!--<div class="query">
+							<form>
+								<div class="query_date">
+									<input type="text" placeholder="手机号/姓名">
+								</div>
+								<div class="query_date_bom">
+									<a href="#">查询</a>
+								</div>
+							</form>
+						</div>-->
+						<div class="add_nr">
+							<div class="add_nr_hj borb">分销商统计</div>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr class="bort3 ">
+									<td class="borb2">今日</td>
+									<td class="borb2">昨日</td>
+									<td class="borb2">本周</td>
+									<td class="borb2">本月</td>
+									<td>全部</td>
+								</tr>
+								<tr class="bort3 ">
+									<td class="borb2">$!toDay</td>
+									<td class="borb2">$!yesterday</td>
+									<td class="borb2">$!thisWeek</td>
+									<td class="borb2">$!month </td>
+									<td>$!all</td>
+								</tr>
+								
+							</table>
+						</div>
+					</div>
+					<div class="order tgar">
+						<div class="order_bh ">
+							#foreach($obj in $user)
+							<p>手 机：<span>$!obj.telephone</span></p>
+							<p>姓 名：<span>$!obj.trueName</span></p>
+							<p>等级：<span>$!obj.rank</span></p>
+							<p>注册时间：<span>$!CommUtil.formatLongDate($!obj.addTime)</span></p>
+							#end
+						</div>
+					</div>
+				</ul>
+			</div>
+		</div>
+		<!--<script type="text/javascript">
+			jQuery(".lh_fxs").slide();
+		</script>-->
+		<!--销售提成//-->
+
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span></a>
+		</div>
+
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+		<script>
+			if("$!type"=="1"){
+				$(".firstMerchant").addClass("on");
+				$(".twoMerchant").removeClass("on");
+				$(".threeMerchant").removeClass("on");
+				$(".add_nr").css("display","none");
+			}
+			if("$!type"=="2"){
+				$(".firstMerchant").removeClass("on");
+				$(".twoMerchant").addClass("on");
+				$(".threeMerchant").removeClass("on");
+			}
+			if("$!type"=="3"){
+				$(".firstMerchant").removeClass("on");
+				$(".twoMerchant").removeClass("on");
+				$(".threeMerchant").addClass("on");
+			}
+			$(".firstMerchant").click(function () {
+				window.location.href = "$!webPath/second/fenxiaoshang.htm?type=1";
+			})
+			$(".twoMerchant").click(function () {
+				window.location.href = "$!webPath/second/fenxiaoshang.htm?type=2";
+			})
+			$(".threeMerchant").click(function () {
+				window.location.href = "$!webPath/second/fenxiaoshang.htm?type=3";
+			})
+		</script>
+	</body>
+
+</html>

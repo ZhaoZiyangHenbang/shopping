@@ -1,0 +1,168 @@
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--//header开始-->
+		<header>
+			<div class="hdindex">
+				<span class="lh_back" a href="#" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i></span>
+				<span>手机绑定</span>
+			</div>
+		</header>
+		<!--header结束//-->
+		<script>
+			function updateP() {
+				var telephone=$("#telephone").val();
+				var yzm=$("#yzm").val();
+				var password=$("#password").val();
+				var sendYzm=$("#sendYzm").val();
+				if(password==null||password==""){
+					alert("请输入密码!");
+				} else if (telephone==null||telephone=="") {
+					alert("请输入手机号!");
+				}else if (yzm==null||yzm=="") {
+					alert("请输入验证码!");
+				}else {
+                    jQuery('#theForm').submit();
+				}
+			}
+			/*获取验证码*/
+			var isPhone = 1;
+			function getCode(e) {
+                //验证手机号码
+                checkTelephone();
+                if (isPhone) {
+                    var telephone = $("#telephone").val();
+                    jQuery.ajax({
+                        type: 'post', async: false, url: '$!webPath/sendYzm/telephone.htm?telephone=' + telephone,
+                        beforeSend: function () {
+                        },
+                        success: function (data) {
+                            var result = eval("(" + data + ")");
+                            document.getElementById("telephoneStatus").value = result.info;
+                        }
+                    });
+                    var telephoneStatus = $("#telephoneStatus").val();
+                    if (telephoneStatus == '0') {
+                        alert("该手机号已绑定");
+                        return;
+                    }
+                    resetCode();//倒计时
+                    jQuery.ajax({
+                        type: 'post', url: '$!webPath/buyer/account_mobile_sms.htm?telephone=' + telephone,
+                        beforeSend: function () {
+                        },
+                        success: function (data) {
+                            var result = eval("(" + data + ")");
+                            document.getElementById("sendYzm").value = result.yzm;
+                        }
+                    });
+                } else {
+                    $('#telephone').focus();
+                }
+                //验证手机号
+                function checkTelephone() {
+                    var pattern = /^1[0-9]{10}$/;
+                    var telephone = $("#telephone").val();
+                    isPhone=1;
+                    if (telephone ==''||telephone==null) {
+                        alert('请输入手机号码');
+                        isPhone = 0;
+                        return;
+                    }
+                    if (!pattern.test(telephone)) {
+                        alert('请输入正确的手机号码');
+                        isPhone = 0;
+                        return;
+                    }
+                }
+                //倒计时
+                function resetCode() {
+                    $('#J_getCode').hide();
+                    $('#J_second').html('60');
+                    $('#J_second').show();
+                    var second = 60;
+                    var timer = null;
+                    timer = setInterval(function () {
+                        second -= 1;
+                        if (second > 0) {
+                            $('#J_second').html(second);
+                        } else {
+                            clearInterval(timer);
+                            $('#J_getCode').html("重新发送");
+                            $('#J_getCode').show();
+                            $('#J_second').hide();
+                        }
+                    }, 1000);
+                }
+            }
+		</script>
+			<form  class="lh_password" action="$!webPath/buyer/account_mobile_save_wap.htm" method="post" name="theForm" id="theForm">
+					<div class="lh_password_m">
+						<label>登录密码</label>
+						<input type="text" id="password" name="password" placeholder="请输入您的登录密码" >
+					</div>
+					<div class="lh_password_m">
+						<label>新手机号</label>
+						<input type="text" id="telephone" name="telephone" placeholder="请输入您的新手机号" >
+					</div>
+					<div class="lh_password_m w70 fl">
+						<label>验证码</label>
+						<input type="text" id="yzm" name="yzm" placeholder="验证码号" >
+						<input type="hidden" id="sendYzm" name="sendYzm" >
+						<input type="hidden" id="telephoneStatus" name="telephoneStatus">
+					</div>
+				<a href="#" class="fr lxx_huoqu on" id="J_resetCode" style="display: none;">重新发送</a>
+				<a href="#" class="fr lxx_huoqu on" id="J_second" style="display: none;">60</a>
+					<a style="background-color:#e54249" class="fr lxx_huoqu" href="#" id="J_getCode" onclick="getCode(this)">获取验证码</a>
+				</form>
+		<div class="clear"></div>
+		<button class="lx_btn" onclick="updateP()">保存</button>
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span></a>
+		</div>
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+	</body>
+</html>

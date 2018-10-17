@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		<link href="$!webPath/resources/style/common/css/jquery.rating.css" type="text/css" rel="stylesheet"/>
+		<link href="$!webPath/resources/style/common/css/overlay.css" type="text/css" rel="stylesheet" />
+		<link  href="$!webPath/resources/style/common/css/jquery-ui-1.8.22.custom.css" type=text/css rel=stylesheet>
+		<script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+		<script src="$!webPath/resources/js/jquery-ui-1.8.21.js"></script>
+		<script src="$!webPath/resources/js/jquery.metadata.js"></script>
+		<script src="$!webPath/resources/js/jquery.rating.pack.js" type="text/javascript" language="javascript"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+
+
+
+		<script>
+			jQuery(document).ready(function(){
+				#if($!{store.point.description_evaluate}>0)
+				jQuery(":radio.description_evaluate").each(function(){
+					var description_evaluate=$!{store.point.description_evaluate};
+					if(jQuery(this).val()>=description_evaluate){
+						jQuery(this).attr("checked","checked");
+						return false;
+					}
+				});
+  #end
+				jQuery("input.description_evaluate").rating();
+   #if($!{store.point.service_evaluate}>0)
+				jQuery(":radio.service_evaluate").each(function(){
+					var service_evaluate=$!{store.point.service_evaluate};
+					if(jQuery(this).val()>=service_evaluate){
+						jQuery(this).attr("checked","checked");
+						return false;
+					}
+				});
+  #end
+				jQuery("input.service_evaluate").rating();
+  #if($!{store.point.ship_evaluate}>0)
+				jQuery(":radio.ship_evaluate").each(function(){
+					var ship_evaluate=$!{store.point.ship_evaluate};
+					if(jQuery(this).val()>=ship_evaluate){
+						jQuery(this).attr("checked","checked");
+						return false;
+					}
+				});
+  #end
+				jQuery("input.ship_evaluate").rating();
+			});
+		</script>
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/headZ.htm")
+		<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				#if($!user.store && ($!{user.userRole})!="BUYER")
+				$!httpInclude.include("/second/leftZ.htm")
+					<div class="w-buyers">
+						<div class="w-buyers1">
+							<div class="w-buy-name">
+								<div class="title">店铺概述</div>
+								<div class="img"> #if($!user.store.store_logo)
+									#set($store_logo="$!webPath/$!{user.store.store_logo.path}/$!{user.store.store_logo.name}")
+									#else
+									#set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+									#end<img src="$!store_logo" /></div>
+								<div class="txt">
+									<h3><span>$!CommUtil.substring("$!{user.store.store_name}",12)</span></h3>
+									<p>$!areaViewTools.generic_area_info("$!user.store.area.id")</p>
+									<p>$!user.store.store_info</p>
+								</div>
+							</div>
+
+							<div class="w-buy-cs">
+								<div class="title">相关数据</div>
+								<ul>
+									<li>商品数量：  <span>$!goodsStoreAll</span></li>
+									<li>收藏数量：  <span>$!store.favorite_count</span></li>
+									<li>促销商品：  <span>$!cuxiao</span></li>
+									<li>店铺评分：  <span>$!store.store_credit</span></li>
+									<li>上新商品：  <span>$!news</span></li>
+									<li>订单数量：  <span>$!os</span></li>
+									<li>精选商品：  <span>$!fines</span></li>
+									<li>开店时间：  <span>$!CommUtil.formatShortDate($store.addTime)</span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				#set($order_count=0)
+				#set($order_wait_pay_count=0)
+				#set($order_wait_ship_count=0)
+				#set($order_wait_takeover_count=0)
+				#set($order_wait_evaluate_count=0)
+				#foreach($order in $store.ofs)
+				#if($order.order_status<60)
+				#set($order_count=$order_count+1)
+				#end
+				#if($!order.order_status==10)
+				#set($order_wait_pay_count=$order_wait_pay_count+1)
+				#end
+				#if($!order.order_status==20)
+				#set($order_wait_ship_count=$order_wait_ship_count+1)
+				#end
+				#if($!order.order_status==30)
+				#set($order_wait_takeover_count=$order_wait_takeover_count+1)
+				#end
+				#if($!order.order_status==50)
+				#set($order_wait_evaluate_count=$order_wait_evaluate_count+1)
+				#end
+				#end
+                    <div class="l-fr tgar">
+
+						<div class="w-title">
+							<h3>交易订单</h3>
+						</div>
+						<div class="lh_jytx">
+							<p>您需要立即处理的交易订单：</p>
+							<p>近期销售：<a href="$!webPath/seller/order.htm">交易中的订单</a>(<b>$!{order_count}</b>)     <!--<a href="$!webPath/seller/complaint.htm">维权订单</a>(<b>0</b>)--></p>
+						</div>
+						<div class="lh_jytx_tm">
+							<ul>
+								<li><a href="$!webPath/seller/order.htm?order_status=order_submit">待买家付款：（<span>$!{order_wait_pay_count}</span>）</a></li>
+								<li><a href="$!webPath/seller/order.htm?order_status=order_pay">待发货：（<span>$!{order_wait_ship_count}</span>）</a></li>
+								<li><a href="$!webPath/seller/order.htm?order_status=order_shipping">待卖家收货：（<span>$!{order_wait_takeover_count}</span>）</a></li>
+								<li><a href="$!webPath/seller/order.htm?order_status=order_evaluate">待卖家回复：（<span>$!order_wait_evaluate_count</span>）</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="l-fr tgar">
+						<div class="w-title">
+							<h3>店铺运营推广</h3>
+						</div>
+						<div class="lh_dpyytg">
+							<ul>
+								<li><a href="$!webPath/seller/group.htm"><img src="$!webPath/resources/new_pc/images/lh_17.png"/></a></li>
+								<li><a href="$!webPath/seller/bargain.htm"><img src="$!webPath/resources/new_pc/images/lh_18.png"/></a></li>
+								<li><a href="$!webPath/second/zeroShopList.htm"><img src="$!webPath/resources/new_pc/images/lh_19.png"/></a></li>
+								<li><a href="$!webPath/second/selfSay.htm"><img src="$!webPath/resources/new_pc/images/lh_20.png"/></a></li>
+								<li><a href="$!webPath/second/haveGoodGoods.htm"><img src="$!webPath/resources/new_pc/images/lh_21.png"/></a></li>
+							</ul>
+						</div>
+					</div>
+			#else
+			<div class="h_seat" >
+                <a href="">卖家中心</a>
+                <a href="">未开通</a>
+            </div>
+			<!--发布商品开始-->
+			<div class="lh_spfb" >
+				<div class="cart_main" style="margin-top: 50px">
+					<!--action="$!webPath/brandsServlet.htm"-->
+						<div class="lh_password_t">您现在还未开店，您可以提交资料，我们马上给您回复！</div>
+						<input type="text" placeholder="姓名" name="name" id="name" class="lh_password_m" style="margin-left: 264px">
+						<input type="text" placeholder="电话" name="tel" id="tel" class="lh_password_m" style="margin-left: 264px">
+						<input type="text" placeholder="商品描述" name="descripe" id="descripe" class="lh_password_m" style="margin-left: 264px">
+						<button class="lx_btn" id="lx_btn" style="width: 550px" onclick="save()">提交申请</button>
+				</div>
+			</div>
+			#end
+			</div>
+		</div>
+			<!--我是卖家_限时抢购管理结束-->
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+
+	</body>
+	<script>
+		function save() {
+			var a=$("#tel").val();
+			var rex=new RegExp("^1[3,5,7,8][0-9]{9}$");
+			if(rex.test(a)){
+				jQuery.post("$!webPath/brandsServletAjax.htm",{"name":$("#name").val(),"tel":$("#tel").val(),"descripe":$("#descripe").val()},
+					function(data){
+						var result=eval("("+data+")");
+						var ss = result.msg;
+						alert(ss);
+						window.location.href='$!webPath/index.htm';
+					},"text");
+			}else{
+				alert("请正确输入手机号码")
+				return false;
+			}
+		}
+	</script>
+</html>

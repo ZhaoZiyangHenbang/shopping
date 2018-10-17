@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+	<!-- top -->
+	$!httpInclude.include("/second/topZ.htm")
+	<!-- top结束 -->
+
+	<!-- heard -->
+	$!httpInclude.include("/second/headZ.htm")
+	<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				<!--<div class="h_seat">
+					<a href="">首页</a>>
+					<a href="">卖家中心</a>
+				</div>-->
+				<!--我是买家-->
+				<div class="h_content">
+
+					<div class="l-fr">
+						<div class="w-title">
+							<h3>申请提现</h3>
+						</div>
+					<div class="h_revise">
+						<dl >
+						   <dt style="font-weight: bold;">可提现金额:</dt>
+						   <dd style="font-weight: bold; color: #c7171e;">￥<span id="may">$mayWithdraw</span></dd>
+						</dl>
+						<dl>
+							<dt>提现金额:</dt>
+							<dd><input type="text" class="h_datum_input1" id="money" /></dd>
+						</dl>
+						<dl>
+							<dt>银行卡号:</dt>
+							<dd><!--<input type="text" class="h_datum_input1" id="bankCard" value="$!obj.BankCardnumber"/>-->
+								<select name="selectAge" id="selectAge" class="h_datum_input1" style="width: 352px;height: 40px">
+									<option value="-1">请选择银行卡</option>
+									#foreach($add in $obj)
+									<option value="$!add.id" >$!add.BankCardnumber</option>
+									#end
+								</select>
+							</dd>
+						</dl>
+						<dl >
+							<dt>开户银行:</dt>
+							<dd><input type="text" class="h_datum_input1" id="bankName" readonly placeholder="请选择银行卡"/></dd>
+						</dl>
+						<dl>
+							<dt></dt>
+							<dd style="color: #999;">
+								<i ><img src="$!webPath/resources/new_pc/images/icon/icon_41.png"/></i>
+								手续费（个人所得税及管理费）：2.00元;
+							</dd>
+						</dl>
+						<dl>
+							<dt></dt>
+							<dd style="color: #999;"><i><img src="$!webPath/resources/new_pc/images/4.jpg"/></i>每次提现最低金额￥100.00，每日最高提现金额￥50000.00</dd>
+						</dl>
+						<dl>
+							<dt></dt>
+							<dd style="color: #999;"><i><img src="$!webPath/resources/new_pc/images/4.jpg"/></i>实际扣除可提现金额：￥<span id="reality" class="red"></span></dd>
+						</dl>
+
+						<dl>
+						<dt></dt>
+						<dd>
+							<button type="button" class="btn btn-danger">提交申请</button>
+						</dd>
+					</dl>
+				</div>
+			</div>
+
+		</div>
+	</div><!--我是买家-->
+
+</div>
+</div>
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+	<script>
+		if("${address}".indexOf("$")==-1){
+			$("#bankName").val("${address.Bank}");
+			$("#selectAge option").each(function(i,n){
+				if($(n).text()=="${address.BankCardnumber}"){
+					$(n).attr("selected",true);
+				}
+			})
+		}
+
+		$(".btn-danger").click(function () {
+			var mayWithdraw = $("#may").text();
+			var money = $("#money").val();
+			if("" != money){
+				if(!isNaN(money)){
+					if(Number(mayWithdraw)-(Number(money)+2)>0){
+						if($("#selectAge").val()!=-1){
+							jQuery.ajax({type:'POST',url:'$!webPath/second/addtixian.htm',
+								data:{"Money":money,"bankName":$("#bankName").val(),"bankCard":$("#selectAge").val()},
+								success:function(data){
+									if(data=="true"){
+										window.location.href="$!webPath/second/tixianjilu.htm"
+									}else{
+										alert("操作失败，请稍后重试！");
+									}
+								}
+							});
+						}else{
+							alert("请选择银行卡！(如果没有绑定银行卡，请先去绑定！)")
+						}
+					}else{
+						alert("可提现的金额不足！")
+					}
+				}
+			}else{
+				alert("请输入提现金额！")
+			}
+
+		})
+
+		$("#money").change(function () {
+			var money = $("#money").val();
+			if(!isNaN(money)){
+				$("#reality").text(Number(money)+2);
+			}
+		})
+
+
+		$("#selectAge").change(function () {
+			if($("#selectAge").val()!=-1){
+				var addressId = $("#selectAge").val();
+				jQuery.ajax({type:'POST',url:'$!webPath/second/selectBank.htm',
+					data:{"addressId":addressId},
+					success:function(data){
+						$("#bankName").val(data)
+					}
+				});
+			}else{
+				$("#bankName").val("")
+			}
+		})
+
+
+	</script>
+	</body>
+
+</html>

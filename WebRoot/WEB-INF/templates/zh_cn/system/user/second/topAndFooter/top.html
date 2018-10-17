@@ -1,0 +1,107 @@
+<script>
+	var goods_count=$!cart.size();
+	var total_price=0;
+	#set($total_price=0)
+	#foreach($gc in $cart)
+	#if($!gc.goods.group_buy==2)
+	#set($total_price=$!{gc.goods.group_goods.gg_price}*$!{gc.count}+$total_price)
+	#else
+	#set($total_price=$!{gc.goods.store_price}*$!{gc.count}+$total_price)
+	#end
+	#end
+	function cart_remove(id,store_id){
+		jQuery.post('$!webPath/remove_goods_cart.htm',{"id":id,"store_id":store_id},function(data){
+			jQuery("div[class=table] tr[id="+id+"]").remove();
+			jQuery(".shopping[id="+id+"]").remove();
+			jQuery(".shopp_ingtop[id="+id+"]").remove();
+			jQuery("#cart_goods_count_top").html(data.count);
+			jQuery("#cart_goods_price_top").html(data.total_price);
+			jQuery("#top_total_price_"+store_id).html(data.total_price);
+			if(store_id!=""){
+				jQuery("#total_price_"+store_id).html(data.sc_total_price);
+			}
+			if( jQuery("form[id=cart_"+store_id+"]").find("tr[goods_list^=goods_info]").length==0){
+				jQuery("form[id=cart_"+store_id+"]").remove();
+			}
+			if(jQuery("tr[goods_list^=goods_info]").length==0){
+				jQuery(".car_nogoods").show();
+			}
+		},"json");
+	}
+	jQuery(document).ready(function(){
+		jQuery("#cart_goods_top_menu").mouseover(function(){
+			jQuery.ajax({type:'POST',url:'$!webPath/cart_menu_detail.htm',data:'',
+				beforeSend:function(){
+					jQuery("#cart_goods_top_info").empty().html('<div class="menu-bd-panel"><div style="text-align:center;"><img src="$!webPath/resources/style/common/images/er.pang" /></div></div>');
+					jQuery("#cart_goods_top_info").show();
+				},
+				success:function(data){
+					jQuery("#cart_goods_top_info").empty();
+					jQuery("#cart_goods_top_info").html(data);
+				}
+			});
+		});
+		jQuery("#cart_menu").mouseleave(function(){
+			jQuery("#cart_goods_top_info").hide();
+		});
+	});
+</script>
+<!-- top -->
+		<div class="top">
+			<div class="top_page" style="height: 30px">
+				<div class="pageright" id="site-nav">
+					<ul class="quick-menu">
+						<li class="mytaobao menu-item menupx">
+							<div class="menu" style="width: 90px">
+								<a class="menu-hd" href="$!webPath/buyer/index.htm" rel="nofollow" >我是买家<b></b></a>
+								<div class="menu-bd">
+									<div class="menu-bd-panel">
+										<div>
+											<a href="$!webPath/buyer/order.htm?order_status=order_submit" rel="nofollow">待支付</a>
+											<a href="$!webPath/buyer/order.htm?order_status=order_shipping" rel="nofollow">待收货</a>
+											<a href="$!webPath/buyer/order.htm?order_status=order_receive" rel="nofollow">待评价</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="mytaobao menu-item menupx">
+							<div class="menu">
+								<a class="menu-hd" href="$!webPath/seller/index.htm" rel="nofollow" >卖家中心<b></b></a>
+								<div class="menu-bd">
+									<div class="menu-bd-panel">
+										<div>
+											<a href="$!webPath/seller/add_goods_firstZZ.htm" rel="nofollow">商品发布</a>
+											<a href="$!webPath/seller/goods.htm" rel="nofollow">出售中的商品</a>
+											<a href="$!webPath/seller/goods_storage.htm" rel="nofollow">仓库中的商品</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="mytaobao menu-item menupx">
+							<div class="menu">
+								<a class="menu-hd" href="" rel="nofollow">手机版<b></b></a>
+								<div class="menu-bd">
+									<div class="menu-bd-panel">
+										<div>
+											<a href="#" rel="nofollow"><img style="width: 80px;height: 80px" src="$!webPath/resources/new_pc/images/index.png" /></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			<!--	<div class="pageleft">
+					<span>亲，欢迎光临颐佳商城！</span>
+					<span class="pxlr"><a href="$!webPath/user/login.htm" class="lightblue">登录</a></span>
+					<span class="pxlr">或</span>
+					<span class="pxlr"><a href="$!webPath/register.htm" class="lightblue">注册</a></span>
+				</div>-->
+
+				<div class="pageleft">#if($!user)<span>$!CommUtil.substring("$!{user.userName}",12)亲,欢迎光临$!{config.websiteName}</span><a href="$!webPath/shopping_logout.htm" class="lightblue">[退出]</a> #else<span>欢迎来到$!{config.websiteName}！</span><span class="pxlr"><a href="$!webPath/user/login.htm" class="lightblue">登录</a></span><span class="pxlr">或</span><span class="pxlr"><a href="$!webPath/register.htm" class="lightblue">注册</a></span>#end </div>
+
+			</div>
+		</div>
+		<!-- top结束 -->

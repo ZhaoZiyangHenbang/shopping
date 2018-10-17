@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,inital-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-wap-web-app-capable" content="yes">
+<meta name="apple-wap-web-app-status-bar-style" content="black-translucent">
+<title>$!config.title</title>
+<link href="$!webPath/resources/style/system/front/wap/css/style.css" rel="stylesheet" type="text/css">
+	<script src="$!webPath/resources/style/system/front/wap/js/jquery-1.10.2.min.js"></script>
+	<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+	<link href="$!webPath/resources/new/css/j_master.css" rel="stylesheet">
+	<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="$!webPath/resources/new/css/mui.min.css" />
+	<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+	<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+	<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+	<style type="text/css">
+		@font-face {
+			font-family: "iconfont";
+			src: url('$!webPath/resources/new/font/iconfont.eot');
+			/* IE9*/
+			src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+			url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+	</style>
+
+	<style type="text/css">
+		@font-face {
+			font-family: "iconfont";
+			src: url('$!webPath/resources/new/font/iconfont.eot');
+			/* IE9*/
+			src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+			url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+	</style>
+	<!--修改样式-->
+	<style>
+		.font-red {
+			color: #E63E54;
+		}
+
+		.borderTop {
+			border-top: 1px solid #eee;
+			overflow: hidden;
+		}
+
+		.sp-title {
+			line-height: 1.6rem;
+			padding: 0 20px;
+		}
+
+		nav.mui-bar-tab {
+			border-top: 1px solid #f2f2f2;
+			background: #FFFFFF;
+		}
+
+		nav.mui-bar-tab .mui-active {
+			color: #FFFFFF !important;
+			background: #e63e54;
+		}
+
+		.address-list {
+			overflow: hidden;
+		}
+
+		.address-list li {
+			width: 20%;
+			height: 50px;
+			border-radius: 6px;
+			background: #EEEEEE;
+			text-align: center;
+			float: left;
+			line-height: 50px;
+			margin: 0 0 4% 4%;
+			font-size: 20px;
+		}
+
+		.address-list li.active {
+			background: #e63e54;
+			color: #FFFFFF;
+		}
+
+		.jiage {
+			padding: 30px 4% 50px;
+			margin-top: 20px;
+		}
+
+		.jiage i {
+			display: block;
+			height: 1px;
+			width: 28px;
+			background: #555;
+			margin: 24px 5px 0;
+		}
+
+		.jiage .btn {
+			color: #a6a6a6;
+			background: #EEEEEE;
+			border: 0;
+			padding: 0.15rem 0.3rem;
+			font-size: 24px;
+		}
+
+		a.mui-icon-arrowdown {
+			font-size: 50px;
+		}
+	</style>
+</head>
+
+<body class="index_bg">
+<div class="lh_hdindex" style="background-color: #e63b53;color: #fdfcfc">
+	<span class="lh_back" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i> </span>
+	<span>商品列表</span>
+	<span class="lh_xiala" id="stateBut" data-show="hide"><i class="icon iconfont">&#xe67b;</i></span>
+	<div id="class1content" style="display: none;">
+		<ul class="lh_tcxl">
+			<li>
+				<a href="$!webPath/wap/index.htm">
+					<span><i class="icon iconfont">&#xe60c;</i></span>
+					<strong>首页</strong>
+				</a>
+			</li>
+			<li>
+				<a href="$!webPath/search.htm">
+					<span><i class="icon iconfont">&#xe674;</i></span>
+					<strong>分类搜索</strong>
+				</a>
+			</li>
+			<li>
+				<a href="$!webPath/goods_cart1.htm">
+					<span><i class="icon iconfont">&#xe60a;</i></span>
+					<strong>购物车</strong>
+				</a>
+			</li>
+			<li>
+				<a href="$!webPath/second/fenxiao.htm">
+					<span><i class="icon iconfont">&#xe617;</i></span>
+					<strong>我的</strong>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="clear"></div>
+<!--<script>
+	function gotoPage1(style) {
+		alert(style);
+		var area_id=$('#area_id').val();
+		var area2_id=$('#area2_id').val();
+		var store_price_begin=$('#store_price_begin').val();
+		var store_price_end=$('#store_price_end').val();
+		var orderType=$('#orderType').val();
+		var keyword=$('#keyword').val();
+		var gc_id=$('#gc_id').val();
+
+		var brand_id=$('#brand_id').val();
+		var guigeming_id=$('#guigeming_id').val();
+		var guigezhi_id=$('#guigezhi_id').val();
+		var ziying=document.getElementById("ziying").checked;
+
+		jQuery.post('$!webPath/store_goods_list.htm',{"currentPage":"1","salenum":"goods_salenum","price":"store_price"
+			,"keyword":keyword,"area_id":area_id,"area2_id":area2_id,"store_price_begin":store_price_begin
+			,"store_price_end":store_price_end,"recommend":"$!recommend","style":style,"orderType":orderType,"brand_id":brand_id
+			,"guigeming_id":guigeming_id,"guigezhi_id":guigezhi_id,"ziying":ziying,"gc_id":gc_id},function(data){
+		});
+	}
+</script>-->
+
+<!-- 菜单容器 -->
+<aside id="offCanvasSide" class="mui-off-canvas-right" style="background:#fff;">
+	<nav class="mui-bar mui-bar-tab">
+		<a href="" class="mui-tab-item ">重置</a>
+		<a href="" class="mui-tab-item mui-active">确认</a>
+	</nav>
+	<div class="mui-scroll-wrapper">
+		<div class="mui-scroll">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-collapse"style="background: none; ">
+					<a class="mui-navigate-right" href="#">店铺所在城市:<span class="font-red">济南</span></a>
+					<div class="mui-collapse-content" style="display: block;">
+						<ul class="address-list mui-collapse-content" style="padding-bottom: 15px; ">
+							<li class="active">山东</li>
+							<li>北京</li>
+							<li>上海</li>
+							<li>河北</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+
+			<div style="line-height: 1.6rem;padding: 0 20px;">
+				<span>市区</span>
+			</div>
+			<ul class="address-list">
+				<li class="">济南</li>
+				<li>泰安</li>
+				<li>烟台</li>
+				<li>青岛</li>
+			</ul>
+			<div class="jiage borderTop">
+				<span style="line-height: 45px;">价格区域(元)</span>
+				<button class="btn mui-pull-right">最低价</button>
+				<i class="mui-pull-right"></i>
+				<button class="btn mui-pull-right">最高价</button>
+			</div>
+
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-collapse" style="background: none;">
+					<a class="mui-navigate-right" href="#">品牌：</a>
+					<div class="mui-collapse-content">
+						<ul class="address-list mui-collapse-content" style="padding-bottom: 15px;">
+							<li class="active">品牌名称</li>
+							<li>品牌名称</li>
+							<li>品牌名称</li>
+							<li>品牌名称</li>
+							<li>品牌名称</li>
+							<li>品牌名称</li>
+							<li class="active">品牌名称</li>
+							<li>品牌名称</li>
+							<li>品牌名称</li>
+							<li>品牌名称</li>
+							<li>品牌名称</li>
+							<li>品牌名称</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-collapse" style="background: none;">
+					<a class="mui-navigate-right" href="#">扩展属性一：</a>
+					<div class="mui-collapse-content">
+						<ul class="address-list">
+							<li class="">品牌名称</li>
+							<li>品牌名称</li>
+							<li>品牌名称</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+</aside>
+<div class="shangjia_meau">
+	<ul>
+		#if($!style=="1")
+		<li>
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1"><span style="color: red">默认排序</span></a>
+		</li>
+		<li>
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&salenum=goods_salenum&&style=2">销量<i class="icon iconfont">&#xe609;</i></a>
+		</li>
+		<li>
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&price=store_price&&style=3">价格<i class="icon iconfont">&#xe613;</i></a>
+		</li>
+		<li style="border: none;">
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&style=4">自营</a>
+		</li>
+		#end
+		#if($!style=="2")
+		<li>
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1">默认排序</a>
+		</li>
+		<li>
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&salenum=goods_salenum&&style=2"><span style="color: red">销量</span><i class="icon iconfont">&#xe609;</i></a>
+		</li>
+		<li>
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&price=store_price&&style=3">价格<i class="icon iconfont">&#xe613;</i></a>
+		</li>
+		<li style="border: none;">
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&style=4">自营</a>
+		</li>
+		#end
+		#if($!style=="3")
+		<li>
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1">默认排序</a>
+		</li>
+		<li>
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&salenum=goods_salenum&&style=2">销量<i class="icon iconfont">&#xe609;</i></a>
+		</li>
+		<li>
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&price=store_price&&style=3"><span style="color: red">价格</span><i class="icon iconfont">&#xe613;</i></a>
+		</li>
+		<li style="border: none;">
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&style=4">自营</a>
+		</li>
+		#end
+		#if($!style=="4")
+		<li>
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1">默认排序</a>
+		</li>
+		<li>
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&salenum=goods_salenum&&style=2">销量<i class="icon iconfont">&#xe609;</i></a>
+		</li>
+		<li>
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&price=store_price&&style=3">价格<i class="icon iconfont">&#xe613;</i></a>
+		</li>
+		<li style="border: none;">
+			<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&style=4"><span style="color: red">自营</span></a>
+		</li>
+		#end
+	</ul>
+</div>
+<div class="clear"></div>
+<div class="j_splb" style="margin-top: 0rem;">
+	<div class="lh_xsms_nr">
+			<ul>
+				<input type="hidden" name="gc_id" value="$!gc_id">
+				#foreach($obj in $objs)
+				#if($!obj.goods_main_photo)
+				#set($small_img="$!webPath/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}_small.$!{obj.goods_main_photo.ext}")
+				#set($big_img="$!webPath/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}")
+				#else
+				#set($small_img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+				#set($big_img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+				#end
+
+				<!--#set($goods_url="$!webPath/goods_$!{obj.id}.htm")-->
+				#if($!config.second_domain_open)
+				#set($goods_url="http://$!{obj.goods_store.store_second_domain}.$!{domainPath}/goods_$!{obj.id}.htm")
+				#end
+				<li>
+					<div class="img01"><a href="$!webPath/goods_$!{obj.id}.htm"><img src="$!big_img" /></a></div>
+
+					<div class="xq01">
+						<div class="xq01_title"><a href="$!webPath/goods_$!{obj.id}.htm">$!CommUtil.substring("$!obj.goods_name",12)</a></div>
+						<div class="xq01_jg">
+							<span class="pr0"><a class="price_left" href="$!webPath/goods_$!{obj.bg_goods.id}.htm">¥$!{obj.store_price}</a></span><em>$!{obj.evaluates.size()}人评价 </em>
+							<!--<a>$!{obj.goods_salenum}人已购买</a>-->
+						</div>
+					</div>
+				</li>
+				#end
+				<div class="clear"></div>
+
+			</ul>
+
+		</div>
+		
+	</div>
+
+
+
+</body>
+</html>

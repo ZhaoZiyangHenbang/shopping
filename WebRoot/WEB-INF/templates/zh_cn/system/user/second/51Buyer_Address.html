@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<link href="$!webPath/resources/style/common/css/jquery-ui-1.8.22.custom.css" type="text/css" rel="stylesheet" />
+		<link href="$!webPath/resources/style/common/css/overlay.css" type="text/css" rel="stylesheet" />
+		<script src="$!webPath/resources/js/jquery-ui-1.8.21.js"></script>
+		<script src="$!webPath/resources/js/jquery.poshytip.min.js"></script>
+		<script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+		<script src="$!webPath/resources/js/jquery.validate.min.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/headZ.htm")
+		<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				<div class="h_seat">
+					<a href="">首页</a>>
+					<a href="">买家中心</a>
+				</div>
+				<!--我是买家-->
+				<div class="h_content">
+					$!httpInclude.include("/second/left_buy.htm")
+					<div class="l-fr ">
+						<div class="w-title">
+							<h3>收货地址</h3>
+							<div class="vip_a15 fr" style="margin-right: 13px;color:orange;height: 40px;margin-top: 8px">
+							<a href="javascript:void(0);" dialog_uri="$!webPath/buyer/address_add.htm?currentPage=$!currentPage" dialog_title="新增地址" dialog_width="500" dialog_height="100" dialog_id="buyer_address" class="button_common"  style="color:white;background-color:#ff3f42">新增收货地址</a>
+								<a href="$!webPath/goods_cart1.htm" class="button_common"  style="color:white;background-color:#ff3f42">返回购物车</a>
+							</div>
+
+						</div>
+
+						<div class="w-address">
+            <table>
+
+                <tr class="w-bt">
+                    <td class="w-shr">收货人</td>
+                    <td class="w-shdz">收货地址</td>
+                    <td class="w-dh">手机号</td>
+                    <td class="w-cz">操作</td>
+                </tr>
+				#foreach($obj in $objs)
+                <tr class="w-nr">
+                    <td>$!obj.trueName</td>
+					#set($address="$!obj.area.parent.parent.areaName $!obj.area.parent.areaName $!obj.area.areaName")
+                    <td>$!address $!obj.area_info </td>
+                    <td>$!obj.mobile</td>
+                    <td><a href="javascript:void(0);" id="$!obj.id" onclick="moren(this.id)" #if($!obj.isdefaut==1) class="onn w-mrdz" #else class="onn" #end>默认地址</a><a href="javascript:void(0);" class="w_xg" dialog_uri="$!webPath/buyer/address_edit.htm?id=$!obj.id&currentPage=$!currentPage" dialog_title="编辑地址" dialog_width="500" dialog_height="100" dialog_id="cart_address">编辑</a><a href="javascript:void(0);" class="w_sc" onclick="if(confirm('删除后不可恢复，是否继续?'))window.location.href='$!webPath/buyer/address_del.htm?mulitId=$!obj.id&currentPage=$!currentPage'">删除</a>
+					</td>
+				</tr>
+				#end
+            </table>
+						<script>
+							function moren(id) {
+								jQuery.ajax({
+									type:'POST',
+									url:"$!webPath/buyer/address_change.htm?id="+id,
+									beforeSend:function(){
+									},
+									success:function(data){
+										var result=eval("("+data+")");
+										var ss = result.cheng;
+										alert(ss);
+										$(".onn").attr("class","onn")
+										$("#"+id).attr("class","onn w-mrdz")
+									}
+								})
+							}
+						</script>	
+          <!--  <p class="xz">新增收货地址</p>
+            <ul>
+                <li><p class="bxtx"><span><em>*</em>收货人：</span></p><p><input  type="text" class="input"/></p></li>
+                <li><p class="bxtx"><span><em>*</em>所在区域：</span></p><p><select><option>省份</option><option>山东</option></select><select><option>城市</option><option>济南</option></select><select><option>区县</option><option>历下区</option></select></p></li>
+                <li><p class="bxtx"><span><em>*</em>详细地址：</span></p><p><input  type="text" class="input"/></p></li>
+                <li><p class="bxtx"><span><em>*</em>手机：</span></p><p><input  type="text" class="input"/></p><p>或</p><p class="bxtx"><span>固定电话：</span></p><p><input  type="text" class="input"/></p></li>
+                <li><p class="bxtx"><span>邮编：</span></p><p><input  type="text" class="input"/></p></li>
+                <li><p><input type="checkbox" class="box"/></p><p>设置为默认地址</p></li>
+                <li><p><input type="submit" value="保存收货地址" class="save"/></p><p><input type="submit" value="取消" class="save1"/></p></li>
+            </ul>-->
+        </div>
+					</div>
+					
+				</div>
+			</div>
+			<!--我是买家-->
+
+		</div>
+		</div>
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+
+	</body>
+
+</html>

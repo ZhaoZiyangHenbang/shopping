@@ -1,0 +1,66 @@
+<!--二维码-->
+<script type="text/javascript" src="$!webPath/resources/new_pc/js/qrcode.js"></script>
+<script type="text/javascript" src="$!webPath/resources/new_pc/js/layer/layer.js"></script>
+<div class="main">
+	<!--<div class="lh_sjdp_top"><img src="$!webPath/resources/new_pc/images/dpxq/lh_sjdp_01.png"/></div>-->
+	#if($!store.store_logo)
+	#set($store_logo="$!webPath/$!{store.store_logo.path}/$!{store.store_logo.name}")
+	#else
+	#set($store_logo="$!webPath/resources/style/common/images/store.jpg")
+	#end
+	<div style="height: 90px; margin:12px;float: left"><img src="$!store_logo" style="height:90px"/></div>
+	<!--<div style="width: 200px;height: 120px;float: left;font-size: 24px;color: red">$!CommUtil.substring("$!{store.store_name}",12)</div>
+	<div style="width: 500px;height: 120px;float: left">$!store.store_info</div>-->
+	<div style="height: 73px;float: left; margin:20px 0px 10px 10px; border-left:1px solid #42619E; padding-left:20px;">
+		<h3 style="color:#42619E; font-size:25px; margin-top:2px;">$!CommUtil.substring("$!{store.store_name}",12)</h3>
+		<h5 style="color:#B7997C; font-size:16px; margin-top:12px;">$!store.store_info</h5>
+	</div>
+	<div style="height: 90px; margin:12px 0px 12px 0px;float: right;"><script src="$!webPath/advert_invoke.htm?id=262244&&store_id=$!store.id"></script></div>
+</div>
+<div class="lh_sjdp_nav">
+	<div class="main">
+		<ul >
+			<li  ><a href="$!webPath/store.htm?id=$!store.id">店铺首页</a></li>
+			<li><a href="$!webPath/goods_list.htm?store_id=$!{store.id}&id=$!{store.id}">全部商品</a></li>
+			<li><a href="$!webPath/goods_new.htm?store_id=$!{store.id}&goods_type=cuxiao&id=$!{store.id}">促销</a></li>
+			<li><a href="$!webPath/goods_new.htm?store_id=$!{store.id}&goods_type=shangxin&id=$!{store.id}">上新</a></li>
+			<li><a href="$!webPath/goods_new.htm?store_id=$!{store.id}&goods_type=jingxuan&id=$!{store.id}">商品精选</a></li>
+			<li><a href="$!webPath/store_dynamic.htm?id=$!{store.id}">店铺动态</a></li>
+			<li><a href="$!webPath/store_info.htm?id=$!{store.id}">店铺详情</a></li>
+		</ul>
+		<div class="lh_sjdp_nav_right">
+			<span>收藏：$!{store.favorite_count}</span>
+			<span><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=$!{store.store_qq}&Site=$!{store.store_qq}&Menu=yes">联系客服</a></span>
+			<span>电话：$!{store.store_telephone}</span>
+			<!--<span style="font-size: 20px;"><i class="icon iconfont">&#xe614;</i></span>-->
+		</div>
+		<div class="lh_sjdp_nav_ewm" id="site-nav">
+			<div class="menu">
+				<a class="menu-hd01" href="" rel="nofollow" style="color: #fff; line-height: 30px; font-size: 18px;"><i class="icon iconfont">&#xe614;</i></a>
+				<div class="menu-bd" style="top: 30px;">
+					<div class="menu-bd-panel">
+						<div>
+							<a href="#" rel="nofollow" id="qrcode"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+		<script>
+			$(function () {
+                erweima();
+            })
+
+
+		function erweima() {
+		document.getElementById("qrcode").innerHTML="";
+		var qrcode = new QRCode(document.getElementById("qrcode"), {
+		width : 240,//设置宽高?goodId=$!obj.id
+		height : 240
+		});
+		qrcode.makeCode("http://www.yijia1234.com/store.htm?id=$!{store.id}&&view=wap&&userid=$!user.id");
+		}
+		</script>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<!--加载动画-->
+		<link rel="stylesheet" type="text/css" href="$!webPath/resources/new/css/loading.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script>
+			$(function () {
+				var url=window.document.location.href;
+				$("#my").attr("href","$!webPath/second/fenxiao.htm?url="+url);
+			})
+		</script>
+	</head>
+
+	<body>
+		<header>
+			<div class="lh_hdindex" style="background-color: #e63b53;color: #fdfcfc">
+				<span class="lh_back" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i> </span>
+				<span>有好货</span>
+				<span class="lh_xiala" id="stateBut" data-show="hide"><i class="icon iconfont">&#xe67b;</i></span>
+				<div id="class1content" style="display: none;">
+					$!httpInclude.include("/wap/wap_navv.htm")
+				</div>
+			</div>
+		</header>
+		<div class="clear"></div>
+		<div class="nav_tab">
+			<ul>
+				<li  id="goodscase1" goods_random="1"><a href="$!webPath/second/everydaygoods.htm?bg_nav=youhaohuo&&bg_class=jingpin" class="hover1">精品</a><s></s></li>
+				<li id="goodscase2" goods_random="1"><a href="$!webPath/second/selfSay_wap.htm">自述</a><s></s></li>
+				<li id="goodscase3" goods_random="1"><a href="$!webPath/second/everydaygoods.htm?bg_nav=youhaohuo&&bg_class=dongtai">动态</a><s></s></li>
+				<li>
+					<a href="javaScript:;" onclick="wozan()">我赞</a>
+					<input type="hidden" id="wozan" name="wozan" value="$!user">
+				</li>
+			</ul>
+		</div>
+		<script>
+			function wozan() {
+				var wozan=$("#wozan").val();
+				if(wozan==null||wozan==undefined||wozan==""){
+					alert("请先登陆！");
+					return;
+				}else{
+					window.location.href="$!webPath/second/wozan.htm";
+				}
+			}
+		</script>
+		<script>
+
+			#if($!user)
+			function guanzhu(id) {
+			#if($!user.id==$!obj.goods_store.user.id)
+				alert("不能赞自己的商品");
+
+											#else
+				jQuery.post("$!webPath/add_zan_favorite.htm",{"id":id},function(data){
+					if(data==0){
+						alert("商品点赞成功！");
+						$("#__"+id).show();
+						$("#_"+id).hide();
+						location=location;
+					}
+					if(data==1){
+						alert("已经取消点赞！");
+						$("#_"+id).show();
+						$("#__"+id).hide();
+						location=location;
+					}
+				},"text");
+											#end
+			}
+			#end
+		</script>
+		<div class="img_list" id="img_list">
+			<ul>
+				#if($!objs.size()>0)
+				#foreach($obj in $objs)
+				#if($!obj.bg_goods.goods_main_photo)
+				#set($img="$!imageWebServer/$!{obj.bg_goods.goods_main_photo.path}/$!{obj.bg_goods.goods_main_photo.name}")
+				#else
+				#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+				#end
+				<li>
+					<div class="img_list_pic"><a href="$!webPath/second/veryGoodGoods_detail.htm?id=$!obj.id"><img src="$!img" /></a></div>
+					<div class="img_list_tex">
+						<p><a href="$!webPath/second/veryGoodGoods_detail.htm?id=$!obj.id" style="color: black">$!CommUtil.substring("$!obj.bg_goods.goods_name",20)</a></p>
+						<p class="img_list_price">¥$!{obj.bg_goods.store_price}</p>
+						<p class="mui-icon-extra-like img_list_praise">
+							<a href="javaScript:;" id="$!{obj.bg_goods.id}" onclick="guanzhu(this.id)"  #if(!$!user)dialog_uri="$!webPath/user_dialog_login.htm" dialog_title="会员登录" dialog_width="450" dialog_height="100" dialog_id="user_login"#end>
+								<i class="icon iconfont " style="font-size: 18px; padding-right: 10px;" id="_$!{obj.id}">&#xe6a4;</i>
+								<i class="icon iconfont " style="font-size: 18px; padding-right: 10px;color:red;display: none" id="__$!{obj.id}">&#xe6a4;</i>
+							</a>
+							$!{obj.bg_goods.goods_zan}人点赞</p>
+					</div>
+
+				</li>
+
+				#end
+				#end
+
+			</ul>
+		</div>
+
+		<div class="weui-loadmore" style="width: 100%;text-align: center;clear: both">
+			<div class="loading-wrap" style="width: 30%;line-height: 0.5rem;margin-left:40%;">
+				<i class="weui-loading" style="float: left;">
+					<div class="sk-circle">
+						<div class="sk-circle1 sk-child"></div>
+						<div class="sk-circle2 sk-child"></div>
+						<div class="sk-circle3 sk-child"></div>
+						<div class="sk-circle4 sk-child"></div>
+						<div class="sk-circle5 sk-child"></div>
+						<div class="sk-circle6 sk-child"></div>
+						<div class="sk-circle7 sk-child"></div>
+						<div class="sk-circle8 sk-child"></div>
+						<div class="sk-circle9 sk-child"></div>
+						<div class="sk-circle10 sk-child"></div>
+						<div class="sk-circle11 sk-child"></div>
+						<div class="sk-circle12 sk-child"></div>
+					</div>
+				</i>
+				<span class="weui-loadmore__tips">正在加载</span>
+			</div>
+		</div>
+		<div class="weui-loadmore2" style="display: none;width: 100%;text-align: center;clear: both">
+			<i class="weui-loading"></i>
+			<span class="weui-loadmore2__tips">已加载全部</span>
+		</div>
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span>
+			</a>
+		</div>
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+	</body>
+	<script>
+        $(document).ready(function() {
+            $(document).ready(function() {
+                $(window).scroll(function() {
+                    if($(document).scrollTop() <= 0) {
+                        //alert("我已经到顶了，我可以刷新");
+                    }
+                    if($(document).scrollTop() >= $(document).height() - $(window).height()) {
+                        //alert("我已经到底了，我需要加载更多");
+                        var currentPag=2;
+                        var arr = new Array();
+                        var  arr=$(":input[name=currentPage]").each(function () {
+                            $(this).val();
+                        });
+                        currentPag=(arr.length+2)+"";
+                        if(currentPag!=undefined&&currentPag>$!totalPage){
+                            $(".weui-loadmore").css("display","none");
+                            $(".weui-loadmore2").css("display","block");
+                            return;
+                        }
+                        /* alert("currentPage="+currentPage);
+                         alert("store_id="+$!bg_class);*/
+
+                        jQuery.ajax({type:'post',async: false,url:'$!webPath/second/ajaxeverydaygoods.htm',data:{"bg_nav":"youhaohuo","bg_class":"jingpin","currentPage":currentPag},
+                            beforeSend:function(){
+
+                            },
+                            success:function(data){
+                               // alert(data);
+                                $(".img_list ul").append(data);
+
+                            }
+                        });
+                    }
+                });
+            });
+        });
+	</script>
+</html>

@@ -1,0 +1,102 @@
+<script>
+	/*jQuery(document).ready(function(){
+		jQuery(".toph_bgsear li").mouseover(function(){
+			jQuery(".toph_bgsear>li").show();
+		}).mouseleave(function(){
+			jQuery(".toph_bgsear>li").last().hide();
+		}).click(function(){
+			var index=jQuery(this).index();
+			if(index==1){
+				var f_text=jQuery(".toph_bgsear li").find("a").first().text();
+				jQuery(".toph_bgsear li").find("a").first().html(jQuery(this).find("a").text()+"<s></s>");
+				jQuery(".toph_bgsear li").find("a").last().text(f_text);
+				jQuery("#type").val(jQuery(this).attr("type"));
+				jQuery(".toph_bgsear>li").last().hide();
+			}
+		});
+
+		jQuery(".two_code_a").click(function(){
+			jQuery(this).parent().remove();
+		});
+
+	});*/
+	function search_form(){
+		var keyword=arguments[0];
+		var type=arguments[1];
+		if(keyword!=""&&keyword!=undefined){
+			jQuery("#keyword").val(keyword);
+		}
+		if(type!=""&&type!=undefined){
+			jQuery("#type").val(type);
+		}
+		jQuery("#searchform").submit();
+		jQuery("#keyword").val("");
+	}
+</script>
+		<!-- heard -->
+		<div id="header_form" style="border-bottom: 2px solid #c7171e;">
+			<script src="$!webPath/resources/new_pc/js/jquery.cookie.js"></script>
+			<div class="head_width" id="head_h">
+				<div class="head clearfix">
+					<div class="logo">
+						<a href="$!webPath/index.htm"><img src="$!webPath/resources/new_pc/images/logo.png" border="0"> </a>
+					</div>
+					<div class="lh_member_nav">
+						<ul>
+							<li>
+								<a href="$!webPath/index.htm">首页</a>
+							</li>
+							<li>
+								<a href="$!webPath/second/fenxiao.htm">分销中心</a>
+							</li>
+							<li>
+								<a href="$!webPath/seller/index.htm">卖家中心</a>
+							</li>
+						</ul>
+					</div>
+					<div class="searchform1">
+						<form id="searchform" action="$!webPath/search.htm" method="post" target="_blank">
+							<input name="type" id="type" type="hidden" value="goods">
+							<div class="toph_bigsearch1">
+								<div class="toph_sear1">
+									<ul class="toph_bgsear">
+										<li class="this" type="goods"><a href="javascript:void(0);">宝贝<s></s></a></li>
+										<li type="store" style="display: none;"><a href="javascript:void(0);">店铺</a></li>
+									</ul>
+									<input name="keyword" class="toph_sear_txt1" id="keyword" lang="zh-cn" type="text" placeholder="搜索其实真的很简单！" value="" onwebkitspeechchange="jquery('#searchform').submit()" x-webkit-speech="">
+									<input name="input" class="toph_sear_btn" style="cursor: pointer;" onclick="search_form();" type="button" value="搜索">
+								</div>
+							<!--	<div class="keyword1">
+									<a onclick="search_form('iphone5s','goods');" href="javascript:void(0);">iphone5s</a>
+									<a onclick="search_form('男装','goods');" href="javascript:void(0);">男装</a>
+									<a onclick="search_form('女装','goods');" href="javascript:void(0);">女装</a>
+									<a onclick="search_form('毛呢外套','goods');" href="javascript:void(0);">毛呢外套</a>
+									<a onclick="search_form('雪地靴','goods');" href="javascript:void(0);">雪地靴</a>
+									<a onclick="search_form('羽绒服','goods');" href="javascript:void(0);">羽绒服</a>
+									<a onclick="search_form('流行男鞋','goods');" href="javascript:void(0);">流行男鞋</a>
+									<a onclick="search_form('潮棉衣','goods');" href="javascript:void(0);">潮棉衣</a>
+									<a onclick="search_form('秋冬连衣裙','goods');" href="javascript:void(0);">秋冬连衣裙</a>
+
+								</div>-->
+								<div class="keyword"> #foreach($info in $CommUtil.splitByChar("$!config.hotSearch",",")) <a
+										href="javascript:void(0);" onclick="search_form('$info','goods');">$!info</a> #end </div>
+							</div>
+
+
+						</form>
+					</div>
+
+
+				<!--	<div class="menu" id="cart_menu"><span class="menu-hd" id="cart_goods_top_menu"><s></s>购物车<span id="cart_goods_count_top" class="top_car">$!cart.size()</span>种商品<b></b></span>
+						<div class="menu-bd" id="cart_goods_top_info">
+							<div class="menu-bd-panel">
+								<div style="text-align:center;"><img src="$!webPath/resources/style/common/images/loader.gif" /></div>
+							</div>
+
+						</div>
+					</div>-->
+					<div class="lh_gwc"><span><a href="$!webPath/goods_cart1.htm"><i class="icon iconfont">&#xe653;</i>购物车</a></span></div>
+				</div>
+			</div>
+		</div>
+		<!-- heard结束 -->

@@ -1,0 +1,591 @@
+.ke-inline-block {
+	vertical-align: middle; display: inline-block; -ms-zoom: 1;
+}
+.ke-clearfix {
+	-ms-zoom: 1;
+}
+.ke-clearfix::after {
+	height: 0px; line-height: 0; clear: both; font-size: 0px; display: block; visibility: hidden; content: ".";
+}
+.ke-shadow {
+	box-shadow: 1px 1px 3px #a0a0a0; background-color: rgb(240, 240, 238); -moz-box-shadow: 1px 1px 3px #A0A0A0; -webkit-box-shadow: 1px 1px 3px #A0A0A0;
+}
+.ke-menu a {
+	color: rgb(51, 127, 229); text-decoration: none;
+}
+.ke-menu a:hover {
+	color: rgb(51, 127, 229); text-decoration: none;
+}
+.ke-dialog a {
+	color: rgb(51, 127, 229); text-decoration: none;
+}
+.ke-dialog a:hover {
+	color: rgb(51, 127, 229); text-decoration: none;
+}
+.ke-icon-source {
+	background-position: 0px 0px; width: 16px; height: 16px;
+}
+.ke-icon-preview {
+	background-position: 0px -16px; width: 16px; height: 16px;
+}
+.ke-icon-print {
+	background-position: 0px -32px; width: 16px; height: 16px;
+}
+.ke-icon-undo {
+	background-position: 0px -48px; width: 16px; height: 16px;
+}
+.ke-icon-redo {
+	background-position: 0px -64px; width: 16px; height: 16px;
+}
+.ke-icon-cut {
+	background-position: 0px -80px; width: 16px; height: 16px;
+}
+.ke-icon-copy {
+	background-position: 0px -96px; width: 16px; height: 16px;
+}
+.ke-icon-paste {
+	background-position: 0px -112px; width: 16px; height: 16px;
+}
+.ke-icon-selectall {
+	background-position: 0px -128px; width: 16px; height: 16px;
+}
+.ke-icon-justifyleft {
+	background-position: 0px -144px; width: 16px; height: 16px;
+}
+.ke-icon-justifycenter {
+	background-position: 0px -160px; width: 16px; height: 16px;
+}
+.ke-icon-justifyright {
+	background-position: 0px -176px; width: 16px; height: 16px;
+}
+.ke-icon-justifyfull {
+	background-position: 0px -192px; width: 16px; height: 16px;
+}
+.ke-icon-insertorderedlist {
+	background-position: 0px -208px; width: 16px; height: 16px;
+}
+.ke-icon-insertunorderedlist {
+	background-position: 0px -224px; width: 16px; height: 16px;
+}
+.ke-icon-indent {
+	background-position: 0px -240px; width: 16px; height: 16px;
+}
+.ke-icon-outdent {
+	background-position: 0px -256px; width: 16px; height: 16px;
+}
+.ke-icon-subscript {
+	background-position: 0px -272px; width: 16px; height: 16px;
+}
+.ke-icon-superscript {
+	background-position: 0px -288px; width: 16px; height: 16px;
+}
+.ke-icon-date {
+	background-position: 0px -304px; width: 25px; height: 16px;
+}
+.ke-icon-time {
+	background-position: 0px -320px; width: 25px; height: 16px;
+}
+.ke-icon-formatblock {
+	background-position: 0px -336px; width: 25px; height: 16px;
+}
+.ke-icon-fontname {
+	background-position: 0px -352px; width: 21px; height: 16px;
+}
+.ke-icon-fontsize {
+	background-position: 0px -368px; width: 23px; height: 16px;
+}
+.ke-icon-forecolor {
+	background-position: 0px -384px; width: 20px; height: 16px;
+}
+.ke-icon-hilitecolor {
+	background-position: 0px -400px; width: 23px; height: 16px;
+}
+.ke-icon-bold {
+	background-position: 0px -416px; width: 16px; height: 16px;
+}
+.ke-icon-italic {
+	background-position: 0px -432px; width: 16px; height: 16px;
+}
+.ke-icon-underline {
+	background-position: 0px -448px; width: 16px; height: 16px;
+}
+.ke-icon-strikethrough {
+	background-position: 0px -464px; width: 16px; height: 16px;
+}
+.ke-icon-removeformat {
+	background-position: 0px -480px; width: 16px; height: 16px;
+}
+.ke-icon-image {
+	background-position: 0px -496px; width: 16px; height: 16px;
+}
+.ke-icon-flash {
+	background-position: 0px -512px; width: 16px; height: 16px;
+}
+.ke-icon-media {
+	background-position: 0px -528px; width: 16px; height: 16px;
+}
+.ke-icon-div {
+	background-position: 0px -544px; width: 16px; height: 16px;
+}
+.ke-icon-formula {
+	background-position: 0px -576px; width: 16px; height: 16px;
+}
+.ke-icon-hr {
+	background-position: 0px -592px; width: 16px; height: 16px;
+}
+.ke-icon-emoticons {
+	background-position: 0px -608px; width: 16px; height: 16px;
+}
+.ke-icon-link {
+	background-position: 0px -624px; width: 16px; height: 16px;
+}
+.ke-icon-unlink {
+	background-position: 0px -640px; width: 16px; height: 16px;
+}
+.ke-icon-fullscreen {
+	background-position: 0px -656px; width: 16px; height: 16px;
+}
+.ke-icon-about {
+	background-position: 0px -672px; width: 16px; height: 16px;
+}
+.ke-icon-plainpaste {
+	background-position: 0px -704px; width: 16px; height: 16px;
+}
+.ke-icon-wordpaste {
+	background-position: 0px -720px; width: 16px; height: 16px;
+}
+.ke-icon-table {
+	background-position: 0px -784px; width: 16px; height: 16px;
+}
+.ke-icon-tablemenu {
+	background-position: 0px -768px; width: 16px; height: 16px;
+}
+.ke-icon-tableinsert {
+	background-position: 0px -784px; width: 16px; height: 16px;
+}
+.ke-icon-tabledelete {
+	background-position: 0px -800px; width: 16px; height: 16px;
+}
+.ke-icon-tablecolinsertleft {
+	background-position: 0px -816px; width: 16px; height: 16px;
+}
+.ke-icon-tablecolinsertright {
+	background-position: 0px -832px; width: 16px; height: 16px;
+}
+.ke-icon-tablerowinsertabove {
+	background-position: 0px -848px; width: 16px; height: 16px;
+}
+.ke-icon-tablerowinsertbelow {
+	background-position: 0px -864px; width: 16px; height: 16px;
+}
+.ke-icon-tablecoldelete {
+	background-position: 0px -880px; width: 16px; height: 16px;
+}
+.ke-icon-tablerowdelete {
+	background-position: 0px -896px; width: 16px; height: 16px;
+}
+.ke-icon-tablecellprop {
+	background-position: 0px -912px; width: 16px; height: 16px;
+}
+.ke-icon-tableprop {
+	background-position: 0px -928px; width: 16px; height: 16px;
+}
+.ke-icon-checked {
+	background-position: 0px -944px; width: 16px; height: 16px;
+}
+.ke-icon-code {
+	background-position: 0px -960px; width: 16px; height: 16px;
+}
+.ke-icon-map {
+	background-position: 0px -976px; width: 16px; height: 16px;
+}
+.ke-icon-baidumap {
+	background-position: 0px -976px; width: 16px; height: 16px;
+}
+.ke-icon-lineheight {
+	background-position: 0px -992px; width: 16px; height: 16px;
+}
+.ke-icon-clearhtml {
+	background-position: 0px -1008px; width: 16px; height: 16px;
+}
+.ke-icon-pagebreak {
+	background-position: 0px -1024px; width: 16px; height: 16px;
+}
+.ke-icon-insertfile {
+	background-position: 0px -1040px; width: 16px; height: 16px;
+}
+.ke-icon-quickformat {
+	background-position: 0px -1056px; width: 16px; height: 16px;
+}
+.ke-icon-template {
+	background-position: 0px -1072px; width: 16px; height: 16px;
+}
+.ke-icon-tablecellsplit {
+	background-position: 0px -1088px; width: 16px; height: 16px;
+}
+.ke-icon-tablerowmerge {
+	background-position: 0px -1104px; width: 16px; height: 16px;
+}
+.ke-icon-tablerowsplit {
+	background-position: 0px -1120px; width: 16px; height: 16px;
+}
+.ke-icon-tablecolmerge {
+	background-position: 0px -1136px; width: 16px; height: 16px;
+}
+.ke-icon-tablecolsplit {
+	background-position: 0px -1152px; width: 16px; height: 16px;
+}
+.ke-icon-anchor {
+	background-position: 0px -1168px; width: 16px; height: 16px;
+}
+.ke-icon-search {
+	background-position: 0px -1184px; width: 16px; height: 16px;
+}
+.ke-icon-new {
+	background-position: 0px -1200px; width: 16px; height: 16px;
+}
+.ke-icon-specialchar {
+	background-position: 0px -1216px; width: 16px; height: 16px;
+}
+.ke-icon-multiimage {
+	background-position: 0px -1232px; width: 16px; height: 16px;
+}
+.ke-container {
+	margin: 0px; padding: 0px; border: 1px solid rgb(204, 204, 204); border-image: none; overflow: hidden; display: block; background-color: rgb(255, 255, 255);
+}
+.ke-toolbar {
+	padding: 2px 5px; text-align: left; overflow: hidden; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: solid; -ms-zoom: 1; background-color: rgb(240, 240, 238);
+}
+.ke-toolbar-icon {
+	line-height: 0; overflow: hidden; font-size: 0px; display: block; background-repeat: no-repeat;
+}
+.ke-toolbar-icon-url {
+	background-image: url(../images/default.png);
+}
+.ke-toolbar .ke-outline {
+	margin: 1px; padding: 1px 2px; border: 1px solid rgb(240, 240, 238); border-image: none; line-height: 0; overflow: hidden; font-size: 0px; float: left; display: block; cursor: pointer;
+}
+.ke-toolbar .ke-on {
+	border: 1px solid rgb(86, 144, 210); border-image: none;
+}
+.ke-toolbar .ke-selected {
+	border: 1px solid rgb(86, 144, 210); border-image: none; background-color: rgb(233, 239, 246);
+}
+.ke-toolbar .ke-disabled {
+	cursor: default;
+}
+.ke-toolbar .ke-separator {
+	border-width: 0px 1px; border-style: none solid; border-color: currentColor rgb(255, 255, 255) currentColor rgb(160, 160, 160); margin: 2px 3px; width: 0px; height: 16px; line-height: 0; overflow: hidden; font-size: 0px; float: left; display: block;
+}
+.ke-toolbar .ke-hr {
+	height: 1px; overflow: hidden; clear: both;
+}
+.ke-edit {
+	padding: 0px;
+}
+.ke-edit-iframe {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: none; overflow: auto;
+}
+.ke-edit-textarea {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: none; overflow: auto;
+}
+.ke-edit-textarea {
+	font: 12px/1.5 "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace; color: rgb(0, 0, 0); overflow: auto; font-size-adjust: none; font-stretch: normal; resize: none;
+}
+.ke-edit-textarea:focus {
+	
+}
+.ke-statusbar {
+	text-align: center; line-height: 0; overflow: hidden; font-size: 0px; border-top-color: rgb(204, 204, 204); border-top-width: 1px; border-top-style: solid; position: relative; cursor: s-resize; background-color: rgb(240, 240, 238);
+}
+.ke-statusbar-center-icon {
+	background-position: 0px -754px; width: 15px; height: 11px; background-image: url(../images/default.png);
+}
+.ke-statusbar-right-icon {
+	background-position: -5px -741px; width: 11px; height: 11px; right: 0px; bottom: 0px; position: absolute; cursor: se-resize; background-image: url(../images/default.png);
+}
+.ke-menu {
+	padding: 2px; border: 1px solid rgb(160, 160, 160); border-image: none; text-align: left; color: rgb(34, 34, 34); overflow: hidden; font-family: "sans serif",tahoma,verdana,helvetica; font-size: 12px; background-color: rgb(241, 241, 241);
+}
+.ke-menu-item {
+	border: 1px solid rgb(241, 241, 241); border-image: none; height: 24px; color: rgb(34, 34, 34); overflow: hidden; cursor: pointer; background-color: rgb(241, 241, 241);
+}
+.ke-menu-item-on {
+	border: 1px solid rgb(86, 144, 210); border-image: none; background-color: rgb(233, 239, 246);
+}
+.ke-menu-item-left {
+	width: 27px; text-align: center; overflow: hidden;
+}
+.ke-menu-item-center {
+	border-width: 0px 1px; border-style: none solid; border-color: currentColor rgb(255, 255, 255) currentColor rgb(227, 227, 227); width: 0px; height: 24px;
+}
+.ke-menu-item-center-on {
+	border-right-color: rgb(233, 239, 246); border-left-color: rgb(233, 239, 246); border-right-width: 1px; border-left-width: 1px; border-right-style: solid; border-left-style: solid;
+}
+.ke-menu-item-right {
+	padding: 0px 0px 0px 5px; border: 0px currentColor; border-image: none; text-align: left; line-height: 24px; overflow: hidden;
+}
+.ke-menu-separator {
+	border-width: 1px 0px; border-style: solid none; border-color: rgb(204, 204, 204) currentColor rgb(255, 255, 255); margin: 2px 0px; height: 0px; overflow: hidden;
+}
+.ke-colorpicker {
+	padding: 2px; border: 1px solid rgb(160, 160, 160); border-image: none; color: rgb(34, 34, 34); background-color: rgb(241, 241, 241);
+}
+.ke-colorpicker-table {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: none; border-collapse: separate;
+}
+.ke-colorpicker-cell {
+	margin: 3px; padding: 0px; border: 1px solid rgb(240, 240, 238); border-image: none; line-height: 0; font-size: 0px; cursor: pointer;
+}
+.ke-colorpicker-cell-top {
+	margin: 0px; padding: 0px; border: 1px solid rgb(240, 240, 238); border-image: none; text-align: center; line-height: 24px; font-family: "sans serif",tahoma,verdana,helvetica; font-size: 12px; cursor: pointer;
+}
+.ke-colorpicker-cell-on {
+	border: 1px solid rgb(86, 144, 210); border-image: none;
+}
+.ke-colorpicker-cell-selected {
+	border: 1px solid rgb(36, 70, 171); border-image: none;
+}
+.ke-colorpicker-cell-color {
+	margin: 3px; padding: 0px; border: 0px currentColor; border-image: none; width: 14px; height: 14px;
+}
+.ke-dialog {
+	margin: 0px; padding: 0px; position: absolute;
+}
+.ke-dialog-content {
+	border: 1px solid rgb(160, 160, 160); border-image: none; width: 100%; height: 100%; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);
+}
+.ke-dialog-shadow {
+	left: 0px; top: 0px; width: 100%; height: 100%; position: absolute; z-index: -1; box-shadow: 3px 3px 7px #999; background-color: rgb(240, 240, 238); -moz-box-shadow: 3px 3px 7px #999; -webkit-box-shadow: 3px 3px 7px #999;
+}
+.ke-dialog-header {
+	background: url("background.png") 0px 0px rgb(240, 240, 238); border-width: 0px 0px 1px; border-style: none none solid; border-color: currentColor currentColor rgb(207, 207, 207); font: 12px/24px "sans serif", tahoma, verdana, helvetica; margin: 0px; padding: 0px 10px; border-image: none; height: 24px; text-align: left; color: rgb(34, 34, 34); cursor: move; font-size-adjust: none; font-stretch: normal;
+}
+.ke-dialog-icon-close {
+	background: url(../images/default.png) no-repeat 0px -688px; top: 6px; width: 16px; height: 16px; right: 6px; display: block; position: absolute; cursor: pointer;
+}
+.ke-dialog-body {
+	font: 12px/1.5 "sans serif", tahoma, verdana, helvetica; width: 100%; text-align: left; overflow: hidden; font-size-adjust: none; font-stretch: normal;
+}
+.ke-dialog-body textarea {
+	padding: 0px; overflow: auto; display: block; resize: none;
+}
+.ke-dialog-body textarea:focus {
+	
+}
+.ke-dialog-body input:focus {
+	
+}
+.ke-dialog-body select:focus {
+	
+}
+.ke-dialog-body label {
+	margin-right: 10px; vertical-align: middle; display: inline-block; cursor: pointer; -ms-zoom: 1;
+}
+.ke-dialog-body img {
+	vertical-align: middle; display: inline-block; -ms-zoom: 1;
+}
+.ke-dialog-body select {
+	width: auto; vertical-align: middle; display: inline-block; -ms-zoom: 1;
+}
+.ke-dialog-body .ke-textarea {
+	border-width: 1px; border-style: solid; border-color: rgb(132, 132, 132) rgb(224, 224, 224) rgb(224, 224, 224) rgb(132, 132, 132); width: 408px; height: 260px; font-family: "sans serif",tahoma,verdana,helvetica; font-size: 12px; display: block;
+}
+.ke-dialog-body .ke-form {
+	margin: 0px; padding: 0px;
+}
+.ke-dialog-loading {
+	left: 1px; top: 0px; text-align: center; position: absolute; z-index: 1;
+}
+.ke-dialog-loading-content {
+	background: url("../common/loading.gif") no-repeat; height: 31px; color: rgb(102, 102, 102); line-height: 31px; padding-left: 36px; font-size: 14px; font-weight: bold;
+}
+.ke-dialog-row {
+	margin-bottom: 10px;
+}
+.ke-dialog-footer {
+	font: 12px "sans serif", tahoma, verdana, helvetica; padding: 0px 0px 5px; width: 100%; text-align: right; font-size-adjust: none; font-stretch: normal; background-color: rgb(255, 255, 255);
+}
+.ke-dialog-preview {
+	margin: 5px;
+}
+.ke-dialog-yes {
+	margin: 5px;
+}
+.ke-dialog-no {
+	margin: 5px 10px 5px 5px;
+}
+.ke-dialog-mask {
+	opacity: 0.5; background-color: rgb(255, 255, 255);
+}
+.ke-button-common {
+	background: url("background.png") no-repeat 0px -25px; height: 23px; line-height: 23px; overflow: visible; vertical-align: top; display: inline-block; cursor: pointer;
+}
+.ke-button-outer {
+	background-position: 0px -25px; padding: 0px; vertical-align: middle; display: inline-block; position: relative; -ms-zoom: 1;
+}
+.ke-button {
+	background-position: right -25px; margin: 0px; padding: 0px 12px; border: 0px currentColor; border-image: none; left: 2px; color: rgb(51, 51, 51); font-family: "sans serif",tahoma,verdana,helvetica; font-size: 12px; text-decoration: none;
+}
+.ke-input-text {
+	border-width: 1px; border-style: solid; border-color: rgb(132, 132, 132) rgb(224, 224, 224) rgb(224, 224, 224) rgb(132, 132, 132); padding: 2px 4px; height: 17px; line-height: 17px; font-family: "sans serif",tahoma,verdana,helvetica; font-size: 12px; vertical-align: middle; display: inline-block; -ms-zoom: 1; background-color: rgb(255, 255, 255);
+}
+.ke-input-number {
+	width: 50px;
+}
+.ke-input-color {
+	border: 1px solid rgb(160, 160, 160); border-image: none; width: 60px; height: 20px; line-height: 20px; overflow: hidden; padding-left: 5px; font-size: 12px; vertical-align: middle; display: inline-block; cursor: pointer; -ms-zoom: 1; background-color: rgb(255, 255, 255);
+}
+.ke-upload-area {
+	margin: 0px; padding: 0px; overflow: hidden; position: relative;
+}
+.ke-upload-area .ke-upload-file {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: none; top: 0px; height: 25px; right: 0px; position: absolute; z-index: 811212; opacity: 0;
+}
+.ke-tabs {
+	font: 12px "sans serif", tahoma, verdana, helvetica; padding-left: 5px; margin-bottom: 20px; border-bottom-color: rgb(160, 160, 160); border-bottom-width: 1px; border-bottom-style: solid; font-size-adjust: none; font-stretch: normal;
+}
+.ke-tabs-ul {
+	list-style: none; margin: 0px; padding: 0px;
+}
+.ke-tabs-li {
+	margin: 0px 2px -1px 0px; padding: 0px 20px; border: 1px solid rgb(160, 160, 160); border-image: none; text-align: center; color: rgb(85, 85, 85); line-height: 25px; float: left; position: relative; cursor: pointer; background-color: rgb(240, 240, 238);
+}
+.ke-tabs-li-selected {
+	color: rgb(0, 0, 0); border-bottom-color: rgb(255, 255, 255); border-bottom-width: 1px; border-bottom-style: solid; cursor: default; background-color: rgb(255, 255, 255);
+}
+.ke-tabs-li-on {
+	color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);
+}
+.ke-progressbar {
+	margin: 0px; padding: 0px; position: relative;
+}
+.ke-progressbar-bar {
+	margin: 10px 10px 0px; padding: 0px; border: 1px solid rgb(111, 165, 219); border-image: none; width: 80px; height: 5px;
+}
+.ke-progressbar-bar-inner {
+	margin: 0px; padding: 0px; width: 0px; height: 5px; overflow: hidden; background-color: rgb(111, 165, 219);
+}
+.ke-progressbar-percent {
+	left: 40%; top: 0px; display: none; position: absolute;
+}
+.ke-swfupload-top {
+	margin-bottom: 10px; position: relative; _width: 608px;
+}
+.ke-swfupload-button {
+	height: 23px; line-height: 23px;
+}
+.ke-swfupload-desc {
+	padding: 0px 10px; height: 23px; line-height: 23px;
+}
+.ke-swfupload-startupload {
+	top: 0px; right: 0px; position: absolute;
+}
+.ke-swfupload-body {
+	border-width: 1px; border-style: solid; border-color: rgb(132, 132, 132) rgb(224, 224, 224) rgb(224, 224, 224) rgb(132, 132, 132); padding: 5px; width: auto; height: 370px; overflow: scroll; background-color: rgb(255, 255, 255);
+}
+.ke-swfupload-body .ke-item {
+	margin: 5px; width: 100px;
+}
+.ke-swfupload-body .ke-photo {
+	padding: 10px; border: 1px solid rgb(221, 221, 221); border-image: none; position: relative; background-color: rgb(255, 255, 255);
+}
+.ke-swfupload-body .ke-delete {
+	background: url(../images/default.png) no-repeat 0px -688px; top: 0px; width: 16px; height: 16px; right: 0px; display: block; position: absolute; cursor: pointer;
+}
+.ke-swfupload-body .ke-status {
+	left: 0px; width: 100px; height: 17px; bottom: 5px; position: absolute;
+}
+.ke-swfupload-body .ke-message {
+	width: 100px; height: 17px; text-align: center; overflow: hidden;
+}
+.ke-swfupload-body .ke-error {
+	color: red;
+}
+.ke-swfupload-body .ke-name {
+	width: 100px; height: 16px; text-align: center; overflow: hidden;
+}
+.ke-swfupload-body .ke-on {
+	border: 1px solid rgb(86, 144, 210); border-image: none; background-color: rgb(233, 239, 246);
+}
+.ke-plugin-emoticons {
+	position: relative;
+}
+.ke-plugin-emoticons .ke-preview {
+	margin: 2px; padding: 10px; border: 1px solid rgb(160, 160, 160); border-image: none; top: 0px; text-align: center; display: none; position: absolute; background-color: rgb(255, 255, 255);
+}
+.ke-plugin-emoticons .ke-preview-img {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+.ke-plugin-emoticons .ke-table {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: none; border-collapse: separate;
+}
+.ke-plugin-emoticons .ke-cell {
+	margin: 0px; padding: 1px; border: 1px solid rgb(240, 240, 238); border-image: none; cursor: pointer;
+}
+.ke-plugin-emoticons .ke-on {
+	border: 1px solid rgb(86, 144, 210); border-image: none; background-color: rgb(233, 239, 246);
+}
+.ke-plugin-emoticons .ke-img {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: none; width: 24px; height: 24px; overflow: hidden; display: block; background-repeat: no-repeat;
+}
+.ke-plugin-emoticons .ke-page {
+	font: 12px "sans serif", tahoma, verdana, helvetica; margin: 5px; padding: 0px; border: 0px currentColor; border-image: none; text-align: right; color: rgb(51, 51, 51); text-decoration: none; font-size-adjust: none; font-stretch: normal;
+}
+.ke-plugin-plainpaste-textarea {
+	border-width: 1px; border-style: solid; border-color: rgb(132, 132, 132) rgb(224, 224, 224) rgb(224, 224, 224) rgb(132, 132, 132); width: 408px; height: 260px; font-family: "sans serif",tahoma,verdana,helvetica; font-size: 12px; display: block;
+}
+.ke-plugin-wordpaste-iframe {
+	border-width: 1px; border-style: solid; border-color: rgb(132, 132, 132) rgb(224, 224, 224) rgb(224, 224, 224) rgb(132, 132, 132); width: 408px; height: 260px; font-family: "sans serif",tahoma,verdana,helvetica; font-size: 12px; display: block;
+}
+.ke-plugin-filemanager-header {
+	width: 100%; margin-bottom: 10px;
+}
+.ke-plugin-filemanager-header .ke-left {
+	float: left;
+}
+.ke-plugin-filemanager-header .ke-right {
+	float: right;
+}
+.ke-plugin-filemanager-body {
+	border-width: 1px; border-style: solid; border-color: rgb(132, 132, 132) rgb(224, 224, 224) rgb(224, 224, 224) rgb(132, 132, 132); padding: 5px; width: auto; height: 370px; overflow: scroll; background-color: rgb(255, 255, 255);
+}
+.ke-plugin-filemanager-body .ke-item {
+	margin: 5px; width: 100px;
+}
+.ke-plugin-filemanager-body .ke-photo {
+	padding: 10px; border: 1px solid rgb(221, 221, 221); border-image: none; background-color: rgb(255, 255, 255);
+}
+.ke-plugin-filemanager-body .ke-name {
+	width: 100px; height: 16px; text-align: center; overflow: hidden;
+}
+.ke-plugin-filemanager-body .ke-on {
+	border: 1px solid rgb(86, 144, 210); border-image: none; background-color: rgb(233, 239, 246);
+}
+.ke-plugin-filemanager-body .ke-table {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: none; width: 95%; border-collapse: separate;
+}
+.ke-plugin-filemanager-body .ke-table .ke-cell {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+.ke-plugin-filemanager-body .ke-table .ke-name {
+	width: 55%; text-align: left;
+}
+.ke-plugin-filemanager-body .ke-table .ke-size {
+	width: 15%; text-align: left;
+}
+.ke-plugin-filemanager-body .ke-table .ke-datetime {
+	width: 30%; text-align: center;
+}
+.ke-plugin-template .ke-header {
+	width: 100%; margin-bottom: 10px;
+}
+.ke-plugin-template label {
+	font-weight: normal; margin-right: 0px; vertical-align: top; display: inline; cursor: pointer;
+}
+.ke-plugin-template .ke-left {
+	float: left;
+}
+.ke-plugin-template .ke-right {
+	float: right;
+}

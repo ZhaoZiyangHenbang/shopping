@@ -1,0 +1,43 @@
+.j_huibg{ background:#f5f5f5 ;}
+.j_search_bg_k{ border:#c2bfbf 1px solid ; color: #444444;float: left ; width:76% ; margin-left:2%;line-height: 0.59rem; height: 1.4rem; padding:0;background: #fff;border-radius: 0.3rem;  font-size: 1.4rem;}
+.j_search_bg_k i{ font-size: 0.5rem; line-height: 1.4rem; float: left; padding-right: 2%; }
+.j_search_bg_k input{ background:none ; font-size: 0.48rem; padding: 0px; border: none; width:70% ; float: left;}
+.j_search_bg_k select{font-size: 0.68rem;}
+.j_sea_xx{  height:1.3rem; padding-top: 0;font-size: 0.68rem;  padding: 0 1%; text-align: center; width:20% ; margin-left: 2%; line-height: 1.3rem; float: left; color: #000000; background: none;}
+.j_sea_xx option{font-size: 0.32rem;}
+.j_sea_xx_zi{font-size: 0.68rem;}
+.j_l_pw_btn{ font-size: 0.624rem; float: left; line-height: 1.4rem; text-align: center; padding-left: 2%; color: #302F2F; }
+.j_search_ci{ background: #FFFFFF;  margin-top: 0.4rem; padding: 1% 2%; overflow: hidden;}
+.j_search_ci ul li{ margin: 1% 0; overflow: hidden;}
+.j_search_ci ul li h2{width: 20%; float: left; font-size: 0.59rem;line-height:1.16rem;padding: 0; font-weight: 200; }
+.j_search_ci ul li span{ width: 80%; float: right;}
+.j_search_ci ul li span a{  width: 23%; color: #666666; margin: 0 0.5%; line-height: 1.16rem;font-size: 0.59rem; float: left; border:#dfdfdd 1px solid ; border-radius:0.05rem; text-align: center; }
+.j_search_ci_nr{ width: 75%; float: right;}
+.j_hdindex{position: relative;border-bottom:#dbdbdb 1px solid ; border-top:#dbdbdb 1px solid ;text-align: center;font-size: 0.8rem;color: #777;background-color: #f7f6f6;min-height: 1.6rem;line-height: 1.53rem; padding: 1% 0%;}
+
+
+.j_ls_ss{background: #FFFFFF; margin-top: 0.4rem;  overflow: hidden;}
+.j_ls_ss_t{ overflow: hidden; padding: 1% 3%;}
+.j_ls_ss_t h2{font-size: 0.68rem; line-height:1.16rem; float: left; font-weight: 100; color: #555555; padding: 0; }
+.j_ls_ss_t span{ float: right; font-size: 0.59rem; line-height: 1.16rem; color: #868686; }
+.j_ls_ss_nr{ margin-top: 1%;}
+.j_ls_ss_list{ overflow: hidden;}
+.j_ls_ss_list ul li{line-height: 1.6rem;border-bottom: #f1f1f1 1px solid;padding: 0% 3%;font-size: 0.58rem; color: #666666;}
+.j_ls_ss_list ul li a {color: #333;}
+.j_ls_ss_list ul li i{ float: right; font-size: 0.62rem;}
+.j_ls_ss_list ul li i a{color: #666666;}
+
+.j_dp_list{ overflow: hidden; }
+.j_dp_list ul li{ background: #FFFFFF; border-bottom: #f6f2f2 1px solid; border-top: #f6f2f2 1px solid; overflow: hidden; margin-top: 0.4rem;}
+
+.j_dp_list_t{ overflow: hidden;width:100% ;padding:0.1em 0.4rem;}
+.j_dp_list_t_pic{ float: left; width: 15%; margin-top: 0.2rem;}
+.j_dp_list_t_tex{ float: left; margin-left: 0.4rem; width:78% ; margin-top: 0.2rem;}
+.j_dp_list_t_tex h2{ font-size: 0.65rem; line-height: 1.2rem;  padding: 0; font-weight: 200;color: #646464;}
+.j_dp_list_t_tex p{ font-size: 0.59rem;line-height: 1.2rem; height: 1.2rem; overflow: hidden ;color: #646464;}
+.j_dp_list_cp{ width:98% ;overflow: hidden;padding:0 0.22rem;}
+.j_dp_list_cp ul li{ width: 32%; float: left; margin: 1% 0.5%;position:relative;}
+.j_dp_list_cp ul li .jieshao01 { width: 100%; height: 1.0rem; position: absolute;  background-color: rgba(255, 255, 255, 0.5); line-height: 1.0rem; color: #444444;font-size: 0.5rem;float: left;text-align: center; bottom: 0rem;}
+.j_jzgd{ text-align: center; color:#646464 ; font-size: 0.59rem;line-height: 1.53rem;}
+.j_jzgd a{color:#646464 ;}
+.j_splb{background-color: #fff;border-top: 1px solid #dddddd;padding: 0.3rem 0.2rem; margin-top: 0.4rem;  }

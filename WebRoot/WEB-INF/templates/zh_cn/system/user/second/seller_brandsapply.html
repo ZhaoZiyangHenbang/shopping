@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		<link  href="$!webPath/resources/style/common/css/jquery-ui-1.8.22.custom.css" type=text/css rel=stylesheet>
+		<link href="$!webPath/resources/style/common/css/overlay.css" type="text/css" rel="stylesheet" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<!--<script src="$!webPath/resources/js/jquery-1.6.2.js"></script>-->
+		<script src="$!webPath/resources/js/jquery.validate.min.js"></script>
+		<script src="$!webPath/resources/js/jquery-ui-1.8.21.js"></script>
+		<script src="$!webPath/resources/js/jquery.zh.cn.js"></script>
+		<script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+
+		<!--<link href="$!webPath/resources/style/system/front/default/css/public.css" type="text/css" rel="stylesheet" />-->
+	<!--	<link href="$!webPath/resources/style/system/front/default/css/user.css" type="text/css" rel="stylesheet" />-->
+
+		<script>
+			jQuery(document).ready(function(){
+				jQuery.validator.addMethod("verify",function(value,element){
+					var re = /^[a-zA-Z]*$/;
+					if(re.test(jQuery("#first_word").val())){
+						return true;
+					}
+					else {
+						return false;
+					}
+				});
+				jQuery("#theForm").validate({
+					rules: {
+						name:{required:true},
+						first_word:{required:true,verify:true,maxlength:1},
+						brandLogo:{#if(!$!obj)required:true,#end accept:"jpg,gif,png,jpeg"}
+			},
+				messages: {
+					name:{required:"品牌名称不能为空"},
+					first_word:{required:"名称首字母不能为空",verify:"请输入名称首字母",maxlength:"输入长度不正确"},
+					brandLogo:{#if(!$!obj)required:"品牌标志不能为空",#end accept:"格式不对，只能为jpg|gif|png|jpeg"}
+				}
+			});
+			});
+		</script>
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/headZ.htm")
+		<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				$!httpInclude.include("/second/leftZ.htm")
+
+				<div class="l-fr">
+						<div class="w-title">
+							<h3>品牌申请</h3>
+						</div>
+					</div>
+					<div class="l-fr1 tgar">
+						<div class="slideTxtBox">
+							<div class="hd">
+								<ul>
+									<li><a href='$!webPath/seller/usergoodsbrand_list.htm' >品牌列表</a></li>
+									<li class="on"><a href='$!webPath/seller/usergoodsbrand_add.htm' ></a>申请品牌</li>
+								</ul>
+							</div>
+							<div class="bd">
+								<form action="$!webPath/seller/usergoodsbrand_save.htm" method="post" id="theForm" enctype="multipart/form-data">
+								<input name="id" id="id" value="" type="hidden">
+								<table class="addnavtable" cellspacing="0" cellpadding="0" border="0" width="100%">
+
+									<tbody>
+										<tr>
+											<td class="modifysp" valign="top" align="right" width="155">
+												<span>品牌名称：</span>
+												<span>
+													<strong class="red" style="font-size:14px;">*</strong>
+												</span>
+											</td>
+											<td class="px10">
+												<span class="setinput">
+                                                   <input name="name" id="name" value="$!obj.name" type="text">
+                                                </span>
+											</td>
+										</tr>
+										<tr>
+											<td class="modifysp" valign="top" align="right">
+												<span>品牌标志：</span>
+												<span>
+													<strong class="red" style="font-size:14px;">*</strong>
+												</span>
+											</td>
+											<td class="px10">
+												<input name="brandLogo" id="brandLogo" type="file">
+											</td>
+										</tr>
+										<tr>
+											<td class="modifysp" valign="top" align="right">
+												<span>申请备注：</span>
+											</td>
+											<td class="px10">
+												<span class="setinput">
+                                                    <textarea name="remark" cols="40" rows="6" id="remark">$!obj.remark</textarea>
+                                                </span>
+											</td>
+										</tr>
+										<tr>
+											<td>&nbsp;</td>
+											<td class="px10">
+												<span style="margin-left: 25px;">
+                                                   <input name="" value="提交" style="cursor:pointer;" type="submit" class="btn-danger">
+                                                </span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								</form>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!--我是卖家_限时抢购管理结束-->
+
+			</div>
+		</div>
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+
+	</body>
+
+</html>

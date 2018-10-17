@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+
+		<script></script>
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/headZ.htm")
+		<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				<!-- 左侧nav -->
+				$!httpInclude.include("/second/leftZ.htm")
+				<!-- 左侧nav结束 -->
+					<div class="l-fr">
+						<div class="w-title">
+							<h3>自述管理</h3>
+						</div>
+					</div>
+					<div class="l-fr1 tgar">
+						<div class="slideTxtBox">
+
+
+							<div class="hd">
+								<ul>
+									<li >自述列表</li>
+									<li class="on">新增自述</li>
+								</ul>
+							</div>
+
+
+							<div class="bd">
+								<ul>
+									<div class="h_revise">
+										<dl>
+											<dt>抢购期数：</dt>
+											<dd>$!CommUtil.formatLongDate($!date)</dd>
+										</dl>
+										<dl>
+											<dt>自述名称：</dt>
+											<dd> <input name="goods_name" type="text" id="goods_name" size="38" class="h_datum_input"  value="$!obj.goods_name" /><!--<input type="text" size="38" class="h_datum_input" />--></dd>
+										</dl>
+										<dl>
+											<dt>自述简介：</dt>
+											<dd>textarea name="seo_description" cols="" rows="" id="seo_description" class="h_datum_textarea">$!obj.seo_description</textarea><!--<textarea name="" cols="" rows="" class="h_datum_textarea"></textarea>--></dd>
+										</dl>
+										<dl>
+											<dt>图片展示：</dt>
+											<script>
+												function photo_switch(clz,obj){
+													jQuery(".tabbody_ul li").removeClass("this");
+													jQuery(".tab_body_b").hide();
+													jQuery(obj).addClass("this");
+													if(clz=="tab_body_b"){
+														jQuery.post("$!webPath/seller/goods_img_album.htm",{"type":"goods_img_album"},function(text){
+															jQuery(".tab_body_b").empty();
+															jQuery(".tab_body_b").append(text);
+														},"text");
+													}
+													jQuery("."+clz).show();
+												}
+											</script>
+											<dd><div class="tab_body"><ul class="tabbody_ul">
+												<li class="this" style="cursor:pointer;" onclick="photo_switch('tab_body_a',this)">上传图片</li>
+												<li style="cursor:pointer;" onclick="photo_switch('tab_body_b',this)">从用户相册选择</li>
+											</ul>
+												<div class="tabbodys">
+													<div class="tab_body_b" style="display:none;"> </div>
+													<div class="tab_body_a">
+														<div class="tabimg"> #if($!obj.goods_main_photo)
+															#set($img="$!webPath/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}")
+															#else
+															#set($img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+															#end
+															<div class="tabimgbig"><img id="goods_image_0" src="$!img" width="197" height="196" /></div>
+															<div class="tabimgcent">
+																<div class="tabupload"> <a href="javascript:void(0);"><span id="upload_imgs"></span><img id="upload_wait" style="display:none;" src="$!webPath/resources/style/common/images/loader.gif" /></a></div>
+																<div class="tabimgsmall">
+																	<ul>
+																		<li class="tabimgs"><img id="goods_image_1" image_id="$!obj.goods_main_photo.id" src="$!img" width="73" height="73" /></li>
+																		<li class="taboper"><a href="javascript:void(0);"  title="左移" onclick="arrow_left('1');" class="tableft"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_left.png" width="16" height="16" /></a><a href="javascript:void(0);" title="从服务器删除" onclick="arrow_del('1');" class="tabdel"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_del.gif" width="15" height="13" /></a><a href="javascript:void(0);" title="从商品删除" onclick="arrow_remove('1');" class="tabdel"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_remove.gif" width="15" height="13" /></a><a href="javascript:void(0);" title="右移" onclick="arrow_right('1');" class="tabright"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_right.png" width="16" height="16" /></a></li>
+																	</ul>
+																	#set($img2="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+																	#set($img2_id="")
+																	#set($img3="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+																	#set($img3_id="")
+																	#set($img4="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+																	#set($img4_id="")
+																	#set($img5="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+																	#set($img5_id="")
+																	#foreach($img in $obj.goods_photos)
+																	#if($velocityCount==1)
+																	#set($img2="$!webPath/$!{img.path}/$!{img.name}")
+																	#set($img2_id="$!img.id")
+																	#end
+																	#if($velocityCount==2)
+																	#set($img3="$!webPath/$!{img.path}/$!{img.name}")
+																	#set($img3_id="$!img.id")
+																	#end
+																	#if($velocityCount==3)
+																	#set($img4="$!webPath/$!{img.path}/$!{img.name}")
+																	#set($img4_id="$!img.id")
+																	#end
+																	#if($velocityCount==4)
+																	#set($img5="$!webPath/$!{img.path}/$!{img.name}")
+																	#set($img5_id="$!img.id")
+																	#end
+																	#end
+																	<ul>
+																		<li class="tabimgs"><img id="goods_image_2" image_id="$!img2_id" src="$!img2" width="73" height="73" /></li>
+																		<li class="taboper"><a href="javascript:void(0);" title="左移" onclick="arrow_left('2');" class="tableft"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_left.png" width="16" height="16" /></a><a href="javascript:void(0);" title="从服务器删除" onclick="arrow_del('2');" class="tabdel"><img  src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_del.gif" width="15" height="13" /></a><a href="javascript:void(0);" title="从商品删除" onclick="arrow_remove('2');" class="tabdel"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_remove.gif" width="15" height="13" /></a><a href="javascript:void(0);" title="右移" onclick="arrow_right('2');" class="tabright"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_right.png" width="16" height="16" /></a></li>
+																	</ul>
+																	<ul>
+																		<li class="tabimgs"><img id="goods_image_3" image_id="$!img3_id" src="$!img3" width="73" height="73" /></li>
+																		<li class="taboper"><a href="javascript:void(0);" title="左移" onclick="arrow_left('3');" class="tableft"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_left.png" width="16" height="16" /></a><a href="javascript:void(0);" title="从服务器删除" onclick="arrow_del('3');" class="tabdel"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_del.gif" width="15" height="13" /></a><a href="javascript:void(0);" title="从商品删除" onclick="arrow_remove('3');" class="tabdel"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_remove.gif" width="15" height="13" /></a><a href="javascript:void(0);" title="右移" onclick="arrow_right('3');" class="tabright"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_right.png" width="16" height="16" /></a></li>
+																	</ul>
+																	<ul>
+																		<li class="tabimgs"><img id="goods_image_4" image_id="$!img4_id" src="$!img4" width="73" height="73" /></li>
+																		<li class="taboper"><a href="javascript:void(0);" title="左移" onclick="arrow_left('4');" class="tableft"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_left.png" width="16" height="16" /></a><a href="javascript:void(0);" title="从服务器删除" onclick="arrow_del('4');" class="tabdel"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_del.gif" width="15" height="13" /></a><a href="javascript:void(0);" title="从商品删除" onclick="arrow_remove('4');" class="tabdel"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_remove.gif" width="15" height="13" /></a><a href="javascript:void(0);" title="右移" onclick="arrow_right('4');" class="tabright"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_right.png" width="16" height="16" /></a></li>
+																	</ul>
+																	<ul>
+																		<li class="tabimgs"><img id="goods_image_5" image_id="$!img5_id" src="$!img5" width="73" height="73" /></li>
+																		<li class="taboper"><a href="javascript:void(0);" title="左移" onclick="arrow_left('5');" class="tableft"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_left.png" width="16" height="16" /></a><a href="javascript:void(0);" title="从服务器删除" onclick="arrow_del('5');" class="tabdel"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_del.gif" width="15" height="13" /></a><a href="javascript:void(0);" title="从商品删除" onclick="arrow_remove('5');" class="tabdel"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_remove.gif" width="15" height="13" /></a><a href="javascript:void(0);" title="右移" onclick="arrow_right('5');" class="tabright"><img src="$!webPath/resources/style/system/front/default/images/usercenter/arrow_right.png" width="16" height="16" /></a></li>
+																	</ul>
+																</div>
+															</div>
+															<div class="tabshowimg"> <img src="$!webPath/resources/style/system/front/default/images/usercenter/thumb.jpg" width="170" height="192" /></div>
+														</div>
+														<div class="warning">
+															<h2>最多可发布5张商品图片</h2>
+															<ul>
+																<li>支持多图片同时选取上传。支持$!imageSuffix格式上传，建议选择尺寸300x300以上、大小2M内的图片。</li>
+																<li>用户图空间剩余:<span style="color:#FF0000;" id="img_remain_size">#if($!{img_remain_size}==0)空间不限制大小#else$!{img_remain_size}M#end</span>，空间不足时将无法上传图片</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+									</div><!--<a href="">浏览...</a><a href="">浏览...</a><a href="">浏览...</a>--></dd>
+										</dl>
+										<dl>
+											<dt>自述内容：</dt>
+											<dd><textarea name="goods_details" style="width:100%;height:400px;visibility:hidden;" id="goods_details">$!obj.goods_details</textarea>
+												<script>
+													function switch_editor_photo(){
+														var dis=jQuery(".editor_photo_detail").css("display");
+														if(dis=="none"){
+															jQuery.post("$!webPath/seller/goods_img_album.htm",{"type":"goods_detail_album"},function(text){
+																jQuery(".editor_photo_detail").empty();
+																jQuery(".editor_photo_detail").append(text);
+															},"text");
+															jQuery(".editor_photo_detail").show();
+														}else{
+															jQuery(".editor_photo_detail").hide();
+														}
+													}
+												</script><!--<textarea name="" cols="" rows="" class="h_datum_textarea"></textarea>--></dd>
+										</dl>
+
+										<dl>
+											<dt></dt>
+											<dd><button type="button" class="btn btn-danger" onclick="saveForm();">　　确认　　</button></dd>
+										</dl>
+
+									</div>
+								</ul>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--我是卖家_限时抢购管理结束-->
+
+			</div>
+		</div>
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+       
+	</body>
+
+</html>

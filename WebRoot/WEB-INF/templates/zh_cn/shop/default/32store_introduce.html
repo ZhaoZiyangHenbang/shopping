@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/public_auto.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/index.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/DataLazyLoad.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.lazyload.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.common.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.validate.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery-ui-1.8.21.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.validate.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.KinSlideshow.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		#if($!store.map_type=="baidu")
+		<script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript"></script>
+		#end
+		#if($!store.map_type=="google")
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
+		#end
+
+
+	</head>
+
+	<body>
+	<!-- top -->
+	$!httpInclude.include("/second/topZ.htm")
+	<!-- top结束 -->
+
+	<!-- heard -->
+	$!httpInclude.include("/second/head_index.htm")
+	<!-- heard结束 -->
+
+		<!-- 商家店铺 -->
+		<div class="lh_sjdp">
+			<div class="main">
+				<!--<div class="lh_sjdp_top"><img src="$!webPath/resources/new_pc/images/dpxq/lh_sjdp_01.png" /></div>-->
+				$!httpInclude.include("/seller_store_top.htm?id=$!store.id")
+			<div class="main">
+				<!-- 商家店铺 -->
+				<div class="lh_spxq_nr_left tgar">
+					<div class="lh_spxq_nr_left_fl tgar">
+						<!--<div class="skin-box-hd" style="background: #02296a;">
+							<h3><span>店内分类</span></h3>
+						</div>-->
+						$!httpInclude.include("/store_left1.htm?id=$!store.id")
+					</div>
+
+					<div class="lh_spxq_nr_left_tjcp tgar">
+						<div class="skin-box-hd" style="background: #02296a;">
+							<h3><span>推荐分类</span></h3>
+						</div>
+						<div class="lb01">
+							#foreach($goods in $goods)
+							#if($!goods.goods_main_photo)
+							#set($img="$!imageWebServer/$!{goods.goods_main_photo.path}/$!{goods.goods_main_photo.name}")
+							#else
+							#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+							#end
+							<ul>
+								<li #if($!velocityCount>4)style="display:none;"#end>
+									<div class="img01"><img src="$!img" /></div>
+									<div class="money">¥$!goods.store_price</div>
+									<a class="title02">$!CommUtil.substring("$!goods.goods_name",22)</a>
+								</li>
+								<!--<li>
+									<div class="img01"><img src="images/lh_02.jpg" /></div>
+									<div class="money">￥100.00</div>
+									<a class="title02">连衣裙连衣裙连衣裙连衣裙连衣裙</a>
+								</li>
+								<li>
+									<div class="img01"><img src="images/lh_02.jpg" /></div>
+									<div class="money">￥100.00</div>
+									<a class="title02">连衣裙连衣裙连衣裙连衣裙连衣裙</a>
+								</li>-->
+							</ul>
+							#end
+						</div>
+					</div>
+				</div>
+				<div class="lh_sjdp_qbsp_right01">
+					<div class="lh_sjdp_qbsp_right01_title">店铺详情</div>
+					<ul>
+						<li>
+							<p>
+								<span><i class="icon iconfont">&#xe601;</i></span>商家名称
+								<span>$!{store.store_name}</span>
+							</p>
+						</li>
+						<li>
+							<p>
+								<span><i class="icon iconfont">&#xe64a;</i></span>商家QQ
+								<span>$!{store.store_qq}</span>
+							</p>
+						</li>
+						<li>
+							<p>
+								<span><i class="icon iconfont">&#xe62f;</i></span>商家电话
+								<span>$!{store.store_telephone}</span>
+							</p>
+						</li>
+						<li>
+							#if($!{store.store_info}&&$!{store.store_info}!="")
+							<p>
+								<span><i class="icon iconfont">&#xe623;</i></span>店铺介绍
+
+							</p>
+							<p style="margin-left: 40px;"> $!{store.store_info}</p>
+							#end
+						</li>
+						<li>
+							<p>
+								<span><i class="icon iconfont">&#xe65c;</i></span>公司名称
+								<span>山东省*****有限公司</span>
+							</p>
+						</li>
+						<li>
+							<p>
+								<span><i class="icon iconfont">&#xe600;</i></span>所在地区
+								<span>$!areaViewTools.generic_area_info("$!store.area.id")</span>
+							</p>
+						</li>
+						<li>
+							<p>
+								<span><i class="icon iconfont">&#xe656;</i></span>开店时间
+								<span>$!CommUtil.formatShortDate($!store.addTime)</span>
+							</p>
+						</li>
+						<li style="height: 300px">
+
+							<p >
+								<span><i class="icon iconfont">&#xe61d;</i></span>授权品牌</p>
+
+							   #foreach($obj in $objs)
+								<div class="lh_sjdp_qbsp_right01_pp_img">
+									<img src="$!webPath/$!obj.brandLogo.path/$!obj.brandLogo.name" />
+									$!obj.name
+								</div>
+							   #end
+
+
+						</li>
+					</ul>
+				</div>
+				<!-- 商家店铺结束 -->
+			</div>
+		</div>
+		<!-- 商家店铺结束 -->
+
+		<!--footer开始-->
+		<div class="footer" style="margin-top: 0px;">
+			<div class="main">
+				<ul>
+					<li>
+						<div class="footer_img"><img src="$!webPath/resources/new_pc/images/lh_07.png" width="75" height="75" /></div>
+						<div class="footer_wz">
+							<p>品种齐全 轻松购物</p>
+						</div>
+					</li>
+					<li>
+						<div class="footer_img"><img src="$!webPath/resources/new_pc/images/lh_08.png" width="75" height="75" /></div>
+						<div class="footer_wz">
+							<p>正规渠道 品质保障</p>
+						</div>
+					</li>
+					<li>
+						<div class="footer_img"><img src="$!webPath/resources/new_pc/images/lh_09.png" width="75" height="75" /></div>
+						<div class="footer_wz">
+							<p>天天低价 畅选无忧</p>
+						</div>
+					</li>
+					<li>
+						<div class="footer_img"><img src="$!webPath/resources/new_pc/images/lh_10.png" width="75" height="75" /></div>
+						<div class="footer_wz">
+							<p>限时秒杀 优惠多多</p>
+						</div>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+		<div class="foot">
+			<div class="main">
+				<div class="foot_01">
+					<ul>
+						<div class="foot_01_wz">关于我们</div>
+						<li>
+							<a href="#"><span>▪</span>公司简介</a>
+						</li>
+						<li>
+							<a href="#"><span>▪</span>加盟合作</a>
+						</li>
+						<li>
+							<a href="#"><span>▪</span>联系我们</a>
+						</li>
+					</ul>
+					<ul>
+						<div class="foot_01_wz">新手指南</div>
+						<li>
+							<a href="#"><span>▪</span>用户注册</a>
+						</li>
+						<li>
+							<a href="#"><span>▪</span>购物流程</a>
+						</li>
+						<li>
+							<a href="#"><span>▪</span>密码找回</a>
+						</li>
+					</ul>
+					<ul>
+						<div class="foot_01_wz">帮助中心</div>
+						<li>
+							<a href="#"><span>▪</span>支付方式</a>
+						</li>
+						<li>
+							<a href="#"><span>▪</span>投诉建议</a>
+						</li>
+						<li>
+							<a href="#"><span>▪</span>交易须知</a>
+						</li>
+					</ul>
+					<ul>
+						<div class="foot_01_wz1"><img src="$!webPath/resources/new_pc/images/ewm1.jpg" /></div>
+						<li>
+							<a href="#">手机逛商城</a>
+						</li>
+					</ul>
+				</div>
+				<div class="foot_02">
+					<div class="foot_02_wz">客服中心</div>
+					<p>服务时间：周一至周六</p>
+					<p>（法定节假日除外）9:00-18:00</p>
+					<p class="tsdy">4000-1199-86</p>
+				</div>
+			</div>
+		</div>
+		<div class="foots">
+			<div class="w">
+				<p>Copyright © 2013-2014 htp://www.sss.com 浩星商城版权所有 技术支持：开创集团</p>
+				<div class="foots_img">
+					<ul>
+						<li><img src="$!webPath/resources/new_pc/images/img_19.png" width="109" height="40" /></li>
+						<li><img src="$!webPath/resources/new_pc/images/img_20.png" width="110" height="40" /></li>
+						<li><img src="$!webPath/resources/new_pc/images/img_21.png" width="109" height="43" /></li>
+						<li><img src="$!webPath/resources/new_pc/images/img_22.png" width="96" height="43" /></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		<div class="floating_ck">
+			<dl>
+				<dt></dt>
+				<dd class="consult">
+					<span><i class="icon iconfont">&#xe622;</i></span>
+					<div class="floating_left">
+						<a href="#">客服01</a>
+						<a href="#">客服02</a>
+						<a href="#">客服03</a>
+					</div>
+				</dd>
+				<dd class="words">
+					<span><i class="icon iconfont">&#xe609;</i></span>
+					<div class="floating_left">
+						<a href="#">电话：123456789-123</a>
+					</div>
+				</dd>
+				<dd class="quote">
+					<a href="#"><span><i class="icon iconfont">&#xe64e;</i></span></a>
+
+				</dd>
+				<!--<dd class="qrcord">
+					<span></span>
+					<div class="floating_left floating_ewm">
+						<i></i>
+						<p class="qrcord_p01">扫一扫<br>莱诺赠送神秘大礼</p>
+						<p class="qrcord_p02">全国免费服务热线<br><b>4000-123-123<b></p>
+            </div>
+        </dd>-->
+				<dd class="return">
+					<span onClick="gotoTop();return false;"><i class="icon iconfont">&#xe6a3;</i></span>
+				</dd>
+			</dl>
+		</div>
+		<!-- 右侧结束 -->
+
+	</body>
+
+</html>

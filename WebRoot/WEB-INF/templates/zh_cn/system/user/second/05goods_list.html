@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+	<title>$!config.title</title>
+	<meta name="keywords" content="颐佳超市">
+	<meta name="description" content="颐佳超市">
+	<meta name="GENERATOR" content="颐佳超市">
+	<meta name="author" content="颐佳超市">
+	<meta name="copyright" content="颐佳超市">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+	<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+	<link href="$!webPath/resources/new_pc/css/public_auto.css" rel="stylesheet" type="text/css">
+	<link href="$!webPath/resources/new_pc/css/index.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+	<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+	<script src="$!webPath/resources/new_pc/js/DataLazyLoad.min.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.lazyload.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.shop.common.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.validate.min.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery-ui-1.8.21.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.shop.validate.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.KinSlideshow.min.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+	<style type="text/css">
+		@font-face {
+			font-family: "iconfont";
+			src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+			/* IE9*/
+			src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+			url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+	</style>
+
+</head>
+
+<body>
+<!-- top -->
+$!httpInclude.include("/second/topZ.htm")
+<!-- top结束 -->
+
+<script>
+
+	function search_form() {
+		var keyword = arguments[0];
+		var type = arguments[1];
+		if (keyword != "" && keyword != undefined) {
+			jQuery("#keyword").val(keyword);
+		}
+		if (type != "" && type != undefined) {
+			jQuery("#type").val(type);
+		}
+		jQuery("#searchForm").submit();
+		jQuery("#keyword").val("");
+	}
+</script>
+
+<!-- heard -->
+<div id="header_form">
+	<div class="head_width" id="head_h">
+		<div class="head clearfix">
+			<div class="logo">
+				<a href="$!webPath/index.htm"><img src="$!webPath/resources/new_pc/images/logo.png" border="0">  </a>
+			</div>
+			#if($!user)
+			<div class="lh_touxiang"><img src="$!imageWebServer/$!{user.photo.path}/$!{user.photo.name}"  style="height: 30px;width: 30px"/></div>
+			#else
+			<div class="lh_touxiang"><img src="$!webPath/resources/new_pc/images/lh_13.jpg" /></div>
+			#end
+			<div class="searchform">
+				<form id="searchForm" action="$!webPath/search.htm" method="post" target="_blank">
+					<!--<input name="type" id="type" type="hidden" value="$!goods">-->
+					<input name="type" id="type" type="hidden" value="$!type" />
+					<div class="toph_bigsearch">
+						<div class="toph_sear">
+							<ul class="toph_bgsear">
+								#if($!type=='goods')
+								<li class="this" type="goods"><a href="javascript:void(0);">宝贝<s></s></a></li>
+								<li style="display:none" type="store"><a href="javascript:void(0);">店铺</a></li>
+								#else
+								<li class="this" type="store"><a href="javascript:void(0);">店铺<s></s></a></li>
+								<li style="display:none" type="goods"><a href="javascript:void(0);">宝贝</a></li>
+								#end
+							</ul>
+							<input name="keyword" type="text" id="keyword" value="$!keyword" placeholder="搜索其实真的很简单！" x-webkit-speech lang="zh-CN" onwebkitspeechchange="jQuery('#searchForm').submit()" class="toph_sear_txt"/>
+							<input name="input" type="button" value="搜索" style="cursor:pointer;" onclick="search_form();" class="toph_sear_btn" />
+						</div>
+						<div class="keyword"> #foreach($info in $CommUtil.splitByChar("$!config.hotSearch",",")) <a
+								href="javascript:void(0);" onclick="search_form('$info','goods');">$!info</a> #end </div>
+
+					</div>
+				</form>
+			</div>
+			<div class="lh_gwc"><span><a href="$!webPath/goods_cart1.htm"><i class="icon iconfont">&#xe653;</i>购物车</a></span></div>
+		</div>
+	</div>
+</div>
+<!-- heard结束 -->
+
+<!-- 导航 -->
+#if($!bc_location&&$!bc_location==1)
+$!httpInclude.include("/nav1.htm")
+#end
+#if($!bc_location&&$!bc_location==3)
+$!httpInclude.include("/nav_tt.htm")
+#end
+#if($!bc_location&&$!bc_location==2)
+$!httpInclude.include("/nav_lr.htm")
+#end
+#if($!bc_location&&$!bc_location==6)
+$!httpInclude.include("/nav_xs.htm")
+#end
+#if($!bc_location&&$!bc_location==5)
+$!httpInclude.include("/nav_sxy.htm")
+#end
+#if($!bc_location&&$!bc_location==4)
+$!httpInclude.include("/nav_ty.htm")
+#end
+<!-- 导航结束 -->
+
+<form action="$!webPath/search.htm?keyword=$!keyword"  method="post" id="ListForm">
+
+	<div class="main">
+
+		<div class="h_seat">
+			<a href="">全部搜索结果</a>>
+			<a href="">商品搜索关键词</a>
+		</div>
+
+		<div class="bd_cx_nav">
+			<script>
+				function brand(id) {
+					$('#buO').attr('class','');
+					$('.brandO0').attr('class','brandO0');
+					$('#'+id).attr('class','brandO0 on');
+
+					var va=id.substring(2)
+					$('#brand_id').val(va);
+					//alert(valu);
+				}
+				function cba() {
+					$('.brandO0').attr('class','brandO0');
+					$('#buO').attr('class','on');
+					$('#brand_id').val(null);
+				}
+			</script>
+			<!--#if($!gb.size()>0)
+			<div class="cx_nav1">
+				<h3>品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：</h3>
+				<p>
+					<a  class="on" id="buO" onclick="cba()">不限</a>
+					#foreach($obj in $gb)
+
+					<a  onclick="brand(this.id)" class="brandO0" id="GB$!obj.id">$!obj.name</a>
+					<input type="hidden" name="brand_id" value="$!brand_id" id="brand_id">
+					#end
+				</p>
+			</div>
+
+			#end-->
+			<!--	#if($!gt.size()>0)
+				<div class="cx_nav2">
+					<div class="cx_nav1">
+						<h3>类型属性：</h3>
+						<p>
+							<a href="javaScript:;" class="aaa on" id="bu1" onclick="shu0()">不限</a>
+							#foreach($obj in $gt)
+							#foreach($ob in $obj.properties)
+							<a href="javaScript:video(0)" onclick="xianshi(this.id)" id="P$!ob.id" class="guigeQ">$!ob.name</a>
+							<input type="hidden" name="type">
+							#end
+							#end
+						</p>
+					</div>
+				</div>
+				#end-->
+			<!--<script>
+                function shu0() {
+                    $('.guigeQ').attr('class','guigeQ')
+                    $('#bu1').attr('class','aaa on');
+                    $('.yincang').hide();
+                }
+                function xianshi(id) {
+
+                    $('#bu1').attr('class','aaa');
+                    $('.guigeQ').attr('class','guigeQ')
+                    $('.yincang').hide();
+                    $('#'+id).attr('class','guigeQ on');
+                    $('#show_'+id).show();
+                }
+                function aaa(id) {
+                    $('.zhi').attr('class','zhi');
+                    $('._shuxingzhi').attr('class','_shuxingzhi');
+                    $('#'+id).attr('class','_shuxingzhi on');
+                }
+                 function bbb() {
+                    $('.zhi').attr('class','zhi on');
+                    $('._shuxingzhi').attr('class','_shuxingzhi');
+                }
+
+            </script>
+            #foreach($obj in $gt)
+            #foreach($ob in $obj.properties)
+            <div class="cx_nav2 yincang" style="display: none" class="xian" id="show_P$!ob.id">
+                <div class="cx_nav1">
+                    <h3>类型属性值：</h3>
+                    <p>
+                        <a href="" class="zhi on" id="" onclick="bbb()">不限</a>
+                        #foreach($o in $CommUtil.splitByChar("$!ob.value",","))
+                        <a href="javaScript:video(0)" class="_shuxingzhi" id="_Pp$!o" onclick="aaa(this.id)">$!o</a>
+                        #end
+                    </p>
+                </div>
+            </div>
+            #end
+            #end-->
+
+			<!--#if($!gt.size()>0)
+			<div class="cx_nav2">
+				<div class="cx_nav1">
+					<h3>规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：</h3>
+					<p>
+						<a href="javaScript:;" class="on" id="bu2" onclick="abc()">不限</a>
+						#foreach($obj in $gt)
+						#foreach($obb in $obj.gss)
+						<a href="javaScript:video(0)" onclick="show1(this.id)" id="$!obb.id" class="gugeW">$!obb.name</a>
+						<input type="hidden" name="guigeming_id" id="guigeming_id" value="$!guigeming_id">
+						#end
+						#end
+					</p>
+				</div>
+			</div>
+			#end
+-->
+			<script>
+				function show1(id) {
+					$('#bu2').attr('class','');
+					$('.gugeW').attr('class','guegeW');
+					$('#'+id).attr('class','gugeW on');
+					$('.yincang2').hide();
+					$('#guige_'+id).show();
+					$('#guigeming_id').val(id);
+				}
+				function abc() {
+					$('#bu2').attr('class','on');
+					$('.gugeW').attr('class','guegeW');
+					$('.yincang2').hide();
+
+					$('#guigeming_id').val(null);
+				}
+				function guizhi(id) {
+					$('.gui').attr('class','gui');
+					$('.guizhi').attr('class','guizhi');
+					$('#'+id).attr('class','guizhi on');
+					$('#guigezhi_id').val(id.substring(1));
+				}
+				function gui() {
+
+					$('.gui').attr('class','gui on');
+					$('.guizhi').attr('class','guizhi');
+				}
+
+			</script>
+
+			#foreach($obj in $gt)
+			#foreach($ob in $obj.gss)
+			<div class="cx_nav2 yincang2" style="display: none" id="guige_$!ob.id">
+				<div class="cx_nav1">
+					<h3>规&nbsp;&nbsp;格&nbsp;&nbsp;值：</h3>
+					<p>
+						<!--<a href="" class="gui on" onclick="gui()">不限</a>-->
+						#foreach($o in $ob.properties.value)
+						<a href="javaScript:video(0)" id="Z$!o.id" onclick="guizhi(this.id)" class="guizhi">$!o.value</a>
+						<input type="hidden" name="guigezhi_id" id="guigezhi_id" value="$!guigezhi_id">
+						#end
+					</p>
+				</div>
+			</div>
+			#end
+			#end
+
+
+
+
+
+			<script>
+				$(function () {
+					jQuery.post('$!webPath/searchDiv.htm',{"currentPage":"1","salenum":"goods_salenum","price":"store_price"
+						,"keyword":"$!keyword","area_id":"$!area_id","area2_id":"$!area2_id","store_price_begin":"$!store_price_begin"
+						,"store_price_end":"$!store_price_end","recommend":"$!recommend","style":"$!style","orderType":"$!orderType","brand_id":""
+						,"guigeming_id":"","guigezhi_id":"","gc_id":"$!gc_id"},function(data){
+						$("#goods").html(data);
+					});
+				})
+					function choose(id) {
+						$('.qingkong_').attr('class','qingkong_');
+						$("#buxian").attr("class","");
+						$('#'+id).attr('class','qingkong_ on');
+						$('.yincang').attr("style","display:none")
+						$('#zengjia_'+id).show();
+                         document.getElementById("area_id").value=id;
+					}
+					function choose2() {
+						$('.qingkong_').attr('class','qingkong_');
+						$("#buxian").attr("class","on");
+						$('.yincang').attr("style","display:none")
+						document.getElementById("area_id").value="";
+					}
+
+					function choose3() {
+						$('.qingkong2_').attr('class','qingkong2_')
+						$('.choo').attr('class','choo on')
+						document.getElementById("area2_id").value=id;
+					}
+					function choose4(id) {
+
+						$('.qingkong2_').attr('class','qingkong2_');
+						$('.choo').attr("class","choo");
+						$('#'+id).attr('class','qingkong2_ on');
+						document.getElementById("area2_id").value=id;
+					}
+					function gotoPage(page) {
+						var area_id=$('#area_id').val();
+						var area2_id=$('#area2_id').val();
+						var store_price_begin=$('#store_price_begin').val();
+						var store_price_end=$('#store_price_end').val();
+						var orderType=$('#orderType').val();
+						var keyword=$('#keyword').val();
+						var gc_id=$('#gc_id').val();
+
+						var brand_id=$('#brand_id').val();
+						var guigeming_id=$('#guigeming_id').val();
+						var guigezhi_id=$('#guigezhi_id').val();
+						var ziying=document.getElementById("ziying").checked;
+
+
+						jQuery.post('$!webPath/searchDiv.htm',{"currentPage":page,"salenum":"goods_salenum","price":"store_price"
+							,"keyword":keyword,"area_id":area_id,"area2_id":area2_id,"store_price_begin":store_price_begin
+							,"store_price_end":store_price_end,"recommend":"$!recommend","style":"$!style","orderType":orderType,"brand_id":brand_id
+							,"guigeming_id":guigeming_id,"guigezhi_id":guigezhi_id,"ziying":ziying,"gc_id":gc_id},function(data){
+							$("#goods").html(data);
+						});
+					}
+					function gotoPage1(style) {
+						var area_id=$('#area_id').val();
+						var area2_id=$('#area2_id').val();
+						var store_price_begin=$('#store_price_begin').val();
+						var store_price_end=$('#store_price_end').val();
+						var orderType=$('#orderType').val();
+						var keyword=$('#keyword').val();
+						var gc_id=$('#gc_id').val();
+
+						var brand_id=$('#brand_id').val();
+						var guigeming_id=$('#guigeming_id').val();
+						var guigezhi_id=$('#guigezhi_id').val();
+						var ziying=document.getElementById("ziying").checked;
+
+						jQuery.post('$!webPath/searchDiv.htm',{"currentPage":"1","salenum":"goods_salenum","price":"store_price"
+							,"keyword":keyword,"area_id":area_id,"area2_id":area2_id,"store_price_begin":store_price_begin
+							,"store_price_end":store_price_end,"recommend":"$!recommend","style":style,"orderType":orderType,"brand_id":brand_id
+						,"guigeming_id":guigeming_id,"guigezhi_id":guigezhi_id,"ziying":ziying,"gc_id":gc_id},function(data){
+							$("#goods").html(data);
+						});
+					}
+				</script>
+				#if($areas.size()>0)
+				<form action="$!webPath/search.htm?keyword=$!keyword" method="post">
+
+					<div class="cx_nav1">
+						<h3>所在区域：</h3>
+						<p>
+							<a href="javaScript:;" class="choose on" id="buxian" onclick="choose2()" style="cursor: pointer;">不限</a>
+							#foreach($area in $areas)
+							<a  name="qingkong_" id="$!area.id" onclick="choose(this.id)" class="qingkong_" style="cursor: pointer;">$!area.areaName</a>
+							#end
+						</p>
+					</div>
+
+					#foreach($area in $!areas)
+					<div class="cx_nav1 yincang" id="zengjia_$!area.id" style="display: none;">
+						<h3>城&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市：</h3>
+						<p>
+							<a href="javaScript:;" class="choo on" id="bu" onclick="choose3()" style="cursor: pointer;">不限</a>
+							#foreach($area2 in $area.childs)
+							<a     class="qingkong2_" id="$!area2.id" onclick="choose4(this.id)" style="cursor: pointer;">$!area2.areaName</a>
+							#end
+						</p>
+					</div>
+					#end
+					#end
+					<div class="cx_nav1">
+						<h3>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：</h3>
+						<div class="query">
+
+								<div class="query_date">
+									<input type="text" placeholder="最低价格" id="store_price_begin" name="store_price_begin" value="$!store_price_begin">
+								</div>
+								<div class="query_date_zj bort"></div>
+								<div class="query_date">
+									<input type="text" placeholder="最高价格" id="store_price_end" name="store_price_end" value="$!store_price_end">
+								</div>
+								<div class="query_date_bom">
+									<input  class="query_date_bom" type="button" onclick="gotoPage1('1')" value="查询" style="color: white;cursor: pointer;">
+								</div>
+
+						</div>
+					</div>
+				</form>
+			</div>
+
+		<input id="area_id" name="area_id" type="hidden" value="$!area_id">
+		<input id="area2_id" name="area2_id" type="hidden" value="$!area2_id">
+		<!--		<input name="store_price_begin" type="hidden" id="brand_ids" value="$!store_price_begin" />
+                        <input name="store_price_end" type="hidden" id="properties" value="$!store_price_end" />-->
+		<input type="hidden" name="goods_view" id="goods_view" value="$!goods_view" />
+		<input type="hidden" name="gc_id" id="gc_id" value="$!gc_id" />
+		<input name="orderBy" type="hidden" id="orderBy" value="$!orderBy" />
+		<input name="recommend" type="hidden" id="recommend" value="$!recommend" />
+		<input name="orderType" type="hidden" id="orderType" value="$!orderType" />
+		<!--	<input name="all_property_status" type="hidden" id="all_property_status" value="$!all_property_status" />
+            <input name="detail_property_status" type="hidden" id="detail_property_status" value="$!detail_property_status" />-->
+		<div id="goods">
+
+		</div>
+
+	</div>
+</form>
+
+
+
+
+<!--footer开始-->
+	$!httpInclude.include("/second/footZ.htm")
+	<!--footer结束-->
+
+	<!-- 右侧 -->
+	$!httpInclude.include("/second/rightZ.htm")
+	<!-- 右侧结束 -->
+	</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+	<!-- top -->
+	$!httpInclude.include("/second/topZ.htm")
+	<!-- top结束 -->
+
+	<!-- heard -->
+	$!httpInclude.include("/second/headZ.htm")
+	<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				<div class="h_seat">
+					<a href="">首页</a>>
+					<a href="">卖家中心</a>
+				</div>
+				<!--我是买家-->
+				<div class="h_content">
+					$!httpInclude.include("/second/left_buy.htm")
+					<div class="l-fr">
+						<div class="w-title">
+							<h3>预计提成</h3>
+						</div>
+					</div>
+					<div class="l-fr1 tgar">
+						<div class="slideTxtBox">
+							<div class="hd">
+								<ul>
+									#if($!user)
+									<li class="firstMerchant on">$!user.username的预计提成</li>
+
+									#else
+									<li class="firstMerchant on">我的预计提成</li>
+									#end
+									<li class="twoMerchant">下线预计提成</li>
+								</ul>
+							</div>
+							<div class="bd">
+								<ul>
+									<div class="lh_sales">
+										#foreach($obj in $objs)
+										<div class="order tgar">
+											<div class="order_bh borb">
+												<div class="order_bh_left">订单编号：$!obj.order_id</div>
+												<div class="order_bh_right">$!CommUtil.formatLongDate($!obj.payTime)</div>
+											</div>
+											<ul class="img_list">
+												#foreach($list in $obj.gcs)
+												<li>
+
+													<div class="img_list_pic"><img src="$!imageWebServer/$!{list.goods.goods_main_photo.path}/$!{list.goods.goods_main_photo.name}"> </div>
+													<div class="img_list_tex">
+														<p>$!list.goods.goods_name</p>
+														<p class="img_list_price">$!list.spec_info</p>
+													</div>
+												</li>
+												#end
+											</ul>
+											<div class="order_jg">
+												<div class="order_jg_left">总价：<span>￥$!obj.totalPrice</span> </div>
+												<div class="order_jg_right">提成：<span>￥$!OrderViewTools.query_order_ticheng($obj,$user,"1")</span></div>
+											</div>
+										</div>
+										#end
+									</div>
+								</ul>
+							</div>
+						</div>
+						<!--<div class="w-page">$!gotoPageHTML</div>-->
+					</div>
+				</div>
+			</div>
+			<!--我是买家-->
+
+		</div>
+		</div>
+	<!--footer开始-->
+	$!httpInclude.include("/second/footZ.htm")
+	<!--footer结束-->
+
+	<!-- 右侧 -->
+	$!httpInclude.include("/second/rightZ.htm")
+	<!-- 右侧结束 -->
+	<script>
+		if("$!type"=="1"){
+			$(".firstMerchant").addClass("on");
+			$(".twoMerchant").removeClass("on");
+			$(".threeMerchant").removeClass("on");
+			$(".threeMerchant2").removeClass("on");
+		}
+		if("$!type"=="2"){
+			$(".firstMerchant").removeClass("on");
+			$(".twoMerchant").addClass("on");
+			$(".threeMerchant").removeClass("on");
+			$(".threeMerchant2").removeClass("on");
+		}
+		if("$!type"=="3"){
+			$(".firstMerchant").removeClass("on");
+			$(".twoMerchant").removeClass("on");
+			$(".threeMerchant").addClass("on");
+			$(".threeMerchant2").removeClass("on");
+		}
+		if("$!type"=="4"){
+			$(".firstMerchant").removeClass("on");
+			$(".twoMerchant").removeClass("on");
+			$(".threeMerchant").removeClass("on");
+			$(".threeMerchant2").addClass("on");
+		}
+
+		$(".firstMerchant").click(function () {
+			window.location.href = "$!webPath/second/yujiticheng.htm?type=1";
+		})
+		$(".twoMerchant").click(function () {
+			window.location.href = "$!webPath/second/xiaxianyujiticheng.htm?type=2";
+		})
+		$(".threeMerchant").click(function () {
+			window.location.href = "$!webPath/second/yujiticheng.htm?type=3";
+		})
+		$(".threeMerchant2").click(function () {
+			window.location.href = "$!webPath/second/yujiticheng.htm?type=4";
+		})
+	</script>
+	</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,inital-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-wap-web-app-capable" content="yes">
+<meta name="apple-wap-web-app-status-bar-style" content="black-translucent">
+<title>$!config.title</title>
+
+
+<link href="$!webPath/resources/style/system/front/wap/css/style.css" rel="stylesheet" type="text/css">
+	<script src="$!webPath/resources/style/system/front/wap/js/jquery-1.10.2.min.js"></script>
+	<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+	<link href="$!webPath/resources/new/css/j_master.css" rel="stylesheet">
+	<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="$!webPath/resources/new/css/mui.min.css" />
+	<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+	<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+	<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+	<style type="text/css">
+		@font-face {
+			font-family: "iconfont";
+			src: url('$!webPath/resources/new/font/iconfont.eot');
+			/* IE9*/
+			src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+			url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+	</style>
+	<script>
+		$(function () {
+			var url=window.document.location.href;
+			$("#my").attr("href","$!webPath/second/fenxiao.htm?url="+url);
+		})
+	</script>
+</head>
+
+<body class="index_bg">
+<div class="lh_hdindex">
+	<span class="lh_back" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i> </span>
+	<span>商品列表</span>
+	<span class="lh_xiala" id="stateBut" data-show="hide"><i class="icon iconfont">&#xe67b;</i></span>
+	<div id="class1content" style="display: none;">
+		<ul class="lh_tcxl">
+			<li>
+				<a href="$!webPath/wap/index.htm">
+					<span><i class="icon iconfont">&#xe60c;</i></span>
+					<strong>首页</strong>
+				</a>
+			</li>
+			<li>
+				<a href="$!webPath/search.htm">
+					<span><i class="icon iconfont">&#xe674;</i></span>
+					<strong>分类搜索</strong>
+				</a>
+			</li>
+			<li>
+				<a href="$!webPath/goods_cart1.htm">
+					<span><i class="icon iconfont">&#xe60a;</i></span>
+					<strong>购物车</strong>
+				</a>
+			</li>
+			<li>
+				<a id="my" href="javaScript:void(0)">
+					<span><i class="icon iconfont">&#xe617;</i></span>
+					<strong>我的</strong>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="j_splb" style="margin-top: 0rem;">
+
+	<!--<div class="lh_xsms_nr">
+			<ul>-->
+	<div class="lh_xplb">
+		<ul>
+				#foreach($obj in $objs)
+				#if($!obj.bg_goods.goods_main_photo)
+				#set($img="$!imageWebServer/$!{obj.bg_goods.goods_main_photo.path}/$!{obj.bg_goods.goods_main_photo.name}")
+				#else
+				#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+				#end
+				#if($!config.second_domain_open)
+				#set($goods_url="http://$!{obj.goods_store.store_second_domain}.$!{domainPath}/goods_$!{obj.id}.htm")
+				#end
+			<li>
+				<a href="$!webPath/goods_$!{obj.id}.htm">
+					<div class="lh_img01"><img src="$!img"></div>
+					<div class="lh_jieshao01"><span>仅剩$!{obj.bg_goods.goods_inventory}件</span></div>
+					<div class="lh_xq01">
+						<div class="lh_xq01_title">$!CommUtil.substring("$!obj.bg_goods.goods_name",11)</div>
+						<div class="lh_xq01_jg">
+							<span>¥$!{obj.bg_goods.store_price}</span>
+							<!--<i>￥$!store_reommend_good.goods_price</i>-->
+							<em>$!obj.goods_store.area.parent.areaName</em>
+						</div>
+						<div class="lh_xq01_xl">
+							<span>销量$!{obj.bg_goods.goods_salenum}</span>
+							<em>好评度$!GoodsViewTools.haopinglv("$!{obj.bg_goods.id}")%</em>
+						</div>
+					</div>
+				</a>
+			</li>
+				<!--<li>
+					<div class="img01"><a href="$!webPath/goods_$!{obj.id}.htm"><img src="$!img" /></a></div>
+
+					<div class="xq01">
+						<div class="xq01_title"><a href="$!webPath/goods_$!{obj.id}.htm">$!CommUtil.substring("$!obj.bg_goods.goods_name",12)</a></div>
+						<div class="xq01_jg">
+							<span class="pr0"><a class="price_left" href="$!webPath/goods_$!{obj.bg_goods.id}.htm">¥$!{obj.bg_price}</a></span><em>0$!{obj.evaluates.size()}人评价 </em>
+							&lt;!&ndash;<a>$!{obj.goods_salenum}人已购买</a>&ndash;&gt;
+						</div>
+					</div>
+				</li>-->
+
+				#end
+				<div class="clear"></div>
+
+			</ul>
+
+		</div>
+		
+	</div>
+
+
+
+</body>
+</html>

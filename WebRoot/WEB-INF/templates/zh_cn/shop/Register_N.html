@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link href="$!webPath/resources/style/system/front/default/css/public.css" type="text/css" rel="stylesheet" />
+		<link href="$!webPath/resources/style/system/front/default/css/goods.css" type="text/css" rel="stylesheet" />
+		<link href="$!webPath/resources/style/system/front/default/css/index.css" type="text/css" rel="stylesheet" />
+		<script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/js/jquery.validate.min.js"></script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script defer="defer">
+			var info="$!info";
+			if (info!=null&&info!="") {
+				alert(info);
+			}
+		</script>
+		<script>
+			jQuery(document).ready(function(){
+				//
+				jQuery.validator.addMethod("verify",function(value,element){
+					var re = /^[0-9a-zA-Z]*$/;
+					if(re.test(jQuery("#userName").val())){
+						return true;
+					}
+					else {
+						return false;
+					}
+				});
+				jQuery("#theForm").validate({
+					errorPlacement:function(error, element) {
+						element.parent().parent("td").next("td").html("");
+						error.appendTo(element.parent().parent("td").next("td"));
+					},
+					rules:{
+						userName:{
+							required:true,
+							verify:true,
+							remote:{
+								url: "$!webPath/verify_username.htm",     //后台处理程序
+								type: "post",               //数据发送方式
+								dataType: "json",           //接受数据格式
+								data: {                     //要传递的数据
+									"userName": function(){return jQuery("#userName").val();}
+								}
+							}
+						},
+						password:{
+							required:true,
+							minlength:6,
+							maxlength:20
+						},
+						repassword:{
+							required:true,
+							equalTo:"#password"
+						},
+						email:{
+							required:true,
+							email:true,
+							remote:{
+								url: "$!webPath/verify_email.htm",     //后台处理程序
+								type: "post",               //数据发送方式
+								dataType: "json",           //接受数据格式
+								data: {                     //要传递的数据
+									"email": function(){return jQuery("#email").val();}
+								}
+							}
+						},
+						agree:{
+							required:true
+						}#if($!config.securityCodeRegister),
+				code:{
+					required:true,
+							remote:{
+						url: "$!webPath/verify_code.htm",     //后台处理程序
+								type: "post",               //数据发送方式
+								dataType: "json",           //接受数据格式
+								data: {                     //要传递的数据
+							"code": function(){return jQuery("#code").val();}
+						}
+					}
+				}
+		#end
+			},
+				messages:{
+					userName:{
+						required:"用户名不能为空",
+								verify:"不可使用特殊字符",
+								remote:"用户名已存在"
+					},
+					password:{
+						required:"密码不能为空",
+								minlength:"密码不能小于{0}个字符",
+								maxlength:"密码不能大于{0}个字符"
+					},
+					repassword:{
+						required:"重复密码不能为空",
+								equalTo:"两次输入密码不一致"
+					},
+					email:{
+						required:"email不能为空",
+								email:"email格式不正确",
+								remote:"该email已经存在"
+					},
+					agree:{
+						required:"请接受用户协议"
+					}#if($!config.securityCodeRegister),
+					code:{
+						required:"验证码不能为空",
+								remote:"验证码不正确"
+					}
+		#end
+				}
+			});
+				//
+			});
+
+			function send() {
+				var telephone=$("#telephone").val();
+				if (telephone==null||telephone=="") {
+					alert("请输入手机号!");
+				}else {
+					jQuery.ajax({type:'post',url:'$!webPath/sendYzm/send.htm?telephone='+telephone,
+						beforeSend:function(){
+						},
+						success:function(data){
+                            var result=eval("("+data+")");
+							document.getElementById("sendYzm").value=result.yzm;
+						}
+					})
+				}
+			}
+
+		</script>
+		<script>
+			/*获取验证码*/
+			var isPhone = 1;
+			function getCode(e){
+				checkPhone(); //验证手机号码
+				var telephone=$("#telephone").val();
+				jQuery.ajax({type:'post',async: false,url:'$!webPath/sendYzm/telephone.htm?telephone='+telephone,
+					beforeSend:function(){
+					},
+					success:function(data){
+						var result=eval("("+data+")");
+						document.getElementById("telephoneStatus").value=result.info;
+					}
+				});
+				var telephoneStatus=$("#telephoneStatus").val();
+				//alert("telephoneStatus="+telephoneStatus);
+				if (telephoneStatus=='0') {
+					alert("该手机号已经注册");
+					return;
+				}
+				jQuery.ajax({type:'post',url:'$!webPath/sendYzm/send.htm?telephone='+telephone,
+					beforeSend:function(){
+					},
+					success:function(data){
+						var result=eval("("+data+")");
+						document.getElementById("sendYzm").value=result.yzm;
+					}
+				});
+				if(isPhone){
+					resetCode(); //倒计时
+				}else{
+					$('#telephone').focus();//获取焦点
+				}
+
+			}
+			//验证手机号码
+			function checkPhone(){
+				var telephone = $('#telephone').val();
+				var pattern = /^1[0-9]{10}$/;
+				isPhone = 1;
+				if(telephone == '') {
+					alert('请输入手机号码');
+					isPhone = 0;
+					return;
+				}
+				if(!pattern.test(telephone)){
+					alert('请输入正确的手机号码');
+					isPhone = 0;
+					return;
+				}
+			}
+			//倒计时
+			function resetCode(){
+				$('#J_getCode').hide();
+				$('#J_second').html('60');
+				$('#J_second').show();
+				var second = 60;
+				var timer = null;
+				timer = setInterval(function(){
+					second -= 1;
+					if(second >0 ){
+						$('#J_second').html(second);
+					}else{
+						clearInterval(timer);
+						$('#J_getCode').html("重新发送");
+						$('#J_getCode').show();
+						$('#J_second').hide();
+					}
+				},1000);
+			}
+			function registerP() {
+				var telephone=$("#telephone").val();
+				var yzm=$("#yzm").val();
+				var password=$("#password").val();
+				var password1=$("#repassword").val();
+				if (telephone==null||telephone=="") {
+					alert("请输入手机号!");
+				}else if (yzm==null||yzm=="") {
+					alert("请输入验证码!");
+				}else if(password==null||password==""){
+					alert("请输入密码!");
+				}else if (password1==null||password1=="") {
+					alert("请输入确认密码!");
+				}else if (password1!=password) {
+					alert("两次密码输入不一致!");
+				}else {
+					jQuery('#theForm').submit();
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<!-- heard -->
+		<div id="header_form" style="border-bottom: 2px solid #c7171e;">
+			<div class="head_width" id="head_h">
+				<div class="head clearfix">
+					<div class="logo" style="width: 182px">
+						<a href="$!webPath/index.htm"><img src="$!webPath/resources/new_pc/images/logo.png" border="0"> </a>
+					</div>
+					#if(!$!user.photo.id)
+					<div class="lh_touxiang"><img src="$!webPath/resources/new_pc/images/lh_13.jpg" /></div>
+					#else
+					<div class="lh_touxiang"><img src="$!imageWebServer/$!{user.photo.path}/$!{user.photo.name}"  style="height: 30px;width: 30px"/></div>
+					#end
+					<div class="lh_zcdl">注册</div>
+					<div class="lh_zcdl_right">感谢您对我们的认可！</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- heard结束 -->
+
+		<div class="lh_zcdl_nrbj">
+			<div class="main">
+				<div class="login_cont_ny_r">
+
+				<div class="login_cont_ny_r_t">
+					<div class="login_cont_ny_r_t_l">注册</div>
+					<div class="login_cont_ny_r_t_r">已有账号,
+						<a href="$!webPath/user/login.htm"><span style="color:#ff5165;">直接登录</span></a>
+					</div>
+				</div>
+					<form action="$!webPath/register_finish.htm" method="post" name="theForm" id="theForm">
+				<div class="login_cont_ny_r_m">
+					<input name="telephone" id="telephone" type="text" placeholder="手机号" value="" class="login_bk" />
+					<input name="yzm" id="yzm" type="text" placeholder="验证码" value="" class="login_yzm" style="margin-right: 10px" />
+					<input name="sendYzm" type="hidden" id="sendYzm">
+					<input type="hidden" id="telephoneStatus">
+					<div class="login_yzm_dx on" id="J_resetCode" style="display: none;">重新发送</div>
+
+					<div class="login_yzm_dx on" id="J_second" style="display: none;margin-top: 10px;">60</div>
+					<div class="login_yzm_dx" onclick="getCode(this)" id="J_getCode" style="margin-top: 10px;">获取验证码</div>
+					<!--<input name="" type="text" value="设置密码" class="login_bk1" />-->
+					<input name="password" type="password" id="password" class="login_bk1" placeholder="设置密码" value="" style="width: 300px;margin-top: 10px"/>
+				<!--	<input name="" type="text" value="确认密码" class="login_bk1" />-->
+					<input name="repassword" type="password" id="repassword" class="login_bk1" placeholder="确认密码" value="" style="width: 300px;margin-top: 10px"/>
+					<input name="yqm" type="text"  placeholder="推荐码（选填）" value="" class="login_bk1" style="width: 300px;margin-top: 10px" />
+				</div>
+				<div class="">
+					<input type="button" onclick="registerP()" value="注册" class="login_cont_ny_r_b" style="margin-top: 10px">
+					<!--<a href="$!webPath/register.htm">测试去注册</a>-->
+				</div>
+					</form>
+				<div class="login_cont_ny_r_xy">注册即表示同意<a href="$!webPath/article_196626.htm"><span style="color:#ff5165;">《商城注册协议》</span></a></div>
+			</div>
+
+
+			</div>
+		</div>
+
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		$!uc_logout_js
+	</body>
+
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="$!webPath/resources/goodslist2/css/style2.css" />
+		<link rel="stylesheet" type="text/css" href="$!webPath/resources/goodslist2/css/common.css" />
+		<!--加载动画-->
+		<link rel="stylesheet" type="text/css" href="$!webPath/resources/new/css/loading.css" />
+
+		<script src="$!webPath/resources/goodslist2/js/jquery.min.js"></script>
+		<script src="$!webPath/resources/goodslist2/js/iscroll.js"></script>
+		<script src="$!webPath/resources/goodslist2/js/haoxing.js"></script>
+	</head>
+	<style type="text/css">
+		.slide-menu {
+		display: block;
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 65%;
+		height: 100%;
+		background: #fff;
+		z-index: 9999;
+		display: none;
+	}
+	
+	.slide-left {
+		display: block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 35%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.3);
+		z-index: 9999;
+		display: none;
+	}
+	</style>
+	<script>
+		$(function() {
+			var url = window.document.location.href;
+			$("#my").attr("href", "http://www.yijia1234.com/second/fenxiao.htm?url=" + url);
+		})
+	</script>
+	<style type="text/css">
+		@font-face {
+			font-family: "iconfont";
+			src: url('$!webPath/resources/goodslist2/font/iconfont.eot');
+			/* IE9*/
+			src: url('$!webPath/resources/goodslist2/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('$!webPath/resources/goodslist2/font/iconfont.woff') format('woff'), /* chrome, firefox */
+			url('$!webPath/resources/goodslist2/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('$!webPath/resources/goodslist2/font/iconfont.svg#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+		
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+		.lh_tcxl {
+			display: table;
+			width: 100%;
+			background: #404042;
+			height: 2.0rem;
+			line-height: 1.0rem;
+			z-index: 99999;
+		}
+		.lh_tcxl li {
+			display: table-cell;
+			width: 25%;
+			text-align: center;
+		}
+		.lh_tcxl li a {
+			border: 0;
+			color: #fff;
+			text-decoration: none;
+			font-size: 0.59rem;
+		}
+		.lh_tcxl li a span {
+			display: block;
+			margin: 0 auto;
+			color: #fff;
+			font-weight: normal;
+			font-size: 0.9rem;
+		}
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+		.lh_tcxl li a strong {
+			display: block;
+			margin: 0 auto;
+			color: #fff;
+			font-weight: normal;
+			font-size: 0.52rem;
+		}
+	</style>
+	<script>
+        $(function () {
+            var url=window.document.location.href;
+            $("#my").attr("href","$!webPath/second/fenxiao.htm?url="+url);
+        })
+        function search_form(keyword,type){
+            if(keyword!=""&&keyword!=undefined){
+                $("#keyword").val(keyword);
+            }
+            if(type!=""&&type!=undefined){
+                $("#type").val(type);
+            }
+            $("#searchForm").submit();
+        }
+	</script>
+
+	<body class="drawer drawer-right" style="background-color: white">
+		<!--<div class="title">
+			<span class="back" onclick="history.go(-1)"></span>
+			&lt;!&ndash;商品列表&ndash;&gt;
+			<form action="$!webPath/search_wap.htm" method="post"  id="searchForm">
+			<div class="search-wrap">
+				<select name="type">
+					<option value="goods">商品</option>
+					<option value="store">店铺</option>
+				</select>
+				<input type="search" name="keyword" id="keyword" value="$!keyword" />
+				<button class="search-btn" onclick="search_form();" style="cursor:pointer;"></button>
+			</div>
+			</form>
+			<span class="menu"></span>
+		</div>
+		<div class="menu-list hide">
+			$!httpInclude.include("/wap/wap_navv.htm")
+		</div>-->
+		<div class="title">
+			<span class="back" onclick="history.go(-1)"></span>
+			商品列表
+			<span class="menu"></span>
+		</div>
+		<div class="menu-list hide">
+			$!httpInclude.include("/wap/wap_navv.htm")
+		</div>
+		<script>
+			function sheng(id) {
+				/*$(this).attr("class",on);*/
+				$("div[name=shi]").each(
+					function() {
+						var a = $(this).attr("zzy");
+						if(a == id) {
+							$("#sheng").hide();
+							$("div[name=shi]").hide();
+							$("div[zzy=" + id + "]").show();
+						}
+					}
+				)
+			}
+			function xuanshi(id) {
+				var name = $("#" + id).text();
+				$("#store_name").attr("value", id);
+				$('.font-red').text(name);
+				/*$(this).attr("class",on);*/
+			}
+
+			function tijiaoshaixuan() {
+				$("#form").submit;
+			}
+		</script>
+		<div class="slide-left"></div>
+		<div class="drawer-main drawer-default slide-menu">
+			<nav class="drawer-nav" role="navigation">
+				<form action="$!webPath/store_goods_list_$!{gc_id}.htm" id="form" type="post">
+					<input type="hidden" name="type" value="goods">
+					<div class="drawer-brand">
+						<div class="slide-right">
+							<div class="slide-title active">
+								店铺所在城市：<b class="address font-red">不限</b>
+								<input type="hidden" id="store_name" name="a_id" value="" placeholder="济南">
+							</div>
+							<ul class="address-list" id="sheng">
+								#foreach($!obj in $!area)
+								<li id="$!obj.id" onclick="sheng(this.id)">$!obj.areaName</li>
+								#end
+							</ul>
+						</div>
+						#foreach($!obj in $!area)
+						<div class="slide-right " style="display: none" zzy="$!obj.id" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="$!obj.id">
+								#foreach($!ob in $!obj.childs)
+								<li class="gray" id="$!ob.id" onclick="xuanshi(this.id)">$!ob.areaName</li>
+								#end
+							</ul>
+						</div>
+						#end
+
+						<div class="slide-right">
+							<div class="slide-title active">
+								<div class="jiage-title">价格区域</div>
+								<div class="jiage-for">
+									<input class="zuidijia" type="text" name="p_low" placeholder="最低价">
+									<span class="jiange">——</span>
+									<input class="zuidijia" type="text" name="p_hig" placeholder="最高价">
+								</div>
+
+							</div>
+							<!--<button onclick="tijiaoshaixuan()">确定</button>-->
+							<ul class="price-sure">
+								<li class="close-slide">
+									<a href="javaScript:;" onclick="tijiaoshaixuan()"><button>确定</button></a>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+				</form>
+			</nav>
+		</div>
+
+		<div class="drawer-overlay">
+			<main class="masthead" role="main">
+				<div class="container">
+					<ul class="caidan-list">
+						#if($!style=="1")
+						<li>
+							<a class="menuLink" href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&a_id=$!a_id&&p_low=$!p_low&&p_hig=$!p_hig"><span style="color: red">默认排序</span></a>
+						</li>
+						<li class="jiantou">
+							<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&salenum=goods_salenum&&style=2&&a_id=$!a_id&&p_low=$!p_low&&p_hig=$!p_hig">销量</a>
+						</li>
+						<li class="jiantou">
+							<a href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&price=store_price&&style=3&&a_id=$!a_id&&p_low=$!p_low&&p_hig=$!p_hig">价格</a>
+						</li>
+						<li class="drawer-toggle drawer-hamberger jiantou">
+							<a href="javascript:void(0)" >筛选</a>
+						</li>
+						#end
+						#if($!style=="2")
+						<li>
+							<a class="menuLink" href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&a_id=$!a_id&&p_low=$!p_low&&p_hig=$!p_hig">默认排序</a>
+						</li>
+						<li class="jiantou">
+							<a class="menuLink" href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&salenum=goods_salenum&&style=2&&a_id=$!a_id&&p_low=$!p_low&&p_hig=$!p_hig"><span style="color: red">销量</span></a>
+						</li>
+						<li class="jiantou">
+							<a class="menuLink" href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&price=store_price&&style=3&&a_id=$!a_id&&p_low=$!p_low&&p_hig=$!p_hig" >价格</a>
+						</li>
+						<li class="drawer-toggle drawer-hamberger jiantou">
+							<a href="javascript:void(0)" >筛选</a>
+						</li>
+						#end
+						#if($!style=="3")
+						<li>
+							<a class="menuLink" href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&a_id=$!a_id&&p_low=$!p_low&&p_hig=$!p_hig">默认排序</a>
+						</li>
+						<li class="jiantou">
+							<a class="menuLink" href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&salenum=goods_salenum&&style=2&&a_id=$!a_id&&p_low=$!p_low&&p_hig=$!p_hig">销量</a>
+						</li>
+						<li class="jiantou">
+							<a class="menuLink" href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&price=store_price&&style=3&&a_id=$!a_id&&p_low=$!p_low&&p_hig=$!p_hig" ><span style="color: red">价格</span></a>
+						</li>
+						<li class="drawer-toggle drawer-hamberger jiantou">
+							<a href="javascript:void(0)" >筛选</a>
+						</li>
+						#end
+
+						#if($!style=="4")
+						<li>
+							<a class="menuLink" href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&a_id=$!a_id&&p_low=$!p_low&&p_hig=$!p_hig">默认排序</a>
+						</li>
+						<li class="jiantou">
+							<a class="menuLink" href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&salenum=goods_salenum&&style=2&&a_id=$!a_id&&p_low=$!p_low&&p_hig=$!p_hig">销量</a>
+						</li>
+						<li class="jiantou">
+							<a class="menuLink" href="$!webPath/store_goods_list_$!{gc_id}.htm?bc_location=1&&price=store_price&&style=3&&a_id=$!a_id&&p_low=$!p_low&&p_hig=$!p_hig" >价格</a>
+						</li>
+						<li class="drawer-toggle drawer-hamberger jiantou">
+							<a href="javascript:void(0)" >筛选</a>
+						</li>
+						#end
+					</ul>
+					#if($objs.size()>0)
+					<div class="lh_xplb">
+						<ul>
+							#foreach($obj in $objs)
+							#if($!obj.goods_main_photo)
+							#set($small_img="$!webPath/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}_small.$!{obj.goods_main_photo.ext}")
+							#set($big_img="$!webPath/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}")
+							#else
+							#set($small_img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+							#set($big_img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+							#end
+							#if($!config.second_domain_open)
+							#set($goods_url="http://$!{obj.goods_store.store_second_domain}.$!{domainPath}/goods_$!{obj.id}.htm")
+							#end
+							<li>
+								<a href="$!webPath/goods_$!{obj.id}.htm">
+									<div class="lh_img01"><img src="$!big_img"></div>
+									<div class="lh_jieshao01"><span>仅剩$!{obj.goods_inventory}件</span></div>
+									<div class="lh_xq01">
+										<div class="lh_xq01_title">$!CommUtil.substring("$!obj.goods_name",11)</div>
+										<div class="lh_xq01_jg">
+											<span>¥$!{obj.store_price}</span>
+
+											<em>$!obj.goods_store.area.parent.areaName</em>
+										</div>
+										<div class="lh_xq01_xl">
+											<span>销量$!{obj.goods_salenum}</span>
+											<em>好评度$!GoodsViewTools.haopinglv("$!{obj.id}")%</em>
+										</div>
+									</div>
+								</a>
+							</li>
+							#end
+							<div class="clear"></div>
+						</ul>
+					</div>
+
+					<div class="weui-loadmore" style="width: 100%;text-align: center;clear: both">
+						<div class="loading-wrap" style="width: 30%;line-height: 0.5rem;margin-left:40%;">
+						<i class="weui-loading" style="float: left;">
+							<div class="sk-circle">
+							<div class="sk-circle1 sk-child"></div>
+							<div class="sk-circle2 sk-child"></div>
+							<div class="sk-circle3 sk-child"></div>
+							<div class="sk-circle4 sk-child"></div>
+							<div class="sk-circle5 sk-child"></div>
+							<div class="sk-circle6 sk-child"></div>
+							<div class="sk-circle7 sk-child"></div>
+							<div class="sk-circle8 sk-child"></div>
+							<div class="sk-circle9 sk-child"></div>
+							<div class="sk-circle10 sk-child"></div>
+							<div class="sk-circle11 sk-child"></div>
+							<div class="sk-circle12 sk-child"></div>
+						</div>
+						</i>
+						<span class="weui-loadmore__tips">正在加载</span>
+						</div>
+					</div>
+					<div class="weui-loadmore2" style="display: none;width: 100%;text-align: center;clear: both">
+						<i class="weui-loading"></i>
+						<span class="weui-loadmore2__tips">已加载全部</span>
+					</div>
+					#else
+					<div  style="text-align: center">没有数据</div>
+					#end
+				</div>
+			</main>
+		</div>
+		</div>
+		<script src="js1/index.js"></script>
+		<script>
+			$(document).ready(function() {
+				$(window).scroll(function() {
+					if($(document).scrollTop() <= 0) {
+						// alert("我已经到顶了，我可以刷新");
+					}
+					if($(document).scrollTop() >= $(document).height() - $(window).height()) {
+                        $(".weui-loadmore").css("display","block");
+                        $(".weui-loadmore2").css("display","none");
+                        var currentPag=0;
+                        var arr = new Array();
+                        var  arr=$(":input[name=currentPage]").each(function () {
+                            $(this).val()
+                        });
+                        currentPag=(arr.length+2)+"";
+
+                        if(currentPag!=undefined&&currentPag>$!totalPage){
+                            $(".weui-loadmore").css("display","none");
+                            $(".weui-loadmore2").css("display","block");
+                            return;
+                        }
+                        jQuery.ajax({type:'post',async: false,url:'$!webPath/store_goods_list_ajax.htm',data:{"gc_id":"$!gc_id","bc_location":"$!bc_location","orderBy":"$!orderBy","orderType":"$!orderType","salenum":"$!salenum","recommend":"$!recommend","orderBy":"$!orderBy","currentPage":currentPag,"style":"$!style","orderType":"$!orderType","store_price_begin":"$!store_price_begin","store_price_end":"$!store_price_end","area_id":"$!area_id"},
+                            beforeSend:function(){
+                            },
+                            success:function(data){
+                                $(".lh_xplb ul").append(data);
+                            }
+                        });
+
+					}
+				});
+			});
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+							$(".drawer-toggle").on("click", function() {
+								$(".slide-menu").css("display", "block");
+								$(".slide-left").css("display", "block")
+							});
+							$(".slide-left").on("click", function() {
+								$(".slide-menu").css("display", "none");
+								$(this).css("display", "none");
+							});
+							$(".close-slide").on("click", function() {
+								$(".slide-menu").css("display", "none");
+								$(".slide-left").css("display", "none");
+							});
+							$(".slide-left").on("mouseover", function() {
+								$(".slide-menu").css("display", "none");
+								$(this).css("display", "none");
+							})
+							
+				//			阻止事件冒泡
+        			$(".zuidijia").on("click",function(event){
+        				return false;
+        			})
+			});
+
+/*解决汉堡包菜单点击无效*/
+            $(".menu").on("click",function(){
+                $(".menu-list").toggle()
+            })
+		</script>
+	</body>
+
+</html>

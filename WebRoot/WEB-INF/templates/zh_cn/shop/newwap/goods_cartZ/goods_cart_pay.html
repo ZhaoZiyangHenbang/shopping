@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>$!config.title</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <meta content="telephone=no" name="format-detection">
+  <meta name="keywords" content="济南浩星装饰工程有限公司">
+  <meta name="description" content="济南浩星装饰工程有限公司">
+  <meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+  <meta name="msapplication-navbutton-color" content="#DB1011">
+  <link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+  <link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="$!webPath/resources/new/css/mui.min.css" />
+  <link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+  <link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+  <script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+  <script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+  <style type="text/css">
+    @font-face {
+      font-family: "iconfont";
+      src: url('$!webPath/resources/new/font/iconfont.eot');
+      /* IE9*/
+      src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+      url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+      url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+      url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+      /* iOS 4.1- */
+    }
+
+    .iconfont {
+      font-family: "iconfont" !important;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-stroke-width: 0.2px;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="lh_hdindex">
+    <span class="lh_back" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i></span>
+    <span>支付</span>
+    <span class="lh_xiala" id="stateBut" data-show="hide"><i class="icon iconfont">&#xe67b;</i></span>
+    <div id="class1content" style="display: none;">
+      $!httpInclude.include("/wap/wap_navv.htm")
+    </div>
+  </div>
+</header>
+<div class="clear"></div>
+
+<!--购物车-支付-->
+<div class="w-cost padb">
+  <div class="lh_my_order_nr_bh  bort bort3 ">
+    <div class="lh_my_order_nr_bh_left">结算信息</div>
+  </div>
+  <div class="lh_my_order_nr_bh bort3 bort tgar">
+    <div class="lh_my_order_nr_bh_left">订单号</div>
+    <div class="lh_my_order_nr_bh_right">$!{of.order_id}</div>
+  </div>
+  <div class="lh_my_order_nr_bh bort3  ">
+    <div class="lh_my_order_nr_bh_left">应付金额</div>
+    <div class="lh_my_order_nr_bh_right red">¥$!{of.totalPrice}</div>
+  </div>
+ <!-- <div class="lh_my_order_nr_bh bort3  ">
+    <div class="lh_my_order_nr_bh_left">使用积分抵款</div>
+    <div class="lh_my_order_nr_bh_right red">¥$!{of.inte_money}</div>
+  </div>-->
+  <!--<div class="lh_my_order_nr_bh bort3  ">
+    <div class="lh_my_order_nr_bh_left">余额</div>
+    <div class="lh_my_order_nr_bh_right red">14元</div>
+  </div>
+  <div class="lh_my_order_nr_bh bort3  ">
+    <div class="lh_my_order_nr_bh_left">还需支付</div>
+    <div class="lh_my_order_nr_bh_right red">10元</div>
+  </div>-->
+  <div class="w-rzf">
+    <p class="w-fy">请选择支付方式</p>
+    <div class="clear"></div>
+  </div>
+  <div class="w-zf">
+    <form class="w-input-group bj_white" action="" method="post" id="theForm">
+      <div class="w-mui-radio">
+        <input name="radio1" type="radio" id="radio" class="w-pay" onclick="order_pay('alipay_wap')">
+        <img src="$!imageWebServer/resources/style/common/images/payment/alipay1.jpg">
+        <label>支付宝支付</label>
+      </div>
+      <!--<div class="w-mui-radio">
+        <input name="radio1" type="radio" class="w-pay1" onclick="order_pay('weixin_wap')">
+        <img src="$!webPath/resources/new/images/w_pay1.jpg">
+        <label>微信支付</label>
+      </div>-->
+      <input name="order_id" type="hidden" id="order_id" value="$!{of.id}" />
+      <input name="payType" type="hidden" id="payType" value="" />
+    </form>
+  </div>
+  <button id='confirmBtn' class="confir lx_btn" onclick="pay()">确认支付</button>
+</div>
+<!--购物车-支付-->
+
+
+<script type="text/javascript" src="$!webPath/resources/new/js/mui.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+  function order_pay(payType){
+    jQuery("#payType").val(payType);
+  }
+  function pay(){
+  /* if( $("#radio").checked==false){
+      alert("请选择支付方式");
+     return;
+    }*/
+    var a=document.getElementById("radio");
+    if(!a.checked){
+      alert("请选择支付方式");
+      return;
+    }
+    var a=jQuery("#payType").val();
+    var b=jQuery('#theForm');
+    b.attr("action","$!webPath/pay_submit.htm");
+    /*if (a=="alipay_wap") {
+     b.attr("action","$!webPath/wappay/pay.htm");
+    }else {
+      b.attr("action","$!webPath/pay_submit.htm");
+    }*/
+    jQuery('#theForm').submit();
+  }
+  //mui初始化
+  mui.init({
+    swipeBack: true //启用右滑关闭功能
+  });
+  var info = document.getElementById("info");
+  /*document.getElementById("confirmBtn").addEventListener('tap', function() {
+    var btnArray = ['返回首页', '查看订单'];
+    mui.confirm('您已经提交过一次，请勿重复提交，您可以选择支付已提交订单，或者返回首页', '提示', btnArray, function(e) {
+      if (e.index == 1) {
+        mui.openWindow({
+
+          url:'index.html',
+
+          id:'index.html'
+
+        });
+
+      } else {
+        mui.openWindow({
+
+          url:'#',
+
+          id:'#'
+
+        });
+      }
+    })
+  });*/
+
+</script>
+
+</body>
+
+</html>

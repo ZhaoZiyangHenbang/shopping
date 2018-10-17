@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>$!config.title</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="keywords" content="济南浩星装饰工程有限公司">
+    <meta name="description" content="济南浩星装饰工程有限公司">
+    <meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+    <meta name="msapplication-navbutton-color" content="#DB1011">
+    <link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+    <link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+    <link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css"/>
+    <script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+    <script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+    <script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+    <style type="text/css">
+        @font-face {
+            font-family: "iconfont";
+            src: url('$!webPath/resources/new/font/iconfont.eot');
+            /* IE9*/
+            src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */ url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+            /* iOS 4.1- */
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+  <script defer="defer">
+        var info="$!info";
+        if (info!=null&&info!="") {
+            alert(info);
+        }
+    </script>
+    <script>
+       /* jQuery(document).ready(function () {
+            jQuery.validator.addMethod("verify", function (value, element) {
+                var re = /^([0-9a-zA-Z]|[\u4E00-\u9FA5])+$/;
+                if (re.test(jQuery("#userName").val())) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+            jQuery("#theForm").validate({
+                errorPlacement: function (error, element) {
+                    element.parent().addClass("bd_red");
+                    error.appendTo(element.parent().next());
+                },
+                success: function (label) {
+                    label.parent().prev().removeClass("bd_red");
+                },
+                rules: {
+                    userName: {
+                        required: true,
+                        verify: true,
+                        remote: {
+                            url: "$!webPath/verify_username.htm", //后台处理程序
+                            type: "post", //数据发送方式
+                            dataType: "json", //接受数据格式
+                            data: { //要传递的数据
+                                "userName": function () {
+                                    return jQuery("#userName").val();
+                                }
+                            }
+                        }
+                    },
+                    password: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 20
+                    },
+                    repassword: {
+                        required: true,
+                        equalTo: "#password"
+                    },
+                    agree: {
+                        required: true
+                    },
+                    code: {
+                        required: true,
+                        remote: {
+                            url: "$!webPath/verify_code.htm", //后台处理程序
+                            type: "post", //数据发送方式
+                            dataType: "json", //接受数据格式
+                            data: { //要传递的数据
+                                "code": function () {
+                                    return jQuery("#code").val();
+                                }
+                            }
+                        }
+                    }
+
+                },
+                messages: {
+                    userName: {
+                        required: "用户名不能为空",
+                        verify: "存在特殊字符",
+                        remote: "用户名已存在"
+                    },
+                    password: {
+                        required: "密码不能为空",
+                        minlength: "密码不能小于{0}个字符",
+                        maxlength: "密码不能大于{0}个字符"
+                    },
+                    repassword: {
+                        required: "重复密码不能为空",
+                        equalTo: "两次输入密码不一致"
+                    },
+                    agree: {
+                        required: "请接受用户协议"
+                    },
+                    code: {
+                        required: "验证码不能为空",
+                        remote: "验证码不正确"
+                    }
+                },
+            });
+        });*/
+        function send() {
+            var telephone=$("#telephone").val();
+            if (telephone==null||telephone=="") {
+                alert("请输入手机号!");
+            }else {
+                /*jQuery.ajax({type:'post',url:'$!webPath/sendYzm/send.htm?telephone='+telephone,
+                    beforeSend:function(){
+                    },
+                    success:function(data){
+                        var result=eval("("+data+")");
+                        document.getElementById("sendYzm").value=result.yzm;
+                    }
+                })*/
+                alert(1);
+            }
+        }
+    </script>
+</head>
+
+<body>
+<!--//header开始-->
+<header>
+    <div class="hdindex">
+        <span class="lh_back" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i></span>
+        <span>注册</span>
+    </div>
+</header>
+<!--header结束//-->
+<form action="$!webPath/register_finish.htm" method="post" name="theForm" id="theForm" >
+<div class="huiyuan_box">
+        <input name="shopping_view_type" type="hidden" id="shopping_view_type" value="wap">
+        <div class="huiyuan_xh">
+            <input type="text" name="telephone" id="telephone"  placeholder="手机号">
+        </div>
+        <div class="huiyuan_xh">
+            <input type="text" name="yzm" placeholder="验证码" id="yzm">
+            <input name="sendYzm" type="hidden" id="sendYzm">
+            <div class="zc_huqbut">
+                <a href="#" class="zc_fas" id="J_resetCode" style="display: none;">重新发送</a>
+                <a href="#" class="zc_fas" id="J_second" style="display: none;">60</a>
+                <a href="#" class="zc_hqu" onclick="getCode(this)" id="J_getCode">获取验证码</a>
+            </div>
+
+        </div>
+        <div class="huiyuan_xh">
+            <input name="password" type="password" id="password"  placeholder="密码">
+        </div>
+        <div class="huiyuan_xh">
+            <input name="repassword" type="password" id="repassword" placeholder="确认密码">
+        </div>
+        <div class="huiyuan_xh">
+            <input name="yqm" type="text" placeholder="推荐码（选填）" value="$!yqm">
+        </div>
+
+</div>
+<button class="lx_btn" type="button" onclick="registerP()">立即注册</button>
+</form>
+<script>
+    /*获取验证码*/
+    var isPhone = 1;
+    function getCode(e){
+        checkPhone(); //验证手机号码
+        var telephone=$("#telephone").val();
+        jQuery.ajax({type:'post',url:'$!webPath/sendYzm/send.htm?telephone='+telephone,
+            beforeSend:function(){
+            },
+            success:function(data){
+                var result=eval("("+data+")");
+                document.getElementById("sendYzm").value=result.yzm;
+            }
+        });
+        if(isPhone){
+            resetCode(); //倒计时
+        }else{
+            $('#telephone').focus();
+        }
+
+    }
+    //验证手机号码
+    function checkPhone(){
+        var telephone = $('#telephone').val();
+        var pattern = /^1[0-9]{10}$/;
+        isPhone = 1;
+        if(telephone == '') {
+            alert('请输入手机号码');
+            isPhone = 0;
+            return;
+        }
+        if(!pattern.test(telephone)){
+            alert('请输入正确的手机号码');
+            isPhone = 0;
+            return;
+        }
+    }
+
+    //倒计时
+    function resetCode(){
+        $('#J_getCode').hide();
+        $('#J_second').html('60');
+        $('#J_second').show();
+        var second = 60;
+        var timer = null;
+        timer = setInterval(function(){
+            second -= 1;
+            if(second >0 ){
+                $('#J_second').html(second);
+            }else{
+                clearInterval(timer);
+                $('#J_getCode').html("重新发送");
+                $('#J_getCode').show();
+                $('#J_second').hide();
+            }
+        },1000);
+    }
+
+    function registerP() {
+        var telephone=$("#telephone").val();
+        var yzm=$("#yzm").val();
+        var password=$("#password").val();
+        var password1=$("#repassword").val();
+        if (telephone==null||telephone=="") {
+            alert("请输入手机号!");
+        }else if (yzm==null||yzm=="") {
+            alert("请输入验证码!");
+        }else if(password==null||password==""){
+            alert("请输入密码!");
+        }else if (password1==null||password1=="") {
+            alert("请输入确认密码!");
+        }else if (password1!=password) {
+            alert("两次密码输入不一致!");
+        }else {
+            jQuery('#theForm').submit();
+        }
+    }
+
+</script>
+<p class="zc_tex">注册即视为同意
+    <a href="$!webPath/article_196626.htm">《商城注册协议》</a>
+</p>
+
+<div class="cbtn-top">
+    <a href="javascript:;">
+        <span><img src="$!webPath/resources/new/images/top.png" alt=""/></span></a>
+</div>
+
+<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+#if($!objs.size()>0)
+#foreach($obj in $objs)
+#if($!obj.goods.goods_main_photo)
+#set($img="$!imageWebServer/$!{obj.goods.goods_main_photo.path}/$!{obj.goods.goods_main_photo.name}")
+#else
+#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+#end
+<li>
+	<div class="img_list_pic"><a href="$!webPath/goods_$!{obj.goods.id}.htm"><img src="$!img"></a> </div>
+	<div class="img_list_tex">
+		<a href="$!webPath/goods_$!{obj.goods.id}.htm">	<p>$!obj.goods.goods_name</p></a>
+		#if($!obj.goods.goods_status==3)
+		<p class="img_list_price"></p>
+		#else
+		<p class="img_list_price">￥$!obj.goods.goods_price</p>
+		#end
+		<p class="mui-icon-extra-like img_list_praise">$!obj.goods.goods_zan人点赞</p>
+	</div>
+
+</li>
+#end
+#end
+<input type="hidden" value="$!currentPage" name="currentPage" id="currentPag">

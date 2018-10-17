@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<!--二维码-->
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/qrcode.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/layer/layer.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+	<!-- top -->
+	$!httpInclude.include("/second/topZ.htm")
+	<!-- top结束 -->
+
+	<!-- heard -->
+	$!httpInclude.include("/second/headZ.htm")
+	<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				<div class="h_seat">
+					<a href="">首页</a>>
+					<a href="">卖家中心</a>
+				</div>
+				<!--我是买家-->
+				<div class="h_content">
+					$!httpInclude.include("/second/left_buy.htm")
+
+                    <div class="l-fr">
+						<div class="w-title">
+							<h3>分销商</h3>
+						</div>
+					</div>
+					<div class="lh-buyers">
+						<div class="w-buyers1">
+							<ul>
+								<li>
+									<div class="biaoti">我的收益</div>
+									<div class="neirong01">$sum<span>元</span></div>
+								</li>
+								<li>
+									<div class="biaoti">推荐码</div>
+									<div class="neirong01">$!user.id</div>
+								</li>
+								<li>
+									<div class="wdd">
+										<a href="$!webPath/index.htm?id=$!user.id">我的店</a>
+									</div>
+								</li>
+								<li style="margin-left: 0px; padding: 0px 50px 10px 40px;">
+									<div class="wx01" id="qrcode"></div>
+								</li>
+								<script>
+									$(function () {
+										erweima();
+									})
+									function erweima() {
+										document.getElementById("qrcode").innerHTML="";
+										var qrcode = new QRCode(document.getElementById("qrcode"), {
+											width : 240,//设置宽高?goodId=$!obj.id
+											height : 240
+										});
+										qrcode.makeCode("http://www.yijia1234.com/wap/index.htm?shopping_view_type=wap&&yqm=$!user.id");
+
+										/*layer.open({
+											type: 1,
+											title: false,
+											closeBtn: 0,
+											area: '240px',
+											skin: 'layui-layer-nobg', //没有背景色
+											shadeClose: true,
+											offset: ['300px', '300px'],
+											content: $('#qrcode')
+										});*/
+									}
+								</script>
+								<li style="border: 0px; margin-left: 15px;">
+									<div class="wytx" onclick="window.location.href='$!webPath/second/shenqingtixian.htm'" style="cursor: pointer"><a>我要提现</a></div>
+								</li>
+							</ul>
+						</div>
+						<div class="w-buyers2 tgar" >
+							<ul>
+								<li>
+									<div class="biaoti"><a href="$!webPath/second/xiaoshouticheng.htm?type=0">销售提成</a></div>
+									<div class="neirong01">$finish<span>元</span></div>
+								</li>
+								<li>
+									<div class="biaoti"><a href="$!webPath/second/xiaxianticheng.htm">下线提成</a></div>
+									<div class="neirong01">$junior<span>元</span></div>
+								</li>
+								<li>
+									<div class="biaoti"><a href="$!webPath/second/yujiticheng.htm?type=1">预计提成</a></div>
+									<div class="neirong01">$predict<span>元</span></div>
+								</li>
+								<li style="border: 0px;">
+									<div class="biaoti"><a href="$!webPath/second/tixianjilu.htm">已发提成</a></div>
+									<div class="neirong01">$getMoney<span>元</span></div>
+								</li>
+							</ul>
+						</div>
+						<div class="w-buyers3 tgar">
+							<ul>
+								<li>
+									<div class="neirong01"><span><a href="$!webPath/second/fenxiaoshang.htm?type=1">分销商</a></span>$fenXiaoShang</div>
+								</li>
+								<li style="border: 0px;">
+									<div class="neirong01"><span><a href="$!webPath/second/fensituan.htm">粉丝团</a></span>$fans</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--我是买家-->
+
+		</div>
+		</div>
+	<!--footer开始-->
+	$!httpInclude.include("/second/footZ.htm")
+	<!--footer结束-->
+
+	<!-- 右侧 -->
+	$!httpInclude.include("/second/rightZ.htm")
+	<!-- 右侧结束 -->
+
+	</body>
+
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script>
+			$(function () {
+				var url=window.document.location.href;
+				$("#my").attr("href","$!webPath/second/fenxiao.htm?url="+url);
+			})
+		</script>
+	</head>
+
+	<body>
+		<header>
+			<div class="lh_hdindex">
+				<span class="lh_back" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i></span>
+				<span>有好货</span>
+				<span class="lh_xiala" id="stateBut" data-show="hide"><i class="icon iconfont">&#xe67b;</i></span>
+				<div id="class1content" style="display: none;">
+					$!httpInclude.include("/wap/wap_navv.htm")
+				</div>
+			</div>
+		</header>
+		<div class="clear"></div>
+		<div class="nav_tab">
+			<ul>
+				<li class="hover1" id="goodscase1" goods_random="1"><a href="$!webPath/second/everydaygoods.htm?bg_nav=youhaohuo&&bg_class=jingpin">精品</a><s></s></li>
+				<li id="goodscase2" goods_random="1"><a href="$!webPath/second/selfSay_wap.htm">自述</a><s></s></li>
+				<li id="goodscase3" goods_random="1"><a href="$!webPath/second/everydaygoods.htm?bg_nav=youhaohuo&&bg_class=dongtai">动态</a><s></s></li>
+				<li id="goodscase4" goods_random="1"><a href="$!webPath/second/wozan.htm">我赞</a><s></s></li>
+			</ul>
+		</div>
+		<div class="main">
+			<div class="goods_con">
+				<img src="$!imageWebServer/$!{bg.bg_goods.goods_main_photo.path}/$!{bg.bg_goods.goods_main_photo.name}" />
+				<h2>$!CommUtil.substring("$!bg.bg_goods.goods_name",200)</h2>
+				<p class="clearfix">
+					<span class="fl">￥$!bg.bg_goods.goods_price</span>
+					<i class="fr">$!bg.bg_goods.goods_salenum人已购买</i>
+				</p>
+				<p>$!bg.bg_recommend_reason</p>
+			</div>
+
+			<div class="goods_tj">
+				<h3>你可能还喜欢</h3>
+				<ul>
+					#foreach($goods in $good)
+					#if($!goods.goods_main_photo)
+					#set($img="$!imageWebServer/$!{goods.goods_main_photo.path}/$!{goods.goods_main_photo.name}")
+					#else
+					#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+					#end
+					#if($!velocityCount%3==0)
+					<li class="fr" #if($!velocityCount>3)style="display:none;"#end style="margin-right: 0rem;margin-bottom: 2.5%" >
+						<a href="$!webPath/goods_$!{goods.id}.htm"><p><img src="$!img" /></p></a>
+						<span>$!goods.goods_salenum人已买</span>
+					</li>
+                    #else
+					<li #if($!velocityCount>3)style="display:none;"#end style="margin-bottom: 2.5%;margin-right: 2.5%" >
+						<a href="$!webPath/goods_$!{goods.id}.htm"><p><img src="$!img" /></p></a>
+						<span>$!goods.goods_salenum人已买</span>
+					</li>
+                    #end
+				#end
+				</ul>
+			</div>
+		</div>
+		<div style="display: none; background: #FFF;" id="fen" class="1">
+			<a href="javaScript:;" id="hide01" ><i class="icon iconfont"><ol  >
+				<li class="row" style="padding: 0;">
+					<div id="share-2"></div>
+				</li>
+			</ol></i></a>
+		</div>
+		<link rel="stylesheet" href="$!webPath/resources/new/css/share.min.css">
+		<style>
+			.row { padding: 20px 0 0 20px }
+			.row-pad { padding: 20px 0 0 60px }
+		</style>
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<script src="$!webPath/resources/new/js/jquery.share.min.js"></script>
+		<script>
+			$('#share-1').share();
+			$('#share-2').share({sites: ['qzone', 'qq', 'weibo','wechat']});
+			$('#share-3').share();
+			$('#share-4').share();
+		</script>
+		<div class="n_foot">
+
+			<script>
+
+				#if($!user)
+				function guanzhu() {
+					//alert(id);
+				#if($!user.id==$!obj.goods_store.user.id)
+					alert("不能赞自己的商品");
+
+											#else
+					jQuery.post("$!webPath/add_zan_favorite.htm",{"id":$!bg.bg_goods.id},function(data){
+						if(data==0){
+							alert("商品点赞成功！");
+							$("#_2").show();
+							$("#_1").hide();
+
+							location=location;
+							//alert($!bg.bg_goods.id);
+							/*location=location;*/
+						}
+						if(data==1){
+							alert("已经取消点赞！");
+							$("#_2").hide();
+							$("#_1").show();
+							//alert($!bg.bg_goods.id);
+							location=location;
+						}
+					},"text")
+				#end
+				}
+				#end
+
+			</script>
+			<script>
+
+
+
+
+				#if($!user)
+				function shouchang() {
+				#if($!user.id==$!obj.goods_store.user.id)
+					alert("不能收藏自己的商品");
+
+											#else
+					jQuery.post("$!webPath/add_goods_favorite.htm",{"id":"$!bg.bg_goods.id"},function(data){
+						if(data==0){
+							alert("商品收藏成功！");
+							/*location=location;*/
+							$("#1"+$!bg.bg_goods.id).hide();
+							$("#2"+$!bg.bg_goods.id).show();
+						}
+						if(data==1){
+							alert("已经取消收藏该商品！");
+							$("#2"+$!bg.bg_goods.id).hide();
+							$("#1"+$!bg.bg_goods.id).show();
+						}
+					},"text");
+											#end
+				}
+				#end
+
+
+			</script>
+			<div class="n_foot_l">
+				<ul>
+					<li>
+						<a href="javaScript:;" onclick="guanzhu()"  #if(!$!user)dialog_uri="$!webPath/user_dialog_login.htm" dialog_title="会员登录" dialog_width="450" dialog_height="100" dialog_id="user_login"#end>
+
+							<i class="icon iconfont"  id="_1">&#xe646;</i>
+							<i class="icon iconfont" style="color:red;display: none" id="_2" >&#xe646;</i>
+							$!bg.bg_goods.goods_zan</a>
+					</li>
+					<li>
+						<a href="javaScript:;" onclick="shouchang()"  #if(!$!user)dialog_uri="$!webPath/user_dialog_login.htm" dialog_title="会员登录" dialog_width="450" dialog_height="100" dialog_id="user_login"#end>
+							<i class="icon iconfont" id="1$!bg.bg_goods.id">&#xe619;<span>收藏</span></i>
+							<i class="icon iconfont" id="2$!bg.bg_goods.id" style="color: red; display: none">&#xe619;<span>收藏</span></i></a>
+					</li>
+					<li>
+						<!--<a href=""><i class="icon iconfont ">&#xe60e;</i>分享</a>-->
+						<a href="javaScript:;" onclick="fenx()" class="bshare-more bshare-more-icon more-style-addthis"><i class="icon iconfont" >&#xe627;<span>分享</span></i></a>
+						<script>
+							function fenx() {
+								var a=$("#fen").attr("class");
+								if(1==a){
+									$("#fen").show();
+									var a=$("#fen").attr("class",0);
+								}else{
+									$("#fen").hide();
+									var a=$("#fen").attr("class",1);
+								}
+							}
+						</script>
+					</li>
+				</ul>
+			</div>
+			<div class="n_foot_r">
+				<a href="$!webPath/goods_$!{bg.bg_goods.id}.htm">查看详情</a>
+			</div>
+		</div>
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span>
+			</a>
+		</div>
+
+	</body>
+
+</html>

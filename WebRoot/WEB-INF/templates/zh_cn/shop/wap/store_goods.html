@@ -1,0 +1,1548 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="pixel-ratio-1">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>产品详情</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+	<link rel="stylesheet" href="$!webPath/resources/new/pro/css/weui.css">
+	<link rel="stylesheet" href="$!webPath/resources/new/pro/css/jquery-weui.css">
+	<link rel="stylesheet" href="$!webPath/resources/new/pro/css/style.css">
+	<script src="$!webPath/resources/new/pro/js/jquery-2.js"></script>
+	<script src="$!webPath/resources/new/pro/js/jquery-weui.js"></script>
+	<script src="$!webPath/resources/style/system/front/wap/js/TouchSlide.1.1.js"></script>
+	<script src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+	<script src="$!webPath/resources/new/pro/js/swiper.js"></script>
+	<script src="$!webPath/resources/new/pro/js/modernizr.js"></script>
+	<!--二维码-->
+	<script type="text/javascript" src="$!webPath/resources/new_pc/js/qrcode.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new_pc/js/layer/layer.js"></script>
+	<!--详情页滚动-->
+	<script type="text/javascript" src="$!webPath/resources/new/js/affix.js"></script>
+
+	<style type="text/css">
+		@font-face {
+			font-family: "iconfont";
+			src: url('$!webPath/resources/new/font/iconfont.eot');
+			/* IE9*/
+			src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+			url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+	</style>
+
+</head>
+
+<body ontouchstart="">
+<!--主体-->
+<div class="weui-content">
+	<!--产品详情-->
+	<div class="weui-tab">
+		<div class="weui-navbar" >
+			<span class="lh_back" a href="#" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i></span>
+			<a class="weui-navbar__item proinfo-tab-tit weui-bar__item--on"  href="#tab1"  >商品</a>
+			<a class="weui-navbar__item proinfo-tab-tit" href="#tab2" >详情</a>
+			<a class="weui-navbar__item proinfo-tab-tit" href="#tab3" >评价</a>
+			<span class="lh_xiala" id="stateBut" onclick="use()"><i class="icon iconfont">&#xe67b;</i></span>
+			<div id="class1content" style="display: none;">
+				<ul class="lh_tcxl">
+					<li>
+						<a href="$!webPath/wap/index.htm">
+							<span><i class="icon iconfont">&#xe60c;</i></span>
+							<strong>首页</strong>
+						</a>
+					</li>
+					<li>
+						<a href="$!webPath/search.htm">
+							<span><i class="icon iconfont">&#xe674;</i></span>
+							<strong>分类搜索</strong>
+						</a>
+					</li>
+					<li>
+						<a href="$!webPath/goods_cart1.htm">
+							<span><i class="icon iconfont">&#xe60a;</i></span>
+							<strong>购物车</strong>
+						</a>
+					</li>
+					<li>
+						<a href="$!webPath/second/fenxiao.htm?url=$!webPath/goods_$!{id}.htm">
+							<span><i class="icon iconfont">&#xe617;</i></span>
+							<strong>我的</strong>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="weui-tab__bd proinfo-tab-con ">
+			<div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+				<div class="swiper-container swiper-zhutu swiper-container-horizontal">
+					<div class="swiper-wrapper" style="transform: translate3d(-330px, 0px, 0px); transition-duration: 0ms;">
+						#if($!obj.goods_main_photo)
+						#set($img="$!imageWebServer/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}")
+						#else
+						#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+						#end
+						<div class="swiper-slide" style="width: 330px;"><img src="$!img"></div>
+						#foreach($img in $obj.goods_photos)
+						<div class="swiper-slide" style="width: 330px;"><img src="$!imageWebServer/$!img.path/$!{img.name}"></div>
+						#end
+					</div>
+					<a href="#0" class="cd-popup-trigger"></a>
+					<div class="swiper-pagination swiper-zhutu-pagination swiper-pagination-fraction"><span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">$obj.goods_photos.size()</span></div>
+				</div>
+				<script>
+					$(".swiper-zhutu").swiper({
+						loop: true,
+						paginationType: 'fraction',
+						autoplay: 3000
+					});
+				</script>
+				<div class="proCountDown" style="display: block;">
+					<p class="proCountDownTime">
+						<span class="time_down_info" endTime="$!CommUtil.formatTime('MM/dd/yyyy HH:mm:ss',$!endTime)"></span>
+					</p>
+				</div>
+				<div class="huodong huodongN borb">
+					<div class="titleW">
+						<h1><span>自营</span>$!obj.goods_name</h1>
+						<div class="share_picN fr bdsharebuttonbox" data-tag="share_1">
+							<div style="float: left;width: 50px;height: 40px">
+
+							<a href="#" class="ishare bds_tsina" onclick="guanzhu()" >
+								<i class="icon iconfont" style="font-size: 1.2rem;" id="a">&#xe639;</i>
+								<i class="icon iconfont" style="font-size: 1.2rem;color: red;display: none" id="aa">&#xe639;</i>
+
+							</a>
+								<a href="javaScript:;" onclick="fenx()" class="bshare-more bshare-more-icon more-style-addthis"><i class="icon iconfont" >&#xe627;</i></a>
+
+							</div>
+								<script>
+                                function fenx() {
+                                    var a=$("#fen").attr("class");
+                                    if(1==a){
+                                        $("#fen").show();
+                                        var a=$("#fen").attr("class",0);
+                                    }else{
+                                        $("#fen").hide();
+                                        var a=$("#fen").attr("class",1);
+                                    }
+                                }
+							</script>
+							</div>
+					</div>
+					<div style="display: none; background: #FFF;" id="fen" class="1">
+						<a href="javaScript:;" id="hide01" ><i class="icon iconfont"><ol  >
+							<li class="row" style="padding: 0;">
+								<div id="share-2"></div>
+							</li>
+						</ol></i></a>
+					</div>
+					<link rel="stylesheet" href="$!webPath/resources/new/css/share.min.css">
+					<style>
+						.row { padding: 20px 0 0 20px }
+						.row-pad { padding: 20px 0 0 60px }
+					</style>
+					<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+					<script src="$!webPath/resources/new/js/jquery.share.min.js"></script>
+					<script>
+                        $('#share-1').share();
+                        $('#share-2').share({sites: ['qzone', 'qq', 'weibo','wechat']});
+                        $('#share-3').share();
+                        $('#share-4').share();
+					</script>
+
+
+					<ul class="pro_sku clearfix borb1" style="margin-top: 10px">
+						#if($!ggs)
+						<li class="proSalePrice"><span class="price">￥$!ggs.gg_price</span></li>
+						#else
+						<li class="proSalePrice"><span class="price">￥$!obj.store_price</span></li>
+						#end
+						<li class="marketprice"><del>¥$!obj.goods_price</del></li>
+						<li class="marketprice">分润：¥$!obj.p_fenrun</li>
+						#if($couponZ.size()>0)
+						<li class="proJuanSend"><span>可用优惠券</span></li>
+						#else
+						<li class="proJuanSend"><span>不可用优惠券</span></li>
+						#end
+					</ul>
+					<div class="lh_notes">
+						<dl>
+							<dt>销量</dt>
+							<dd>$!{obj.goods_salenum}</dd>
+						</dl>
+						<dl>
+							<dt>收藏</dt>
+							<dd>$!{obj.goods_collect}</dd>
+						</dl>
+						<dl>
+							<dt>点击</dt>
+							<dd>$!{obj.goods_click}</dd>
+						</dl>
+						<dl style="border-right: none;">
+							<dt>评论</dt>
+							<dd>$!{eva_count}</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="lh_yhjf">
+					<ul>
+						<li>
+							<div class="lh_yhjf_bt">积分</div>
+							<div class="lh_yhjf_nr">购物可获得$!fen积分</div>
+						</li>
+						<li>
+							<div class="lh_yhjf_bt">领券</div>
+							#if($!coupon.size()>0)
+							<div style="width: 70%">
+								#foreach($obj in $coupon)
+								<div class="lh_yhjf_nr" #if($!velocityCount>1)style="display:none;" #end >满$!obj.coupon_order_amount减$!obj.coupon_amount</div>
+								#end
+							</div>
+							<div class="lh_yhjf_nn">
+								<!--<a href="javascript:void(0)" onclick="lingquan($!obj.id,$!obj.coupon_order_amount,$!obj.coupon_amount)" id="lingjuan">领券</a>-->
+								<a href="javascript:;" class="open-popup" data-target="#selcet_sku1">
+									<p>领卷</p>
+								</a>
+							</div>
+							#else
+							<div class="lh_yhjf_nr">此店铺暂时没有优惠券可领</div>
+							#end
+						</li>
+					</ul>
+				</div>
+				<div class="wy-media-box2 weui-media-box_text">
+					#foreach($spec in $goodsViewTools.generic_spec("$!obj.id"))
+					<div class="weui-media-box_appmsg">
+						<div class="weui-media-box__hd proinfo-txt-l">
+							<span class="promotion-label-tit">$!{spec.name}</span>
+						</div>
+						<div class="weui-media-box__bd">
+							<div class="promotion-sku clear">
+								<ul class="colordate">
+									#foreach($gsp in $obj.goods_specs)
+									#if($!{gsp.spec.id}==$!spec.id)
+									<li>
+										<a href="javascript:void(0);" onclick="goods_spec_set(this);" spec="$!gsp.spec.id" gsp="$!gsp.id">$!gsp.value</a>
+									</li>
+									#end
+									#end
+								</ul>
+
+							</div>
+						</div>
+					</div>
+					#end
+					<div class="weui-media-box_appmsg">
+						<span class="promotion-label-tit">数量：</span>
+						<script>
+							function checknum() {
+							var a=	$("#goods_count").val();
+								var b=$("#count").val();
+								if(parseInt(a)>parseInt(b)){
+									alert("选购数量不能超过库存数量");
+									$("#goods_count").focus()
+									return false;
+								}
+								return true;
+							}
+
+						</script>
+						<input name="goods_count" type="text" id="goods_count" value="1" style="width: 50px" onblur="checknum()"/>
+						<input type="hidden" value="$!ggs.gg_max_count" id="count"/>
+						#if($!obj.group_buy==2)
+						#foreach($gg_info in $obj.group_goods_list)
+						#if($!gg_info.gg_goods.id==$!obj.id)
+						#set($goods_inventory=$!{gg_info.gg_count})
+						#end
+						#end
+						#else
+						#set($goods_inventory="$!{obj.goods_inventory}")
+						#end
+						<span class="promotion-label-tit">件（#if($!group==1)团购剩余#else库存#end<b id="goods_inventory" style="font-weight:normal;">$!{goods_inventory}</b>件）
+						</span>
+					</div>
+				</div>
+				<!--商品规格-->
+				<script>
+					function goods_spec_set(obj){
+						var spec=jQuery(obj).attr("spec");
+						var gsp="";
+						var load=true;
+						jQuery(".colordate a[spec="+spec+"]").removeClass("this");
+						jQuery(obj).addClass("this");
+						jQuery(".colordate").each(function(){
+							jQuery.each(jQuery(this).find("a[class=this]"),function(){
+								gsp=jQuery(this).attr("gsp")+","+gsp;
+							});
+						});
+						jQuery(".colordate").each(function(){
+							if(jQuery(this).find("a[class=this]").length==0)
+								load=false;
+						});
+						if(load){
+							//jQuery("#goods_spec_info").removeClass().addClass("detailsbottom");
+							//jQuery("#goods_spec_info_close").hide();
+							//jQuery("#goods_spec_chose").hide();
+							jQuery.post("$!webPath/load_goods_gsp.htm",{"id":"$!obj.id","gsp":gsp},function(data){
+								goods_inventory=data.count;
+								store_price=data.price;
+								jQuery("#goods_inventory").html(goods_inventory);
+								jQuery("#store_price").html("¥"+store_price);
+								//jQuery("#rest").html("¥"+(goods_price-store_price));
+							},"json");
+						}
+					}
+				</script>
+
+				<div class="lh_spxq_fw">
+					<ul>
+						<li>
+							<div class="lh_spxq_fw_bt">选择</div>
+							<div class="lh_spxq_fw_nr">
+								<ul>
+									<li><span>七天包退</span>七天无条件退货</li>
+									<li><span>及时发货</span>24小时内发货</li>
+									<li><span>100%正品</span>所售商品由平台监管</li>
+								</ul>
+							</div>
+
+						</li>
+					</ul>
+				</div>
+				<div class="lh_spxq_dp">
+					<div class="lh_spxq_dp_top">
+						<div class="lh_spxq_dp_tx"><img src="$!webPath/$!{store.store_logo.path}/$!{store.store_logo.name}" /></div>
+						<div class="lh_spxq_dp_bt">$!store.store_name<span>自营</span></div>
+						<div class="lh_spxq_dp_js">$!store.store_info</div>
+					</div>
+					<div class="lh_spxq_dp_bottom">
+						<a class="lh_spxq_dp_bottom_an" href="$!webPath/goods_list.htm?store_id=$!{obj.goods_store.id}"><i class="icon iconfont">&#xe6a5;</i>全部商品</a>
+						<a  href="$!webPath/store_$!{obj.goods_store.id}.htm"  class="lh_spxq_dp_bottom_an on"><i class="icon iconfont">&#xe645;</i>进入店铺</a>
+					</div>
+				</div>
+
+				<!--<div class="weui-loadmore">
+					<i class="weui-loading"></i>
+					<span class="weui-loadmore__tips">正在加载</span>
+				</div>-->
+			</div>
+			<div id="tab2" class="weui-tab__bd-item">
+				<div class="pro-detail">
+					$obj.goods_details
+				</div>
+				<!--<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<div class="weui-loadmore">
+					<i class="weui-loading"></i>
+					<span class="weui-loadmore__tips">正在加载</span>
+				</div>-->
+			</div>
+
+			<div  id="tab3" class="weui-tab__bd-item slideTxtBox" >
+				<div class="dianpu_meau hd">
+					#if($!eva_count!=0)
+					<ul>
+						<li class="on">
+							<p><span>全部</span></p>
+							<p>$!{eva_count}</p>
+						</li>
+						<li>
+							<p><span>好评</span></p>
+							<p>$!praise</p>
+						</li>
+						<li>
+							<p><span>中评</span></p>
+							<p>$!middle</p>
+						</li>
+						<li>
+							<p><span>差评</span></p>
+							<p>$!bad</p>
+						</li>
+						<li style="border: none;">
+							<p><span>有图</span></p>
+							<p>$!pic</p>
+						</li>
+					</ul>
+					#else
+					<p align="center" style="margin:2rem 0rem;" ><font size="0.68rem" color="red">暂无评价内容</font></p>
+					#end
+				</div>
+				<!--评价-->
+				<div class="bd">
+					<ul>
+						#foreach($obj in $objs)
+						<div class="weui-panel__bd">
+							<div class="wy-media-box weui-media-box_text">
+								<div class="weui-cell nopd weui-cell_access">
+									<div class="weui-cell__bd weui-cell_primary">
+										<p style="color: #0062CC;">$!obj.evaluate_user.userName</p>
+									</div>
+									<span class="weui-cell__time">$!obj.addTime</span>
+								</div>
+
+								<p>
+									#if($!obj.description_evaluate==0)
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									#end
+									#if($!obj.description_evaluate==1)
+									<span  class="on"><i class="icon iconfont">&#xe625;</i></span>
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									#end
+									#if($!obj.description_evaluate==2)
+									<span class="on"><i class="icon iconfont" >&#xe625;</i></span>
+									<span class="on"><i class="icon iconfont" >&#xe625;</i></span>
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									#end
+									#if($!obj.description_evaluate==3)
+									<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+									<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+									<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									#end
+									#if($!obj.description_evaluate==4)
+									<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+									<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+									<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+									<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+									<span><i class="icon iconfont">&#xe625;</i></span>
+									#end
+									#if($!obj.description_evaluate==5)
+									<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+									<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+									<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+									<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+									<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+									#end
+								</p>
+								<p class="weui-media-box__desc">$!obj.evaluate_info</p>
+								<ul class="weui-uploader__files clear mg-com-img">
+									#if($!obj.pic_status==0)
+									<li class="weui-uploader__file" style="background-image: url($!webPath/$!obj.pic_url)"></li>
+									#end
+								</ul>
+								#if($!obj.evaluate_seller_info)
+								<div style=" padding: 15px 0; font-size: 12px; color: #af874d;">
+									<span style=" color: #bbbbbb;">[回复]</span>
+									$!obj.evaluate_seller_info
+								</div>
+								#end
+							</div>
+						</div>
+						#end
+					</ul>
+					<ul>
+						#foreach($obj in $objs1)
+						<div class="weui-panel__bd">
+							<div class="wy-media-box weui-media-box_text">
+								<div class="weui-cell nopd weui-cell_access">
+									<div class="weui-cell__bd weui-cell_primary">
+										<p style="color: #0062CC;">$!obj.evaluate_user.userName</p>
+									</div>
+									<span class="weui-cell__time">$!obj.addTime</span>
+								</div>
+
+								<p>
+									#if($!obj.description_evaluate==0)
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									#end
+									#if($!obj.description_evaluate==1)
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									#end
+									#if($!obj.description_evaluate==2)
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									#end
+									#if($!obj.description_evaluate==3)
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									#end
+									#if($!obj.description_evaluate==4)
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									#end
+									#if($!obj.description_evaluate==5)
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									#end
+								</p>
+								<p class="weui-media-box__desc">$!obj.evaluate_info</p>
+								<ul class="weui-uploader__files clear mg-com-img">
+									#if($!obj.pic_status==0)
+									<li class="weui-uploader__file" style="background-image: url($!webPath/$!obj.pic_url)"></li>
+									#end
+								</ul>
+								#if($!obj.evaluate_seller_info)
+								<div style=" padding: 15px 0; font-size: 12px; color: #af874d;">
+									<span style=" color: #bbbbbb;">[回复]</span>
+									$!obj.evaluate_seller_info
+								</div>
+								#end
+							</div>
+						</div>
+						#end
+					</ul>
+					<ul>
+						#foreach($obj in $objs2)
+						<div class="weui-panel__bd">
+							<div class="wy-media-box weui-media-box_text">
+								<div class="weui-cell nopd weui-cell_access">
+									<div class="weui-cell__bd weui-cell_primary">
+										<p style="color: #0062CC;">$!obj.evaluate_user.userName</p>
+									</div>
+									<span class="weui-cell__time">$!obj.addTime</span>
+								</div>
+
+								<p>
+									#if($!obj.description_evaluate==0)
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									#end
+									#if($!obj.description_evaluate==1)
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									#end
+									#if($!obj.description_evaluate==2)
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									#end
+									#if($!obj.description_evaluate==3)
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									#end
+									#if($!obj.description_evaluate==4)
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont on" >&#xe625;</i>
+									<i class="icon iconfont">&#xe625;</i>
+									#end
+									#if($!obj.description_evaluate==5)
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									#end
+								</p>
+								<p class="weui-media-box__desc">$!obj.evaluate_info</p>
+								<ul class="weui-uploader__files clear mg-com-img">
+									#if($!obj.pic_status==0)
+									<li class="weui-uploader__file" style="background-image: url($!webPath/$!obj.pic_url)"></li>
+									#end
+								</ul>
+								#if($!obj.evaluate_seller_info)
+								<div style=" padding: 15px 0; font-size: 12px; color: #af874d;">
+									<span style=" color: #bbbbbb;">[回复]</span>
+									$!obj.evaluate_seller_info
+								</div>
+								#end
+							</div>
+						</div>
+						#end
+					</ul>
+
+					<ul>
+						#foreach($obj in $objs3)
+						<div class="weui-panel__bd">
+							<div class="wy-media-box weui-media-box_text">
+								<div class="weui-cell nopd weui-cell_access">
+									<div class="weui-cell__bd weui-cell_primary">
+										<p style="color: #0062CC;">$!obj.evaluate_user.userName</p>
+									</div>
+									<span class="weui-cell__time">$!obj.addTime</span>
+								</div>
+
+								<p>
+									#if($!obj.description_evaluate==0)
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									#end
+									#if($!obj.description_evaluate==1)
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									#end
+									#if($!obj.description_evaluate==2)
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									#end
+									#if($!obj.description_evaluate==3)
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									#end
+									#if($!obj.description_evaluate==4)
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									#end
+									#if($!obj.description_evaluate==5)
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									#end
+								</p>
+								<p class="weui-media-box__desc">$!obj.evaluate_info</p>
+								<ul class="weui-uploader__files clear mg-com-img">
+									#if($!obj.pic_status==0)
+									<li class="weui-uploader__file" style="background-image: url($!webPath/$!obj.pic_url)"></li>
+									#end
+								</ul>
+								#if($!obj.evaluate_seller_info)
+								<div style=" padding: 15px 0; font-size: 12px; color: #af874d;">
+									<span style=" color: #bbbbbb;">[回复]</span>
+									$!obj.evaluate_seller_info
+								</div>
+								#end
+							</div>
+						</div>
+						#end
+					</ul>
+
+					<ul>
+						#foreach($obj in $objs4)
+						<div class="weui-panel__bd">
+							<div class="wy-media-box weui-media-box_text">
+								<div class="weui-cell nopd weui-cell_access">
+									<div class="weui-cell__bd weui-cell_primary">
+										<p style="color: #0062CC;">$!obj.evaluate_user.userName</p>
+									</div>
+									<span class="weui-cell__time">$!obj.addTime</span>
+								</div>
+
+								<p>
+									#if($!obj.description_evaluate==0)
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									#end
+									#if($!obj.description_evaluate==1)
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									#end
+									#if($!obj.description_evaluate==2)
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									#end
+									#if($!obj.description_evaluate==3)
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									#end
+									#if($!obj.description_evaluate==4)
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont">&#xe668;</i>
+									#end
+									#if($!obj.description_evaluate==5)
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									<i class="icon iconfont on" >&#xe668;</i>
+									#end
+								</p>
+								<p class="weui-media-box__desc">$!obj.evaluate_info</p>
+								<ul class="weui-uploader__files clear mg-com-img">
+									#if($!obj.pic_status==0)
+									<li class="weui-uploader__file" style="background-image: url($!webPath/$!obj.pic_url)"></li>
+									#end
+								</ul>
+								#if($!obj.evaluate_seller_info)
+								<div style=" padding: 15px 0; font-size: 12px; color: #af874d;">
+									<span style=" color: #bbbbbb;">[回复]</span>
+									$!obj.evaluate_seller_info
+								</div>
+								#end
+							</div>
+						</div>
+						#end
+					</ul>
+
+				</div>
+
+				<!--<script type="text/javascript">jQuery(".slideTxtBox").slide();</script>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<div class="weui-loadmore">
+					<i class="weui-loading"></i>
+					<span class="weui-loadmore__tips">正在加载</span>
+				</div>-->
+			</div>
+		</div>
+	</div>
+</div>
+<!--底部导航-->
+
+
+<div class="foot-black"></div>
+<div class="weui-tabbar wy-foot-menu">
+	<a href="$!webPath/second/service.htm" class="promotion-foot-menu-items">
+		<p style="font-size: 24px; color: #666;"><i class="icon iconfont">&#xe622;</i></p>
+		<p class="weui-tabbar__label">客服</p>
+	</a>
+	<a href="$!webPath/store_$!{obj.goods_store.id}.htm" id="show-toast" class="promotion-foot-menu-items">
+		<p style="font-size: 24px; color: #666;"><i class="icon iconfont">&#xe645;</i></p>
+		<p class="weui-tabbar__label">进店</p>
+	</a>
+	<a href="$!webPath/goods_cart1.htm" class="promotion-foot-menu-items">
+	<!--	#if($!goodsCartCount != "")
+		<span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">$!goodsCartCount</span>
+		#end-->
+		<p style="font-size: 24px; color: #666;"><i class="icon iconfont">&#xe6e4;</i></p>
+		<p class="weui-tabbar__label">购物车</p>
+	</a>
+	<a href="javascript:;" class="weui-tabbar__item yellow-color" data-target="#join_cart">
+		<p class="promotion-foot-menu-label" onclick="add_cart()" >加入购物车</p>
+	</a>
+	<a href="#" class="weui-tabbar__item red-color" data-target="#selcet_sku">
+		<p class="promotion-foot-menu-label" onclick="buy_goods()">立即购买</p>
+	</a>
+</div>
+<!--<div id="join_cart" class="weui-popup__container popup-bottom" style="z-index:600;">
+	<div class="weui-popup__overlay" style="opacity:1;"></div>
+	<div class="weui-popup__modal">
+		<div class="modal-content">
+			<div class="weui-msg" style="padding-top:0;">
+				<div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+				<div class="weui-msg__text-area">
+					<h2 class="weui-msg__title">成功加入购物车</h2>
+					<p class="weui-msg__desc">亲爱的用户，您的商品已成功加入购物车，为了保证您的商品快速送达，请您尽快到购物车结算。</p>
+				</div>
+				<div class="weui-msg__opr-area">
+					<p class="weui-btn-area">
+						<a href="#" class="weui-btn weui-btn_primary">去购物车结算</a>
+						<a href="javascript:;" class="weui-btn weui-btn_default close-popup">不，我再看看</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="selcet_sku" class="weui-popup__container popup-bottom" style="z-index:600;">
+	<div class="weui-popup__overlay" style="opacity:1;"></div>
+	<div class="weui-popup__modal">
+		<div class="toolbar">
+			<div class="toolbar-inner">
+				<a href="javascript:;" class="picker-button close-popup">关闭</a>
+				<h1 class="title">商品属性</h1>
+			</div>
+		</div>
+		<div class="modal-content">
+			<div class="weui-msg" style="padding-top:0;">
+				<div class="wy-media-box2 weui-media-box_text" style="margin:0;">
+					<div class="weui-media-box_appmsg">
+						<div class="weui-media-box__hd proinfo-txt-l"><span class="promotion-label-tit">尺码</span></div>
+						<div class="weui-media-box__bd">
+							<div class="promotion-sku clear">
+								<ul>
+									<li>
+										<a href="javascript:;">25</a>
+									</li>
+									<li>
+										<a href="javascript:;">30</a>
+									</li>
+									<li>
+										<a href="javascript:;">34</a>
+									</li>
+									<li>
+										<a href="javascript:;">40</a>
+									</li>
+									<li>
+										<a href="javascript:;">45</a>
+									</li>
+									<li>
+										<a href="javascript:;">50</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="weui-media-box_appmsg">
+						<div class="weui-media-box__hd proinfo-txt-l"><span class="promotion-label-tit">颜色</span></div>
+						<div class="weui-media-box__bd">
+							<div class="promotion-sku clear">
+								<ul>
+									<li>
+										<a href="javascript:;">黑色</a>
+									</li>
+									<li>
+										<a href="javascript:;">红色</a>
+									</li>
+									<li>
+										<a href="javascript:;">白色</a>
+									</li>
+									<li>
+										<a href="javascript:;">蓝色</a>
+									</li>
+									<li>
+										<a href="javascript:;">橘黄色</a>
+									</li>
+									<li>
+										<a href="javascript:;">绿色</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="weui-msg__opr-area">
+					<p class="weui-btn-area">
+						<a href="#" class="weui-btn weui-btn_primary">立即购买</a>
+						<a href="javascript:;" class="weui-btn weui-btn_default close-popup">不，我再看看</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>-->
+
+
+<div id="selcet_sku1" class="weui-popup__container popup-bottom" style="z-index:600;">
+	<div class="weui-popup__overlay" style="opacity:1;"></div>
+	<div class="weui-popup__modal">
+		<div class="toolbar">
+			<div class="toolbar-inner">
+				<a href="javascript:;" class="picker-button close-popup">关闭</a>
+				<h1 class="title">$!store.store_name</h1>
+			</div>
+		</div>
+		<div class="modal-content">
+			<div class="weui-msg" style="padding-top:0;">
+				<ul class="tabs">
+					<li>
+						<a href="#" name=".tab1_1">可领</a>
+					</li>
+					<li>
+						<a href="#" name=".tab1_2" id="alreadyGet">已领</a>
+					</li>
+				</ul>
+				<div class="content">
+					<div class="tab1_1">
+						<ul>
+							#foreach($obj in $coupon)
+							<li>
+								<div class="left01">
+									<div class="left01_top"><span>￥</span>$!obj.coupon_amount</div>
+									<div class="left01_bottom">满$!obj.coupon_order_amount元使用</div>
+								</div>
+								<div class="center01">
+									<div class="title01">$!store.store_name</div>
+									<div class="date01">$!CommUtil.formatShortDate1($!obj.coupon_begin_time)-$!CommUtil.formatShortDate1($!obj.coupon_end_time)</div>
+								</div>
+								<div class="right01">
+									<a href="#" onclick="lingquan($!obj.id,$!obj.coupon_order_amount,$!obj.coupon_amount)" #if(!$!user)dialog_uri="$!webPath/user_dialog_login.htm" dialog_title="会员登录" dialog_width="450" dialog_height="100" dialog_id="user_login"#end>点击领取</a>
+								</div>
+							</li>
+							#end
+						</ul>
+					</div>
+					<div class="tab1_2">
+						<ul>
+							#if($!coupon.size()>0)
+							#foreach($obj in $coupon2)
+							<li>
+								<div class="left01">
+									<div class="left01_top"><span>￥</span>$!obj.coupon.coupon_amount</div>
+									<div class="left01_bottom">满$!obj.coupon.coupon_order_amount元使用</div>
+								</div>
+								<div class="center01">
+									<div class="title01">$!store.store_name</div>
+									<div class="date01">$!obj.coupon.coupon_begin_time -- $!obj.coupon.coupon_end_time</div>
+								</div>
+								<div class="right01">
+									<a href="#">去使用</a>
+								</div>
+							</li>
+							#end
+							#end
+						</ul>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div class="cbtn-top">
+	<a href="javascript:;">
+		<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span></a>
+</div>
+
+
+
+
+<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+<script type="text/javascript">jQuery(".lh_liangjuan_slideTxtBox").slide();</script>
+<script type="text/javascript" src="$!webPath/resources/new/js/haoxing1.js" ></script>
+<script src="$!webPath/resources/new/pro/js/fastclick.js"></script>
+<script src="$!webPath/resources/new/pro/js/tabScript.js"></script>
+<script>
+	$(function() {
+		loadTab();
+	});
+</script>
+<!--<script type="text/javascript" src="js/shoppingcart.js" ></script>-->
+
+
+
+
+
+<script type="text/javascript">
+	/*alert("$!endTime")*/
+	/*alert('$!endTime'.getTime())*/
+	jQuery(document).ready(function(){
+		timeCount();
+	})
+
+
+
+	function timeCount(){
+		function _fresh(){
+			var nowDate = new Date(),                                    //当前时间
+					endDate = new Date($('.time_down_info').attr('endtime')),    //截止时间
+					totalS  = parseInt((endDate.getTime() - nowDate.getTime()) / 1000);     //总秒数
+			_day    = parseInt(totalS / 3600 / 24);
+			_hour   = parseInt((totalS / 3600) % 24);
+			_minute = parseInt((totalS / 60) % 60);
+			_second = parseInt(totalS % 60);
+			jQuery('.time_down_info').html('<i class="icon iconfont">&#xe652;</i>    <em>' + _day +'</em>天<em>' + _hour + '</em>小时<em>' + _minute + '</em>分<em>' + _second + '</em>秒后结束');
+			if( totalS <= 0){
+				jQuery('.'+remain_id).html('该团购已结束');
+				clearInterval(sh);
+			}
+		}
+		_fresh();
+		var sh = setInterval(_fresh,1000);
+	}
+</script>
+<script>
+	$(function() {
+		FastClick.attach(document.body);
+	});
+</script>
+
+<script>
+	$(function() {
+		$(".promotion-sku li").click(function() {
+			$(this).addClass("active").siblings("li").removeClass("active");
+		})
+	})
+</script>
+
+<script>
+	$(document).on("open", ".weui-popup-modal", function() {
+		console.log("open popup");
+	}).on("close", ".weui-popup-modal", function() {
+		console.log("close popup");
+	});
+</script>
+<script>
+	$(function() { initTopHoverTree("tophov" + "ertree", 30, 10, 10); })
+</script>
+<script>
+	function initTopHoverTree(hvtid, times, right, bottom) {
+		$("#" + hvtid).css("right", right).css("bottmo", bottom);
+		$("#" + hvtid).on("click", function() { goTopHovetree(times); })
+		$(window).scroll(function() {
+			if($(window).scrollTop() > 268) {
+				$("#" + hvtid).fadeIn(100);
+			} else {
+				$("#" + hvtid).fadeOut(100);
+			}
+		});
+	}
+	//返回顶部动画
+	//goTop(500);//500ms内滚回顶部
+	function goTopHovetree(times) {
+		if(!!!times) {
+			$(window).scrollTop(0);
+			return;
+		}
+		var sh = $('body').scrollTop(); //移动总距离
+		var inter = 13.333; //ms,每次移动间隔时间
+		var forCount = Math.ceil(times / inter); //移动次数
+		var stepL = Math.ceil(sh / forCount); //移动步长
+		var timeId = null;
+
+		function aniHovertree() {
+			!!timeId && clearTimeout(timeId);
+			timeId = null;
+			//console.log($('body').scrollTop());
+			if($('body').scrollTop() <= 0 || forCount <= 0) { //移动端判断次数好些，因为移动端的scroll事件触发不频繁，有可能检测不到有<=0的情况
+				$('body').scrollTop(0);
+				return;
+			}
+			forCount--;
+			sh -= stepL;
+			$('body').scrollTop(sh);
+			timeId = setTimeout(function() { aniHovertree(); }, inter);
+		}
+		aniHovertree();
+	}
+	function guanzhu() {
+		if("$!user"!=null && "$!user"!=""){
+			if("$!user.id"==$!obj.goods_store.user.id){
+				alert("不能收藏自己的商品");
+			}else{
+				jQuery.post("$!webPath/add_goods_favorite.htm",{"id":"$!obj.id"},function(data){
+					if(data==0){
+						alert("商品收藏成功！");
+                         $("#aa").show();
+						$("#a").hide()
+						location.reload();
+					}
+					if(data==1){
+						alert("已经取消收藏该商品！");
+						$("#a").show();
+						$("#aa").hide();
+						location.reload();
+					}
+				},"text");
+			}
+		}else{
+			window.location.href = "$!webPath/user/login.htm?url=$!webPath/goods_$!{id}.htm";
+		}
+	}
+	//添加购物车
+	function add_cart() {
+		//alert($!user.id+"------"+$!obj.goods_store.user.id);
+		if("" != "$!user.id"){
+		#if($!user.id==$!obj.goods_store.user.id)
+			alert("不能购买自己的商品！");
+				#else
+			var add=true
+			var gsp="";
+			if(jQuery(".colordate").length==0){
+				//alert("A");
+				add=true;
+			}else{
+				//alert("B");
+				jQuery(".colordate").each(function(){
+					jQuery.each(jQuery(this).find("a[class=this]"),function(){
+						gsp=jQuery(this).attr("gsp")+","+gsp;
+					});
+					if(jQuery(this).find("a[class=this]").length==0)
+						add=false;
+				});
+
+				var gsp1 = gsp.split(",").length-1;
+				if(gsp1==0){
+
+					add=false;
+					alert("请选择商品规格!");
+					return;
+				}
+
+			}
+			var count=jQuery("#goods_count").val();
+			if(count==0){
+				add=false;
+				alert("至少购买一件商品!");
+				return;
+			}
+			if(goods_inventory==0){
+				add=false;
+				alert("商品库存为0,不能购买!");
+				return;
+			}
+			if(add){
+				//alert(add);
+				var count = jQuery("#goods_count").val() - 0;
+				var goods_inventory = jQuery("#goods_inventory").attr("inventory") - 0;
+				if (goods_inventory != 0) {
+					if (goods_inventory < count) {
+						count = goods_inventory;
+					}
+					jQuery.ajax({
+						type : 'POST',
+						url : '$!webPath/add_goods_cart.htm',
+						data : {
+							"id" : "$!obj.id",
+							 "gsp" : gsp,
+							"count" : count,
+						#if($!ggs)
+							"price":$!ggs.gg_price
+						#else
+							"price":$!obj.store_price
+						#end
+						},
+						success : function(data) {
+							var result=eval("("+data+")");
+							alert("添加购物车成功！")
+							if("false"==result.flag){
+								alert("多个卖家的商品无法同时加入购物车结算");
+							}
+							//jQuery("#cart_goods_count").html(result.count);
+						}
+					});
+				}
+			}else{
+				alert("添加商品失败，请稍后再试");
+			}
+			#end
+		}else{
+			window.location.href="$!webPath/user/login.htm?url=$!webPath/goods_$!{id}.htm";
+		}
+
+	}
+
+
+	//直接购买
+	function buy_goods() {
+		if("" != "$!user.id"){
+		#if($!user.id==$!obj.goods_store.user.id)
+			alert("不能购买自己的商品！");
+				#else
+			var add=true
+			var gsp="";
+			if(jQuery(".colordate").length==0){
+				add=true;
+			}else{
+				jQuery(".colordate").each(function(){
+					jQuery.each(jQuery(this).find("a[class=this]"),function(){
+						gsp=jQuery(this).attr("gsp")+","+gsp;
+					});
+					if(jQuery(this).find("a[class=this]").length==0)
+						add=false;
+				});
+				var gsp1 = gsp.split(",").length-1;
+				if(gsp1==0){
+					add=false;
+					alert("请选择商品的参数!");
+					return;
+				}
+			}
+			var count=jQuery("#goods_count").val();
+			if(count==0){
+				add=false;
+				alert("至少购买一件商品!");
+				return;
+			}
+			if(goods_inventory==0){
+				add=false;
+				alert("商品库存为0,不能购买!");
+				return;
+			}
+
+			if(add){
+				var count = jQuery("#goods_count").val() - 0;
+				var goods_inventory = jQuery("#goods_inventory").attr("inventory") - 0;
+				if (goods_inventory != 0) {
+					if (goods_inventory < count) {
+						count = goods_inventory;
+					}
+					jQuery.ajax({
+						type : 'POST',
+						url : '$!webPath/add_goods_cart.htm',
+						data : {
+							"id" : "$!obj.id",
+							"gsp" : gsp,
+							"count" : count,
+							#if($!ggs)
+								"price":$!ggs.gg_price
+							#else
+								"price":$!obj.store_price
+							#end
+						},
+						success : function(data) {
+							window.location.href="$!webPath/goods_cart1.htm";
+							/*var result=eval("("+data+")");
+							 alert("添加购物车成功！")
+							 if("false"==result.flag){
+							 alert("多个卖家的商品无法同时加入购物车结算");
+							 }*/
+							//jQuery("#cart_goods_count").html(result.count);
+						}
+					});
+				}
+			}else{
+				alert("添加商品失败，请稍后再试");
+			}
+			#end
+		}else{
+			window.location.href="$!webPath/user/login.htm?url=$!webPath/goods_$!{id}.htm";
+		}
+
+	}
+
+
+	/**
+	 * 查看已领取的优惠券（未登录跳转登录界面）
+	 */
+	$("#alreadyGet").click(function () {
+		if("" == "$!user.id"){
+			window.location.href="$!webPath/user/login.htm?url=$!webPath/goods_$!{id}.htm";
+		}/*else{
+		 alert(1)
+		 jQuery.ajax({
+		 type:'post',
+		 url:'$!webPath/getDiscountCoupon.htm?id=$!obj.id',
+		 success:function (data) {
+		 alert(1)
+		 var result=eval("("+data+")");
+
+		 }
+		 })
+		 }*/
+	})
+
+	/**
+	 * 领取优惠券（未登录跳转登录界面）
+	 */
+	function lingquan(id,man,jian) {
+		if("$!user"==null||"$!user"==""){
+			return;
+		}else{
+			jQuery.ajax({
+				type:'post',
+				url:'$!webPath/second/youhuiquanlingqu.htm?coupon_id='+id,
+				beforeSend:function () {
+
+				},
+				success:function (data) {
+					var result=eval("("+data+")");
+					var ss = result.save;
+					alert(ss);
+					window.location.href="$!webPath/goods_$!{obj.id}.htm?gg_id=$!gg_id"
+				}
+			})
+		}
+	}
+</script>
+
+
+
+
+
+<style>
+	.img-replace {
+		/* replace text with an image */
+		display: inline-block;
+		overflow: hidden;
+		text-indent: 100%;
+		color: transparent;
+		white-space: nowrap;
+	}
+
+	/* --------------------------------
+
+    Main components
+
+    -------------------------------- */
+	.cd-popup-trigger {
+		display: block;
+		width: 34px;
+		height: 33px;
+		float: right;
+		color: #FFF;
+		font-weight: bold;
+		text-transform: uppercase;
+		background: url($!webPath/resources/new/images/Bushop_03.png) no-repeat;
+		box-shadow: 0 3px 0 rgba(0, 0, 0, 0.07);
+		position: absolute;
+		top: 14rem;
+		z-index: 99;
+		right: 1.0rem;
+	}
+	@media only screen and (min-width: 1170px) {
+		.cd-popup-trigger {
+			margin: 6em auto;
+		}
+	}
+
+	@media only screen and (max-width: 320px) {
+		.cd-popup-trigger {top: 10.5rem;}
+	}
+
+	/* --------------------------------
+
+    xpopup
+
+    -------------------------------- */
+	.cd-popup {
+		position: fixed;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		background-color: rgba(94, 110, 141, 0.9);
+		opacity: 0;
+		visibility: hidden;
+		-webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+		-moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+		transition: opacity 0.3s 0s, visibility 0s 0.3s;z-index: 999;
+	}
+	.cd-popup.is-visible {
+		opacity: 1;
+		visibility: visible;
+		-webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+		-moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+		transition: opacity 0.3s 0s, visibility 0s 0s;
+	}
+
+	.cd-popup-container {
+		position: relative;
+		width: 90%;
+		max-width: 400px;
+		margin: 4em auto;
+		background: #FFF;
+		border-radius: .25em .25em .4em .4em;
+		text-align: center;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+		-webkit-transform: translateY(-40px);
+		-moz-transform: translateY(-40px);
+		-ms-transform: translateY(-40px);
+		-o-transform: translateY(-40px);
+		transform: translateY(-40px);
+		/* Force Hardware Acceleration in WebKit */
+		-webkit-backface-visibility: hidden;
+		-webkit-transition-property: -webkit-transform;
+		-moz-transition-property: -moz-transform;
+		transition-property: transform;
+		-webkit-transition-duration: 0.3s;
+		-moz-transition-duration: 0.3s;
+		transition-duration: 0.3s;
+	}
+	.cd-popup-container p {
+		padding: 3em 1em;
+	}
+	.cd-popup-container .cd-buttons:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	.cd-popup-container .cd-buttons li {
+		float: left;
+		width: 50%;
+	}
+	.cd-popup-container .cd-buttons a {
+		display: block;
+		height: 60px;
+		line-height: 60px;
+		text-transform: uppercase;
+		color: #FFF;
+		-webkit-transition: background-color 0.2s;
+		-moz-transition: background-color 0.2s;
+		transition: background-color 0.2s;
+	}
+	.cd-popup-container .cd-buttons li:first-child a {
+		background: #fc7169;
+		border-radius: 0 0 0 .25em;
+	}
+	.no-touch .cd-popup-container .cd-buttons li:first-child a:hover {
+		background-color: #fc8982;
+	}
+	.cd-popup-container .cd-buttons li:last-child a {
+		background: #b6bece;
+		border-radius: 0 0 .25em 0;
+	}
+	.no-touch .cd-popup-container .cd-buttons li:last-child a:hover {
+		background-color: #c5ccd8;
+	}
+	.cd-popup-container .cd-popup-close {
+		position: absolute;
+		top: 8px;
+		right: 8px;
+		width: 30px;
+		height: 30px;
+	}
+	.cd-popup-container .cd-popup-close::before, .cd-popup-container .cd-popup-close::after {
+		content: '';
+		position: absolute;
+		top: 12px;
+		width: 14px;
+		height: 3px;
+		background-color: #8f9cb5;
+	}
+	.cd-popup-container .cd-popup-close::before {
+		-webkit-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		transform: rotate(45deg);
+		left: 8px;
+	}
+	.cd-popup-container .cd-popup-close::after {
+		-webkit-transform: rotate(-45deg);
+		-moz-transform: rotate(-45deg);
+		-ms-transform: rotate(-45deg);
+		-o-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+		right: 8px;
+	}
+	.is-visible .cd-popup-container {
+		-webkit-transform: translateY(0);
+		-moz-transform: translateY(0);
+		-ms-transform: translateY(0);
+		-o-transform: translateY(0);
+		transform: translateY(0);
+	}
+	@media only screen and (min-width: 1170px) {
+		.cd-popup-container {
+			margin: 8em auto;
+		}
+	}
+</style>
+
+<div class="cd-popup" role="alert">
+	<div class="cd-popup-container">
+
+		<!--<p><img src="$!webPath/resources/new/images/ewm1.jpg "/></p>-->
+		<p id="qrcode"></p>
+
+		<a href="#0" class="cd-popup-close img-replace">Close</a>
+
+	</div>
+	<script src="$!webPath/resources/new/pro/js/main.js"></script>
+	<script>
+		$(function () {
+			erweima();
+		})
+
+		function erweima() {
+			document.getElementById("qrcode").innerHTML="";
+			var qrcode = new QRCode(document.getElementById("qrcode"), {
+				//width : 240,//设置宽高?goodId=$!obj.id
+				//height : 240
+			});
+			//qrcode.makeCode("http://www.yijia1234.com/wap/index.htm");
+		#if($ggs)
+				qrcode.makeCode("http://www.yijia1234.com/goods.htm?id=$!obj.id&&shopping_view_type=wap&&gg_id=$!ggs.id");
+					#else
+			qrcode.makeCode("http://www.yijia1234.com/goods.htm?id=$!obj.id&&shopping_view_type=wap");
+					#end
+
+		/*	layer.open({
+				type: 1,
+				title: false,
+				closeBtn: 0,
+				area: '240px',
+				skin: 'layui-layer-nobg', //没有背景色
+				shadeClose: true,
+				offset: ['300px', '600px'],
+				content: $('#qrcode')
+			});*/
+		}
+	</script>
+
+
+	<!--<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+	<script>
+        $(function () {
+            var loading = false;  //状态标记
+            $(document.body).infinite().on("infinite", function() {
+                if(loading) return;
+                loading = true;
+                setTimeout(function() {
+                    $(".weui-loadmore").css("display","none");
+                    if($(".weui-navbar__item.weui-bar__item&#45;&#45;on").text()=="商品"){
+                        $('.cbtn-top').click();
+						 $(".weui-navbar__item:eq(1)").click();
+
+
+                    }else if($(".weui-navbar__item.weui-bar__item&#45;&#45;on").text()=="详情"){
+
+						 $(".weui-navbar__item:eq(2)").click();
+                        $('.cbtn-top').click();
+
+                    }else if($(".weui-navbar__item.weui-bar__item&#45;&#45;on").text()=="评价"){
+                        $('.cbtn-top').click();
+                        $(".weui-navbar__item:eq(0)").click();
+
+                    }
+                    $(".weui-loadmore").css("display","block");
+                    loading = false;
+                }, 1000);   //模拟延迟
+            });
+        })
+	</script>-->
+
+</body>
+
+</html>

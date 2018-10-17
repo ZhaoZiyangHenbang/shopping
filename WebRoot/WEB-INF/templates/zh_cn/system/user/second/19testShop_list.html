@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/public_auto.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/index.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/DataLazyLoad.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.lazyload.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.common.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.validate.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery-ui-1.8.21.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.validate.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.KinSlideshow.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+	<!-- top -->
+	$!httpInclude.include("/second/topZ.htm")
+	<!-- top结束 -->
+
+	<!-- heard -->
+	$!httpInclude.include("/second/head_index.htm")
+	<!-- heard结束 -->
+
+	<!-- 导航 -->
+
+
+	<!-- 导航结束 -->
+
+		<div class="main">
+			<div class="h_seat">
+				<a href="">全部搜索结果</a>>
+				<a href="">商品搜索关键词</a>
+			</div>
+			<div class="bd_cx_nav">
+				<div class="cx_nav1">
+					<h3>分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类：</h3>
+					<p>
+						<a href="" class="on">不限</a>
+						<a href="">品牌名称一</a>
+						<a href="">品牌名称二</a>
+						<a href="">品牌名称三</a>
+						<a href="">品牌名称四</a>
+						<a href="">品牌名称五</a>
+					</p>
+				</div>
+
+				<div class="cx_nav2">
+					<div class="cx_nav1">
+						<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+						<p>
+							<a href="">不限</a>
+							<a href="">属性一</a>
+							<a href="">属性二</a>
+							<a href="">属性三</a>
+							<a href="">属性四</a>
+							<a href="">属性五</a>
+							<a href="">属性六</a>
+							<a href="">属性七</a>
+							<a href="">属性八</a>
+						</p>
+					</div>
+				</div>
+
+			</div>
+			<div class="index_sptj_nr">
+						<ul>
+							#if($!list.size()>0)
+							#foreach($obj in $list)
+							#if($!obj.goods_main_photo)
+							#set($img="$!imageWebServer/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}")
+							#else
+							#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+							#end
+							<li class="item item2">
+								<div class="goods-content" id="taotian">
+									<div class="goods-pic">
+										<a isconvert="1" data-itemid="544015300167" href="$!webPath/goods_$!{obj.bg_goods.id}.htm" target="_blank">
+											<img data-original="images/lh_06.jpg" title="打底衫气质百搭潮短款上衣" alt="打底衫气质百搭潮短款上衣" class="lazy" style="display: inline;" _hover-ignore="1" src="$!img">
+										</a>
+									</div>
+									<div class="goods-info">
+										<div class="goods-name">
+											<a isconvert="1" data-itemid="544015300167" href="#" target="_blank">$!CommUtil.substring("$!obj.goods_name",10)</a>
+										</div>
+										<div class="goods-price">
+											<em class="sale-price">¥$!{obj.store_price}</em>
+											<span class="yuanjia"><a href=""></a></span>
+											<span class="goods_buy">已售1000件</span>
+										</div>
+									</div>
+								</div>
+							</li>
+							#end
+							#end
+
+						</ul>
+
+					</div>
+			<div class="w-page">
+				<a href="">首页</a>
+				<a href="" class="on">1</a>
+				<a href="">2</a>
+				<a href="">3</a>
+				<a href="">末页</a>
+			</div>
+		</div>
+
+
+	<!--footer开始-->
+	$!httpInclude.include("/second/footZ.htm")
+	<!--footer结束-->
+
+	<!-- 右侧 -->
+	$!httpInclude.include("/second/rightZ.htm")
+	<!-- 右侧结束 -->
+
+
+	</body>
+
+</html>

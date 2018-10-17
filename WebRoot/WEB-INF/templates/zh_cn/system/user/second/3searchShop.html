@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="css/public.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/public_auto.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/index.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/DataLazyLoad.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.lazyload.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.common.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.validate.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery-ui-1.8.21.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.validate.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.KinSlideshow.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- top -->
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<script>
+
+			function search_form() {
+				var keyword = arguments[0];
+				var type = arguments[1];
+				if (keyword != "" && keyword != undefined) {
+					jQuery("#keyword").val(keyword);
+				}
+				if (type != "" && type != undefined) {
+					jQuery("#type").val(type);
+				}
+				jQuery("#searchForm").submit();
+				jQuery("#keyword").val("");
+			}
+		</script>
+
+		<!-- heard -->
+		<div id="header_form">
+			<div class="head_width" id="head_h">
+				<div class="head clearfix">
+					<div class="logo">
+						<a href="$!webPath/index.htm"><img src="$!webPath/resources/new_pc/images/logo.png" border="0">  </a>
+					</div>
+					#if($!user)
+					<div class="lh_touxiang"><img src="$!imageWebServer/$!{user.photo.path}/$!{user.photo.name}"  style="height: 30px;width: 30px"/></div>
+					#else
+					<div class="lh_touxiang"><img src="$!webPath/resources/new_pc/images/lh_13.jpg" /></div>
+					#end
+					<div class="searchform">
+						<form id="searchForm" action="$!webPath/search.htm" method="post" target="_blank">
+							<!--<input name="type" id="type" type="hidden" value="$!goods">-->
+							<input name="type" id="type" type="hidden" value="$!type" />
+							<div class="toph_bigsearch">
+								<div class="toph_sear">
+									<ul class="toph_bgsear">
+										#if($!type=='goods')
+										<li class="this" type="goods"><a href="javascript:void(0);">宝贝<s></s></a></li>
+										<li style="display:none" type="store"><a href="javascript:void(0);">店铺</a></li>
+										#else
+										<li class="this" type="store"><a href="javascript:void(0);">店铺<s></s></a></li>
+										<li style="display:none" type="goods"><a href="javascript:void(0);">宝贝</a></li>
+										#end
+									</ul>
+									<input name="keyword" type="text" id="keyword" value="$!store_name" placeholder="搜索其实真的很简单！" x-webkit-speech lang="zh-CN" onwebkitspeechchange="jQuery('#searchForm').submit()" class="toph_sear_txt"/>
+									<input name="input" type="button" value="搜索" style="cursor:pointer;" onclick="search_form();" class="toph_sear_btn" />
+								</div>
+								<div class="keyword"> #foreach($info in $CommUtil.splitByChar("$!config.hotSearch",",")) <a
+										href="javascript:void(0);" onclick="search_form('$info','goods');">$!info</a> #end </div>
+
+							</div>
+						</form>
+					</div>
+					<div class="lh_gwc"><span><a href="$!webPath/goods_cart1.htm"><i class="icon iconfont">&#xe653;</i>购物车</a></span></div>
+				</div>
+			</div>
+		</div>
+		<!-- heard结束 -->
+
+		<!-- 导航 -->
+		$!httpInclude.include("/nav1.htm")
+		<!-- 导航结束 -->
+
+		<script>
+			$(function () {
+				jQuery.post('$!webPath/searchStore.htm',{"currentPage":'1',"keyword":'$!store_name',"area_id":"$!area_id","area2_id":"$!area2_id"},function(data){
+					$("#store").html(data);
+				});
+			})
+			function choose(id) {
+				$('.qingkong_').attr('class','qingkong_');
+				$("#buxian").attr("class","");
+				$('#'+id).attr('class','qingkong_ on');
+				$('.yincang').attr("style","display:none");
+				$('#zengjia_'+id).show();
+				document.getElementById("area_id").value=id;
+			}
+			function choose2() {
+				$('.qingkong_').attr('class','qingkong_');
+				$("#buxian").attr("class","on");
+				$('.yincang').attr("style","display:none");
+				document.getElementById("area_id").value="";
+			}
+
+			function choose3() {
+				$('.qingkong2_').attr('class','qingkong2_');
+				$('#bu').attr('class','on');
+				document.getElementById("area2_id").value="";
+			}
+			function choose4(id) {
+				$('.qingkong2_').attr('class','qingkong2_');
+				$('#bu').attr("class","");
+				$('#'+id).attr('class','qingkong2_ on');
+				document.getElementById("area2_id").value=id;
+			}
+
+			function gotoPage(page) {
+				var area_id=$('#area_id').val();
+				var area2_id=$('#area2_id').val();
+				var keyword=$('#keyword').val();
+				jQuery.post('$!webPath/searchStore.htm',{"currentPage":page,"keyword":keyword,"area_id":area_id,"area2_id":area2_id},function(data){
+					$("#store").html(data);
+				});
+			}
+		</script>
+		<div class="main">
+			<div class="h_seat">
+				<a href="">全部搜索结果</a>>
+				<a href="">商品搜索关键词</a>
+			</div>
+			<div class="bd_cx_nav">
+					<div class="cx_nav1">
+						<h3>所在区域：</h3>
+						<p>
+						<a href="javaScript:void(0)" class="choose on" id="buxian" onclick="choose2()">不限</a>
+						#foreach($area in $areas)
+						<a  href="javaScript:void(0)" name="qingkong_" id="$!area.id" onclick="choose(this.id)" class="qingkong_">$!area.areaName</a>
+						#end
+					</p>
+					</div>
+
+					#foreach($area in $!areas)
+                   <div class="cx_nav1 yincang" id="zengjia_$!area.id" style="display: none">
+						<h3>城&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市：</h3>
+						<p>
+						<a href="javascript:void(0)" class="" id="bu" onclick="choose3()">不限</a>
+							#foreach($area2 in $area.childs)
+						<a  href="javascript:void(0)" class="qingkong2_" id="$!area2.id" onclick="choose4(this.id)">$!area2.areaName</a>
+							#end
+						</p>
+					</div>
+					#end
+				<div class="cx_nav1">
+					<input class="query_date_bom" type="button" onclick="gotoPage('1')" value="查询" style="color: white">
+				</div>
+
+			</div>
+
+			<input id="area_id" name="area_id" type="hidden" value="$!area_id">
+			<input id="area2_id" name="area2_id" type="hidden" value="$!area2_id">
+			<div class="lh_sssp_left" id="store">
+
+			</div>
+
+		    <div class="index_brand_right1">
+					<div class="brand1">
+						<h3><span></span>推荐商家</h3>
+						<ul>
+							<li>
+								<a target="_blank" href="#">
+									<script src="$!webPath/advert_invoke.htm?id=262194"></script>
+									<span>限时折扣</span>
+								</a>
+							</li>
+							<li class="tgar">
+								<a target="_blank" href="#">
+									<script src="$!webPath/advert_invoke.htm?id=262195"></script>
+									<span>限时折扣</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+		</div>
+
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+
+	</body>
+
+</html>

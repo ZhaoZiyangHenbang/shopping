@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+	<head>
+		<link href="$!webPath/resources/style/system/front/wap/css/style.css" rel="stylesheet" type="text/css">
+		<script src="$!webPath/resources/style/system/front/wap/js/jquery-1.10.2.min.js"></script>
+		<script src="$!webPath/resources/style/system/front/wap/js/TouchSlide.1.1.js"></script>
+		<!--<script src="$!webPath/resources/style/system/front/wap/js/jquery.SuperSlide.2.1.1.js"></script>-->
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script>
+			$(function () {
+				var url=window.document.location.href;
+				$("#my").attr("href","$!webPath/second/fenxiao.htm?url="+url);
+			})
+		</script>
+	</head>
+
+	<body>
+		<!--//header开始-->
+		<header>
+			<div class="lh_hdindex">
+				<span class="lh_back" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i></span>
+				<span>品牌入驻</span>
+				<span class="lh_xiala" id="stateBut" data-show="hide"><i class="icon iconfont">&#xe67b;</i></span>
+				<div id="class1content" style="display: none;">
+					<ul class="lh_tcxl">
+						<li>
+							<a href="#">
+								<span><i class="icon iconfont">&#xe60c;</i></span>
+								<strong>首页</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span><i class="icon iconfont">&#xe674;</i></span>
+								<strong>分类搜索</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span><i class="icon iconfont">&#xe60a;</i></span>
+								<strong>购物车</strong>
+							</a>
+						</li>
+						<li>
+							<a id="my" href="javaScript:void(0)">
+								<span><i class="icon iconfont">&#xe617;</i></span>
+								<strong>我的</strong>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<!--header结束//-->
+
+		<!--//banner开始-->
+		<div class="focusBox" id="focusBox">
+			<script src="$!webPath/advert_invoke.htm?id=262188"></script>
+
+		</div>
+		<script>
+			function check(){
+				var uservalue=$("[name='tel']")[0].value;
+				var rex=new RegExp("^1[3,5,7,8][0-9]{9}$","gi");
+				if(rex.test(uservalue)){
+
+					return true;
+				}else{
+				alert("请输入正确的手机号")
+					return false;
+				}
+			}
+           function checkname() {
+			 var name=  $("[name='name']")[0].value;
+			   if (name!=null&&name!=""){
+				   return true;
+			   }else{
+				   alert("请输入名字");
+				   return false;
+
+			   }
+		   }
+
+			function tijiao() {
+				/*alert(checkname());
+				alert(check());
+				alert(checkdetails());*/
+				if(checkname()&&check()){
+					$("#brandFM").submit();
+					alert("信息提交成功！");
+				}else{
+					/*alert("输入信息不符合标准！");*/
+					return false;
+				}
+
+			}
+
+
+		</script>
+		<!--banner开始//-->
+		<div class="lh_grzx_qh lh_grzx_wfx_sq tgar">
+			<div class="zhongjiannr">
+				<form class="lh_password" action="$!webPath/second/brandsServlet.htm" id="brandFM">
+					<div class="lh_password_m">
+						<label>姓名：</label>
+						<input type="text" placeholder="" name="name"  onblur="checkname()">
+					</div>
+					<div class="lh_password_m">
+						<label>电话：</label>
+						<input type="text" placeholder="" name="tel"  onblur="check()">
+					</div>
+					<div class="lh_password_m">
+						<label>商品描述：</label>
+						<input type="text" placeholder="" id="remark" name="descripe">
+					</div>
+
+				<!--<button class="lx_btn">提交申请</button>-->
+				</form>
+				<div class="lx_ganxie">
+					<button onclick="tijiao()" class="lx_btn">提交</button>
+					<!--<input type="button" value="提交" id="tijiao" >-->
+				</div>
+				<div class="clear"></div>
+				<p class="lx_ganxie">感谢您对我们的关注，我们会尽快给您回复！</p>
+			</div>
+		</div>
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span>
+			</a>
+		</div>
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+	</body>
+
+</html>

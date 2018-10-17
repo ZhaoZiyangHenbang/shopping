@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>投诉管理 - Powered by shopping</title>
+<meta name="keywords" content="$!config.keywords" />
+<meta name="description" content="$!config.description" />
+<meta name="generator" content="shopping 2.0" />
+<meta name="author" content="www.shopping.com">
+<meta name="copyright" content="shopping Inc. All Rights Reserved">
+<link href="$!webPath/resources/style/system/front/default/css/public.css" type="text/css" rel="stylesheet" />
+<link href="$!webPath/resources/style/system/front/default/css/user.css" type="text/css" rel="stylesheet" />
+<link href="$!webPath/resources/style/common/css/overlay.css" type="text/css" rel="stylesheet" />
+<link  href="$!webPath/resources/style/common/css/jquery-ui-1.8.22.custom.css" type=text/css rel=stylesheet>
+<script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+<script src="$!webPath/resources/js/jquery-ui-1.8.21.js"></script>
+<script src="$!webPath/resources/js/jquery.zh.cn.js"></script>
+<script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+
+  <link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+  <link href="$!webPath/resources/new_pc/css/public_auto.css" rel="stylesheet" type="text/css">
+  <link href="$!webPath/resources/new_pc/css/index.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+  <script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+  <script src="$!webPath/resources/new_pc/js/DataLazyLoad.min.js"></script>
+  <script src="$!webPath/resources/new_pc/js/jquery.lazyload.js"></script>
+  <script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+  <script src="$!webPath/resources/new_pc/js/jquery.shop.common.js"></script>
+  <script src="$!webPath/resources/new_pc/js/jquery.validate.min.js"></script>
+  <script src="$!webPath/resources/new_pc/js/jquery-ui-1.8.21.js"></script>
+  <script src="$!webPath/resources/new_pc/js/jquery.shop.validate.js"></script>
+  <script src="$!webPath/resources/new_pc/js/jquery.KinSlideshow.min.js"></script>
+  <script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+  <script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+  <style type="text/css">
+    @font-face {
+      font-family: "iconfont";
+      src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+      /* IE9*/
+      src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+      url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+      url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+      url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+      /* iOS 4.1- */
+    }
+
+    .iconfont {
+      font-family: "iconfont" !important;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-stroke-width: 0.2px;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+</head>
+<body>
+$!httpInclude.include("/second/topZ.htm")
+$!httpInclude.include("/second/head_index.htm")
+<div class="main">
+  <div class="user_center">
+    $!httpInclude.include("/second/leftZ.htm")
+    <table width="1000" border="0" cellspacing="0" cellpadding="0" class="user_table">
+      <tr>
+        <td id="centerbg" valign="top">
+        <div class="buyer_position"><div class="buyer_p_box"><a href="$!webPath/buyer/index.htm">卖家中心</a> > <span>投诉管理</span></div></div>
+        <div class="productmain">
+            <div class="ordernav">
+              <ul class="orderul">
+                <li class="this"><a href="$!webPath/seller/complaint.htm">投诉列表</a></li>
+              </ul>
+            </div>
+            <form action="$!webPath/seller/complaint.htm" method="post" id="ListForm">
+            <div class="ordercon">
+              <div class="ordersear">
+                <div class="right"> <span class="ordersel">
+                  <select name="status" id="status">
+                    <option value="">选择投诉状态</option>
+                    <option value="2">对话中</option>
+                    <option value="3">待仲裁</option>
+                    <option value="4">已完成</option>
+                  </select>
+                  </span> <span class="orderbtn">
+                  <input name="" type="submit" value="搜索" style="cursor:pointer;" />
+                  </span> </div>
+              </div>
+              <div class="operation">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" id="opertable" >
+                  <tr id="opertitle">
+                    <td width="150">投诉人</td>
+                    <td width="200">投诉主题</td>
+                    <td width="150">投诉时间</td>
+                    <td width="100">投诉状态</td>
+                    <td align="center">操作</td>
+                  </tr>
+                  #foreach($obj in $objs)
+                  <tr>
+                    <td>$!obj.from_user.userName</td>
+                    <td>$!obj.cs.title</td>
+                    <td>$!CommUtil.formatLongDate($!obj.addTime)</td>
+                    #if($!obj.status==0)
+                      #set($status="新投诉")
+                    #end
+                    #if($!obj.status==1)
+                      #set($status="待申诉")
+                    #end
+                    #if($!obj.status==2)
+                      #set($status="对话中")
+                    #end
+                    #if($!obj.status==3)
+                      #set($status="待仲裁")
+                    #end
+                    #if($!obj.status==4)
+                      #set($status="已完成")
+                    #end
+                    <td>$!status</td>
+                    <td align="center"><span class="detailcancel"><a href="$!webPath/seller/complaint_view.htm?id=$!obj.id" class="blue2"> 详细</a></span></td>
+                  </tr>
+                  #end
+                </table>
+              </div>
+              <div class="alldel">
+                <div  class="userfenye">
+                  <input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+                  $!gotPageFormHTML</div>
+              </div>
+            </div>
+            </form>
+          </div></td>
+      </tr>
+    </table>
+  </div>
+  <!--footer开始-->
+  $!httpInclude.include("/second/footZ.htm")
+  <!--footer结束-->
+
+  <!-- 右侧 -->
+  $!httpInclude.include("/second/rightZ.htm")
+</div>
+</body>
+</html>

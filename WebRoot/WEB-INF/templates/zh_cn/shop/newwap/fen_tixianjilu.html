@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--//header开始-->
+		<header>
+			<div class="hdindex">
+				<span class="lh_back" a href="#" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i></span>
+				<span>提现记录</span>
+			</div>
+		</header>
+		<!--header结束//-->
+
+		<!--//提现记录-->
+        <div class="lh_txjl">
+			#foreach($obj in $objs)
+        	<ul>
+        	    <!--<li>
+        	    	<div class="left">
+        	    		<p>$!CommUtil.formatShortDate($!obj.addTime)</p>
+        	    		<p><span>$!CommUtil.formatShortTime($!obj.addTime)</span></p>
+        	    	</div>
+        	    	<div class="right">
+        	    		<p>￥20.00</p>&ndash;&gt;
+        	    		<p><span>#if($!obj.status==0)已提交#end
+								#if($!obj.status==1)已通过#end
+								#if($!obj.status==2)未通过#end</span></p>
+        	    	</div>
+        	    </li>-->
+				<li>
+					<p>申请时间：<span>$!CommUtil.formatLongDate($!obj.addTime)</span></p>
+				</li>
+				<li>
+					<p>申请状态：<span>#if($!obj.status==0)已提交#end
+								#if($!obj.status==1)已通过#end
+								#if($!obj.status==2)未通过#end</span></p>
+				</li>
+				<li>
+					<p>提现银行：<span>$!obj.bank_name</span></p>
+				</li>
+				<li>
+					<p>提现卡号：<span>$!obj.card_number</span></p>
+				</li>
+				<li class="bort3">
+					<p>提现金额：<span>$!obj.reality_money</span></p>
+				</li>
+        	</ul>
+			#end
+        </div>
+		<div class="w-page">$!gotoPageHTML</div>
+		<!--提现记录//-->
+
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span></a>
+		</div>
+
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+
+	</body>
+
+</html>

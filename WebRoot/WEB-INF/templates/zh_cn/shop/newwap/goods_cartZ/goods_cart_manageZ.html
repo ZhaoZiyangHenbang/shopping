@@ -1,0 +1,660 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="pixel-ratio-1">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>购物车</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+		<link rel="stylesheet" href="$!webPath/resources/new/pro/css/weui.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/pro/css/jquery-weui.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/pro/css/style.css">
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+
+		<link href="$!webPath/resources/style/system/front/wap/css/style.css" rel="stylesheet" type="text/css">
+		<script src="$!webPath/resources/style/system/front/wap/js/jquery-1.10.2.min.js"></script>
+		<script>
+
+			function goods_count_adjust(cart_id,store_id,count){
+				jQuery.post("$!webPath/goods_count_adjust.htm",{"cart_id":cart_id,"store_id":store_id,"count":count},function(data){
+					if(data.error=="100"){
+						jQuery("#goods_count_"+cart_id).val(count);
+						jQuery("#goods_count_"+cart_id).attr("goods_count",count)
+						jQuery("#goods_total_price_"+cart_id).html("¥"+data.goods_total_price);
+						/*jQuery("#total_price_"+store_id).html(data.sc_total_price);
+						 jQuery("#top_total_price_"+store_id).html(data.sc_total_price);*/
+						//
+						jQuery("#"+cart_id).val(data.goods_total_price);
+						var every=document.getElementsByName("every");
+						var characters=0;
+
+						if(every.length>0) {
+							for (var i = 0; i < every.length; i++) {
+
+								if (every[i].checked) {
+									//alert(every[i].value);
+									characters += parseFloat(every[i].value);
+								}
+							}
+
+							$("#jiliguala").text(characters)
+
+
+						}
+					}
+					if(data.error=="200"){
+						alert("库存不足，请重新选择数量！");
+						jQuery("#goods_count_"+cart_id).val(jQuery("#goods_count_"+cart_id).attr("goods_count"));
+					}
+					if(data.error=="300"){
+						alert("团购库存不足，请重新选择数量！");
+						jQuery("#goods_count_"+cart_id).val(jQuery("#goods_count_"+cart_id).attr("goods_count"));
+					}
+				},"json");
+			}
+
+			function countDown(id){
+				var cart_id=id.split(",")[0];
+				var count=jQuery("#goods_count_"+id.split(",")[0]).val();
+				var store_id=id.split(",")[1];
+				if(count>1){
+					count--;
+					goods_count_adjust(cart_id,store_id,count)
+				}else if(count==1){
+					alert("当前商品为1，不可继续减少！")
+				}
+			}
+			function countUp(id){
+				var cart_id=id.split(",,")[0];
+				var count=jQuery("#goods_count_"+id.split(",,")[0]).val();
+				var store_id=id.split(",,")[1];
+				if(count>0){
+					count++;
+					goods_count_adjust(cart_id,store_id,count)
+				}
+			}
+			function goodsCount(id){
+				var count=$("#"+id).val();
+				if(count==""){
+					count=1;
+				}
+				var store_id=$("#"+id).attr("store_id");
+				if(count>0){
+					goods_count_adjust(id.replace("goods_count_",""),store_id,count);
+				}
+			}
+
+			function confirm_cart1() {
+			var val=$("#ids").val();
+				if(""==val||null==val){
+					alert("请选择商品");
+					return ;
+				}
+				//把总额传过去
+				var communt=$("#jiliguala").html();
+				$("#communt").val(communt);
+				//把总额传过去
+				var every=document.getElementsByName("every")
+				var ids="";
+				var che = "";
+				if(every.length>0) {
+					for (var i = 0; i < every.length; i++) {
+						if (every[i].checked) {
+							//alert(every[i].value);
+							ids +=every[i].id+",";
+							che += every[i].getAttribute("she")+"!";
+						}
+					}
+					/*jQuery.post("$!webPath/goods_cart2_inventory.htm",{"count":count},function(data){
+
+					 })*/
+					//action="$!webPath/goods_cart2.htm?ids="+ids
+					$("form").attr("action","$!webPath/goods_cart2.htm?che="+che);
+					$("#cart__").submit();
+				}
+			}
+
+			//删除商品
+			function cart_remove(objid, del_store_id) {
+				//var type = arguments[1];
+				var type = "1";
+				var method = function() {
+					jQuery.post("$!webPath/remove_goods_cart.htm",
+							{
+								"id" : objid,
+								"store_id": del_store_id
+							},
+							function(data) {
+
+								if (type == "one_combin") {
+									window.location.href = "$!webPath/goods_cart0.htm";
+								} else {
+									window.location.reload();
+
+								}
+							}, "json");
+
+				};
+
+				if (type == "one_combin") {
+					if (confirm("删除后其他套装商品将不享受优惠！")) {
+						method();
+					}
+
+				}
+				if (type == "all_combin") {
+					if (confirm("确定删除整个组合套装吗！")) {
+						method();
+					}
+				}
+				if (type == "1" || type == undefined) {
+					if (confirm("确定删除已选中的商品！")) {
+						method();
+					}
+				}
+
+			}
+
+		</script>
+
+	</head>
+
+	<body ontouchstart="">
+		<!--主体-->
+			<!--产品详情-->
+				<div class="weui-navbar1">
+					<span class="lh_back" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i></span>
+					<span class="weui-navbar_span">购物车</span>
+					<span class="lh_xiala" id="stateBut" onclick="$use()"><i class="icon iconfont">&#xe67b;</i></span>
+
+					<div id="class1content" style="display: none;">
+						$!httpInclude.include("/wap/wap_navv.htm")
+					</div>
+				</div>
+
+           <script>
+               function quanxuan() {
+                   if($("#cookieZ").is(":checked")){
+                       $("ul input[type='checkbox']").prop("checked",true);
+                       //写一个ajax把数据库重的gc_status的值变为0
+                       //获取所有商品的id作为字符串传到后台，然后遍历改变
+                       var quan = document.getElementsByName("every")
+                       var characters="";
+                       if(quan.length>0){
+                           for(var i=0;i<quan.length;i++){
+                               if(quan[i].checked){
+                                   characters+=quan[i].id+',';
+                               }
+                           }
+
+                       }
+                       jQuery.ajax({type:'post',url:'$!webPath/cart_gc_status.htm?characters='+characters+'&isorno=true',
+                           beforeSend:function(){
+                           },
+                           success:function(data){
+                               /*var result=eval("("+data+")");
+                                var ss = result.gai;
+                                alert(ss);*/
+                           }
+                       })
+                   }else{
+                       $("ul input[type='checkbox']").prop("checked",false);
+                       //写一个ajax把数据库重的gc_status的值变为1
+                       var quan = document.getElementsByName("every")
+                       var characters="";
+                       if(quan.length>0){
+                           for(var i=0;i<quan.length;i++){
+                               if(!quan[i].checked){
+                                   characters+=quan[i].id+',';
+                               }
+                           }
+                       }
+                       jQuery.ajax({type:'post',url:'$!webPath/cart_gc_status.htm?characters='+characters+'&isorno=false',
+                           beforeSend:function(){
+                           },
+                           success:function(data){
+                           }
+                       })
+
+                   }
+
+               }
+			   function xuanD(id) {
+				   if($("#Z"+id).is(":checked")){
+					   //quanxiao();
+					   $('input[type=checkbox]').prop("checked",false);
+					   $('#Z'+id).prop("checked",true);
+					   $("ul input[class='_Z"+id+"']").prop("checked",true);
+
+					   var quan = document.getElementsByClassName("_Z"+id);
+					   var characters="";
+					   if(quan.length>0){
+						   for(var i=0;i<quan.length;i++){
+							   if(quan[i].checked){
+								   characters+=quan[i].id+',';
+							   }
+						   }
+					   }
+					 //  alert(characters);
+
+						$("#ids").val(characters);
+
+					   jQuery.ajax({type:'post',url:'$!webPath/cart_gc_status.htm?characters='+characters+'&isorno=true',
+						   beforeSend:function(){
+						   },
+						   success:function(data){
+						   }
+					   })
+				   }else{
+					   $("ul input[class='_Z"+id+"']").prop("checked",false);
+					   var quan = document.getElementsByClassName("_Z"+id);
+					   var characters="";
+					   if(quan.length>0){
+						   for(var i=0;i<quan.length;i++){
+							   if(!quan[i].checked){
+								   characters+=quan[i].id+',';
+							   }
+						   }
+					   }
+					   //alert("22="+characters)
+					   jQuery.ajax({type:'post',url:'$!webPath/cart_gc_status.htm?characters='+characters+'&isorno=false',
+						   beforeSend:function(){
+						   },
+						   success:function(data){
+						   }
+					   })
+				   }
+			   }
+
+           </script>
+        <script>
+            $(function () {
+                var every=document.getElementsByName("every");
+                var characters=0;
+                if(every.length>0){
+                    for(var i=0; i<every.length; i++){
+                        if(every[i].checked){
+                            //alert(every[i].value);
+                            characters+=parseFloat(every[i].value);
+                        }
+                    }
+                    $("#jiliguala").text(characters)
+                }
+                $("ul input[type='checkbox']").change(function () {
+                    var every=document.getElementsByName("every");
+                    var characters=0;
+
+                    if(every.length>0){
+                        for(var i=0; i<every.length; i++){
+
+                            if(every[i].checked){
+                                //alert(every[i].value);
+                                characters+=parseFloat(every[i].value);
+                            }
+                        }
+                        $("#jiliguala").text(characters)
+                    }
+                })
+            })
+
+			var ids = null;
+			function status(id) {
+				if(ids == null){
+					ids = id;
+				}else{
+					ids = ids+","+id;
+				}
+				$("#ids").val(ids);
+				var a=document.getElementById(id);
+				var b=a.getAttribute("pro");
+				var d=id;
+				if(a.checked){
+					$('input[type=checkbox]._Z'+b+':checked').attr("che","1");
+					var allLength = $("input[type=checkbox]._Z"+b).length;
+					var allCheckedLength = $('input[type=checkbox]._Z'+b+':checked').length;
+					if(allLength == allCheckedLength){
+						$('#Z'+b).attr("che","1");
+					}
+					$('input[type=checkbox]').prop("checked",false);
+					var c=document.getElementsByName("every");
+					for(var i=0;i<c.length;i++) {
+						d=c[i].id;
+						if (null!=c[i].getAttribute("che")&&c[i].getAttribute("che")!=""){
+							c[i].checked=true;
+							c[i].setAttribute("che","");
+							jQuery.ajax({type:'post',url:'$!webPath/cart_gc_status.htm?characters='+d+'&isorno=true',
+								beforeSend:function(){
+								},
+								success:function(data){
+								}
+							});
+						}else {
+							jQuery.ajax({type:'post',url:'$!webPath/cart_gc_status.htm?characters='+d+'&isorno=false',
+								beforeSend:function(){
+								},
+								success:function(data){
+								}
+							});
+						}
+					}
+					var allLength1 = $("input[type=checkbox]._Z"+b).length;
+					var allCheckedLength1 = $('input[type=checkbox]._Z'+b+':checked').length;
+					if(allLength1 == allCheckedLength1){
+						$('#Z'+ 0).prop('checked',true);
+					}
+				}else{
+					$('#Z'+b).removeProp('checked');
+					jQuery.ajax({type:'post',url:'$!webPath/cart_gc_status.htm?characters='+d+'&isorno=false',
+						beforeSend:function(){
+						},
+						success:function(data){
+						}
+					})
+				}
+			}
+        </script>
+				#if($!cart.size()>0)
+				#foreach($sc in $cart)
+            <ul>
+				<form status="no_submit" method="post" name="cart_$!{sc.store.id}" target="_self" id="cart__" action="$!webPath/goods_cart2.htm">
+					<input type="hidden" name="ids" id="ids">
+				<div class="weui-content">
+					<div class="weui-panel weui-panel_access">
+
+						<div class="weui-panel__hd"><a href="$!webPath/store_$!{sc.store.id}.htm">
+                            <input type="checkbox" id="Z$!sc.store.id" che="" onchange="xuanD($!sc.store.id)" name="data[cookie]" >
+                            <span>$!sc.store.store_name</span></a>
+						<!--	<a href="javascript:;" class="wy-dele"></a>-->
+						</div>
+						<!--<div class="weui-panel__hd"><span><i style="color: #CE1010; padding-right: 0.3rem;">领卷</i>满199减30，满299减60</span>
+							<a href="javascript:;" class="lh_yhjf_nn open-popup" data-target="#selcet_sku1" style="margin-top: 0.1rem;">
+							<p >领卷</p></a>
+						</div>-->
+						#foreach($obj in $sc.gcs)
+						#if($!obj.goods.goods_main_photo)
+						#set($img="$!imageWebServer/$!{obj.goods.goods_main_photo.path}/$!{obj.goods.goods_main_photo.name}_small.$!{obj.goods.goods_main_photo.ext}")
+						#else
+						#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+						#end
+						<div class="weui-panel__bd">
+							<div class="weui-media-box_appmsg pd-10">
+								<div class="weui-media-box__hd check-w weui-cells_checkbox">
+									<label class="weui-check__label" >
+										<div class="weui-cell__hd cat-check">
+                                            #set($total_price=$!obj.count * $!obj.price)
+                                            <input type="checkbox" id="$!obj.id"  pro="$!sc.store.id" che="" she="$!obj.goods.id,,$!obj.count" onchange="status(this.id)" class="_Z$!sc.store.id" name="every"  value="$!total_price">
+                                          <!--  <i class="weui-icon-checked"></i>-->
+										</div>
+									</label>
+								</div>
+								<div class="weui-media-box__hd">
+									<a href="$!webPath/goods_$!{obj.goods.id}.htm" href="$!webPath/goods_$!{obj.goods.id}.htm"><img class="weui-media-box__thumb" src="$!img" alt=""></a>
+								</div>
+								<div class="weui-media-box__bd">
+									<h1 class="weui-media-box__desc"><a href="$!webPath/goods_$!{obj.goods.id}.htm" class="ord-pro-link">$!CommUtil.substring("$!obj.goods.goods_name",30)</a></h1>
+									<div><p class="weui-media-box__desc">规格：<span>$!{obj.spec_info}</span></p>
+
+										<div class="lh_wdgwc_w-bond-20" style="float:right;">
+											<a  href="javascript:void(0);" onclick="cart_remove('$!obj.id','$!sc.store.id');" class="cart_common">删除</a>
+										</div>
+									</div>
+									<div class="clear mg-t-10">
+										<div class="wy-pro-pri fl">¥<em class="num font-15">$!obj.price</em></div>
+										<div class="pro-amount fr">
+										<!--	<div class="Spinner" >
+
+											</div>-->
+											<div class="sp" style="display: block;overflow: hidden;width: 84px;margin: 0px;width: 100px">
+												<button class="mui-btn mui-btn-numbox-minus" type="button" style="width: 24px;">
+													<span><a href="javascript:void(0);" class="count_down" id="$!obj.id,$!sc.store.id" cart_id="$!obj.id" store_id="$!sc.store.id" onclick="countDown(this.id)"><img src="$!imageWebServer/resources/style/system/front/default/images/jian.jpg" width="12" height="24" /></a></span>
+												</button>
+												<input style="width: 30px;height: 26px;text-align: center;" name="goods_count_$!{obj.id}" type="text" id="goods_count_$!{obj.id}" value="$!obj.count" cart_id="$!obj.id" store_id="$!sc.store.id" goods_count="$!obj.count" onkeyup="goodsCount(this.id)"/>
+												<button class="mui-btn mui-btn-numbox-plus" type="button" style="width: 24px;">
+													<span><a href="javascript:void(0);" id="$!obj.id,,$!sc.store.id" cart_id="$!obj.id" store_id="$!sc.store.id"  onclick="countUp(this.id)"><img src="$!imageWebServer/resources/style/system/front/default/images/add.jpg" width="12" height="24"/></a></span>
+												</button>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						#end
+						#end
+						<input name="store_id" type="hidden" id="store_id" value="$!{sc.store.id}" />
+						<!--jie算开始-->
+						<div class="foot-black"></div>
+						<div class="weui-tabbar">
+
+
+							<div class="weui-tabbar__item  npd">
+								<p class="cart-total-txt">合计：<i id="jiliguala">￥</i><em class="num font-16" id="zong1"></em>（不含运费）</p>
+							</div>
+							<a href="javascript:void(0);" onclick="confirm_cart1();" class="red-color npd w-80 t-c">
+								<p class="promotion-foot-menu-label" style="line-height: 50px;">去结算</p>
+								<input type="hidden" name="communt" id="communt"/>
+							</a>
+						</div>
+						<!--jie算结束-->
+					</div>
+				</div>
+				</form>
+                   </ul>
+
+					#else
+					<div class="car_none"> <span><img src="$!webPath/resources/style/system/front/wap/images/car_none.jpg"></span> <b>购物车是空的，去看看商品吧</b>
+					</div>
+					<div class="car_none_btn">
+						<input type="button" onclick="javascript:window.location.href='$!webPath/wap/index.htm'" value="去购物">
+					</div>
+					#end
+				</div>
+			</div>
+
+		<!--底部导航-->
+		<!--<div class="foot-black"></div>
+		<div class="weui-tabbar">
+			<div class="npd cart-foot-check-item weui-cells_checkbox allselect">
+				<label class="weui-cell allsec-well weui-check__label" for="all">
+					<div class="weui-cell__hd">
+					  <input class="weui-check" name="all-sec" id="all" type="checkbox">
+					  <i class="weui-icon-checked"></i>
+					</div>
+					<div class="weui-cell__bd">
+					  <p class="font-14">全选</p>
+					</div>
+				</label>
+			</div>
+			<div class="weui-tabbar__item  npd">
+				<p class="cart-total-txt">合计：<i>￥</i><em class="num font-16" id="zong1">22222.00</em>（不含运费）</p>
+			</div>
+			<a href="#" class="red-color npd w-80 t-c">
+				<p class="promotion-foot-menu-label" style="line-height: 50px;">去结算</p>
+			</a>
+		</div>-->
+
+
+<div id="selcet_sku1" class="weui-popup__container popup-bottom" style="z-index:600;">
+			<div class="weui-popup__overlay" style="opacity:1;"></div>
+			<div class="weui-popup__modal">
+				<div class="toolbar">
+					<div class="toolbar-inner">
+						<a href="javascript:;" class="picker-button close-popup">关闭</a>
+						<h1 class="title">浩星旗舰店</h1>
+					</div>
+				</div>
+				<div class="modal-content">
+					<div class="weui-msg" style="padding-top:0;">
+						<ul class="tabs">
+				<li>
+					<a href="#" name=".tab1_1">可领</a>
+				</li>
+				<li>
+					<a href="#" name=".tab1_2">已领</a>
+				</li>
+
+			</ul>
+
+		<div class="content">
+			<div class="tab1_1"  >
+				<ul>
+
+
+					<!--<li>
+						<div class="left01">
+							<div class="left01_top"><span>￥</span>100</div>
+							<div class="left01_bottom">满100元使用</div>
+						</div>
+						<div class="center01">
+							<div class="title01">浩星旗舰店</div>
+							<div class="date01">2017.1.12-2017.12.31</div>
+						</div>
+						<div class="right01">
+							<a href="#">点击领取</a>
+						</div>
+					</li>-->
+
+				</ul>
+			</div>
+			<div class="tab1_2">
+				<ul>
+					<li>
+						<div class="left01">
+							<div class="left01_top"><span>￥</span>100</div>
+							<div class="left01_bottom">满100元使用</div>
+						</div>
+						<div class="center01">
+							<div class="title01">浩星旗舰店</div>
+							<div class="date01">2017.1.12-2017.12.31</div>
+						</div>
+						<div class="right01">
+							<a href="#">去使用</a>
+						</div>
+					</li>
+					<li>
+						<div class="left01">
+							<div class="left01_top"><span>￥</span>100</div>
+							<div class="left01_bottom">满100元使用</div>
+						</div>
+						<div class="center01">
+							<div class="title01">浩星旗舰店</div>
+							<div class="date01">2017.1.12-2017.12.31</div>
+						</div>
+						<div class="right01">
+							<a href="#">去使用</a>
+						</div>
+					</li>
+					<li>
+						<div class="left01">
+							<div class="left01_top"><span>￥</span>100</div>
+							<div class="left01_bottom">满100元使用</div>
+						</div>
+						<div class="center01">
+							<div class="title01">浩星旗舰店</div>
+							<div class="date01">2017.1.12-2017.12.31</div>
+						</div>
+						<div class="right01">
+							<a href="#">去使用</a>
+						</div>
+					</li>
+					<li>
+						<div class="left01">
+							<div class="left01_top"><span>￥</span>100</div>
+							<div class="left01_bottom">满100元使用</div>
+						</div>
+						<div class="center01">
+							<div class="title01">浩星旗舰店</div>
+							<div class="date01">2017.1.12-2017.12.31</div>
+						</div>
+						<div class="right01">
+							<a href="#">去使用</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span></a>
+		</div>
+
+
+		<script src="$!webPath/resources/new/pro/js/jquery-2.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing1.js"></script>
+		<script src="$!webPath/resources/new/pro/js/fastclick.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/pro/js/jquery.js"></script>
+		<script src="$!webPath/resources/new/pro/js/tabScript.js"></script>
+			<script>
+			$(function() {
+				loadTab();
+			});
+		</script>
+		<script>
+			$(function() {
+				FastClick.attach(document.body);
+			});
+		</script>
+		<script type="text/javascript">
+			$(function() {
+				$(".Spinner").Spinner({ value: 1, len: 3, max: 999 });
+			});
+		</script>
+		<script src="$!webPath/resources/new/pro/js/jquery-weui.js"></script>
+		<!---全选按钮-->
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".allselect").click(function() {
+					if($(this).find("input[name=all-sec]").prop("checked")) {
+						$("input[name=cartpro]").each(function() {
+							$(this).prop("checked", true);
+						});
+
+					} else {
+						$("input[name=cartpro]").each(function() {
+							if($(this).prop("checked")) {
+								$(this).prop("checked", false);
+							} else {
+								$(this).prop("checked", true);
+							}
+						});
+
+					}
+
+				});
+
+			});
+		</script>
+
+
+	</body>
+
+</html>

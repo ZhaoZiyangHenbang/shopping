@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/headZ.htm")
+		<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				<!-- 左侧nav -->
+				$!httpInclude.include("/second/leftZ.htm")
+				<!-- 左侧nav结束 -->
+					<div class="l-fr">
+						<div class="w-title">
+							<h3>限时抢购管理</h3>
+						</div>
+					</div>
+					<div class="l-fr1 tgar">
+						<div class="slideTxtBox">
+							<div class="hd">
+								<ul>
+									<li class="on">抢购列表</li>
+									<li><a href="$!webPath/seller/group_add.htm">新增抢购商品</a></li>
+								</ul>
+							</div>
+							<div class="bd">
+								<ul>
+									<div class="w-bond">
+										<div class="w-bond-title">
+											<p class="w-title-name">商品名称</p>
+											<p class="w-title-time">商品分类</p>
+											<p class="w-title-time">抢购时间</p>
+											<p class="w-title-mony">审核状态</p>
+											<p class="w-title-mony">操作</p>
+										</div>
+									</div>
+									#foreach($obj in $objs)
+									#if($!obj.gg_goods.goods_main_photo)
+									#set($img="$!imageWebServer/$!{obj.gg_goods.goods_main_photo.path}/$!{obj.gg_goods.goods_main_photo.name}_middle.$!{obj.gg_goods.goods_main_photo.ext}")
+									#else
+									#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+									#end
+									<div class="w-bond-list">
+										<div class="w-bond-info">
+											<div class="w-bond-01">
+												<div class="w-bond-img fl">
+													<img src="$!img"/>
+												</div>
+												<div class="w-bond-name fl">
+													<span>$!obj.gg_goods.goods_name</span>
+													<!--<a href="$!webPath/group_view.htm?id=$!obj.id">$!obj.gg_goods.goods_name</a>-->
+												</div>
+												<div class="w-clear"></div>
+											</div>
+											<div class="w-bond-02">
+												<span>$!obj.gg_gc.gc_name</span>
+											</div>
+											<div class="w-bond-03">
+												<span>$!{obj.group.beginTime}-$!{obj.group.endTime}</span>
+											</div>
+											#if($!obj.gg_status==0)
+											#set($status="待审核")
+											#end
+											#if($!obj.gg_status==1)
+											#set($status="审核通过")
+											#end
+											#if($!obj.gg_status==-1)
+											#set($status="审核拒绝")
+											#end
+											<div class="w-bond-04">$!status</div>
+											<div class="w-bond-05">
+												#if($!obj.gg_status==0)
+												<span class="edit"><a href="$!webPath/seller/group_edit.htm?id=$!obj.id&currentPage=$!currentPage">编辑</a>
+												</span><span class="del"><a href="$!webPath/seller/group_del.htm?mulitId=$!obj.id&currentPage=$!currentPage">删除</a></span>
+												#end
+											</div>
+											<div class="w-clear"></div>
+										</div>
+									</div>
+									#end
+								</ul>
+
+							</div>
+						</div>
+						<div class="w-page">
+							$!gotoPageHTML
+						</div>
+					</div>
+				</div>
+				<!--我是卖家_限时抢购管理结束-->
+			</div>
+		</div>
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+	</body>
+</html>

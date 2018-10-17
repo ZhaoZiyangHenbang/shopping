@@ -1,0 +1,64 @@
+
+					#foreach($goods in $objs)
+					#if($!goods.goods_main_photo)
+					#set($img="$!imageWebServer/$!{goods.goods_main_photo.path}/$!{goods.goods_main_photo.name}")
+					#else
+					#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+					#end
+					<li>
+						<a href="$!webPath/goods_$!{goods.id}.htm">
+							<div class="lh_img01"><img src="$!img"></div>
+							<div class="lh_jieshao01"><span>仅剩$!{goods.goods_inventory}件</span></div>
+							<div class="lh_xq01">
+								<div class="lh_xq01_title">$!CommUtil.substring("$!goods.goods_name",11)</div>
+								<div class="lh_xq01_jg">
+									<span>¥$!{goods.store_price}</span>
+									<!--<i>￥$!store_reommend_good.goods_price</i>-->
+									<em>$!goods.goods_store.area.parent.areaName</em>
+								</div>
+								<div class="lh_xq01_xl">
+									<span>销量$!{goods.goods_salenum}</span>
+									<em>好评度$!GoodsViewTools.haopinglv("$!{goods.id}")%</em>
+								</div>
+							</div>
+						</a>
+					</li>
+					#end
+
+					<!--滚动-->
+					<link rel="stylesheet" href="http://cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+					<link rel="stylesheet" href="http://cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+					<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+					<script src="http://cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+					<script>
+                        $(function () {
+                            var loading = false;  //状态标记
+                            $(document.body).infinite().on("infinite", function() {
+                                if(loading) return;
+                                loading = true;
+                                if($!currentPage==$!totalPage){
+                                    $(".weui-loadmore").css("display","none");
+                                    $(".weui-loadmore2").css("display","block");
+                                    return;
+                                }
+                                setTimeout(function() {
+                                    $(".weui-loadmore").css("display","none");
+                                    $(".weui-loadmore2").css("display","none");
+                                    //alert($!currentPage);
+
+                                    jQuery.ajax({type:'post',async: false,url:'$!webPath/goods_list_ajax.htm',data:{"gc_id":"$!gc_id","store_id":"$!store_id","currentPage":"$!currentPage","recommend":"$!recommend","orderBy":"$!orderBy","orderType":"$!orderType","begin_price":"$!begin_price","end_price":"$!end_price"},
+                                        beforeSend:function(){
+                                        },
+                                        success:function(data){
+                                            //alert(data);
+                                            $(".lh_xplb ul").append(data);
+                                            /* $(".lh_xplb ui").html(data)*/
+                                        }
+                                    });
+                                    $(".weui-loadmore").css("display","block");
+                                    loading = false;
+                                }, 1000);   //模拟延迟
+                            });
+                        })
+					</script>
+					<!--	//滑动分页结束-->

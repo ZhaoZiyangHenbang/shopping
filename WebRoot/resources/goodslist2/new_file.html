@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/style2.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery.min.js"></script>
+		<script src="js/iscroll.js"></script>
+		<script src="js/haoxing.js"></script>
+	</head>
+	<style type="text/css">
+		.slide-menu {
+		display: block;
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 65%;
+		height: 100%;
+		background: #fff;
+		z-index: 9999;
+		display: none;
+	}
+	
+	.slide-left {
+		display: block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 35%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.3);
+		z-index: 9999;
+		display: none;
+	}
+	</style>
+	<script>
+		$(function() {
+			var url = window.document.location.href;
+			$("#my").attr("href", "http://www.yijia1234.com/second/fenxiao.htm?url=" + url);
+		})
+	</script>
+	<style type="text/css">
+		@font-face {
+			font-family: "iconfont";
+			src: url('font/iconfont.eot');
+			/* IE9*/
+			src: url('font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('font/iconfont.woff') format('woff'), /* chrome, firefox */
+			url('font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('font/iconfont.svg#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+		
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+	</style>
+
+	<body class="drawer drawer-right" style="background-color: white">
+		<div class="title">
+			<span class="back" onclick="history.go(-1)"></span>
+			<!--商品列表-->
+			<div class="search-wrap">
+				<select name="">
+					<option value="">商品</option>
+					<option value="">店铺</option>
+				</select>
+				<input type="search" />
+				<button class="search-btn"></button>
+			</div>
+			<span class="menu"></span>
+		</div>
+		<div class="menu-list hide">
+			<ul>
+				<li>
+					<a href="http://www.yijia1234.com/wap/index.htm">
+						<div class="menu-icon main"></div>
+						<div class="menu-page">首页</div>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.yijia1234.com/search.htm">
+						<div class="menu-icon search"></div>
+						<div class="menu-page">分类搜索</div>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.yijia1234.com/goods_cart1.htm">
+						<div class="menu-icon shop"></div>
+						<div class="menu-page">购物车</div>
+					</a>
+				</li>
+				<li>
+					<a id="my" href="http://www.yijia1234.com/second/fenxiao.htm">
+						<div class="menu-icon my"></div>
+						<div class="menu-page">我的</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<script>
+			function sheng(id) {
+				/*$(this).attr("class",on);*/
+				$("div[name=shi]").each(
+					function() {
+						var a = $(this).attr("zzy");
+						if(a == id) {
+							$("#sheng").hide();
+							$("div[name=shi]").hide();
+							$("div[zzy=" + id + "]").show();
+						}
+					}
+				)
+			}
+
+			function xuanshi(id) {
+				var name = $("#" + id).text();
+				$("#store_name").attr("value", id);
+				$('.font-red').text(name);
+				/*$(this).attr("class",on);*/
+			}
+
+			function tijiaoshaixuan() {
+				$("#form").submit;
+			}
+		</script>
+		<div class="slide-left"></div>
+		<div class="drawer-main drawer-default slide-menu">
+			<nav class="drawer-nav" role="navigation">
+				<form action="http://www.yijia1234.com/store_goods_list_65722.htm" id="form" type="post">
+					<div class="drawer-brand">
+
+						<div class="slide-right">
+
+							<div class="slide-title active">
+								店铺所在城市：<b class="address font-red">济南</b>
+								<input type="hidden" id="store_name" name="a_id" value="4523481" placeholder="济南">
+							</div>
+							<ul class="address-list" id="sheng">
+								<li id="4521984" onclick="sheng(this.id)">北京市</li>
+								<li id="4523980" onclick="sheng(this.id)">湖南省</li>
+								<li id="4524130" onclick="sheng(this.id)">广东省</li>
+								<li id="4524292" onclick="sheng(this.id)">广西壮族自治区</li>
+								<li id="4524431" onclick="sheng(this.id)">海南省</li>
+								<li id="4524460" onclick="sheng(this.id)">重庆市</li>
+								<li id="4524503" onclick="sheng(this.id)">四川省</li>
+								<li id="4524724" onclick="sheng(this.id)">贵州省</li>
+								<li id="4524825" onclick="sheng(this.id)">云南省</li>
+								<li id="4524979" onclick="sheng(this.id)">西藏自治区</li>
+								<li id="4525061" onclick="sheng(this.id)">陕西省</li>
+								<li id="4525189" onclick="sheng(this.id)">甘肃省</li>
+								<li id="4525302" onclick="sheng(this.id)">青海省</li>
+								<li id="4525355" onclick="sheng(this.id)">宁夏回族自治区</li>
+								<li id="4523850" onclick="sheng(this.id)">湖北省</li>
+								<li id="4523655" onclick="sheng(this.id)">河南省</li>
+								<li id="4523480" onclick="sheng(this.id)">山东省</li>
+								<li id="4522003" onclick="sheng(this.id)">天津市</li>
+								<li id="4522022" onclick="sheng(this.id)">河北省</li>
+								<li id="4522217" onclick="sheng(this.id)">山西省</li>
+								<li id="4522359" onclick="sheng(this.id)">内蒙古自治区</li>
+								<li id="4522482" onclick="sheng(this.id)">辽宁省</li>
+								<li id="4522611" onclick="sheng(this.id)">吉林省</li>
+								<li id="4522689" onclick="sheng(this.id)">黑龙江省</li>
+								<li id="4522847" onclick="sheng(this.id)">上海市</li>
+								<li id="4522868" onclick="sheng(this.id)">江苏省</li>
+								<li id="4523000" onclick="sheng(this.id)">浙江省</li>
+								<li id="4523113" onclick="sheng(this.id)">安徽省</li>
+								<li id="4523253" onclick="sheng(this.id)">福建省</li>
+								<li id="4523357" onclick="sheng(this.id)">江西省</li>
+								<li id="4525388" onclick="sheng(this.id)">新疆维吾尔自治区</li>
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4521984" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4521984">
+								<li class="gray" id="4521985" onclick="xuanshi(this.id)">北京市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4523980" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4523980">
+								<li class="gray" id="4523981" onclick="xuanshi(this.id)">长沙市</li>
+								<li class="gray" id="4523992" onclick="xuanshi(this.id)">株洲市</li>
+								<li class="gray" id="4524003" onclick="xuanshi(this.id)">湘潭市</li>
+								<li class="gray" id="4524010" onclick="xuanshi(this.id)">衡阳市</li>
+								<li class="gray" id="4524024" onclick="xuanshi(this.id)">邵阳市</li>
+								<li class="gray" id="4524038" onclick="xuanshi(this.id)">岳阳市</li>
+								<li class="gray" id="4524049" onclick="xuanshi(this.id)">常德市</li>
+								<li class="gray" id="4524060" onclick="xuanshi(this.id)">张家界市</li>
+								<li class="gray" id="4524066" onclick="xuanshi(this.id)">益阳市</li>
+								<li class="gray" id="4524074" onclick="xuanshi(this.id)">郴州市</li>
+								<li class="gray" id="4524087" onclick="xuanshi(this.id)">永州市</li>
+								<li class="gray" id="4524100" onclick="xuanshi(this.id)">怀化市</li>
+								<li class="gray" id="4524114" onclick="xuanshi(this.id)">娄底市</li>
+								<li class="gray" id="4524121" onclick="xuanshi(this.id)">湘西土家族苗族自治州</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4524130" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4524130">
+								<li class="gray" id="4524131" onclick="xuanshi(this.id)">广州市</li>
+								<li class="gray" id="4524145" onclick="xuanshi(this.id)">韶关市</li>
+								<li class="gray" id="4524157" onclick="xuanshi(this.id)">深圳市</li>
+								<li class="gray" id="4524165" onclick="xuanshi(this.id)">珠海市</li>
+								<li class="gray" id="4524170" onclick="xuanshi(this.id)">汕头市</li>
+								<li class="gray" id="4524179" onclick="xuanshi(this.id)">佛山市</li>
+								<li class="gray" id="4524186" onclick="xuanshi(this.id)">江门市</li>
+								<li class="gray" id="4524195" onclick="xuanshi(this.id)">湛江市</li>
+								<li class="gray" id="4524206" onclick="xuanshi(this.id)">茂名市</li>
+								<li class="gray" id="4524214" onclick="xuanshi(this.id)">肇庆市</li>
+								<li class="gray" id="4524224" onclick="xuanshi(this.id)">惠州市</li>
+								<li class="gray" id="4524231" onclick="xuanshi(this.id)">梅州市</li>
+								<li class="gray" id="4524241" onclick="xuanshi(this.id)">汕尾市</li>
+								<li class="gray" id="4524247" onclick="xuanshi(this.id)">河源市</li>
+								<li class="gray" id="4524255" onclick="xuanshi(this.id)">阳江市</li>
+								<li class="gray" id="4524261" onclick="xuanshi(this.id)">清远市</li>
+								<li class="gray" id="4524271" onclick="xuanshi(this.id)">东莞市</li>
+								<li class="gray" id="4524272" onclick="xuanshi(this.id)">中山市</li>
+								<li class="gray" id="4524273" onclick="xuanshi(this.id)">潮州市</li>
+								<li class="gray" id="4524278" onclick="xuanshi(this.id)">揭阳市</li>
+								<li class="gray" id="4524285" onclick="xuanshi(this.id)">云浮市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4524292" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4524292">
+								<li class="gray" id="4524293" onclick="xuanshi(this.id)">南宁市</li>
+								<li class="gray" id="4524307" onclick="xuanshi(this.id)">柳州市</li>
+								<li class="gray" id="4524319" onclick="xuanshi(this.id)">桂林市</li>
+								<li class="gray" id="4524338" onclick="xuanshi(this.id)">梧州市</li>
+								<li class="gray" id="4524347" onclick="xuanshi(this.id)">北海市</li>
+								<li class="gray" id="4524353" onclick="xuanshi(this.id)">防城港市</li>
+								<li class="gray" id="4524359" onclick="xuanshi(this.id)">钦州市</li>
+								<li class="gray" id="4524365" onclick="xuanshi(this.id)">贵港市</li>
+								<li class="gray" id="4524372" onclick="xuanshi(this.id)">玉林市</li>
+								<li class="gray" id="4524380" onclick="xuanshi(this.id)">百色市</li>
+								<li class="gray" id="4524394" onclick="xuanshi(this.id)">贺州市</li>
+								<li class="gray" id="4524401" onclick="xuanshi(this.id)">河池市</li>
+								<li class="gray" id="4524414" onclick="xuanshi(this.id)">来宾市</li>
+								<li class="gray" id="4524422" onclick="xuanshi(this.id)">崇左市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4524431" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4524431">
+								<li class="gray" id="4524432" onclick="xuanshi(this.id)">海口市</li>
+								<li class="gray" id="4524438" onclick="xuanshi(this.id)">三亚市</li>
+								<li class="gray" id="4524440" onclick="xuanshi(this.id)">省直辖县级行政区划</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4524460" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4524460">
+								<li class="gray" id="4524461" onclick="xuanshi(this.id)">重庆市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4524503" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4524503">
+								<li class="gray" id="4524504" onclick="xuanshi(this.id)">成都市</li>
+								<li class="gray" id="4524525" onclick="xuanshi(this.id)">自贡市</li>
+								<li class="gray" id="4524533" onclick="xuanshi(this.id)">攀枝花市</li>
+								<li class="gray" id="4524540" onclick="xuanshi(this.id)">泸州市</li>
+								<li class="gray" id="4524549" onclick="xuanshi(this.id)">德阳市</li>
+								<li class="gray" id="4524557" onclick="xuanshi(this.id)">绵阳市</li>
+								<li class="gray" id="4524568" onclick="xuanshi(this.id)">广元市</li>
+								<li class="gray" id="4524577" onclick="xuanshi(this.id)">遂宁市</li>
+								<li class="gray" id="4524584" onclick="xuanshi(this.id)">内江市</li>
+								<li class="gray" id="4524591" onclick="xuanshi(this.id)">乐山市</li>
+								<li class="gray" id="4524604" onclick="xuanshi(this.id)">南充市</li>
+								<li class="gray" id="4524615" onclick="xuanshi(this.id)">眉山市</li>
+								<li class="gray" id="4524623" onclick="xuanshi(this.id)">宜宾市</li>
+								<li class="gray" id="4524635" onclick="xuanshi(this.id)">广安市</li>
+								<li class="gray" id="4524642" onclick="xuanshi(this.id)">达州市</li>
+								<li class="gray" id="4524651" onclick="xuanshi(this.id)">雅安市</li>
+								<li class="gray" id="4524661" onclick="xuanshi(this.id)">巴中市</li>
+								<li class="gray" id="4524667" onclick="xuanshi(this.id)">资阳市</li>
+								<li class="gray" id="4524673" onclick="xuanshi(this.id)">阿坝藏族羌族自治州</li>
+								<li class="gray" id="4524687" onclick="xuanshi(this.id)">甘孜藏族自治州</li>
+								<li class="gray" id="4524706" onclick="xuanshi(this.id)">凉山彝族自治州</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4524724" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4524724">
+								<li class="gray" id="4524725" onclick="xuanshi(this.id)">贵阳市</li>
+								<li class="gray" id="4524737" onclick="xuanshi(this.id)">六盘水市</li>
+								<li class="gray" id="4524742" onclick="xuanshi(this.id)">遵义市</li>
+								<li class="gray" id="4524758" onclick="xuanshi(this.id)">安顺市</li>
+								<li class="gray" id="4524766" onclick="xuanshi(this.id)">铜仁地区</li>
+								<li class="gray" id="4524777" onclick="xuanshi(this.id)">黔西南布依族苗族自治州</li>
+								<li class="gray" id="4524786" onclick="xuanshi(this.id)">毕节地区</li>
+								<li class="gray" id="4524795" onclick="xuanshi(this.id)">黔东南苗族侗族自治州</li>
+								<li class="gray" id="4524812" onclick="xuanshi(this.id)">黔南布依族苗族自治州</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4524825" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4524825">
+								<li class="gray" id="4524826" onclick="xuanshi(this.id)">昆明市</li>
+								<li class="gray" id="4524842" onclick="xuanshi(this.id)">曲靖市</li>
+								<li class="gray" id="4524853" onclick="xuanshi(this.id)">玉溪市</li>
+								<li class="gray" id="4524864" onclick="xuanshi(this.id)">保山市</li>
+								<li class="gray" id="4524871" onclick="xuanshi(this.id)">昭通市</li>
+								<li class="gray" id="4524884" onclick="xuanshi(this.id)">丽江市</li>
+								<li class="gray" id="4524891" onclick="xuanshi(this.id)">普洱市</li>
+								<li class="gray" id="4524903" onclick="xuanshi(this.id)">临沧市</li>
+								<li class="gray" id="4524913" onclick="xuanshi(this.id)">楚雄彝族自治州</li>
+								<li class="gray" id="4524924" onclick="xuanshi(this.id)">红河哈尼族彝族自治州</li>
+								<li class="gray" id="4524938" onclick="xuanshi(this.id)">文山壮族苗族自治州</li>
+								<li class="gray" id="4524947" onclick="xuanshi(this.id)">西双版纳傣族自治州</li>
+								<li class="gray" id="4524951" onclick="xuanshi(this.id)">大理白族自治州</li>
+								<li class="gray" id="4524964" onclick="xuanshi(this.id)">德宏傣族景颇族自治州</li>
+								<li class="gray" id="4524970" onclick="xuanshi(this.id)">怒江傈僳族自治州</li>
+								<li class="gray" id="4524975" onclick="xuanshi(this.id)">迪庆藏族自治州</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4524979" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4524979">
+								<li class="gray" id="4524980" onclick="xuanshi(this.id)">拉萨市</li>
+								<li class="gray" id="4524990" onclick="xuanshi(this.id)">昌都地区</li>
+								<li class="gray" id="4525002" onclick="xuanshi(this.id)">山南地区</li>
+								<li class="gray" id="4525015" onclick="xuanshi(this.id)">日喀则地区</li>
+								<li class="gray" id="4525034" onclick="xuanshi(this.id)">那曲地区</li>
+								<li class="gray" id="4525045" onclick="xuanshi(this.id)">阿里地区</li>
+								<li class="gray" id="4525053" onclick="xuanshi(this.id)">林芝地区</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4525061" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4525061">
+								<li class="gray" id="4525062" onclick="xuanshi(this.id)">西安市</li>
+								<li class="gray" id="4525077" onclick="xuanshi(this.id)">铜川市</li>
+								<li class="gray" id="4525083" onclick="xuanshi(this.id)">宝鸡市</li>
+								<li class="gray" id="4525097" onclick="xuanshi(this.id)">咸阳市</li>
+								<li class="gray" id="4525113" onclick="xuanshi(this.id)">渭南市</li>
+								<li class="gray" id="4525126" onclick="xuanshi(this.id)">延安市</li>
+								<li class="gray" id="4525141" onclick="xuanshi(this.id)">汉中市</li>
+								<li class="gray" id="4525154" onclick="xuanshi(this.id)">榆林市</li>
+								<li class="gray" id="4525168" onclick="xuanshi(this.id)">安康市</li>
+								<li class="gray" id="4525180" onclick="xuanshi(this.id)">商洛市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4525189" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4525189">
+								<li class="gray" id="4525190" onclick="xuanshi(this.id)">兰州市</li>
+								<li class="gray" id="4525200" onclick="xuanshi(this.id)">嘉峪关市</li>
+								<li class="gray" id="4525202" onclick="xuanshi(this.id)">金昌市</li>
+								<li class="gray" id="4525206" onclick="xuanshi(this.id)">白银市</li>
+								<li class="gray" id="4525213" onclick="xuanshi(this.id)">天水市</li>
+								<li class="gray" id="4525222" onclick="xuanshi(this.id)">武威市</li>
+								<li class="gray" id="4525228" onclick="xuanshi(this.id)">张掖市</li>
+								<li class="gray" id="4525236" onclick="xuanshi(this.id)">平凉市</li>
+								<li class="gray" id="4525245" onclick="xuanshi(this.id)">酒泉市</li>
+								<li class="gray" id="4525254" onclick="xuanshi(this.id)">庆阳市</li>
+								<li class="gray" id="4525264" onclick="xuanshi(this.id)">定西市</li>
+								<li class="gray" id="4525273" onclick="xuanshi(this.id)">陇南市</li>
+								<li class="gray" id="4525284" onclick="xuanshi(this.id)">临夏回族自治州</li>
+								<li class="gray" id="4525293" onclick="xuanshi(this.id)">甘南藏族自治州</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4525302" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4525302">
+								<li class="gray" id="4525303" onclick="xuanshi(this.id)">西宁市</li>
+								<li class="gray" id="4525312" onclick="xuanshi(this.id)">海东地区</li>
+								<li class="gray" id="4525319" onclick="xuanshi(this.id)">海北藏族自治州</li>
+								<li class="gray" id="4525324" onclick="xuanshi(this.id)">黄南藏族自治州</li>
+								<li class="gray" id="4525329" onclick="xuanshi(this.id)">海南藏族自治州</li>
+								<li class="gray" id="4525335" onclick="xuanshi(this.id)">果洛藏族自治州</li>
+								<li class="gray" id="4525342" onclick="xuanshi(this.id)">玉树藏族自治州</li>
+								<li class="gray" id="4525349" onclick="xuanshi(this.id)">海西蒙古族藏族自治州</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4525355" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4525355">
+								<li class="gray" id="4525356" onclick="xuanshi(this.id)">银川市</li>
+								<li class="gray" id="4525364" onclick="xuanshi(this.id)">石嘴山市</li>
+								<li class="gray" id="4525369" onclick="xuanshi(this.id)">吴忠市</li>
+								<li class="gray" id="4525376" onclick="xuanshi(this.id)">固原市</li>
+								<li class="gray" id="4525383" onclick="xuanshi(this.id)">中卫市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4523850" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4523850">
+								<li class="gray" id="4523851" onclick="xuanshi(this.id)">武汉市</li>
+								<li class="gray" id="4523866" onclick="xuanshi(this.id)">黄石市</li>
+								<li class="gray" id="4523874" onclick="xuanshi(this.id)">十堰市</li>
+								<li class="gray" id="4523884" onclick="xuanshi(this.id)">宜昌市</li>
+								<li class="gray" id="4523899" onclick="xuanshi(this.id)">襄樊市</li>
+								<li class="gray" id="4523910" onclick="xuanshi(this.id)">鄂州市</li>
+								<li class="gray" id="4523915" onclick="xuanshi(this.id)">荆门市</li>
+								<li class="gray" id="4523922" onclick="xuanshi(this.id)">孝感市</li>
+								<li class="gray" id="4523931" onclick="xuanshi(this.id)">荆州市</li>
+								<li class="gray" id="4523941" onclick="xuanshi(this.id)">黄冈市</li>
+								<li class="gray" id="4523953" onclick="xuanshi(this.id)">咸宁市</li>
+								<li class="gray" id="4523961" onclick="xuanshi(this.id)">随州市</li>
+								<li class="gray" id="4523966" onclick="xuanshi(this.id)">恩施土家族苗族自治州</li>
+								<li class="gray" id="4523975" onclick="xuanshi(this.id)">省直辖县级行政区划</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4523655" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4523655">
+								<li class="gray" id="4523656" onclick="xuanshi(this.id)">郑州市</li>
+								<li class="gray" id="4523670" onclick="xuanshi(this.id)">开封市</li>
+								<li class="gray" id="4523682" onclick="xuanshi(this.id)">洛阳市</li>
+								<li class="gray" id="4523699" onclick="xuanshi(this.id)">平顶山市</li>
+								<li class="gray" id="4523711" onclick="xuanshi(this.id)">安阳市</li>
+								<li class="gray" id="4523722" onclick="xuanshi(this.id)">鹤壁市</li>
+								<li class="gray" id="4523729" onclick="xuanshi(this.id)">新乡市</li>
+								<li class="gray" id="4523743" onclick="xuanshi(this.id)">焦作市</li>
+								<li class="gray" id="4523755" onclick="xuanshi(this.id)">濮阳市</li>
+								<li class="gray" id="4523763" onclick="xuanshi(this.id)">许昌市</li>
+								<li class="gray" id="4523771" onclick="xuanshi(this.id)">漯河市</li>
+								<li class="gray" id="4523778" onclick="xuanshi(this.id)">三门峡市</li>
+								<li class="gray" id="4523786" onclick="xuanshi(this.id)">南阳市</li>
+								<li class="gray" id="4523801" onclick="xuanshi(this.id)">商丘市</li>
+								<li class="gray" id="4523812" onclick="xuanshi(this.id)">信阳市</li>
+								<li class="gray" id="4523824" onclick="xuanshi(this.id)">周口市</li>
+								<li class="gray" id="4523836" onclick="xuanshi(this.id)">驻马店市</li>
+								<li class="gray" id="4523848" onclick="xuanshi(this.id)">省直辖县级行政区划</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4523480" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4523480">
+								<li class="gray" id="4523481" onclick="xuanshi(this.id)">济南市</li>
+								<li class="gray" id="4523493" onclick="xuanshi(this.id)">青岛市</li>
+								<li class="gray" id="4523507" onclick="xuanshi(this.id)">淄博市</li>
+								<li class="gray" id="4523517" onclick="xuanshi(this.id)">枣庄市</li>
+								<li class="gray" id="4523525" onclick="xuanshi(this.id)">东营市</li>
+								<li class="gray" id="4523532" onclick="xuanshi(this.id)">烟台市</li>
+								<li class="gray" id="4523546" onclick="xuanshi(this.id)">潍坊市</li>
+								<li class="gray" id="4523560" onclick="xuanshi(this.id)">济宁市</li>
+								<li class="gray" id="4523574" onclick="xuanshi(this.id)">泰安市</li>
+								<li class="gray" id="4523582" onclick="xuanshi(this.id)">威海市</li>
+								<li class="gray" id="4523588" onclick="xuanshi(this.id)">日照市</li>
+								<li class="gray" id="4523594" onclick="xuanshi(this.id)">莱芜市</li>
+								<li class="gray" id="4523598" onclick="xuanshi(this.id)">临沂市</li>
+								<li class="gray" id="4523612" onclick="xuanshi(this.id)">德州市</li>
+								<li class="gray" id="4523625" onclick="xuanshi(this.id)">聊城市</li>
+								<li class="gray" id="4523635" onclick="xuanshi(this.id)">滨州市</li>
+								<li class="gray" id="4523644" onclick="xuanshi(this.id)">菏泽市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4522003" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4522003">
+								<li class="gray" id="4522004" onclick="xuanshi(this.id)">天津市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4522022" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4522022">
+								<li class="gray" id="4522023" onclick="xuanshi(this.id)">石家庄市</li>
+								<li class="gray" id="4522048" onclick="xuanshi(this.id)">唐山市</li>
+								<li class="gray" id="4522064" onclick="xuanshi(this.id)">秦皇岛市</li>
+								<li class="gray" id="4522073" onclick="xuanshi(this.id)">邯郸市</li>
+								<li class="gray" id="4522094" onclick="xuanshi(this.id)">邢台市</li>
+								<li class="gray" id="4522115" onclick="xuanshi(this.id)">保定市</li>
+								<li class="gray" id="4522142" onclick="xuanshi(this.id)">张家口市</li>
+								<li class="gray" id="4522161" onclick="xuanshi(this.id)">承德市</li>
+								<li class="gray" id="4522174" onclick="xuanshi(this.id)">沧州市</li>
+								<li class="gray" id="4522192" onclick="xuanshi(this.id)">廊坊市</li>
+								<li class="gray" id="4522204" onclick="xuanshi(this.id)">衡水市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4522217" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4522217">
+								<li class="gray" id="4522218" onclick="xuanshi(this.id)">太原市</li>
+								<li class="gray" id="4522230" onclick="xuanshi(this.id)">大同市</li>
+								<li class="gray" id="4522243" onclick="xuanshi(this.id)">阳泉市</li>
+								<li class="gray" id="4522250" onclick="xuanshi(this.id)">长治市</li>
+								<li class="gray" id="4522265" onclick="xuanshi(this.id)">晋城市</li>
+								<li class="gray" id="4522273" onclick="xuanshi(this.id)">朔州市</li>
+								<li class="gray" id="4522281" onclick="xuanshi(this.id)">晋中市</li>
+								<li class="gray" id="4522294" onclick="xuanshi(this.id)">运城市</li>
+								<li class="gray" id="4522309" onclick="xuanshi(this.id)">忻州市</li>
+								<li class="gray" id="4522325" onclick="xuanshi(this.id)">临汾市</li>
+								<li class="gray" id="4522344" onclick="xuanshi(this.id)">吕梁市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4522359" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4522359">
+								<li class="gray" id="4522360" onclick="xuanshi(this.id)">呼和浩特市</li>
+								<li class="gray" id="4522371" onclick="xuanshi(this.id)">包头市</li>
+								<li class="gray" id="4522382" onclick="xuanshi(this.id)">乌海市</li>
+								<li class="gray" id="4522387" onclick="xuanshi(this.id)">赤峰市</li>
+								<li class="gray" id="4522401" onclick="xuanshi(this.id)">通辽市</li>
+								<li class="gray" id="4522411" onclick="xuanshi(this.id)">鄂尔多斯市</li>
+								<li class="gray" id="4522421" onclick="xuanshi(this.id)">呼伦贝尔市</li>
+								<li class="gray" id="4522436" onclick="xuanshi(this.id)">巴彦淖尔市</li>
+								<li class="gray" id="4522445" onclick="xuanshi(this.id)">乌兰察布市</li>
+								<li class="gray" id="4522458" onclick="xuanshi(this.id)">兴安盟</li>
+								<li class="gray" id="4522465" onclick="xuanshi(this.id)">锡林郭勒盟</li>
+								<li class="gray" id="4522478" onclick="xuanshi(this.id)">阿拉善盟</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4522482" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4522482">
+								<li class="gray" id="4522483" onclick="xuanshi(this.id)">沈阳市</li>
+								<li class="gray" id="4522498" onclick="xuanshi(this.id)">大连市</li>
+								<li class="gray" id="4522510" onclick="xuanshi(this.id)">鞍山市</li>
+								<li class="gray" id="4522519" onclick="xuanshi(this.id)">抚顺市</li>
+								<li class="gray" id="4522528" onclick="xuanshi(this.id)">本溪市</li>
+								<li class="gray" id="4522536" onclick="xuanshi(this.id)">丹东市</li>
+								<li class="gray" id="4522544" onclick="xuanshi(this.id)">锦州市</li>
+								<li class="gray" id="4522553" onclick="xuanshi(this.id)">营口市</li>
+								<li class="gray" id="4522561" onclick="xuanshi(this.id)">阜新市</li>
+								<li class="gray" id="4522570" onclick="xuanshi(this.id)">辽阳市</li>
+								<li class="gray" id="4522579" onclick="xuanshi(this.id)">盘锦市</li>
+								<li class="gray" id="4522585" onclick="xuanshi(this.id)">铁岭市</li>
+								<li class="gray" id="4522594" onclick="xuanshi(this.id)">朝阳市</li>
+								<li class="gray" id="4522603" onclick="xuanshi(this.id)">葫芦岛市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4522611" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4522611">
+								<li class="gray" id="4522612" onclick="xuanshi(this.id)">长春市</li>
+								<li class="gray" id="4522624" onclick="xuanshi(this.id)">吉林市</li>
+								<li class="gray" id="4522635" onclick="xuanshi(this.id)">四平市</li>
+								<li class="gray" id="4522643" onclick="xuanshi(this.id)">辽源市</li>
+								<li class="gray" id="4522649" onclick="xuanshi(this.id)">通化市</li>
+								<li class="gray" id="4522658" onclick="xuanshi(this.id)">白山市</li>
+								<li class="gray" id="4522666" onclick="xuanshi(this.id)">松原市</li>
+								<li class="gray" id="4522673" onclick="xuanshi(this.id)">白城市</li>
+								<li class="gray" id="4522680" onclick="xuanshi(this.id)">延边朝鲜族自治州</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4522689" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4522689">
+								<li class="gray" id="4522690" onclick="xuanshi(this.id)">哈尔滨市</li>
+								<li class="gray" id="4522710" onclick="xuanshi(this.id)">齐齐哈尔市</li>
+								<li class="gray" id="4522728" onclick="xuanshi(this.id)">鸡西市</li>
+								<li class="gray" id="4522739" onclick="xuanshi(this.id)">鹤岗市</li>
+								<li class="gray" id="4522749" onclick="xuanshi(this.id)">双鸭山市</li>
+								<li class="gray" id="4522759" onclick="xuanshi(this.id)">大庆市</li>
+								<li class="gray" id="4522770" onclick="xuanshi(this.id)">伊春市</li>
+								<li class="gray" id="4522789" onclick="xuanshi(this.id)">佳木斯市</li>
+								<li class="gray" id="4522801" onclick="xuanshi(this.id)">七台河市</li>
+								<li class="gray" id="4522807" onclick="xuanshi(this.id)">牡丹江市</li>
+								<li class="gray" id="4522819" onclick="xuanshi(this.id)">黑河市</li>
+								<li class="gray" id="4522827" onclick="xuanshi(this.id)">绥化市</li>
+								<li class="gray" id="4522839" onclick="xuanshi(this.id)">大兴安岭地区</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4522847" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4522847">
+								<li class="gray" id="4522848" onclick="xuanshi(this.id)">上海市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4522868" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4522868">
+								<li class="gray" id="4522869" onclick="xuanshi(this.id)">南京市</li>
+								<li class="gray" id="4522884" onclick="xuanshi(this.id)">无锡市</li>
+								<li class="gray" id="4522894" onclick="xuanshi(this.id)">徐州市</li>
+								<li class="gray" id="4522906" onclick="xuanshi(this.id)">常州市</li>
+								<li class="gray" id="4522915" onclick="xuanshi(this.id)">苏州市</li>
+								<li class="gray" id="4522928" onclick="xuanshi(this.id)">南通市</li>
+								<li class="gray" id="4522938" onclick="xuanshi(this.id)">连云港市</li>
+								<li class="gray" id="4522947" onclick="xuanshi(this.id)">淮安市</li>
+								<li class="gray" id="4522957" onclick="xuanshi(this.id)">盐城市</li>
+								<li class="gray" id="4522968" onclick="xuanshi(this.id)">扬州市</li>
+								<li class="gray" id="4522977" onclick="xuanshi(this.id)">镇江市</li>
+								<li class="gray" id="4522985" onclick="xuanshi(this.id)">泰州市</li>
+								<li class="gray" id="4522993" onclick="xuanshi(this.id)">宿迁市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4523000" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4523000">
+								<li class="gray" id="4523001" onclick="xuanshi(this.id)">杭州市</li>
+								<li class="gray" id="4523016" onclick="xuanshi(this.id)">宁波市</li>
+								<li class="gray" id="4523029" onclick="xuanshi(this.id)">温州市</li>
+								<li class="gray" id="4523042" onclick="xuanshi(this.id)">嘉兴市</li>
+								<li class="gray" id="4523051" onclick="xuanshi(this.id)">湖州市</li>
+								<li class="gray" id="4523058" onclick="xuanshi(this.id)">绍兴市</li>
+								<li class="gray" id="4523066" onclick="xuanshi(this.id)">金华市</li>
+								<li class="gray" id="4523077" onclick="xuanshi(this.id)">衢州市</li>
+								<li class="gray" id="4523085" onclick="xuanshi(this.id)">舟山市</li>
+								<li class="gray" id="4523091" onclick="xuanshi(this.id)">台州市</li>
+								<li class="gray" id="4523102" onclick="xuanshi(this.id)">丽水市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4523113" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4523113">
+								<li class="gray" id="4523114" onclick="xuanshi(this.id)">合肥市</li>
+								<li class="gray" id="4523123" onclick="xuanshi(this.id)">芜湖市</li>
+								<li class="gray" id="4523132" onclick="xuanshi(this.id)">蚌埠市</li>
+								<li class="gray" id="4523141" onclick="xuanshi(this.id)">淮南市</li>
+								<li class="gray" id="4523149" onclick="xuanshi(this.id)">马鞍山市</li>
+								<li class="gray" id="4523155" onclick="xuanshi(this.id)">淮北市</li>
+								<li class="gray" id="4523161" onclick="xuanshi(this.id)">铜陵市</li>
+								<li class="gray" id="4523167" onclick="xuanshi(this.id)">安庆市</li>
+								<li class="gray" id="4523180" onclick="xuanshi(this.id)">黄山市</li>
+								<li class="gray" id="4523189" onclick="xuanshi(this.id)">滁州市</li>
+								<li class="gray" id="4523199" onclick="xuanshi(this.id)">阜阳市</li>
+								<li class="gray" id="4523209" onclick="xuanshi(this.id)">宿州市</li>
+								<li class="gray" id="4523216" onclick="xuanshi(this.id)">巢湖市</li>
+								<li class="gray" id="4523223" onclick="xuanshi(this.id)">六安市</li>
+								<li class="gray" id="4523232" onclick="xuanshi(this.id)">亳州市</li>
+								<li class="gray" id="4523238" onclick="xuanshi(this.id)">池州市</li>
+								<li class="gray" id="4523244" onclick="xuanshi(this.id)">宣城市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4523253" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4523253">
+								<li class="gray" id="4523254" onclick="xuanshi(this.id)">福州市</li>
+								<li class="gray" id="4523269" onclick="xuanshi(this.id)">厦门市</li>
+								<li class="gray" id="4523277" onclick="xuanshi(this.id)">莆田市</li>
+								<li class="gray" id="4523284" onclick="xuanshi(this.id)">三明市</li>
+								<li class="gray" id="4523298" onclick="xuanshi(this.id)">泉州市</li>
+								<li class="gray" id="4523312" onclick="xuanshi(this.id)">漳州市</li>
+								<li class="gray" id="4523325" onclick="xuanshi(this.id)">南平市</li>
+								<li class="gray" id="4523337" onclick="xuanshi(this.id)">龙岩市</li>
+								<li class="gray" id="4523346" onclick="xuanshi(this.id)">宁德市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4523357" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4523357">
+								<li class="gray" id="4523358" onclick="xuanshi(this.id)">南昌市</li>
+								<li class="gray" id="4523369" onclick="xuanshi(this.id)">景德镇市</li>
+								<li class="gray" id="4523375" onclick="xuanshi(this.id)">萍乡市</li>
+								<li class="gray" id="4523382" onclick="xuanshi(this.id)">九江市</li>
+								<li class="gray" id="4523397" onclick="xuanshi(this.id)">新余市</li>
+								<li class="gray" id="4523401" onclick="xuanshi(this.id)">鹰潭市</li>
+								<li class="gray" id="4523406" onclick="xuanshi(this.id)">赣州市</li>
+								<li class="gray" id="4523426" onclick="xuanshi(this.id)">吉安市</li>
+								<li class="gray" id="4523441" onclick="xuanshi(this.id)">宜春市</li>
+								<li class="gray" id="4523453" onclick="xuanshi(this.id)">抚州市</li>
+								<li class="gray" id="4523466" onclick="xuanshi(this.id)">上饶市</li>
+
+							</ul>
+						</div>
+						<div class="slide-right " style="display: none" zzy="4525388" id="shi" name="shi">
+							<div class="slide-title active">
+								市区
+							</div>
+							<ul class="address-list" zzy="4525388">
+								<li class="gray" id="4525389" onclick="xuanshi(this.id)">乌鲁木齐市</li>
+								<li class="gray" id="4525399" onclick="xuanshi(this.id)">克拉玛依市</li>
+								<li class="gray" id="4525405" onclick="xuanshi(this.id)">吐鲁番地区</li>
+								<li class="gray" id="4525409" onclick="xuanshi(this.id)">哈密地区</li>
+								<li class="gray" id="4525413" onclick="xuanshi(this.id)">昌吉回族自治州</li>
+								<li class="gray" id="4525421" onclick="xuanshi(this.id)">博尔塔拉蒙古自治州</li>
+								<li class="gray" id="4525425" onclick="xuanshi(this.id)">巴音郭楞蒙古自治州</li>
+								<li class="gray" id="4525435" onclick="xuanshi(this.id)">阿克苏地区</li>
+								<li class="gray" id="4525445" onclick="xuanshi(this.id)">克孜勒苏柯尔克孜自治州</li>
+								<li class="gray" id="4525450" onclick="xuanshi(this.id)">喀什地区</li>
+								<li class="gray" id="4525463" onclick="xuanshi(this.id)">和田地区</li>
+								<li class="gray" id="4525472" onclick="xuanshi(this.id)">伊犁哈萨克自治州</li>
+								<li class="gray" id="4525483" onclick="xuanshi(this.id)">塔城地区</li>
+								<li class="gray" id="4525491" onclick="xuanshi(this.id)">阿勒泰地区</li>
+								<li class="gray" id="4525499" onclick="xuanshi(this.id)">自治区直辖县级行政区划</li>
+
+							</ul>
+						</div>
+
+						<div class="slide-right">
+							<div class="slide-title active">
+								<div class="jiage-title">价格区域</div>
+								<div class="jiage-for">
+									<input class="zuidijia" type="text" name="p_low" placeholder="最低价">
+									<span class="jiange">——</span>
+									<input class="zuidijia" type="text" name="p_hig" placeholder="最高价">
+								</div>
+
+							</div>
+							<!--<button onclick="tijiaoshaixuan()">确定</button>-->
+							<ul class="price-sure">
+								<li class="close-slide">
+									<a onclick="tijiaoshaixuan()">确定</a>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+				</form>
+			</nav>
+		</div>
+
+		<div class="drawer-overlay">
+			<main class="masthead" role="main">
+				<div class="container">
+					<ul class="caidan-list">
+						<li>
+							<a class="menuLink" href="http://www.yijia1234.com/store_goods_list_65722.htm?bc_location=1&&a_id=&&p_low=&&p_hig="><span style="color: red">默认排序</span></a>
+						</li>
+						<li class="jiantou">
+							<a href="http://www.yijia1234.com/store_goods_list_65722.htm?bc_location=1&&salenum=goods_salenum&&style=2&&a_id=&&p_low=&&p_hig=">销量</a>
+						</li>
+						<li class="jiantou">
+							<a href="http://www.yijia1234.com/store_goods_list_65722.htm?bc_location=1&&price=store_price&&style=3&&a_id=&&p_low=&&p_hig=">价格</a>
+						</li>
+						<li class="drawer-toggle drawer-hamberger jiantou">
+							<a href="javascript:void(0)">筛选</a>
+						</li>
+
+					</ul>
+					<div class="lh_xplb">
+						<ul>
+							<li>
+								<a href="">
+									<div class="lh_img01"><img src="img/lh_04.png"></div>
+									<div class="lh_jieshao01"><span>仅剩10件</span></div>
+									<div class="lh_xq01">
+										<div class="lh_xq01_title">加厚法莱绒床笠加厚法莱绒床笠</div>
+										<div class="lh_xq01_jg">
+											<span>¥129.90</span>
+
+											<em>济南市</em>
+										</div>
+										<div class="lh_xq01_xl">
+											<span>销量1200</span>
+											<em>好评度98%</em>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<div class="lh_img01"><img src="img/lh_04.png"></div>
+									<div class="lh_jieshao01"><span>仅剩10件</span></div>
+									<div class="lh_xq01">
+										<div class="lh_xq01_title">加厚法莱绒床笠</div>
+										<div class="lh_xq01_jg">
+											<span>¥29.9</span>
+											<i>￥30.00</i>
+											<em>济南</em>
+										</div>
+										<div class="lh_xq01_xl">
+											<span>销量1200</span>
+											<em>好评度98%</em>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<div class="lh_img01"><img src="img/lh_04.png"></div>
+									<div class="lh_xq01">
+										<div class="lh_xq01_title">加厚法莱绒床笠加厚法莱绒床笠</div>
+										<div class="lh_xq01_jg">
+											<span>¥29.9</span>
+											<i>￥30.00</i>
+											<em>济南</em>
+										</div>
+										<div class="lh_xq01_xl">
+											<span>销量1200</span>
+											<em>好评度98%</em>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<div class="lh_img01"><img src="img/lh_04.png"></div>
+									<div class="lh_xq01">
+										<div class="lh_xq01_title">加厚法莱绒床笠</div>
+										<div class="lh_xq01_jg">
+											<span>¥29.9</span>
+											<i>￥30.00</i>
+											<em>济南</em>
+										</div>
+										<div class="lh_xq01_xl">
+											<span>销量1200</span>
+											<em>好评度98%</em>
+										</div>
+									</div>
+								</a>
+							</li>
+							<div class="clear"></div>
+						</ul>
+					</div>
+				</div>
+			</main>
+		</div>
+		</div>
+		<script src="js1/index.js"></script>
+		<script>
+			$(document).ready(function() {
+				$(window).scroll(function() {
+					if($(document).scrollTop() <= 0) {
+						// alert("我已经到顶了，我可以刷新");
+					}
+					if($(document).scrollTop() >= $(document).height() - $(window).height()) {
+						$(".weui-loadmore").css("display", "block");
+						$(".weui-loadmore2").css("display", "none");
+						var currentPag = 0;
+						var arr = new Array();
+						var arr = $(":input[name=currentPage]").each(function() {
+							$(this).val()
+						});
+						currentPag = (arr.length + 1) + "";
+						if(currentPag != undefined && currentPag == 5) {
+							$(".weui-loadmore").css("display", "none");
+							$(".weui-loadmore2").css("display", "block");
+							return;
+						}
+						jQuery.ajax({
+							type: 'post',
+							async: false,
+							url: 'http://www.yijia1234.com/store_goods_list_ajax.htm',
+							data: {
+								"gc_id": "65722",
+								"bc_location": "1",
+								"orderBy": "addTime",
+								"orderType": "desc",
+								"salenum": "",
+								"recommend": "",
+								"orderBy": "addTime",
+								"currentPage": currentPag,
+								"style": "1",
+								"orderType": "desc",
+								"store_price_begin": "",
+								"store_price_end": "",
+								"area_id": ""
+							},
+							beforeSend: function() {},
+							success: function(data) {
+								$(".goods-list ul").append(data);
+							}
+						});
+
+					}
+				});
+			});
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+							$(".drawer-toggle").on("click", function() {
+								$(".slide-menu").css("display", "block");
+								$(".slide-left").css("display", "block")
+							});
+							$(".slide-left").on("click", function() {
+								$(".slide-menu").css("display", "none");
+								$(this).css("display", "none");
+							});
+							$(".close-slide").on("click", function() {
+								$(".slide-menu").css("display", "none");
+								$(".slide-left").css("display", "none");
+							});
+							$(".slide-left").on("mouseover", function() {
+								$(".slide-menu").css("display", "none");
+								$(this).css("display", "none");
+							})
+							
+				//			阻止事件冒泡
+        			$(".zuidijia").on("click",function(event){
+        				return false;
+        			})
+			});
+		</script>
+	</body>
+
+</html>

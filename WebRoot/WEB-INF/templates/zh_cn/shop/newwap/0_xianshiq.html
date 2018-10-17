@@ -1,0 +1,26 @@
+#if($!objs.size()>0 && $!group)
+#foreach($obj in $objs)
+#if($!obj.gg_goods.goods_main_photo)
+#set($img="$!imageWebServer/$!{obj.gg_goods.goods_main_photo.path}/$!{obj.gg_goods.goods_main_photo.name}")
+#else
+#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+#end
+
+
+<li>
+	<div class="img_list_pic"><a href="$!webPath/goods_$!{obj.gg_goods.id}.htm?gg_id=$!obj.id"><img src="$!img" /></a></div>
+	<div class="img_list_tex">
+		<p ><a href="$!webPath/goods_$!{obj.gg_goods.id}.htm" style="color: black">$!CommUtil.substring("$!obj.gg_goods.goods_name",18)</a></p>
+		<p class="img_list_price lh_xsqg_jg" >抢购价：￥$!{obj.gg_price}</p>
+		#if($!{obj.gg_count}==0)
+		<a class="lh_xsqg_an"  style="background: #666">抢购结束</a>
+		#else
+		<a class="lh_xsqg_an" href="$!webPath/goods_$!{obj.gg_goods.id}.htm?gg_id=$!obj.id">立即抢购</a>#end
+		<p class="lh_xsqg_yj">原价：￥$!{obj.gg_goods.goods_price}</p>
+		<p class="lh_xsqg_djs">抢购数量：$!{obj.gg_count}</p>
+		<!--<p class="lh_xsqg_djs">已经购买：$!buyer_count 人</p>-->
+	</div>
+</li>
+#end
+#end
+<input type="hidden" value="$!currentPage" name="currentPage" id="currentPag">

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded" xmlns="http://www.w3.org/1999/html">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/style/system/front/wap/css/style.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script>
+            jQuery(document).ready(function() {
+                var browser = {
+                    versions: function () {
+                        var u = navigator.userAgent, app = navigator.appVersion;
+                        return {         //移动终端浏览器版本信息
+                            trident: u.indexOf('Trident') > -1, //IE内核
+                            presto: u.indexOf('Presto') > -1, //opera内核
+                            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                            iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                            iPad: u.indexOf('iPad') > -1, //是否iPad
+                            webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+                        };
+                    }(),
+                    language: (navigator.browserLanguage || navigator.language).toLowerCase()
+                }
+                if (browser.versions.mobile) {//判断是否是移动设备打开。browser代码在下面
+                    var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+                    if (browser.versions.ios) {
+                        //是否在IOS浏览器打开
+                        jQuery(" li[id^=wxpay_]").hide();
+                        jQuery(" li[id^=alipay_]").show();
+                    }
+                    if(browser.versions.android){
+                        //是否在安卓浏览器打开
+                        jQuery(" li[id^=wxpay_]").hide();
+                        jQuery(" li[id^=alipay_]").show();
+                    }
+                    if (ua.match(/WeiBo/i) == "weibo") {
+                        //在新浪微博客户端打开
+                    }
+                    if (ua.match(/QQ/i) == "qq") {
+                        //在QQ空间打开
+                    }
+                    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                        //在微信中打开
+                        jQuery(" li[id^=wxpay_]").show();
+                        jQuery(" li[id^=alipay_]").hide();
+                    }
+
+                } else {
+                    //否则就是PC浏览器打开
+                    jQuery(" li[id^=wxpay_]").hide();
+                    jQuery(" li[id^=alipay_]").show();
+                }
+            });
+            //返回当前页面高度
+            function order_pay(payType){
+				/* var h=document.body.clientHeight;
+				 var top= document.documentElement.scrollTop;
+				 top=top+(h-top)/2;
+				 jQuery('.black_overlay').css("height",h);
+				 jQuery(".white_content").css("top",top);
+				 jQuery('#pay_overlay').show() */
+                jQuery("#payType").val(payType);
+                jQuery("#paysub").attr("disabled","disabled");
+                jQuery('#theForm').submit();
+            }
+			/* window.onscroll=function(){
+			 var h=document.body.clientHeight;
+			 var top= document.documentElement.scrollTop;
+			 top=top-50+(h-top)/2;
+			 jQuery(".white_content").css("top",top);
+			 } */
+		</script>
+	</head>
+
+	<body>
+		<!--//header开始-->
+		<header>
+			<div class="hdindex" id="liuhui1">
+				<span class="lh_back" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i></span>
+				<span class="liuhui" id="stateBut1" data-show="hide1">
+				#if($!obj.order_status==0)
+				已取消
+				#elseif($!obj.order_status==10)
+				待付款
+				#elseif($!obj.order_status==20)
+				待发货
+				#elseif($!obj.order_status==30)
+				待收货
+				#elseif($!obj.order_status==40)
+				已收货
+				#elseif($!obj.order_status==51)
+				未评价
+				#elseif($!obj.order_status==70)
+				已完成
+				#else
+				&nbsp;
+				#end
+				</span>
+			</div>
+		</header>
+		<!--header结束//-->
+
+		<!--//我的订单-->
+		<div class="lh_my_order_top bort3">
+			<form action="$!webPath/wappay/pay.htm" method="post" id="theForm">
+				#if($!obj.order_status==30)
+				<div class="lh_my_order_nr_bh bort3 bort">
+					<div class="lh_my_order_nr_bh_left">物流公司</div>
+					<div class="lh_my_order_nr_bh_right">$!obj.ec.company_name</div>
+				</div>
+				<div class="lh_my_order_nr_bh bort3 ">
+					<div class="lh_my_order_nr_bh_left">物流单号</div>
+					<div class="lh_my_order_nr_bh_right">$!obj.shipCode</div>
+				</div>
+				#end
+		<div class="lh_my_order_add">
+			<p><span>姓名:$!obj.addr.trueName</span>  <br/><span>手机:$!{obj.addr.mobile}</span></p>
+			地址:#set($address="$!{obj.addr.area.parent.parent.areaName} $!{obj.addr.area.parent.areaName} $!{obj.addr.area.areaName} ")
+			<span>$!{obj.addr.area_info}<br>$!address</span>
+		</div>
+		<div class="lh_my_order_nr tgar">
+			<div class="lh_my_order_nr_bh borb">
+				<div class="lh_my_order_nr_bh_left">订单编号：$!obj.order_id</div>
+			</div>
+			<ul class="img_list">
+				#foreach($gc in $obj.gcs)
+				#if($!gc.goods.goods_main_photo)
+				#set($img="$!webPath/$!{gc.goods.goods_main_photo.path}/$!{gc.goods.goods_main_photo.name}_small.$!{gc.goods.goods_main_photo.ext}")
+				#else
+				#set($img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+				#end
+				<li>
+					<div class="img_list_pic"><img src="$!img"> </div>
+					<div class="img_list_tex">
+						<p>$!CommUtil.substring("$!gc.goods.goods_name",12)<span class="lh_sales_color"></span></p>
+						<p class="img_list_price lh_img_list_tex_jg lh_sales_color">$!{gc.spec_info}</p>
+						<p class="lh_img_list_tex_js"><span>￥$!gc.price</span>*$!gc.count</p>
+					</div>
+				</li>
+				#end
+			</ul>
+			<div class="lh_my_order_nr_bh bort3 bort tgar">
+				#set($payment="未支付")
+				#if($!obj.payment.mark=="alipay")
+				#set($payment="支付宝")
+				#end
+				#if($!obj.payment.mark=="alipay_wap")
+				#set($payment="手机网页支付宝")
+				#end
+				#if($!obj.payment.mark=="wxcodepay")
+				#set($payment="微信扫码支付")
+				#end
+				<div class="lh_my_order_nr_bh_left">支付方式</div>
+				<div class="lh_my_order_nr_bh_right">$!payment</div>
+			</div>
+			<div class="lh_my_order_nr_bh bort3 bort tgar">
+				<div class="lh_my_order_nr_bh_left">商品总额</div>
+				<div class="lh_my_order_nr_bh_right">¥$!{obj.goods_amount}</div>
+			</div>
+			<div class="lh_my_order_nr_bh bort3">
+				<div class="lh_my_order_nr_bh_left">优惠</div>
+				<div class="lh_my_order_nr_bh_right">-￥$!c</div>
+			</div>
+			<div class="lh_my_order_nr_bh bort3">
+				<div class="lh_my_order_nr_bh_left">积分</div>
+				<div class="lh_my_order_nr_bh_right">$!fen</div>
+			</div>
+			<div class="lh_my_order_nr_bh   ">
+				<div class="lh_my_order_nr_bh_left">邮费</div>
+				<div class="lh_my_order_nr_bh_right">￥$!{obj.transport}</div>
+			</div>
+			<div class="lh_my_order_nr_bh bort3 bort ">
+				<div class="lh_my_order_nr_bh_right" style="width: 100%;">
+					<p>实付款：<span class="red font70">¥$!{obj.totalPrice}</span><br>$!{obj.addTime}
+					</p>
+				</div>
+			</div>
+			<div class="lh_my_order_nr_bh borb3 bort tgar">
+				<div class="lh_my_order_an">
+					#if($!obj.order_status==10)
+					<a href="$!webPath/order_pay_view.htm?id=$!obj.id">去支付</a>
+					#end
+					#if($!obj.order_status==10)
+					<a href="javascript:void(0);" onclick="if(confirm('取消订单，是否继续?'))window.location.href='$!webPath/buyer/order_cancel.htm?id=$!obj.id&currentPage=$!currentPage'"  class="on">取消订单</a>
+					#end
+					#if($!obj.order_status==30)
+					<a href="javascript:void(0);"  onclick="if(confirm('订单确认收货，是否继续?'))window.location.href='$!webPath/buyer/order_cofirm_save.htm?id=$!obj.id&currentPage=$!currentPage'" class="bg_orange">确认收货</a>
+
+					#end
+					#if($!obj.order_status==40)
+					<a href="$!webPath/order_evaluation.htm?id=$!obj.id" target="_blank" class="bg_orange">去评价</a>
+					#end
+					#if($!obj.order_status==50)
+					<a href="$!webPath/order_evaluation_info.htm?id=$!obj.id" target="_blank" class="bg_orange">查看评价</a>
+					#end
+
+				</div>
+			</div>
+			</div>
+		</form>
+		</div>
+		<!--我的订单//-->
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span></a>
+		</div>
+
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+
+	</body>
+
+</html>

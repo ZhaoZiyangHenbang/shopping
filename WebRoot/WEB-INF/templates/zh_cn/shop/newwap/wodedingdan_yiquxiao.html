@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+		<!--<link href="$!webPath/resources/style/system/front/wap/css/style.css" rel="stylesheet" type="text/css">-->
+		<script src="$!webPath/resources/style/system/front/wap/js/jquery-1.10.2.min.js"></script>
+		<link href="$!webPath/resources/style/common/css/window.css" type="text/css" rel="stylesheet" />
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--//header开始-->
+		<header>
+			<div class="hdindex" id="liuhui1">
+				<span class="lh_back" a href="#" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i></span>
+				<span class="liuhui" id="stateBut1" data-show="hide1">取消订单</span>
+			</div>
+		</header>
+		<!--header结束//-->
+
+		<!--//我的订单-->
+
+			<form action="$!webPath/buyer/order_cancel_save.htm" method="post" id="theForm">
+				<table style="float:left;" width="390" border="0" cellspacing="0" cellpadding="0" class="box_table cancletable">
+					<tr>
+						<td colspan="2" align="left" valign="top" >您确定要取消下面的订单吗?</td>
+					</tr>
+					<tr>
+						<td width="100" align="right" valign="top">订单号：
+							<input name="id" type="hidden" id="id" value="$!obj.id" />
+						</td>
+						<td align="left">$!obj.order_id</td>
+					</tr>
+					<tr>
+						<td rowspan="4" align="right" valign="top">取消原因：</td>
+						<td align="left"><label><input name="state_info" type="radio" id="radio" value="改买其他商品" checked="checked"  onclick="switch_reason();"/>
+							改买其他商品</label></td>
+					</tr>
+					<tr>
+						<td align="left"><label><input name="state_info" type="radio" id="radio2" value="从其他店铺购买"  onclick="switch_reason();"/>
+							从其他店铺购买</label></td>
+					</tr>
+					<tr>
+						<td align="left"><label><input name="state_info" type="radio" id="reason_other" value="other" onclick="switch_reason();" />
+							其他原因</label></td>
+					</tr>
+					<tr>
+						<td align="left" id="other_reason" style="display:none;"><textarea name="other_state_info" id="other_state_info" cols="30" rows="5"></textarea></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><span class="inputbtn">
+	        <input name="" type="submit" value="提交" style="cursor:pointer;"/>
+	        <input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+	      </span></td>
+					</tr>
+				</table>
+			</form>
+		<!--我的订单//-->
+
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span></a>
+		</div>
+
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+
+	</body>
+
+</html>

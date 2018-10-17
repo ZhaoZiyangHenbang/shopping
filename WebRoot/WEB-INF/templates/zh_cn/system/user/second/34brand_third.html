@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/public_auto.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/index.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/DataLazyLoad.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.lazyload.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.common.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.validate.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery-ui-1.8.21.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.validate.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.KinSlideshow.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+	<!-- top -->
+	$!httpInclude.include("/second/topZ.htm")
+	<!-- top结束 -->
+
+	<!-- heard -->
+	$!httpInclude.include("/second/head_index.htm")
+	<!-- heard结束 -->
+
+	<!-- 导航 -->
+	<script>
+		jQuery(document).ready(function(){
+			jQuery(".navul a").each(function(){
+				var original_url=jQuery(this).attr("original_url");
+				if("$!{current_url}".indexOf(original_url)>=0){
+					jQuery(this).addClass("this");
+				}
+			});
+			jQuery(".left_menu_dl").mouseover(function(){
+				var child_count = jQuery(this).attr("child_count");
+				var sc_id=jQuery(this).attr("id");
+				var sc_color=jQuery(this).attr("sc_color");
+				var eq =jQuery(this).index();
+				if(jQuery(".left_menu_dd[id=child_"+sc_id+"]").html()==null){
+					jQuery.ajax({type:'POST',url:'http://b2b2c.iskyshop.com/nav_data.htm',data:{"sc_id":sc_id},success:function(data){
+						if(jQuery(".left_menu_dd[id=child_"+sc_id+"]").html()==null){
+							jQuery(".left_menu_dt[id=dts_"+sc_id+"]").after(data);
+						}
+						if(child_count>0){
+							jQuery("#dts_"+sc_id).addClass("left_menu_this").removeClass("left_menu_dt");
+							jQuery("#child_"+sc_id).show();
+						}
+						jQuery("#left_menu_con_"+sc_id).attr("style","border:1px solid "+sc_color+"; border-left:1px solid "+sc_color+";").find(".menu_con_right_top").css("background-color",sc_color);
+						var z = -35;
+						var x = eq*z;
+						jQuery("#left_menu_con_"+sc_id).css('margin-top',x+'px');
+						jQuery(".left_menu_dd[id=child_"+sc_id+"]").show();
+					}});
+				}else{
+					if(child_count>0){
+						jQuery("#dts_"+sc_id).addClass("left_menu_this").removeClass("left_menu_dt");
+						jQuery("#child_"+sc_id).show();
+					}
+					jQuery("#left_menu_con_"+sc_id).attr("style","border:1px solid "+sc_color+"; border-left:1px solid "+sc_color+";").find(".menu_con_right_top").css("background-color",sc_color);
+					var z = -35;
+					var x = eq*z;
+					jQuery("#left_menu_con_"+sc_id).css('margin-top',x+'px');
+					jQuery(".left_menu_dd[id=child_"+sc_id+"]").show();
+				}
+
+			}).mouseleave(function(e){
+				jQuery("dt[id^=dts_]").removeAttr("style");
+				jQuery("div[id^=left_menu_con_]").removeAttr("style");
+				var child_count = jQuery(this).attr("child_count");
+				jQuery("dt[id^=dts_]").removeClass("left_menu_this").addClass("left_menu_dt");
+				jQuery(".left_menu_dd[id^=child_]").hide();
+			});
+			jQuery(".nav_left").mouseover(function(){
+				jQuery("#other_menu").show();
+
+			});
+			jQuery(".nav_left").mouseleave(function(){
+				jQuery("#other_menu").hide();
+			});
+		});
+
+	</script>
+	<div class="nav">
+
+		<div class="nav_center">
+
+			<div class="nav_left">
+
+				<h2><a href="$!webPath/goods_class.htm"><span>平台分类<em><img src="$!webPath/resources/style/system/front/default/images/nav_left.png"></em></span></a></h2>
+
+				<div id="other_menu" class="other_menu" style="display:none;">
+
+					<div id="left_menu" class="left_menu">
+
+						#foreach($gc in $!gcs)
+						#set($icon_img="$!webPath/resources/style/common/images/icon/default_icon.png")
+						<dl sc_color="#E60012" style="position:relative;" id="$!gc.id" child_count="$!gc.childs.size()" class="left_menu_dl">
+
+							<dt id="dts_15" class="left_menu_dt">
+								#if($!gc.icon_type==0)
+								#if($!gc.icon_sys!="")
+								#set($icon_img="$!webPath/resources/style/common/images/icon/icon_$!{gc.icon_sys}.png")
+								#end
+								#else
+								#if($!gc.icon_acc)
+								#set($icon_img="$!webPath/$!gc.icon_acc.path/$!gc.icon_acc.name")
+								#end
+								#end
+								<i class="left_menu_i"><img width="16" height="16" src="$!icon_img"></i>
+								<strong class="left_menu_str">
+									<a href="$!webPath/store_goods_list_$!{gc.id}.htm">$!gc.className</a>
+								</strong>
+							</dt>
+
+							<dd id="child_$!gc.id" style="display: none;" class="left_menu_dd">
+								<div id="left_menu_con_15" class="left_menu_con this ">
+				    <span class="left_menu_sp">
+					    <div class="left_menu_con_center">
+					        <div class="menu_con_right_top" style="background-color: rgb(230, 0, 18);">
+					        <dl>
+					          <dt>
+					          #foreach($gc1 in $gc.childs)
+	                    		  #if($!gc1.display)
+						          <span><a href="$!webPath/store_goods_list_$!{gc1.id}.htm" target="_blank">$!gc1.className</a></span>
+						          #end
+					          #end
+					          </dt>
+					        </dl>
+					      </div>
+
+					      <div class="left_menu_con_center_left">
+					      	  #foreach($gc1 in $gc.childs)
+	                    		  #if($!gc1.display)
+							          <dl>
+								          <dt><b> &gt; </b><a href="$!webPath/store_goods_list_$!{gc1.id}.htm" target="_blank">$!gc1.className</a></dt>
+								          <dd>
+								          #foreach($gc2 in $gc1.childs)
+					                          #if($!gc2.display)
+					                          <a href="$!webPath/store_goods_list_$!{gc2.id}.htm" target="_blank">$!gc2.className</a>
+					                          #end
+				                          #end
+								          </dd>
+							          </dl>
+						          #end
+					          #end
+					       </div>
+					    </div>
+				    </span>
+								</div>
+							</dd>
+
+						</dl>
+						#end
+					</div>
+
+				</div>
+			</div>
+
+			<ul id="navul">
+
+				#set($navs=$!navTools.queryNav(0,-1))
+
+				#foreach($nav in $navs)
+				#if($!CommUtil.indexOf("$!nav.url","http://")>=0)
+				#set($url="$!nav.url")
+				#else
+				#set($url="$!webPath/$!{nav.url}")
+				#end
+				<li><a id="$!nav.id" #if($!nav.new_win==1)target="_blank"#end original_url="$!nav.original_url" href="$!url"><span>$!{nav.title}</span></a></li>
+				#end
+
+			</ul>
+
+		</div>
+
+	</div>
+
+	<!-- 导航结束 -->
+		
+		
+		<div class="main">
+			<div class="index">
+				<!-- 商品推荐 -->
+				<div class="lh_tjfl" style="margin-top: 15px;">
+					<ul>
+						<li class="borb2">
+							<a href="#" class="red">推荐</a>
+						</li>
+						#foreach($gc in $gbcs)
+						#if($!gc.recommend)
+						<li class="borb2">
+							<a href="$!webPath/brand_second.htm?id=$!gc.id">$!gc.name</a>
+						</li>
+						#end
+						#end
+					</ul>
+				</div>
+				<!-- 商品推荐结束 -->
+
+				<!-- 品牌街 -->
+				<form method="post" id="ListForm">
+				<div class="l_paixun fl" style="width: 1180px;">
+				<div class="pl_px">
+					<a id="l_pl_h" href="#">排序</a>
+					<a href="$!webPath/brand_goods.htm?id=$!id" style="background: none;">默认排序<font></font></a>
+					<a href="$!webPath/brand_goods.htm?id=$!id&orderBy=goods_salenum">销量<font></font></a>
+					<a href="$!webPath/brand_goods.htm?id=$!id&orderBy=store_price">价格<font></font></a>
+					<!--<div class="pl_px_zkjd"><input name="" type="radio" value="" />仅看自营</div>-->
+				</div>
+			</div>
+			<div class="index_sptj_nr">
+						<ul>
+							#if($!objs.size()>0)
+							#foreach($obj in $objs)
+							#if($!obj.goods_main_photo)
+							#set($img="$!imageWebServer/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}_middle.$!{obj.goods_main_photo.ext}")
+							#else
+							#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+							#end
+
+							#set($goods_url="$!webPath/goods_$!{obj.id}.htm")
+							#if($!config.second_domain_open)
+							#set($goods_url="http://$!{obj.goods_store.store_second_domain}.$!{domainPath}/goods_$!{obj.id}.htm")
+							#end
+							#if($!velocityCount%4==0)
+							<li class="item item2">
+								<div class="goods-content" id="taotian">
+									<div class="goods-pic">
+										<a isconvert="1" data-itemid="544015300167" href="$!goods_url" target="_blank">
+											<img data-original="images/lh_06.jpg" title="打底衫气质百搭潮短款上衣" alt="打底衫气质百搭潮短款上衣" class="lazy" style="display: inline;" _hover-ignore="1" src="$!img">
+										</a>
+									</div>
+									<div class="goods-info">
+										<div class="goods-name">
+											<a isconvert="1" data-itemid="544015300167" href="#" target="_blank">$!CommUtil.substring("$!obj.goods_name",20)</a>
+										</div>
+										<div class="goods-price">
+											<em class="sale-price">¥$!{obj.goods_current_price}</em>
+											<span class="yuanjia"><a href="">￥$!{obj.goods_price}</a></span>
+										<!--	<span class="goods_buy">已售1000件</span>-->
+										</div>
+									</div>
+								</div>
+							</li>
+							#else
+
+							<li class="item">
+								<div class="goods-content" id="taotian">
+									<div class="goods-pic">
+										<a isconvert="1" data-itemid="544015300167" href="$!goods_url" target="_blank">
+											<img data-original="images/lh_06.jpg" title="打底衫气质百搭潮短款上衣" alt="打底衫气质百搭潮短款上衣" class="lazy" style="display: inline;" _hover-ignore="1" src="$!img">
+										</a>
+									</div>
+									<div class="goods-info">
+										<div class="goods-name">
+											<a isconvert="1" data-itemid="544015300167" href="#" target="_blank">$!CommUtil.substring("$!obj.goods_name",20)</a>
+										</div>
+										<div class="goods-price">
+											<em class="sale-price">¥$!{obj.goods_current_price}</em>
+											<span class="yuanjia"><a href="">￥$!{obj.goods_price}</a></span>
+											<!--	<span class="goods_buy">已售1000件</span>-->
+										</div>
+									</div>
+								</div>
+							</li>
+
+							#end
+							#end
+							#end
+						</ul>
+
+					</div>
+					<div class="w-page">
+						$!gotoPageHTML
+					</div>
+		</form>
+				<!-- 品牌街结束 -->
+			</div>
+		</div>
+
+	<!--footer开始-->
+	$!httpInclude.include("/second/footZ.htm")
+	<!--footer结束-->
+
+	<!-- 右侧 -->
+	$!httpInclude.include("/second/rightZ.htm")
+	<!-- 右侧结束 -->
+
+	</body>
+
+</html>

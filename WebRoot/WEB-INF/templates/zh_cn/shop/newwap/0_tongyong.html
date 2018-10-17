@@ -1,0 +1,29 @@
+
+#foreach($obj in $objs)
+#if($!obj.goods_main_photo)
+#set($img="$!imageWebServer/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}")
+#else
+#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+#end
+#set($goods_url="$!webPath/goods_$!{obj.id}.htm")
+<li>
+	<a href="$!goods_url">
+		<div class="lh_img01"><img src="$!img"></div>
+		<div class="lh_jieshao01"><span>仅剩$!{obj.goods_inventory}件</span></div>
+		<div class="lh_xq01">
+			<div class="lh_xq01_title">$!CommUtil.substring("$!obj.goods_name",11)</div>
+			<div class="lh_xq01_jg">
+				<span>¥$!{obj.goods_current_price}</span>
+				<!--<i>￥$!store_reommend_good.goods_price</i>-->
+				<em>$!obj.goods_store.area.parent.areaName</em>
+			</div>
+			<div class="lh_xq01_xl">
+				<span>销量$!{obj.goods_salenum}</span>
+				<em>好评度$!GoodsViewTools.haopinglv("$!{obj.id}")%</em>
+			</div>
+		</div>
+	</a>
+</li>
+#end
+<input type="hidden" value="$!currentPage" name="currentPage" id="currentPag">
+

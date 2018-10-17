@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+<head>
+	<link href="$!webPath/resources/style/system/front/wap/css/style.css" rel="stylesheet" type="text/css">
+	<!--<script src="$!webPath/resources/style/system/front/wap/js/jquery-1.10.2.min.js"></script>-->
+	<!--<script src="$!webPath/resources/style/system/front/wap/js/TouchSlide.1.1.js"></script>-->
+	<!--<script src="$!webPath/resources/style/system/front/wap/js/jquery.SuperSlide.2.1.1.js"></script>-->
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>$!config.title</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta content="telephone=no" name="format-detection">
+	<meta name="keywords" content="济南浩星装饰工程有限公司">
+	<meta name="description" content="济南浩星装饰工程有限公司">
+	<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+	<meta name="msapplication-navbutton-color" content="#DB1011">
+	<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+	<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="$!webPath/resources/new/css/mui.min.css" />
+	<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+	<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+	<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+	<style type="text/css">
+		@font-face {
+			font-family: "iconfont";
+			src: url('$!webPath/resources/new/font/iconfont.eot');
+			/* IE9*/
+			src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+			url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+	</style>
+	<script>
+        jQuery(document).ready(function(e) {
+
+            var status = '$!{order_status}';
+
+            if(status==""){
+                status = 0;
+            }
+            jQuery(" li[id^=order_status]").each(function(index, element) {
+                jQuery(element).removeClass("this");
+            });
+
+            jQuery("#order_status_"+status).addClass("this");
+            jQuery("#url").val(status);
+
+            var begin_count=2;
+            var ret = 1;
+            jQuery(window).scroll(function(){
+                if (jQuery(document).scrollTop() >= jQuery(document).height() - jQuery(window).height()&&ret==1) {
+
+                    jQuery.ajax({
+                        type:'POST',
+                        url:'$!webPath/buyer/ajaxorder.htm',
+                        data:{"currentPage":begin_count,
+                            "order_status":"$!{order_status}",
+                            "orderBy":jQuery("#orderBy").val(),
+                            "orderType":jQuery("#orderType").val()
+                        },
+                        beforeSend:function(){
+                            jQuery("#loading_none").hide();
+                            jQuery("#loading").show();
+                            ret = 0;
+                        },
+                        success:function(data){
+
+                            var result=eval("("+data+")");
+                            var currentPage = result.currentPage;
+                            var totalPage = result.totalPage;
+
+                            jQuery("#loading").hide();
+
+                            if(begin_count <= totalPage){
+                                begin_count = begin_count +1;
+                                //最后一页
+                                if(currentPage >= totalPage){
+                                    ret = 0;
+                                    jQuery("#loading_none").show();
+                                }
+                                if(currentPage < totalPage){
+                                    ret = 1;
+                                }
+                                else {
+                                    ret = 0;
+                                    jQuery("#loading_none").show();
+                                }
+                                jQuery("#orderBy").val(result.orderBy);
+                                jQuery("#orderType").val(result.orderType);
+                                jQuery("#currentPage").val(result.currentPage);
+                                jQuery("#totalPage").val(result.totalPage);
+                                jQuery(".order_page").find(".order_page_box").last().after(result.ajaxLoadHtml);
+                                jQuery(".order_page img").lazyload({effect:"fadeIn",width:50,height:50});
+
+                            } else {
+                                ret = 0;
+                                jQuery("#loading_none").show();
+                            }
+
+                        }
+                    });
+                }
+            });
+
+
+        });
+        function order_pay(id){
+            window.location.href="$!webPath/order_pay_view.htm?id="+id;
+        }
+        function order_cofirm(id){
+            if(confirm("确定要确认收货？")){
+                window.location.href="$!webPath/buyer/order_cofirm.htm?id="+id;
+            }
+        }
+
+	</script>
+</head>
+
+<body class="user_bg">
+
+<header>
+	<div class="hdindex" id="liuhui1">
+		<span class="lh_back" a href= "# " onclick= "history.go(-1) "><i class="icon iconfont">&#xe601;</i></span>
+		<span class="liuhui" id="stateBut1" data-show="hide1">我的订单<i class="icon iconfont">&#xe613;</i></span>
+		<span class="lh_xiala" id="stateBut" data-show="hide"><i class="icon iconfont">&#xe67b;</i></span>
+		<div id="class1content1" style="display: none;">
+			<ul>
+				<li>
+					<a href="order.htm">全部订单</a>
+				</li>
+				<li>
+					<a href="/buyer/order.htm?order_status=order_submit&status=10">待付款</a>
+				</li>
+				<li>
+					<a href="/buyer/order.htm?order_status=order_pay&status=20">待发货</a>
+				</li>
+				<li>
+					<a href="/buyer/order.htm?order_status=order_shipping&status=30">待收货</a>
+				</li>
+				<li>
+					<a href="/buyer/order.htm?order_status=order_receive&status=40">待评价</a>
+				</li>
+				<li>
+					<a href="/buyer/order.htm?order_status=order_evaluate&status=50">已评价</a>
+				</li>
+				<li>
+					<a href="/buyer/order.htm?order_status=order_wancheng&status=45">已完成</a>
+				</li>
+				<li>
+
+					<a href="/buyer/order.htm?order_status=order_tuihuo&status=46">退货</a>
+				</li>
+				<li>
+					<a href="/buyer/order.htm?order_status=order_tuihuo&status=0">已取消</a>
+				</li>
+			</ul>
+		</div>
+		<div id="class1content" style="display: none;">
+			<ul class="lh_tcxl">
+				<li>
+					<a href="$!webPath/wap/index.htm">
+						<span><i class="icon iconfont">&#xe60c;</i></span>
+						<strong>首页</strong>
+					</a>
+				</li>
+				<li>
+					<a href="$!webPath/search.htm">
+						<span><i class="icon iconfont">&#xe674;</i></span>
+						<strong>分类搜索</strong>
+					</a>
+				</li>
+				<li>
+					<a href="$!webPath/goods_cart1.htm">
+						<span><i class="icon iconfont">&#xe60a;</i></span>
+						<strong>购物车</strong>
+					</a>
+				</li>
+				<li>
+					<a href="$!webPath/second/fenxiao.htm">
+						<span><i class="icon iconfont">&#xe617;</i></span>
+						<strong>我的</strong>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</header>
+<div class="order_page">
+	#foreach($obj in $objs)
+	<div class="order_page_box">
+		<h1>
+			<span class="fl">店铺名称：$!{obj.store.store_name}</span>
+			<span class="fr">
+				#if($!obj.order_status==0)
+				已取消
+				#elseif($!obj.order_status==10)
+				待付款
+				#elseif($!obj.order_status==20)
+				待发货
+				#elseif($!obj.order_status==21)
+				申请退款中
+				#elseif($!obj.order_status==22)
+				已退款
+				#elseif($!obj.order_status==30)
+				待收货
+
+				#elseif($!obj.order_status==40)
+				已收货
+				#elseif($!obj.order_status==51)
+				未评价
+				#elseif($!obj.order_status==70)
+				已完成
+				#else
+				&nbsp;
+				#end
+				</span>
+		</h1>
+
+		#foreach($gc in $obj.gcs)
+		#if($!gc.goods.goods_main_photo)
+		#set($img="$!webPath/$!{gc.goods.goods_main_photo.path}/$!{gc.goods.goods_main_photo.name}_small.$!{gc.goods.goods_main_photo.ext}")
+		#else
+		#set($img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+		#end
+		<div class="lh_wuliu_nr">
+			<div class="img_list" id="img_list">
+				<ul>
+					<li>
+					#if($!obj.order_status==10)
+						<a href="$!webPath/goods_$!{gc.goods.id}.htm">
+							#elseif($!obj.order_status==20)
+							<a href="$!webPath/goods_$!{gc.goods.id}.htm">
+								#elseif($!obj.order_status==30)
+								<a href="$!webPath/goods_$!{gc.goods.id}.htm">
+									#else
+									<a href="$!webPath/goods_$!{gc.goods.id}.htm">
+										#end
+						<div class="img_list_pic"><img src="$!img"> </div>
+						<div class="img_list_tex">
+							<p>$!{gc.goods.goods_name}</p>
+							<p class="img_list_price">实付：<b>¥$!{gc.price}*$!gc.count&nbsp;<i style="color:#59cfff">(含运费:¥$!CommUtil.null2Float($!{obj.ship_price}))</i></b></p>
+						</div>
+						</a>
+								</a>
+							</a>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		#end
+		<div class="order_box_bt">
+			<a href="$!webPath/buyer/order_view.htm?id=$!obj.id">查看订单</a>
+
+			#if($!obj.order_status==0 || $!obj.order_status==22 || $!obj.order_status==47)
+			<a style="color:#ff4f19; text-decoration:underline;" href="javascript:void(0);"
+			   onclick="if(confirm('删除订单，删除后不可恢复，是否继续?'))window.location.href='$!webPath/buyer/order_delete.htm?id=$!obj.id&currentPage=$!currentPage'" >删除订单</a>
+			#end
+
+			#if($!obj.order_status==47)
+			退货完成,已结束
+			#end
+
+			#if($!obj.order_status==48)
+			卖家拒绝退货申请
+			#end
+
+			#if($!obj.order_status==49)
+			退货失败
+			#end
+
+			#if($!obj.order_status==65)
+			已结束,不可评价
+			#end
+
+			#if($!obj.order_status==10)
+			<a href="$!webPath/order_pay_view.htm?id=$!obj.id&&goodsid=$!{gc.goods.id}&&idd=$!{obj.addr.id}" target="_blank" class="bg_orange">去付款</a>
+			#end
+
+			#if($!obj.order_status==10)
+			<a style="color:#ff4f19; text-decoration:underline;" href="javascript:void(0);"
+			   onclick="if(confirm('取消订单，是否继续?'))window.location.href='$!webPath/buyer/order_cancel.htm?id=$!obj.id&currentPage=$!currentPage'" >取消订单</a>
+			#end
+			#if($!obj.order_status==30)
+			<a href="$!webPath/buyer/ship_view.htm?id=$!obj.id">查看物流</a>
+			<a href="javascript:void(0);"  onclick="if(confirm('订单确认收货，是否继续?'))window.location.href='$!webPath/buyer/order_cofirm_save.htm?id=$!obj.id&currentPage=$!currentPage'" class="bg_orange">确认收货</a>
+			#end
+			#if($!obj.order_status==40)
+			<a href="$!webPath/order_evaluation.htm?id=$!obj.id" target="_blank" class="bg_orange">去评价</a>
+			#end
+			#if($!obj.order_status==50)
+			<a href="$!webPath/order_evaluation_info.htm?id=$!obj.id" target="_blank" class="bg_orange">查看评价</a>
+			#end
+		</div>
+	</div>
+	#end
+
+</div>
+
+<div class="loading" id="loading" style="display: none;">
+	<ul>
+		<li>正在加载....</li>
+	</ul>
+</div>
+<div class="loading" id="loading_none" style="display: block;">
+	<ul>
+		<li>没有更多了....</li>
+	</ul>
+</div>
+<input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+<input name="totalPage" type="hidden" id="totalPage" value="$!totalPage" />
+<input name="order_status" type="hidden" id="order_status" value="$!{order_status}" />
+<input name="orderBy" type="hidden" id="orderBy" value="$!orderBy" />
+<input name="orderType" type="hidden" id="orderType" value="$!orderType" />
+
+</body>
+</html>

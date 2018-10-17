@@ -1,0 +1,64 @@
+<ul>
+	#if($!objs.size()>0)
+	#foreach($obj in $objs)
+	#if($!obj.store_logo)
+	#set($store_logo="$!webPath/$!{obj.store_logo.path}/$!{obj.store_logo.name}")
+	#else
+	#set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+	#end
+
+
+	<li>
+		<div class="lh_sssp_left_top">
+			<div class="lh_sssp_left_top_left">
+				<div class="lh_sssp_left_top_left_logo" ><a href="$!webPath/store.htm?id=$!obj.id"><img src="$!store_logo" style="width: 100px;height: 100px" /></a></div>
+				<div class="lh_sssp_left_top_left_title">
+					<a href="$!webPath/store.htm?id=$!obj.id"><p>$!obj.store_name</p></a>
+					<p><span>$!obj.store_info</span></p>
+				</div>
+			</div>
+			#if($!credit==0)
+			#set($store_evaluate1="0")
+			#set($store_evaluate1="0%")
+			#else
+			#set($store_evaluate1="$!CommUtil.mul($!{obj.point.store_evaluate1},100)%")
+			#end
+			<div class="lh_sssp_left_top_right"><span>好评率：$!store_evaluate1</span></div>
+		</div>
+		<div class="lh_sssp_left_bottom">
+			<ul>
+				#set($recommend_goods=$!storeViewTools.query_recommend_store_goods($!obj,-1,-1))
+				#if($!recommend_goods.size()>0)
+
+
+				#foreach($goods in $recommend_goods)
+				#if($!CommUtil.isNotNull($!{goods}))
+				#set($goodsImg = "$!webPath/resources/style/common/images/thumb.jpg")
+				#if($!goods.goods_main_photo)
+				#set($goodsImg = "$!webPath/$!goods.goods_main_photo.path/$!goods.goods_main_photo.name")
+				#end
+				<li #if($!velocityCount>4)style="display:none;"#end><a href="$!webPath/goods_$!{goods.id}.htm"><img src="$!goodsImg"></a><div class="jieshao01"><span>￥$!{goods.store_price}</span></div></li>
+				#else
+				<li #if($!velocityCount>4)style="display:none;"#end><a href="javascript:void(0);"> <img src="$!webPath/resources/style/common/images/thumb.jpg" width="120" height="102" /> </a></li>
+				#end
+
+				#end
+				#end
+
+			</ul>
+		</div>
+	</li>
+	#end
+	#else
+	<div style="text-align: center;color: red;font-size: 24px">暂无店铺</div>
+	#end
+
+
+
+
+
+</ul>
+<div class="clear"></div>
+<div class="w-page" >
+	$!gotoPageFormHTML
+</div>

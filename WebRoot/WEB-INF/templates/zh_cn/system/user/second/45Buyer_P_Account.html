@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script>
+			jQuery(document).ready(function(){
+				jQuery('#birthday').datepicker({
+					dateFormat:"yy-mm-dd",
+					yearRange:"1950:2020",
+					changeMonth: true,
+					changeYear: true
+				});
+				jQuery(":radio[value=$!user.sex]").attr("checked",true);
+				//获取下级地区信息
+			/*	jQuery("select[id^=areas_]").change(function(){
+					alert("44444444444444");
+					var areaMark = jQuery(this).attr("areaMark");
+					var parent_id = jQuery("#areas_"+areaMark).val();
+					jQuery.post("$!webPath/buyer/account_getAreaChilds.htm",{
+						"parent_id":parent_id,
+						"areaMark":areaMark
+					},function(data){
+						alert("000000000000000000000");
+						if(areaMark=="province"){
+							alert("1111111111111111");
+							jQuery("#area_id").html("<option>请选择...</option>");
+							jQuery("#areas_city").html(data);
+						}
+						if(areaMark=="city"){
+							alert("222222222222222222");
+							jQuery("#area_id").html(data);
+						}
+					},"text");
+				});*/
+		/*	#if($!user.area)
+				jQuery("#areas_province").val("$!user.area.parent.parent.id");
+				jQuery("#areas_city").html("<option>$!user.area.parent.areaName</option>");
+				jQuery("#area_id").html("<option>$!user.area.areaName</option>");
+			#end*/
+			});
+			function province() {
+				var areaMark = jQuery("#areas_province").attr("areaMark");
+				var parent_id = jQuery("#areas_"+areaMark).val();
+				jQuery.post("$!webPath/buyer/account_getAreaChilds.htm",{
+					"parent_id":parent_id,
+					"areaMark":areaMark
+				},function(data){
+						jQuery("#area_id").html("<option>请选择...</option>");
+						jQuery("#areas_city").html(data);
+						city();
+				},"text");
+			}
+			function city() {
+				var areaMark = jQuery("#areas_city").attr("areaMark");
+				var parent_id = jQuery("#areas_"+areaMark).val();
+				jQuery.post("$!webPath/buyer/account_getAreaChilds.htm",{
+					"parent_id":parent_id,
+					"areaMark":areaMark
+				},function(data){
+						jQuery("#area_id").html(data);
+				},"text");
+			}
+		</script>
+		<link href="$!webPath/resources/style/system/front/default/css/public.css" type="text/css" rel="stylesheet" />
+		<link href="$!webPath/resources/style/system/front/default/css/user.css" type="text/css" rel="stylesheet" />
+		<link  href="$!webPath/resources/style/common/css/jquery-ui-1.8.22.custom.css" type=text/css rel=stylesheet>
+		<script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/js/jquery-ui-1.8.21.js"></script>
+		<script src="$!webPath/resources/js/jquery.zh.cn.js"></script>
+		<script src="$!webPath/resources/laydate/laydate.js"></script>
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/headZ.htm")
+		<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				<div class="h_seat">
+					<a href="">首页</a>>
+					<a href="">买家中心</a>
+				</div>
+				<!--我是买家-->
+				<div class="h_content">
+					$!httpInclude.include("/second/left_buy.htm")
+					<div class="l-fr ">
+						<div class="w-title">
+							<h3>个人信息</h3>
+						</div>
+					</div>
+					<div class="l-fr1 tgar">
+						<div class="slideTxtBox">
+							<div class="hd">
+								<ul>
+									<li class="on"><a href='$!webPath/buyer/account.htm' >基本信息</a></li>
+									<li><a href='$!webPath/buyer/account_user.htm'>用户名</a></li>
+									<li><a href='$!webPath/buyer/account_avatar.htm'>更换头像</a></li>
+									<li><a href='$!webPath/buyer/account_email.htm'>登录邮箱</a></li>
+									<li><a href='$!webPath/buyer/account_mobile.htm'>登录手机号</a></li>
+									<li><a href='$!webPath/buyer/account_password.htm'>登录密码</a></li>
+								</ul>
+							</div>
+							<div class="bd">
+								<ul>
+									<div class="vip_c1">
+										<form id="form" action="$!webPath/buyer/account_save.htm" method="post">
+										<table width="65%" border="0" cellspacing="0" cellpadding="0">
+											<thead>
+												<tr>
+													<td class="vip_c12" width="18%">姓名:</td>
+													<td class="vip_c12" width="6%"></td>
+													<td width="76%">
+														<div class="vip_a13"><input type="text" class="q2" name="trueName" id="trueName" value="$!user.trueName"></div>
+													</td>
+												</tr>
+												
+												<!--<tr>
+													<td class="vip_c12" width="18%">身份证:</td>
+													<td class="vip_c12" width="6%"></td>
+													<td width="76%">
+														<div class="vip_a13"><input type="text" class="q2" value=""></div>
+													</td>
+												</tr>-->
+ 
+												<tr>
+													<td class="vip_c12" width="18%">性别:</td>
+													<td class="vip_c12" width="6%"></td>
+													<td width="76%">
+														<div class="vip_a13">
+															#if($!user.sex==0)
+															<input name="sex" type="radio" value="1"  class="q3" id="" />男
+															<input name="sex" type="radio" value="0" class="q3" id="" checked/>女
+															#else
+															<input name="sex" type="radio" value="1"  class="q3" id="" checked />男
+															<input name="sex" type="radio" value="0" class="q3" id=""/>女
+															#end
+
+														</div>
+													</td>
+												</tr>
+												
+												<tr>
+													<td class="vip_c12" width="18%">年龄:</td>
+													<td class="vip_c12" width="6%"></td>
+													<td width="76%">
+														<div class="vip_a13">#if($!user.years&&$!user.years>0)$!user.years#end</div>
+													</td>
+												</tr>
+												<script>
+													function check() {
+													var bir=	$("#birthday").val();
+														var r=/^[\d]{4}[-][\d]{2}[-][\d]{2}$/;
+														if(r.test(bir)){
+															return true;
+														}
+														alert("请正确输入格式如:XXXX-XX-XX");
+														$("#birthday").focus();
+                                                        return false;
+													}
+												</script>
+												
+												<tr>
+													<td class="vip_c12" width="18%">生日:</td>
+													<td class="vip_c12" width="6%"></td>
+													<td width="76%">
+														<div class="vip_a13"><input type="text" class="q2" value="$!CommUtil.formatShortDate($!user.birthday)" name="birthday" id="birthday" readonly onclick="laydate()"></div>
+													</td>
+												</tr>
+
+												<tr>
+													<td class="vip_c12" width="18%">手机号:</td>
+													<td class="vip_c12" width="6%"></td>
+													<td width="76%">
+														<div class="vip_a13">
+															$!user.telephone#if($!user.telephone)<span style="color:#FF0000">[已绑定]</span><span style="color:#0000FF"><a href="$!webPath/buyer/account_mobile.htm">[修改]</a></span>#else<a href="$!webPath/buyer/account_mobile.htm">[去绑定]</a>#end
+															<!--<input type="text" class="q2" value="$!user.telephone">-->
+														</div>
+													</td>
+												</tr>
+												
+												<tr>
+													<td class="vip_c12" width="18%">QQ:</td>
+													<td class="vip_c12" width="6%"></td>
+													<td width="76%">
+														<div class="vip_a13"><input type="text" class="q2" value="$!user.QQ" id="qq" name="qq"></div>
+													</td>
+												</tr>
+
+												<tr>
+													<td class="vip_c12" width="18%">邮箱:</td>
+													<td class="vip_c12" width="6%"></td>
+													<td width="76%">
+														<div class="vip_a13">$!user.email#if($!user.email)<span style="color:#FF0000">[已绑定]</span><span style="color:#0000FF"><a href="$!webPath/buyer/account_email.htm">[修改]</a></span>#else<span style="color:#0000FF"><a href="$!webPath/buyer/account_email_add.htm">[添加]</a></span>#end</div>
+													</td>
+												</tr>
+												
+												<tr>
+													<td class="vip_c12" width="18%">微信:</td>
+													<td class="vip_c12" width="6%"></td>
+													<td width="76%">
+														<div class="vip_a13"><input type="text" class="q2" value="$!user.WX" id="WX" name="WX"></div>
+													</td>
+												</tr>
+												<tr>
+													<td class="vip_c12" width="18%">身份证:</td>
+													<td class="vip_c12" width="6%"></td>
+													<td width="76%">
+														<div class="vip_a13"><input type="text" class="q2" value="$!user.sfz" id="card_no" name="card_no"></div>
+													</td>
+												</tr>
+												<tr>
+													<td class="vip_c12" width="18%">地区:</td>
+													<td class="vip_c12" width="6%"></td>
+													<td width="76%">
+														<div class="vip_c13">
+															<select name="" class="lbcd3" id="areas_province" areaMark="province" onchange="province()">
+
+																<option>请选择...</option>
+																#foreach($area in $areas)
+																#if(!$!user.area)
+																<option value="$!area.id">$!area.areaName</option>
+																#else
+																	#if($!user.area.level==1)
+																		#if($!user.area.parent.id==$!area.id)
+																		<option value="$!area.id"  selected>$!area.areaName</option>
+																		#else
+																		<option value="$!area.id">$!area.areaName</option>
+																		#end
+																	#else
+																		#if($!user.area.parent.parent.id==$!area.id)
+																		<option value="$!area.id"  selected>$!area.areaName</option>
+																		#else
+																		<option value="$!area.id">$!area.areaName</option>
+																		#end
+																	#end
+																#end
+																#end
+															</select>
+														</div>
+														<div class="vip_c13">
+															<select class="lbcd3" id="areas_city" areaMark="city" onchange="city()">
+																#if(!$!user.area)
+																<option value="">请选择...</option>
+																#else
+																<option value="$!user.area.parent.id">$!user.area.parent.areaName</option>
+																#end
+															</select>
+														</div>
+														<div class="vip_c13">
+															<select  class="lbcd3" id="area_id" name="area_id">
+																#if(!$!user.area)
+																<option value="">请选择...</option>
+																#else
+																<option value="$!user.area.id">$!user.area.areaName</option>
+																#end
+															</select>
+														</div>
+													</td>
+												</tr>
+
+												<tr>
+													<td class="vip_c12" width="18%"></td>
+													<td class="vip_c12" width="6%"></td>
+													<td width="76%">
+
+															<div class=""><a><input type="button"  value="确定" onclick='checkCard();'style="width: 206px;height: 38px;background-color: #d9534f;font-size: 14px;color: white"></a></div>
+
+													</td>
+												</tr>
+
+											</thead>
+										</table>
+										</form>
+									</div>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!--我是买家-->
+
+		</div>
+		</div>
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+<script>
+	var vcity={ 11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古",
+		21:"辽宁",22:"吉林",23:"黑龙江",31:"上海",32:"江苏",
+		33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南",
+		42:"湖北",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆",
+		51:"四川",52:"贵州",53:"云南",54:"西藏",61:"陕西",62:"甘肃",
+		63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外"
+	};
+
+	checkCard = function()
+	{
+		var card = document.getElementById('card_no').value;
+		//是否为空
+		if(card === '')
+		{
+			alert('请输入身份证号，身份证号不能为空');
+			document.getElementById('card_no').focus;
+			return false;
+		}
+		//校验长度，类型
+		if(isCardNo(card) === false)
+		{
+			alert('您输入的身份证号码不正确，请重新输入');
+			document.getElementById('card_no').focus;
+			return false;
+		}
+		//检查省份
+		if(checkProvince(card) === false)
+		{
+			alert('您输入的身份证号码不正确,请重新输入');
+			document.getElementById('card_no').focus;
+			return false;
+		}
+		//校验生日
+		if(checkBirthday(card) === false)
+		{
+			alert('您输入的身份证号码生日不正确,请重新输入');
+			document.getElementById('card_no').focus();
+			return false;
+		}
+		//检验位的检测
+		if(checkParity(card) === false)
+		{
+			alert('您的身份证校验位不正确,请重新输入');
+			document.getElementById('card_no').focus();
+			return false;
+		}
+		alert('OK');
+		return true;
+	};
+
+
+	//检查号码是否符合规范，包括长度，类型
+	isCardNo = function(card)
+	{
+		//身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X
+		var reg = /(^\d{15}$)|(^\d{17}(\d|X)$)/;
+		if(reg.test(card) === false)
+		{
+			return false;
+		}
+
+		return true;
+	};
+
+	//取身份证前两位,校验省份
+	checkProvince = function(card)
+	{
+		var province = card.substr(0,2);
+		if(vcity[province] == undefined)
+		{
+			return false;
+		}
+		return true;
+	};
+
+	//检查生日是否正确
+	checkBirthday = function(card)
+	{
+		var len = card.length;
+		//身份证15位时，次序为省（3位）市（3位）年（2位）月（2位）日（2位）校验位（3位），皆为数字
+		if(len == '15')
+		{
+			var re_fifteen = /^(\d{6})(\d{2})(\d{2})(\d{2})(\d{3})$/;
+			var arr_data = card.match(re_fifteen);
+			var year = arr_data[2];
+			var month = arr_data[3];
+			var day = arr_data[4];
+			var birthday = new Date('19'+year+'/'+month+'/'+day);
+			return verifyBirthday('19'+year,month,day,birthday);
+		}
+		//身份证18位时，次序为省（3位）市（3位）年（4位）月（2位）日（2位）校验位（4位），校验位末尾可能为X
+		if(len == '18')
+		{
+			var re_eighteen = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
+			var arr_data = card.match(re_eighteen);
+			var year = arr_data[2];
+			var month = arr_data[3];
+			var day = arr_data[4];
+			var birthday = new Date(year+'/'+month+'/'+day);
+			return verifyBirthday(year,month,day,birthday);
+		}
+		return false;
+	};
+
+	//校验日期
+	verifyBirthday = function(year,month,day,birthday)
+	{
+		var now = new Date();
+		var now_year = now.getFullYear();
+		//年月日是否合理
+		if(birthday.getFullYear() == year && (birthday.getMonth() + 1) == month && birthday.getDate() == day)
+		{
+			//判断年份的范围（3岁到100岁之间)
+			var time = now_year - year;
+			if(time >= 3 && time <= 100)
+			{
+				return true;
+			}
+			return false;
+		}
+		return false;
+	};
+
+	//校验位的检测
+	checkParity = function(card)
+	{
+		//15位转18位
+		card = changeFivteenToEighteen(card);
+		var len = card.length;
+		if(len == '18')
+		{
+			var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
+			var arrCh = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2');
+			var cardTemp = 0, i, valnum;
+			for(i = 0; i < 17; i ++)
+			{
+				cardTemp += card.substr(i, 1) * arrInt[i];
+			}
+			valnum = arrCh[cardTemp % 11];
+			if (valnum == card.substr(17, 1))
+			{
+				return true;
+			}
+			return false;
+		}
+		return false;
+	};
+
+	//15位转18位身份证号
+	changeFivteenToEighteen = function(card)
+	{
+		if(card.length == '15')
+		{
+			var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
+			var arrCh = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2');
+			var cardTemp = 0, i;
+			card = card.substr(0, 6) + '19' + card.substr(6, card.length - 6);
+			for(i = 0; i < 17; i ++)
+			{
+				cardTemp += card.substr(i, 1) * arrInt[i];
+			}
+			card += arrCh[cardTemp % 11];
+			return card;
+		}
+		$('#form').submit();
+	};
+</script>
+	</body>
+
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<title>$!config.title</title>
+		<!--<link rel="stylesheet" href="$!webPath/resources/new/css/drawer.min.css">-->
+		<link rel="stylesheet" type="text/css" href="$!webPath/resources/new/css/style2.css" />
+
+		<script src="$!webPath/resources/new/js/jquery.min.js"></script>
+		<script src="$!webPath/resources/new/js/iscroll.js"></script>
+		<!--<script src="$!webPath/resources/new/js/jquery.drawer.min.js"></script>-->
+		<base target="_blank" />
+	</head>
+	<style type="text/css">
+		.slide{
+			display: block;
+			width: 50%;
+			position: fixed;
+			top:0;
+			right:0;
+			height: 100%;
+			background: #fff;
+			z-index: 9999;
+		}
+		.slide-left{
+			width:50%;
+		}
+	</style>
+	<script>
+        $(function () {
+            var url=window.document.location.href;
+            $("#my").attr("href","$!webPath/second/fenxiao.htm?url="+url);
+        })
+        function search_form(keyword,type){
+            if(keyword!=""&&keyword!=undefined){
+                $("#keyword").val(keyword);
+            }
+            if(type!=""&&type!=undefined){
+                $("#type").val(type);
+            }
+            $("#searchForm").submit();
+        }
+	</script>
+	<body class="drawer drawer-right">
+	<div class="title">
+		<span class="back"></span>
+		<div class="title">
+			<span class="back" onclick="history.go(-1)"></span>
+
+			<form action="$!webPath/search_wap.htm" method="post"  id="searchForm">
+			<div class="search-bar">
+				<select class="instead" name="type">
+					<option value="goods" >商品</option>
+					<option value="store">商铺</option>
+				</select>
+				<input type="search" class="search-kuang" name="keyword" type="text" id="keyword" value="$!keyword"/>
+				<a class="search-case" href="javaScript:;" onclick="search_form();" style="cursor:pointer;">搜索<!--<input type="button"  class="search-case" value="搜索"/>--></a>
+			</div>
+			</form>
+
+			<span class="menu"></span>
+		</div>
+		<span class="menu"></span>
+	</div>
+		<div class="menu-list hide">
+			$!httpInclude.include("/wap/wap_navv.htm")
+		</div>
+		<script>
+			function sheng(id) {
+				/*$(this).attr("class",on);*/
+				$("div[name=shi]").each(
+				    function () {
+						var a=$(this).attr("zzy");
+						if(a==id){
+							$("#sheng").hide();
+                            $("div[name=shi]").hide();
+						    $("div[zzy="+id+"]").show();
+						}
+                    }
+				)
+            }
+            function xuanshi(id) {
+			  var name=$("#"+id).text();
+                $("#store_name").attr("value",id);
+                $('.font-red').text(name);
+                /*$(this).attr("class",on);*/
+            }
+            
+            function tijiaoshaixuan() {
+				$("#form").submit;
+            }
+
+		</script>
+	<div class="slide-left"></div>
+		<div class="drawer-main drawer-default slide">
+			<nav class="drawer-nav" role="navigation">
+				<form action="$!webPath/search_wap.htm" id="form" type="post">
+					<input type="hidden" value="goods" name="type">
+					<input type="hidden" name="keyword" value="$!keyword">
+				<div class="drawer-brand">
+
+					<div class="slide-right" >
+
+						<div class="slide-title active">
+							店铺所在城市：<b class="address font-red" >济南</b>
+							<input type="hidden" id="store_name" name="area2_id" value="4523481" placeholder="济南">
+						</div>
+						<ul class="address-list" id="sheng">
+							#foreach($!obj in $!area)
+							<li id="$!obj.id" onclick="sheng(this.id)">$!obj.areaName</li>
+							#end
+						</ul>
+					</div>
+						#foreach($!obj in $!area)
+					<div class="slide-right " style="display: none" zzy="$!obj.id" id="shi" name="shi">
+						<div class="slide-title active">
+							市区
+						</div>
+						<ul class="address-list" zzy="$!obj.id">
+							#foreach($!ob in $!obj.childs)
+							<li class="gray" id="$!ob.id" onclick="xuanshi(this.id)">$!ob.areaName</li>
+							#end
+
+						</ul>
+					</div>
+					#end
+
+					<div class="jiage">
+						<div class="slide-title active">
+							价格区域
+							<input type="text" name="store_price_begin" style="width: 100px;margin-bottom: 0" placeholder="最低价">-------<input type="text" name="store_price_end" placeholder="最高价" style="width: 100px;margin-bottom: 0">
+							<!--<span class="zuidijia"><input type="text" name="p_low" style="width: 100px;margin-bottom: 0" placeholder="最低价"></span>
+							<span>——</span>
+							<span class="zuidijia"><input type="text" name="p_hig" placeholder="最高价" style="width: 100px;margin-bottom: 0"></span>
+						--></div>
+					</div>
+					<button onclick="tijiaoshaixuan()">确定</button>
+
+				</div>
+				</form>
+			</nav>
+		</div>
+
+		<div class="drawer-overlay">
+			<main class="masthead" role="main">
+				<div class="container">
+					<ul class="caidan-list">
+						#if($!style=="1")
+						<li>
+							<a class="menuLink" href="$!webPath/search_wap.htm?keyword=$!keyword&&area2_id=$!area2_id&&store_price_begin=$!store_price_begin&&store_price_end=$!store_price_end&&type=goods"><span style="color: red">默认排序</span></a>
+						</li>
+						<li class="jiantou">
+							<a class="menuLink" href="$!webPath/search_wap.htm?keyword=$!keyword&&salenum=goods_salenum&&style=2&&area2_id=$!area2_id&&store_price_begin=$!store_price_begin&&store_price_end=$!store_price_end&&type=goods">销量</a>
+						</li>
+						<li class="jiantou">
+							<a class="menuLink" href="$!webPath/search_wap.htm?keyword=$!keyword&&price=store_price&&style=3&&area2_id=$!area2_id&&store_price_begin=$!store_price_begin&&store_price_end=$!store_price_end&&type=goods">价格</a>
+						</li>
+						<li class="drawer-toggle drawer-hamberger jiantou">
+							<a href="javaScript:void (0)" class="mui-action-menu">筛选 </a>
+						</li>
+						#end
+						#if($!style=="2")
+						<li>
+							<a class="menuLink" href="$!webPath/search_wap.htm?keyword=$!keyword&&area2_id=$!area2_id&&store_price_begin=$!store_price_begin&&store_price_end=$!store_price_end&&type=goods">默认排序</a>
+						</li>
+						<li class="jiantou">
+							<a class="menuLink" href="$!webPath/search_wap.htm?keyword=$!keyword&&salenum=goods_salenum&&style=2&&area2_id=$!area2_id&&store_price_begin=$!store_price_begin&&store_price_end=$!store_price_end&&type=goods"><span style="color: red">销量</span></a>
+						</li>
+						<li class="jiantou">
+							<a class="menuLink" href="$!webPath/search_wap.htm?keyword=$!keyword&&price=store_price&&style=3&&area2_id=$!area2_id&&store_price_begin=$!store_price_begin&&store_price_end=$!store_price_end&&type=goods">价格</a>
+						</li>
+						<li class="drawer-toggle drawer-hamberger jiantou">
+							<a href="javaScript:void (0)" class="mui-action-menu">筛选</a>
+						</li>
+						#end
+						#if($!style=="3")
+						<li>
+							<a class="menuLink" href="$!webPath/search_wap.htm?keyword=$!keyword&&area2_id=$!area2_id&&store_price_begin=$!store_price_begin&&store_price_end=$!store_price_end&&type=goods">默认排序</a>
+						</li>
+						<li class="jiantou">
+							<a class="menuLink" href="$!webPath/search_wap.htm?keyword=$!keyword&&salenum=goods_salenum&&style=2&&area2_id=$!area2_id&&store_price_begin=$!store_price_begin&&store_price_end=$!store_price_end&&type=goods">销量</a>
+						</li>
+						<li class="jiantou">
+							<a class="menuLink" href="$!webPath/search_wap.htm?keyword=$!keyword&&price=store_price&&style=3&&area2_id=$!area2_id&&store_price_begin=$!store_price_begin&&store_price_end=$!store_price_end&&type=goods"><span style="color: red">价格</span></a>
+						</li>
+						<li class="drawer-toggle drawer-hamberger jiantou">
+							<a href="javaScript:void (0)" class="mui-action-menu">筛选</a>
+						</li>
+						#end
+
+						#if($!style=="4")
+						<li>
+							<a class="menuLink" href="$!webPath/search_wap.htm?keyword=$!keyword&&area2_id=$!area2_id&&store_price_begin=$!store_price_begin&&store_price_end=$!store_price_end&&type=goods">默认排序</a>
+						</li>
+						<li class="jiantou">
+							<a class="menuLink" href="$!webPath/search_wap.htm?keyword=$!keyword&&salenum=goods_salenum&&style=2&&area2_id=$!area2_id&&store_price_begin=$!store_price_begin&&store_price_end=$!store_price_end&&type=goods">销量</a>
+						</li>
+						<li class="jiantou">
+							<a class="menuLink" href="$!webPath/search_wap.htm?keyword=$!keyword&&price=store_price&&style=3&&area2_id=$!area2_id&&store_price_begin=$!store_price_begin&&store_price_end=$!store_price_end&&type=goods">价格</a>
+						</li>
+						<li class="drawer-toggle drawer-hamberger jiantou">
+							<a href="javaScript:void (0)" class="mui-action-menu">筛选</a>
+						</li>
+						#end
+
+					</ul>
+					<div class="goods-list">
+						<ul>
+							#foreach($obj in $objs)
+							#if($!obj.goods_main_photo)
+							#set($small_img="$!webPath/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}_small.$!{obj.goods_main_photo.ext}")
+							#set($big_img="$!webPath/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}")
+							#else
+							#set($small_img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+							#set($big_img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+							#end
+							#if($!config.second_domain_open)
+							#set($goods_url="http://$!{obj.goods_store.store_second_domain}.$!{domainPath}/goods_$!{obj.id}.htm")
+							#end
+							<li>
+								<a href="$!webPath/goods_$!{obj.id}.htm">
+									<div class="goods-img">
+										<img src="$!big_img" />
+										<span class="residue">仅剩$!{obj.goods_inventory}件</span>
+									</div>
+									<p class="goods-name">$!CommUtil.substring("$!obj.goods_name",11)</p>
+									<em>$!obj.goods_store.area.parent.areaName</em>
+									<div class="goods-word">
+										<span class="pr0">¥$!{obj.store_price}</span>
+										<span class="say">销量$!{obj.goods_salenum}</span>
+										<span class="zan">好评度$!GoodsViewTools.haopinglv("$!{obj.id}")%</span>
+									</div>
+								</a>
+							</li>
+							#end
+						</ul>
+
+						<div class="weui-loadmore" style="width: 100%;text-align: center;clear: both">
+							<i class="weui-loading"></i>
+							<span class="weui-loadmore__tips">正在加载</span>
+						</div>
+						<div class="weui-loadmore2" style="display: none;width: 100%;text-align: center;clear: both">
+							<i class="weui-loading"></i>
+							<span class="weui-loadmore2__tips">已加载全部</span>
+						</div>
+						<!--<div class="w-page">
+							<div class="fenyes">
+								&lt;!&ndash;<input name="area_id" type="hidden" value="$!area.id" />
+								<input name="area2_id" type="hidden" id="gs_ids" value="$!area2_id" />&ndash;&gt;
+								&lt;!&ndash;&lt;!&ndash;		<input name="store_price_begin" type="hidden" id="brand_ids" value="$!store_price_begin" />
+								<input name="store_price_end" type="hidden" id="properties" value="$!store_price_end" />&ndash;&gt;&ndash;&gt;
+
+								<input name="currentPage" type="hidden" id="currentPage" value="$!currentPage" />
+								<input type="hidden" name="goods_view" id="goods_view" value="$!goods_view" />
+								<input name="orderBy" type="hidden" id="orderBy" value="$!orderBy" />
+								<input name="orderType" type="hidden" id="orderType" value="$!orderType" />
+								&lt;!&ndash;&lt;!&ndash;	<input name="all_property_status" type="hidden" id="all_property_status" value="$!all_property_status" />
+								<input name="detail_property_status" type="hidden" id="detail_property_status" value="$!detail_property_status" />&ndash;&gt;&ndash;&gt;
+								$!gotoPageHTML
+							</div>
+						</div>-->
+					</div>
+				</div>
+			</main>
+		</div>
+		</div>
+
+
+		<script src="$!webPath/resources/new/js/index.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('.drawer').drawer();
+				$('.js-trigger').click(function() {
+					$('.drawer').drawer("open");
+				});
+			});
+
+            $(document).ready(function() {
+                $(window).scroll(function() {
+                    if ($(document).scrollTop() <= 0) {
+                        // alert("我已经到顶了，我可以刷新");
+                    }
+                    if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+                        $(".weui-loadmore").css("display","block");
+                        $(".weui-loadmore2").css("display","none");
+                        var currentPag=0;
+                        var arr = new Array();
+						var  arr=$(":input[name=currentPage]").each(function () {
+							$(this).val()
+                        });
+                        currentPag=(arr.length+1)+"";
+                        if(currentPag!=undefined&&currentPag==$!totalPage){
+                            $(".weui-loadmore").css("display","none");
+                            $(".weui-loadmore2").css("display","block");
+                            return;
+                        }
+                        jQuery.ajax({type:'post',async: false,url:'$!webPath/search_wap_ajax.htm',data:{"gc_id":"$!gc_id","bc_location":"$!bc_location","orderBy":"$!orderBy","orderType":"$!orderType","salenum":"$!salenum","recommend":"$!recommend","orderBy":"$!orderBy","currentPage":currentPag,"style":"$!style","orderType":"$!orderType","store_price_begin":"$!store_price_begin","store_price_end":"$!store_price_end","area_id":"$!area_id"},
+                            beforeSend:function(){
+                            },
+                            success:function(data){
+                                $(".goods-list ul").append(data);
+                            }
+                        });
+
+                    }
+                });
+            });
+		</script>
+	<script>
+        $(document).ready(function() {
+            $(document).ready(function() {
+                $(".drawer-toggle").on("click",function(){
+                    $(".slide-menu").css("display","block");
+                    $(".slide-left").css("display","block")
+                })
+                $(".slide-left").on("click",function(){
+                    $(".slide-menu").css("display","none");
+                    $(this).css("display","none");
+                })
+            });
+
+        });
+	</script>
+	</body>
+
+</html>

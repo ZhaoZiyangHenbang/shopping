@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script>
+
+			function bargain_goods(){
+				var goods_name=jQuery("#goods_name").val();
+				if(goods_name!=""){
+					jQuery.ajax({type:'POST',url:'$!webPath/seller/bargain_goods.htm',data:{"goods_name":goods_name},dataType:"json",
+						beforeSend:function(){
+							jQuery("#wait_img").show();
+						},
+						success:function(data){
+							jQuery("#wait_img").hide();
+							jQuery("#goods_ids").empty();
+							jQuery.each(data,function(index,item){
+								jQuery("#goods_ids").append("<option value='"+item.goods_id+"'>"+item.goods_name+"</option>");
+							});
+						}
+					});
+				}else alert("请输入商品名称");
+			}
+		</script>
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/headZ.htm")
+		<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				<!-- 左侧nav -->
+				$!httpInclude.include("/second/leftZ.htm")
+				<!-- 左侧nav结束 -->
+					<div class="l-fr">
+						<div class="w-title">
+							<h3>天天上新管理</h3>
+						</div>
+					</div>
+					<div class="l-fr1 tgar">
+						<div class="slideTxtBox">
+							<div class="hd">
+								<ul>
+									<li >上新列表</li>
+									<li class="on">新增/修改上新商品</li>
+								</ul>
+							</div>
+							<div class="bd">
+								<ul>
+									<form action="$!webPath/seller/bargain_apply_save.htm" method="post" name="theForm" id="theForm">
+									<div class="h_revise">
+										<dl>
+											<dt>申请日期：</dt>
+											<dd>$!bargain_time</dd>
+										</dl>
+
+										<!--<dl>
+											&lt;!&ndash;<dt>商品名称：</dt>
+
+											<dd><input class="h_datum_input" name="goods_name" type="text" id="goods_name"  value="" size="38" readonly="readonly" dialog_uri="商品名称.html" dialog_title="选择商品" dialog_width="450" dialog_height="200" dialog_id="group_goods" ></dd>
+										&ndash;&gt;
+											<dt>抢购商品：</dt>
+											<dd><input class="h_datum_input" name="goods_name" type="text" id="goods_name"  value="$!obj.gg_goods.goods_name" size="38" readonly="readonly" dialog_uri="$!webPath/seller/group_goods.htm" dialog_title="选择抢购商品" dialog_width="450" dialog_height="200" dialog_id="group_goods" ></dd>
+											&lt;!&ndash;<input name="goods_ids" type="hidden" id="goods_ids" value="" />&ndash;&gt;
+											</dl>
+										<dl>-->
+
+											<dl>
+												<dt>商品名称：</dt>
+												<td width="651" class="px10"><span class="setinput">
+												<input name="goods_name" type="text" id="goods_name" />
+												<input name="search" type="button" style="cursor:pointer;width:60px;"  value="搜索" onclick="bargain_goods();" />
+												<img src="$!webPath/resources/style/common/images/wait.gif" style="display:none;" id="wait_img" >
+											  </span></td>
+											</dl>
+											<dl>
+												<dd align="right" valign="top">&nbsp;</dd>
+												<dd  class="px10">
+													<select name="goods_ids" size="10" multiple="multiple" id="goods_ids" style="width:500px; height:200px;">
+													</select>
+												</dd>
+											</dl>
+										<dl>
+										<dt>所属类别：</dt>
+										<dd>
+											<select name="bg_class">
+
+											#foreach($nav in $gcs)
+											<option value="$!{nav.id}">$!nav.className</option>
+											#end
+											</select>
+										</dd>
+										</dl>
+										<dl>
+											<dt></dt>
+											<dd><input type="submit"  value="保存" style="cursor:pointer;" class="btn btn-danger"/><!--<button type="button" class="btn btn-danger">　　确认　　</button>--></dd>
+											<input name="bargain_time" type="hidden" id="bargain_time" value="$!bargain_time" />
+											<input name="bg_nav" type="hidden" id="bg_nav" value="tiantianshangxin" />
+										</dl>
+									</div>
+										</form>
+								</ul>
+							</div>
+						</div>
+						<script type="text/javascript">
+							jQuery(".slideTxtBox").slide();
+						</script>
+					</div>
+				</div>
+				<!--我是卖家_限时抢购管理结束-->
+
+			</div>
+		</div>
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+		
+
+	</body>
+
+</html>

@@ -1,0 +1,103 @@
+/**
+ * 选择列表插件
+ * varstion 2.0.0
+ * by Houfeng
+ * Houfeng@DCloud.io
+ */
+
+.mui-picker {
+    background-color: #ddd;
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    -webkit-user-select: none;
+    user-select: none;
+    box-sizing: border-box;
+}
+.mui-picker-inner {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-mask-box-image: -webkit-linear-gradient(bottom, transparent, transparent 5%, #fff 20%, #fff 80%, transparent 95%, transparent);
+    -webkit-mask-box-image: linear-gradient(top, transparent, transparent 5%, #fff 20%, #fff 80%, transparent 95%, transparent);
+}
+.mui-pciker-list,
+.mui-pciker-rule {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    margin-top: -18px;
+}
+.mui-pciker-rule-bg {
+    z-index: 0;
+    /*background-color: #cfd5da;*/
+}
+.mui-pciker-rule-ft {
+    z-index: 2;
+    border-top: solid 1px rgba(0, 0, 0, 0.1);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+    /*-webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);*/
+    /*box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);*/
+}
+.mui-pciker-list {
+    z-index: 1;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+}
+.mui-pciker-list li {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+    color: #888;
+    padding: 0px 8px;
+    white-space: nowrap;
+    -webkit-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: default;
+    visibility: hidden;
+}
+.mui-pciker-list li.highlight,
+.mui-pciker-list li.visible {
+    visibility: visible;
+}
+.mui-pciker-list li.highlight {
+    color: #222;
+}
+.lh_city{padding: 11px 0;float: left;width: 65%;padding-left: 2%;}
+.lh_city_btn{float: right !important;padding:15px 0 0 0!important;border: none;width: 6%!important;color: #d0d0d0;text-align: left;text-align: center;}
+.lh_height{height:auto!important;}
+.lh-mui-card{border: none!important;box-shadow:none!important;}
+.lh-mui-button-row{margin-top: 4%!important;}
+.lh_password{padding:0 5px 0 5px;}
+.lh_pass_btn{line-height:30px;height:30px;padding: 0px 10px 0 1px;font-size: 14px;text-align: left;color: #8f8f94;border: none;background: none;margin-bottom:5px;margin-top: 10px;}
+.lh-mui-content-padded1{margin: 5px;}
+.lh-mui-content-padded2{margin: 15px;}
+.lh_fruit{height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 5px;color: #000;background: #fff;padding: 0 10px;font-size: 14px;}
+.l_ade_btn{line-height: 40px;height: 40px;padding: 0 10px;font-size: 14px;text-align: left;color: #8f8f94;}
+.lh_pas_height{line-height: 30px;}
+.lh_pas_input{margin-bottom: 10px!important;}
+
+.lh_margin{margin-top:5%;}
+
+
+

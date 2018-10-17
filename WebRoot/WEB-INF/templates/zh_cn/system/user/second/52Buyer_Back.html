@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/headZ.htm")
+		<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				<div class="h_seat">
+					<a href="">首页</a>>
+					<a href="">买家中心</a>
+				</div>
+				<!--我是买家-->
+				<div class="h_content">
+					$!httpInclude.include("/second/left_buy.htm")
+					<div class="l-fr ">
+						<div class="w-title">
+							<h3>银行卡管理</h3>
+
+						</div>
+
+						<div class="w-account">
+
+							<ul>
+								#foreach($obj in $objs)
+								<li class="w-bank">
+									<div class="w-bank1">
+										<div class="w-bank-tit">
+											<p class="w-le"><img src="$!webPath/resources/new_pc/images/w-bank2.jpg" /><span>$!obj.Bank</span></p>
+											<p class="w-ri">$!obj.BankCardnumber</p>
+										</div>
+										<div class="w-bank-cz">
+											<p class="w-le">储蓄卡</p>
+											<p class="w-ri">
+												<a href="$!webPath/buyer/account_bank_del.htm?id=$!obj.id">删除</a>|
+												<a href="$!webPath/second/withdrawals.htm?id=$!obj.id">提现</a>
+											</p>
+										</div>
+									</div>
+								</li>#end
+								<li class="w-add">
+									<a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">添加银行卡</a>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+			<!--我是买家-->
+
+		</div>
+		</div>
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+		<!--银行卡-->
+		<div id="light" class="fn_sign w-box1 w-box2" style="display:none;">
+			<div class="w-box-tit">
+				<h3>添加银行卡</h3>
+				<a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" class="w-close"></a>
+			</div>
+			<script>
+				//银行卡号Luhn校验算法
+				//luhn校验规则：16位银行卡号（19位通用）:
+				//1.将未带校验位的 15（或18）位卡号从右依次编号 1 到 15（18），位于奇数位号上的数字乘以 2。
+				//2.将奇位乘积的个十位全部相加，再加上所有偶数位上的数字。
+				//3.将加法和加上校验位能被 10 整除。
+
+				//bankno为银行卡号
+				function luhnCheck(bankno){
+					var lastNum=bankno.substr(bankno.length-1,1);//取出最后一位（与luhn进行比较）
+
+					var first15Num=bankno.substr(0,bankno.length-1);//前15或18位
+					var newArr=new Array();
+					for(var i=first15Num.length-1;i>-1;i--){    //前15或18位倒序存进数组
+						newArr.push(first15Num.substr(i,1));
+					}
+					var arrJiShu=new Array();  //奇数位*2的积 <9
+					var arrJiShu2=new Array(); //奇数位*2的积 >9
+
+					var arrOuShu=new Array();  //偶数位数组
+					for(var j=0;j<newArr.length;j++){
+						if((j+1)%2==1){//奇数位
+							if(parseInt(newArr[j])*2<9)
+								arrJiShu.push(parseInt(newArr[j])*2);
+							else
+								arrJiShu2.push(parseInt(newArr[j])*2);
+						}
+						else //偶数位
+							arrOuShu.push(newArr[j]);
+					}
+
+					var jishu_child1=new Array();//奇数位*2 >9 的分割之后的数组个位数
+					var jishu_child2=new Array();//奇数位*2 >9 的分割之后的数组十位数
+					for(var h=0;h<arrJiShu2.length;h++){
+						jishu_child1.push(parseInt(arrJiShu2[h])%10);
+						jishu_child2.push(parseInt(arrJiShu2[h])/10);
+					}
+
+					var sumJiShu=0; //奇数位*2 < 9 的数组之和
+					var sumOuShu=0; //偶数位数组之和
+					var sumJiShuChild1=0; //奇数位*2 >9 的分割之后的数组个位数之和
+					var sumJiShuChild2=0; //奇数位*2 >9 的分割之后的数组十位数之和
+					var sumTotal=0;
+					for(var m=0;m<arrJiShu.length;m++){
+						sumJiShu=sumJiShu+parseInt(arrJiShu[m]);
+					}
+
+					for(var n=0;n<arrOuShu.length;n++){
+						sumOuShu=sumOuShu+parseInt(arrOuShu[n]);
+					}
+
+					for(var p=0;p<jishu_child1.length;p++){
+						sumJiShuChild1=sumJiShuChild1+parseInt(jishu_child1[p]);
+						sumJiShuChild2=sumJiShuChild2+parseInt(jishu_child2[p]);
+					}
+					//计算总和
+					sumTotal=parseInt(sumJiShu)+parseInt(sumOuShu)+parseInt(sumJiShuChild1)+parseInt(sumJiShuChild2);
+
+					//计算luhn值
+					var k= parseInt(sumTotal)%10==0?10:parseInt(sumTotal)%10;
+					var luhn= 10-k;
+
+					if(lastNum==luhn){
+						console.log("验证通过");
+						return true;
+					}else{
+						alert("银行卡号必须符合luhn校验");
+						return false;
+					}
+				}
+
+				//检查银行卡号
+				function CheckBankNo(bankno) {
+					var bankno = bankno.replace(/\s/g,'');
+					if(bankno == "") {
+						alert("请填写银行卡号");
+						return false;
+					}
+					if(bankno.length < 16 || bankno.length > 19) {
+						alert("银行卡号长度必须在16到19之间");
+						return false;
+					}
+					var num = /^\d*$/;//全数字
+					if(!num.exec(bankno)) {
+						alert("银行卡号必须全为数字");
+						return false;
+					}
+					//开头6位
+					var strBin = "10,18,30,35,37,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,60,62,65,68,69,84,87,88,94,95,98,99";
+					if(strBin.indexOf(bankno.substring(0, 2)) == -1) {
+						alert("银行卡号开头6位不符合规范");
+						return false;
+					}
+					//Luhn校验
+					if(!luhnCheck(bankno)){
+						alert("银行卡号Luhn校验不通过");
+						return false;
+					}
+					return true;
+				}
+
+				function checkname() {
+					var name="^[\u4e00-\u9fa5]{1,}$";
+					if ($("#name").val()==""){
+						alert("请输入持卡人名");
+						return false;
+					}if(!$("#name").val().match(name)){
+						alert("请正确输入名字");
+						return false;
+					}
+						return true;
+
+
+
+				}
+				function checkbank() {
+					if($("#bank").val()==""){
+						alert("请输入银行");
+						return false
+					}
+						return true;
+
+
+				}
+				function check() {
+					var a=$("#name").val();
+					var b=$("#card").val();
+					var c=$("#bank").val();
+					if(a!=""&&b!=""&&c!=""){
+						return true;
+					}
+					alert("请填写完整信息");
+					return false;
+				}
+
+			</script>
+			<form action="$!webPath/buyer/account_bank_add.htm" method="post" onsubmit="return check()" >
+			<div class="w-set">
+
+				<div class="h_revise1">
+					<dl>
+						<dt>持卡人:</dt>
+						<dd><input  id="name" type="text" class="h_datum_input11"  name="trueName" value="$!obj.trueName" onblur="checkname()"/>
+						    <input type="hidden" name="id" value="$!obj.id">
+							<input type="hidden" name="area_id" value="$!area.id">
+						</dd>
+					</dl>
+					<dl>
+						<dt>银行:</dt>
+						<dd>
+							<!--<select name="" id="" class="h_revise_select1">-->
+								<!--<option value="">中国建设银行</option>-->
+							<!--</select>-->
+							<input id="bank" type="text" class="h_datum_input11" name="backname" value="$!obj.back" onblur="checkbank()">
+						</dd>
+					</dl>
+					<dl>
+						<dt>卡号:</dt>
+						<dd><input id="card" type="text" class="h_datum_input11" name="backnum" value="$!obj.BankCardnumber" onblur="CheckBankNo(this.value)" /></dd>
+					</dl>
+
+					<dl>
+						<dt></dt>
+						<dd style="color: #999;">
+							<i><img src="$!webPath/resources/new_pc/images/icon/icon_41.png"/></i> 手续费（个人所得税及管理费）：2.00元;
+						</dd>
+					</dl>
+					<dl>
+						<dt>开户行:</dt>
+						<dd><input type="text" class="h_datum_input11" name="bank_addr" /></dd>
+					</dl>
+
+				</div>
+			</div>
+			<div class="w-pro-icon"><input type="button" value="确定" class="w-cofirm" onclick="check()"/></div>
+			</form>
+		</div>
+		<div id="fade" class="black_overlay1"></div>
+		<!--银行卡-->
+
+	</body>
+
+</html>

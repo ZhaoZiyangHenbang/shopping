@@ -1,0 +1,34 @@
+
+#foreach($obj in $objs)
+#if($!obj.goods_main_photo)
+#set($small_img="$!webPath/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}_small.$!{obj.goods_main_photo.ext}")
+#set($big_img="$!webPath/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}")
+#else
+#set($small_img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+#set($big_img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+#end
+#if($!config.second_domain_open)
+#set($goods_url="http://$!{obj.goods_store.store_second_domain}.$!{domainPath}/goods_$!{obj.id}.htm")
+#end
+<li>
+	<a href="$!webPath/goods_$!{obj.id}.htm">
+		<div class="lh_img01"><img src="$!big_img"></div>
+		<div class="lh_jieshao01"><span>仅剩$!{obj.goods_inventory}件</span></div>
+		<div class="lh_xq01">
+			<div class="lh_xq01_title">$!CommUtil.substring("$!obj.goods_name",11)</div>
+			<div class="lh_xq01_jg">
+				<span>¥$!{obj.store_price}</span>
+
+				<em>$!obj.goods_store.area.parent.areaName</em>
+			</div>
+			<div class="lh_xq01_xl">
+				<span>销量$!{obj.goods_salenum}</span>
+				<em>好评度$!GoodsViewTools.haopinglv("$!{obj.id}")%</em>
+			</div>
+		</div>
+	</a>
+</li>
+
+#end
+
+<input type="hidden" value="$!currentPage" name="currentPage" id="currentPag">

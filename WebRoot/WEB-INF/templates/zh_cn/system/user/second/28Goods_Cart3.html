@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+	<title>$!config.title</title>
+	<meta name="keywords" content="颐佳超市">
+	<meta name="description" content="颐佳超市">
+	<meta name="GENERATOR" content="颐佳超市">
+	<meta name="author" content="颐佳超市">
+	<meta name="copyright" content="颐佳超市">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+	<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+	<link href="$!webPath/resources/new_pc/css/public_auto.css" rel="stylesheet" type="text/css">
+	<link href="$!webPath/resources/new_pc/css/index.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+	<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+	<script src="$!webPath/resources/new_pc/js/DataLazyLoad.min.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.lazyload.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.shop.common.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.validate.min.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery-ui-1.8.21.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.shop.validate.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.KinSlideshow.min.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+	<link href="$!webPath/resources/style/common/css/overlay.css" type="text/css" rel="stylesheet" />
+	<style type="text/css">
+		@font-face {
+			font-family: "iconfont";
+			src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+			/* IE9*/
+			src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+			url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+	</style>
+
+	<script>
+		//返回当前页面高度
+		function order_pay(){
+			var h=document.body.clientHeight;
+			var top= document.documentElement.scrollTop;
+			top=top+(h-top)/2;
+			jQuery('.black_overlay').css("height",h);
+			jQuery(".white_content").css("top",top);
+
+			var payType = jQuery('#selectpay input[name="payType"]:checked ').val();
+			var orderId = jQuery("#order_id").val();
+
+			if(payType=="wxcodepay"){
+				var html = '';
+				jQuery.get("$!webPath/wechat/wxcodepay.htm",{"order_id":orderId},function(data){
+					html += data;
+					jQuery(html).appendTo("#wxPayCode");
+					jQuery("#wxcodepay_overlay").show();
+				},"text");
+				/* jQuery.ajax({type:'POST',url:"$!webPath/wechat/wxcodepay.htm",async:false,data:{"order_id":orderId},success:function(html){
+				 jQuery("#wxPayCode").html(html);
+				 jQuery("#wxcodepay_overlay").show();
+				 }}); */
+			} else {
+				//jQuery('#pay_overlay').show();
+				jQuery('#theForm').submit();
+			}
+
+		}
+		window.onscroll=function(){
+			var h=document.body.clientHeight;
+			var top= document.documentElement.scrollTop;
+			top=top-50+(h-top)/2;
+			jQuery(".white_content").css("top",top);
+		}
+	</script>
+</head>
+
+<body>
+<!-- top -->
+$!httpInclude.include("/second/topZ.htm")
+<!-- top结束 -->
+
+<!-- heard -->
+$!httpInclude.include("/second/head_index.htm")
+
+
+
+		$!httpInclude.include("/nav1.htm")
+<div class="main">
+	<form action="$!webPath/order_pay.htm" method="post" target="_blank" id="theForm">
+		<div class="lh_wdgwc">
+			<div class="lh_wdgwc_top fl">
+				<span class="fl">填写并核对订单信息</span>
+				<ul class="lh_wdgwc_top_right fr">
+					<li>1.我的购物车</li>
+					<li>2.确认订单</li>
+					<li class="cartcur">3.支付订单</li>
+				</ul>
+			</div>
+			<div class="lh_wdgwc_zfdd">
+				<div class="cacart1 fl">
+					<div class="order_cg">订单提交成功，请您尽快付款！ 订单号：$!{of.order_id}</div>
+					<div class="order_cg_nr">
+						<p>
+							<span>交易金额：¥$!{of.totalPrice}</span>
+							<span>积分：￥$!{of.inte_money}</span>
+							<span>应付金额：¥$!{of.totalPrice} </span>
+						</p>
+						<p><span>温馨提示： 请您在24小时内完成支付，否则订单会被自动取消（以订单详情页为准）。</span></p>
+						<p></p>
+						<p><span>收货地址：$!{addr.area.parent.areaName}$!{addr.area.areaName}$!{of.addr.area_info} 收货人：$!{of.addr.trueName} $!{of.addr.mobile}</span></p>
+						<p><span>商品名称：
+								#foreach($gc in $of.gcs)
+								$!gc.goods.goods_name<br/>
+								#end
+							</span>
+						</p>
+					</div>
+				</div>
+
+				<!--<div class="cacart">
+                    <div class="zfb_zf_t">支付方式</div>
+                    <div class="zffs_nr">
+                        <ul>
+                            <li>
+                                <div class="zffs_t_l">
+                                    <input tname="payType" type="radio" value="alipay" />
+                                </div>
+                                <div class="zffs_nr_img"><img src="$!imageWebServer/resources/style/common/images/payment/alipay.jpg" width="125" height="47" /></div>
+                                <div class="zffs_nr_yh">支付宝</div>
+                            </li>
+                            <li>
+                                <div class="zffs_t_l">
+                                    <input name="payType" type="radio" value="wxcodepay"  />
+                                </div>
+                                <div class="zffs_nr_img"><img src="$!imageWebServer/resources/style/common/images/payment/weixin.png" width="125" height="47" /></div>
+                                <div class="zffs_nr_yh">微信</div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>-->
+			</div>
+			<div class="cacart">
+				<div class="zfb_zf_t">支付方式</div>
+				<div class="zffs_nr">
+					<div id="selectpay" class="bankcar">
+
+						<ul>
+							<li>
+								<div class="bankone">
+									<span class="banksp">
+									<input name="payType" type="radio" value="alipay" checked="checked" />
+									</span>
+									<span class="bankimg">
+										<img src="$!imageWebServer/resources/style/common/images/payment/alipay.jpg" />
+									</span>
+									<span class="bank_txt">$!content</span>
+								</div>
+
+							</li>
+							<li>
+								<div class="bankone">
+									<span class="banksp">
+									<input name="payType" type="radio" value="wxcodepay" />
+									</span>
+									<span class="bankimg"><img src="$!imageWebServer/resources/style/common/images/payment/weixin.jpg" />
+									</span>
+									<span class="bank_txt">$!content</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<!--<ul>
+                        <li>
+                            <div class="zffs_t_l">
+                                <input type="radio" value="Alipay_CCB" name="gateway" id="check-Alipay_CCB4" />
+                                <label class="bg Alipay_CCB" for="check-Alipay_CCB4"></label>
+                            </div>
+                            <div class="zffs_nr_img"><img src="images/lh_zfb.jpg"/></div>
+                            <div class="zffs_nr_yh">支付宝</div>
+                        </li>
+                        <li>
+                            <div class="zffs_t_l">
+                                <input type="radio" value="Alipay_CCB" name="gateway" id="check-Alipay_CCB4" />
+                                <label class="bg Alipay_CCB" for="check-Alipay_CCB4"></label>
+                            </div>
+                            <div class="zffs_nr_img"><img src="images/lh_wx.jpg"/></div>
+                            <div class="zffs_nr_yh">微信</div>
+                        </li>
+
+                    </ul>-->
+					<div > <input class="zffs_zfan" name="" type="button"  value="确认支付" onclick="order_pay();" style="cursor:pointer"/>
+						<input name="order_id" type="hidden" id="order_id" value="$!{of.id}" /></div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<!--footer开始-->
+$!httpInclude.include("/second/footZ.htm")
+<!--footer结束-->
+
+<!-- 右侧 -->
+$!httpInclude.include("/second/rightZ.htm")
+<!-- 右侧结束 -->
+<!--<script src="js/mui.js"></script>
+<script>
+	mui.init();
+	document.getElementById("btn").addEventListener('tap', function(event) {
+		mui.alert('当前值: ' + document.getElementById("box").value, null, "提示");
+	});
+	var testBox = document.getElementById("test");
+	testBox.addEventListener('change', function() {
+		console.log(testBox.value);
+	});
+</script>-->
+<!--<div style="display:none;" id="pay_overlay">
+	<div class="white_content">
+		<a href="javascript:void(0);" onclick="javascript:jQuery('#pay_overlay').hide();" class="white_close"><img src="$!imageWebServer/resources/style/system/front/default/images/close.jpg" width="14" height="14" /></a>
+		<div class="white_box">
+			<h1>支付提醒</h1>
+			<dl class="white_dl">
+				<dt></dt>
+				<dd>
+					<div class="payf"><a href="$!webPath/order_finish.htm?order_id=$!{of.id}">已经完成支付！</a></div>
+					<div class="payf"><a href="javascript:void(0);"  onclick="javascript:jQuery('#pay_overlay').hide();" >支付出现问题！</a></div>
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<div class="black_overlay"></div>
+</div>-->
+
+<div style="display:none;" id="wxcodepay_overlay">
+	<div class="wx_content">
+		<a href="javascript:void(0);" onclick="javascript:jQuery('#wxcodepay_overlay').hide();" class="white_close"><img src="$!imageWebServer/resources/style/system/front/default/images/close.jpg" width="14" height="14" /></a>
+		<div class="wx_box">
+			<h1>微信二维码扫码支付</h1>
+			<dl class="wx_dl">
+				<dt id="wxPayCode"></dt>
+				<dd>
+					<div class="payf"><a href="$!webPath/order_finish.htm?order_id=$!{of.id}">完成支付！</a></div>
+					<div class="payf"><a href="javascript:void(0);"  onclick="javascript:jQuery('#wxcodepay_overlay').hide();" >支付出现问题！</a></div>
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<div class="black_overlay"></div>
+</div>
+</body>
+
+</html>

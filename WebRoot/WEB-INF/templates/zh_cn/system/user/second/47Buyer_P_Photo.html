@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script language="JavaScript" type="text/javascript">
+			<!--
+			function getParamsFromUrl() {
+				var url, pos, parastr, para;
+				url = window.location.href;
+				pos = url.indexOf("?")
+				if (pos > -1) {
+					parastr = url.substring(pos + 1);
+				} else {
+					parastr = "";
+				}
+				return parastr;
+			}
+
+			function reload() {
+				window.location.reload();
+			}
+
+			function getUploadUrl() {
+				return "$!webPath/buyer/upload_avatar.htm";
+			}
+
+			function uploadSuccessHandler(callbackMsg) {
+				//alert("上传成功，回调方法请写在这里");
+				window.location.reload();
+			}
+
+			function uploadFailHandler(callbackMsg) {
+				//alert("上传失败，回调方法请写在这里");
+				alert("上传失败：" + callbackMsg);
+			}
+
+			//大头像：宽
+			function getBigAvatarWidth() {
+				return 132;
+			}
+
+			//大头像：高
+			function getBigAvatarHeight() {
+				return 132;
+			}
+
+			//中头像：宽
+			function getMiddleAvatarWidth() {
+				return 60;
+			}
+
+			//中头像：高
+			function getMiddleAvatarHeight() {
+				return 60;
+			}
+
+			//小头像：宽
+			function getLittleAvatarWidth() {
+				return 32;
+			}
+
+			//小头像：高
+			function getLittleAvatarHeight() {
+				return 32;
+			}
+
+			//裁剪框：宽
+			function getCutRectWidth() {
+				return 132;
+			}
+
+			//裁剪框：高
+			function getCutRectHeight() {
+				return 132;
+			}
+			//截取框是否可缩放
+			function getCutRectScalable() {
+				return "true";
+			}
+			function getBgImage() {
+				return "$!webPath/resources/style/common/images/avatar/bg_image.png"
+			}
+
+			function getCopyRightName_1() {
+				return "shopping多用户商城系统V1.3版";
+			}
+
+			function getCopyRightName_2() {
+				return "授权咨询电话:024-25872040";
+			}
+
+			function getCopyRightUrl_1() {
+				return "#";
+			}
+
+			function getCopyRightUrl_2() {
+				return "#";
+			}
+
+			function getAvatarBgColor() {
+				return 0xffffff;
+			}
+			function getAvatarBgImage() {
+				return "$!webPath/resources/style/common/images/avatar/bg_image.png";
+			}
+			var _curImage = "$!webPath/resources/style/common/images/avatar/bg_image.png";
+			function setSourceImage(s) {
+				_curImage = s;
+				jQuert('#shopping_avatar').setSourceImage();
+			}
+			function getSourceImage() {
+				return _curImage;
+			}
+			// -->
+		</script>
+		<script type="text/javascript">
+			// For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection.
+			var swfVersionStr = "10.2.0";
+			// To use express install, set to playerProductInstall.swf, otherwise the empty string.
+			var xiSwfUrlStr = "$!webPath/resources/flash/playerProductInstall.swf";
+			var flashvars = {};
+			//跨域访问策略文件
+			flashvars.policy_file_url="$!webPath/resources/other/crossdomain.xml";
+			//初始化图片
+			flashvars.init_image_url="$!webPath/resources/style/common/images/avatar/init_image.jpg";
+			//大头像名称
+			flashvars.big_avatar_name="shopping_big_avatar";
+			//中头像名称
+			flashvars.middle_avatar_name="shopping_middle_avatar";
+			//小头像名称
+			flashvars.little_avatar_name="shopping_little_avatar";
+			flashvars.url_params = getParamsFromUrl();
+			var params = {};
+			params.quality = "high";
+			params.bgcolor = "#ffffff";
+			params.allowscriptaccess = "sameDomain";
+			params.allowfullscreen = "true";
+			var attributes = {};
+			attributes.id = "c_avatar_shopping";
+			attributes.name = "c_avatar_shopping";
+			attributes.align = "middle";
+			swfobject.embedSWF(
+					"$!webPath/resources/flash/shopping_avatar.swf", "flashContent",
+					"600", "400",
+					swfVersionStr, xiSwfUrlStr,
+					flashvars, params, attributes);
+			// JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
+			swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+			function tishi() {
+				alert("上传成功");
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/headZ.htm")
+		<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				<div class="h_seat">
+					<a href="">首页</a>>
+					<a href="">买家中心</a>
+				</div>
+				<!--我是买家-->
+				<div class="h_content">
+					$!httpInclude.include("/second/left_buy.htm")
+					<div class="l-fr ">
+						<div class="w-title">
+							<h3>个人信息</h3>
+						</div>
+					</div>
+					<div class="l-fr1 tgar">
+						<div class="slideTxtBox">
+							<div class="hd">
+								<ul>
+									<li ><a href='$!webPath/buyer/account.htm' >基本信息</a></li>
+									<li><a href='$!webPath/buyer/account_user.htm'>用户名</a></li>
+									<li class="on"><a href='$!webPath/buyer/account_avatar.htm'>更换头像</a></li>
+									<li><a href='$!webPath/buyer/account_email.htm'>登录邮箱</a></li>
+									<li><a href='$!webPath/buyer/account_mobile.htm'>登录手机号</a></li>
+									<li><a href='$!webPath/buyer/account_password.htm'>登录密码</a></li>
+								</ul>
+							</div>
+							<div class="bd">
+								<ul>
+									<div class="vip_c1">
+										<table width="65%" border="0" cellspacing="0" cellpadding="0">
+											<thead>
+												<tr>
+													#if($!user.photo)
+													#set($img="$!webPath/$!user.photo.path/$!user.photo.name")
+													#else
+													#set($img="$!webPath/$!config.memberIcon.path/$!config.memberIcon.name")
+													#end
+													<td class="vip_c12" width="24%"></td>
+													<td class="vip_c12" width="7%"></td>
+													<td width="35%">
+														<img src="$!img " width="107" height="107" class="lh_sctx">
+													    <div class="vip_c11" style="margin-top: 50px;">
+															<!--<a href="$!webPath/buyer/upload_avatar.htm">重新上传 </a>-->
+															<form action="$!webPath/buyer/upload_avatar.htm" method="post" enctype="multipart/form-data" onsubmit="tishi()"><br><br><br><br>
+																<input type="file" name="file"><br><br>
+
+																	<input type="submit" value="上传" >
+															</form>
+
+														</div>
+													</td>
+
+													<td width="34%">
+														
+													</td>
+												</tr>
+
+												<tr>
+													<td class="vip_c12" width="18%"></td>
+													<td class="vip_c12" width="6%"></td>
+													<!--<td width="76%">
+														<a href="">
+															<div class="btn-danger">确定</div>
+														</a>
+													</td>-->
+												</tr>
+
+											</thead>
+
+										</table>
+
+									</div>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!--我是买家-->
+
+		</div>
+		</div>
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+
+	</body>
+
+</html>

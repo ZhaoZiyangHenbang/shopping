@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+		<script src="$!webPath/resources/js/jquery.metadata.js"></script>
+		<script src="$!webPath/resources/js/jquery.rating.pack.js" type="text/javascript" language="javascript"></script>
+		<link href="$!webPath/resources/style/common/css/jquery.rating.css" type="text/css" rel="stylesheet"/>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+
+		<script>
+			jQuery(document).ready(function(){
+				jQuery('input.description_evaluate').rating({
+					callback: function(value, link){
+						var id=jQuery(this).attr("name");
+						jQuery("#"+id).val(value);
+					},
+					focus:function(value, link){
+						var gc_id=jQuery(this).attr("gc_id");
+						var title=jQuery(this).attr("title");
+						jQuery("#description_evaluate_text"+gc_id).text(title);
+					},
+					blur:function(value, link){
+
+					}
+				});
+				//
+			});
+
+		</script>
+	</head>
+
+
+		<!--//header开始-->
+		<header>
+			<div class="hdindex" id="liuhui1">
+				<span class="lh_back" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i></span>
+				<span class="liuhui" id="stateBut1" data-show="hide1">申请退款/退货</span>
+			</div>
+		</header>
+		<!--header结束//-->
+		<!--//订单评价-->
+
+			<!--<div class="lh_my_order_eva_tit">
+				<p>满意度：
+					<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+					<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+					<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+					<span class="on"><i class="icon iconfont">&#xe625;</i></span>
+					<span><i class="icon iconfont">&#xe625;</i></span>
+				</p>
+			</div>-->
+			<form id="theForm" method="post" action="$!webPath/seller/order_returnxiangqing.htm?id=$!obj.id">
+				<div class="lh_my_order_eva">
+			<div class="lh_my_order_eva_tit">
+				满意度:
+				<input name="service_evaluate" type="hidden" id="description_evaluate$!{obj.id}" value="3" />
+				<b id="description_evaluate_text$!{obj.id}">一般</b><em>
+				<input class="description_evaluate {split:1}" type="radio" name="description_evaluate$!{obj.id}" gc_id="$!{obj.id}" value="1" title="非常不满"/>
+				<input class="description_evaluate {split:1}" type="radio" name="description_evaluate$!{obj.id}" gc_id="$!{obj.id}" value="2" title="不满意"/>
+				<input class="description_evaluate {split:1}" type="radio" name="description_evaluate$!{obj.id}" gc_id="$!{obj.id}" value="3" title="一般" checked="checked"/>
+				<input class="description_evaluate {split:1}" type="radio" name="description_evaluate$!{obj.id}" gc_id="$!{obj.id}" value="4" title="满意"/>
+				<input class="description_evaluate {split:1}" type="radio" name="description_evaluate$!{obj.id}" gc_id="$!{obj.id}" value="5" title="非常满意"/>
+			</em>
+			</div>
+			<form class="lh_my_order_eva_textarea">
+				<textarea name="评价" id="评价" type="text" placeholder="申请退款/退货理由"></textarea>
+			</form>
+			<div class="lh_sqtx_btn"><a href="$!webPath/seller/order_returnxiangqing.htm?id=$!obj.id" class="lh_btn">确认</a></div>
+		</div>
+		</form>
+		<!--订单评价//-->
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span></a>
+		</div>
+
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+
+	</body>
+
+</html>

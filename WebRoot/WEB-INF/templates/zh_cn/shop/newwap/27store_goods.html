@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/mui.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/123jia.js"></script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function() {
+				$('.tabPanel ul li').click(function() {
+					$(this).addClass('on').siblings().removeClass('on');
+					$('.panes>div:eq(' + $(this).index() + ')').show().siblings().hide();
+				})
+			})
+		</script>
+
+	</head>
+
+	<body>
+		<!--//header开始-->
+		<div class="lh_slideTxtBox">
+			<header>
+				<div class="lh_hdindex ">
+					<span class="lh_back"><i class="icon iconfont">&#xe601;</i></span>
+					<span class="hd">
+    	<ul>
+    		<li>商品</li>
+    		<li>详情</li>
+    		<li>评价</li>
+    	</ul>
+    </span>
+					<span class="lh_xiala" id="stateBut" onclick="$use()"><i class="icon iconfont">&#xe67b;</i></span>
+					<div id="class1content" style="display: none;">
+						$!httpInclude.include("/wap/wap_navv.htm")
+					</div>
+				</div>
+			</header>
+			<!--header结束//-->
+
+			<!--//商品详情开始-->
+			<div class="lh_spxq bd">
+				<ul>
+					<!--//产品幻灯片开始-->
+					<div class="banner fn-relative l_dep">
+						<ul style="position: relative; overflow: hidden; transition: left 600ms ease 0s; width: 960px; left: -640px;" id="slider">
+
+							<li style="display: block; float: left; width: 320px;"><img src="$!imageWebServer/$!img.path/$!{img.name}_small.$!{img.ext}"></li>
+
+							<li style="float: left; display: block; width: 320px;"><img src="$!webPath/resources/new/images/lh_28.png" alt=""></li>
+							<li style="float: left; display: block; width: 320px;"><img src="$!webPath/resources/new/images/lh_28.png" alt=""></li>
+						</ul>
+						<div id="pagenavi">
+							<a class="active" href="#"></a>
+							<a class="" href="#"></a>
+							<a class="" href="#"></a>
+						</div>
+					</div>
+					<!--产品幻灯片结束//-->
+
+					<!--//计时开始-->
+					<div class="proCountDown" style="display: block;">
+						<p class="proCountDownTime">
+							<span><i class="icon iconfont">&#xe652;</i></span> 距结束仅剩 <span class="proCountDownHour hour_show">20</span>
+							<span class="proCountDownMinu minute_show">20</span>
+							<span class="proCountDownSecond second_show">12</span>
+
+						</p>
+					</div>
+					<div class="proCountEnd" style="display: none;">
+						<p class="proCountEndTime">此商品已下架</p>
+					</div>
+					<!--计时结束//-->
+
+					<!--//产品标题开始-->
+					<div class="huodong huodongN borb">
+						<div class="titleW">
+							<h1><span>自营</span>冬季保暖轻薄女羽绒服</h1>
+							<div class="share_picN fr bdsharebuttonbox" data-tag="share_1">
+								<a href="#" class="ishare bds_tsina" style="font-size: 1.2rem;"><i class="icon iconfont">&#xe639;</i></a>
+								<a href="#" class="ishare bds_tsina"><i class="icon iconfont">&#xe627;</i></a>
+							</div>
+						</div>
+						<ul class="pro_sku clearfix borb1">
+							<li class="proSalePrice"><span class="price">￥150.00 </span></li>
+							<li class="marketprice"><del>¥1099</del></li>
+							<li class="proJuanSend"><span>不可用优惠券</span></li>
+						</ul>
+						<div class="lh_notes">
+							<dl>
+								<dt>销量</dt>
+								<dd>5000</dd>
+							</dl>
+							<dl>
+								<dt>收藏</dt>
+								<dd>5000</dd>
+							</dl>
+							<dl>
+								<dt>快递</dt>
+								<dd>12.00</dd>
+							</dl>
+							<dl style="border-right: none;">
+								<dt>地址</dt>
+								<dd>济南</dd>
+							</dl>
+						</div>
+					</div>
+					<!--产品标题结束//-->
+
+					<!--//积分领卷开始-->
+					<div class="lh_yhjf">
+						<ul>
+							<li>
+								<div class="lh_yhjf_bt">积分</div>
+								<div class="lh_yhjf_nr">购物可获得50积分</div>
+							</li>
+							<li>
+								<div class="lh_yhjf_bt">领卷</div>
+								<div class="lh_yhjf_nr">满199减30，满299减60</div>
+								<div class="lh_yhjf_nn">
+									<a href="javascript:void(0)javascript:void(0)" id="lingjuan">领卷</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!--选结束//-->
+
+					<!--//选择开始-->
+					<div class="lh_spxq_xz">
+						<ul>
+							<li>
+								<div class="lh_spxq_xz_bt">选择</div>
+								<div class="lh_spxq_xz_nr">
+									<a href="javascript:void(0)javascript:void(0)" id="buy1">颜色 / 尺码 / 颜色</a>
+								</div>
+								<div class="lh_spxq_xz_nn">
+									<a href="javascript:void(0)javascript:void(0)" id="buy2"><i class="icon iconfont">&#xe62d;</i></a>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!--选择结束//-->
+
+					<!--//服务开始-->
+					<div class="lh_spxq_fw">
+						<ul>
+							<li>
+								<div class="lh_spxq_fw_bt">选择</div>
+								<div class="lh_spxq_fw_nr">
+									<ul>
+										<li><span>七天包退</span>七天无条件退货</li>
+										<li><span>及时发货</span>24小时内发货</li>
+										<li><span>100%正品</span>所售商品由平台监管</li>
+									</ul>
+								</div>
+
+							</li>
+						</ul>
+					</div>
+					<!--服务结束//-->
+
+					<!--//店铺开始-->
+					<div class="lh_spxq_dp">
+						<div class="lh_spxq_dp_top">
+							<div class="lh_spxq_dp_tx"><img src="$!webPath/resources/new/images/lh_13.jpg" /></div>
+							<div class="lh_spxq_dp_bt">浩星自营旗舰店<span>自营</span></div>
+							<div class="lh_spxq_dp_js">商家简介商家简介商家简介商家简介商家简介商家简介商家简介商家简介商家</div>
+						</div>
+						<div class="lh_spxq_dp_bottom">
+							<a class="lh_spxq_dp_bottom_an"><i class="icon iconfont">&#xe6a5;</i>全部商品</a>
+							<a class="lh_spxq_dp_bottom_an on"><i class="icon iconfont">&#xe645;</i>进入店铺</a>
+						</div>
+					</div>
+					<!--店铺结束//-->
+
+					<!--//图片详情开始-->
+					<div class="lh_spxq_tpxq">
+						<a href="javascript:void(0)javascript:void(0);" class="goods-continue"><i class="icon iconfont">&#xe62d;</i>继续拖动查看图文详情</a>
+					</div>
+					<!--图片详情结束//-->
+
+					<!--//底部开始-->
+					<div class="lh_spxq_bottom prodtl_buy prodtl_buyNew">
+						<ul>
+							<li>
+								<a href="#">
+									<p><i class="icon iconfont">&#xe622;</i></p>
+									<p>客服</p>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<p><i class="icon iconfont">&#xe645;</i></p>
+									<p>进店</p>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<p><i class="icon iconfont">&#xe6e4;</i></p>
+									<p>购物车</p>
+								</a>
+							</li>
+							<li class="lh_spxq_bottom_buy">
+								<a href="javascript:void(0)javascript:void(0)" id="addShop">加入购物车</a>
+							</li>
+							<li class="lh_spxq_bottom_buy1">
+								<a href="javascript:void(0)javascript:void(0)" id="buy">立即购买</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)javascript:void(0)" id="confirmeBuy">确定</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)javascript:void(0)" id="confirmeAddShop">确定</a>
+							</li>
+						</ul>
+					</div>
+					<!--底部结束//-->
+					<!--//弹出选择尺码开始-->
+					<div class="proDetailSelect" style="z-index: 999999999999;">
+						<div class="proDetailSelectImgW">
+							<div class="proDetailSelectImgDiv">
+								<img src="$!webPath/resources/new/images/lh_04.png">
+							</div>
+							<p>
+								<span class="bt">冬季保暖轻薄女羽绒服</span>
+								<span>¥ 100</span>
+								<em>库存100件</em>
+							</p>
+						</div>
+						<img class="proDetailSelectClose" src="$!webPath/resources/new/images/close.png">
+						<div class="d_item prodtl_opt">
+							<dl class="opt_item opt_color">
+								<dt>颜色 : </dt>
+								<dd class="jsCheckColor">
+									<a class="oldSelect" href="javascript:void(0)">白色</a>
+									<a class="oldSelect" href="javascript:void(0);">白色</a>
+								</dd>
+							</dl>
+							<dl class="opt_item opt_cm">
+								<dt>尺码 :</dt>
+								<dd class="jsCheckCm">
+									<!--<a nos="100475017001"><span>33</span></a>-->
+									<a style="background: rgb(221, 221, 221);"><span class="no">34</span></a>
+									<!--<a nos="100475017003"><span>35</span></a>-->
+									<a nos="100475017003"><span class="have">35</span></a>
+									<!--<a nos="100475017004"><span>36</span></a>-->
+									<a nos="100475017004"><span class="have">36</span></a>
+									<!--<a nos="100475017005"><span>37</span></a>-->
+									<a nos="100475017005"><span class="have">37</span></a>
+									<!--<a nos="100475017006"><span>38</span></a>-->
+									<a nos="100475017006"><span class="have">38</span></a>
+									<!--<a nos="100475017007"><span>39</span></a>-->
+									<a nos="100475017007"><span class="have">39</span></a>
+									<!--<a nos="100475017008"><span>40</span></a>-->
+									<a nos="100475017008"><span class="have">40</span></a>
+								</dd>
+								<input type="hidden" name="" id="sizeNo">
+							</dl>
+							<dl class="opt_item opt_color" style="margin-top: 0.2rem;border-bottom: 1px solid #dedede; float: left; width: 100%; margin-bottom: 0.7rem; padding-bottom: 0.7rem;">
+								<dt style="float: left; width: 20%; line-height: 60px;">数量 : </dt>
+								<dd class="jsCheckColor" style=" width: 70%; float: right;">
+									<div class="mui-numbox" style="width: 220px;height: 60px;">
+										<button class="mui-btn-numbox-minus" type="button">-</button>
+										<input class="mui-input-numbox" type="number" />0
+										<button class="mui-btn-numbox-plus" type="button">+</button>
+									</div>
+								</dd>
+							</dl>
+							<dl>
+								<div class="jrgwc">
+									<a href="">加入购物车</a>
+									<a href="" class="on">立即购买</a>
+								</div>
+							</dl>
+							<dl>
+								<div class="ljgm">
+									<a href="">确定</a>
+								</div>
+							</dl>
+						</div>
+					</div>
+					<!--弹出选择尺码结束//-->
+
+					<!--//领取优惠劵开始-->
+					<div class="proDetailSelect1" style="z-index: 999999999999;">
+						<div class="lh_liangjuan borb">浩星旗舰店</div>
+						<img class="proDetailSelectClose" src="$!webPath/resources/new/images/close.png">
+						<div class="lh_liangjuan_slideTxtBox ">
+							<div class="hd1 tabPanel">
+								<ul>
+									<li class="on">可领</li>
+									<li>已领</li>
+								</ul>
+							</div>
+							<div class="bd1 panes">
+								<div class="pane">
+									<ul>
+										<li>
+											<div class="left01">
+												<div class="left01_top"><span>￥</span>100</div>
+												<div class="left01_bottom">满100元使用</div>
+											</div>
+											<div class="center01">
+												<div class="title01">浩星旗舰店</div>
+												<div class="date01">2017.1.12-2017.12.31</div>
+											</div>
+											<div class="right01">
+												<a href="#">点击领取</a>
+											</div>
+										</li>
+										<li>
+											<div class="left01">
+												<div class="left01_top"><span>￥</span>100</div>
+												<div class="left01_bottom">满100元使用</div>
+											</div>
+											<div class="center01">
+												<div class="title01">浩星旗舰店</div>
+												<div class="date01">2017.1.12-2017.12.31</div>
+											</div>
+											<div class="right01">
+												<a href="#">点击领取</a>
+											</div>
+										</li>
+										<li>
+											<div class="left01">
+												<div class="left01_top"><span>￥</span>100</div>
+												<div class="left01_bottom">满100元使用</div>
+											</div>
+											<div class="center01">
+												<div class="title01">浩星旗舰店</div>
+												<div class="date01">2017.1.12-2017.12.31</div>
+											</div>
+											<div class="right01">
+												<a href="#">点击领取</a>
+											</div>
+										</li>
+										<li>
+											<div class="left01">
+												<div class="left01_top"><span>￥</span>100</div>
+												<div class="left01_bottom">满100元使用</div>
+											</div>
+											<div class="center01">
+												<div class="title01">浩星旗舰店</div>
+												<div class="date01">2017.1.12-2017.12.31</div>
+											</div>
+											<div class="right01">
+												<a href="#">点击领取</a>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="pane" style="display: none;">
+									<ul>
+										<li>
+											<div class="left01">
+												<div class="left01_top"><span>￥</span>100</div>
+												<div class="left01_bottom">满100元使用</div>
+											</div>
+											<div class="center01">
+												<div class="title01">浩星旗舰店</div>
+												<div class="date01">2017.1.12-2017.12.31</div>
+											</div>
+											<div class="right01">
+												<a href="#">去使用</a>
+											</div>
+										</li>
+										<li>
+											<div class="left01">
+												<div class="left01_top"><span>￥</span>100</div>
+												<div class="left01_bottom">满100元使用</div>
+											</div>
+											<div class="center01">
+												<div class="title01">浩星旗舰店</div>
+												<div class="date01">2017.1.12-2017.12.31</div>
+											</div>
+											<div class="right01">
+												<a href="#">去使用</a>
+											</div>
+										</li>
+										<li>
+											<div class="left01">
+												<div class="left01_top"><span>￥</span>100</div>
+												<div class="left01_bottom">满100元使用</div>
+											</div>
+											<div class="center01">
+												<div class="title01">浩星旗舰店</div>
+												<div class="date01">2017.1.12-2017.12.31</div>
+											</div>
+											<div class="right01">
+												<a href="#">去使用</a>
+											</div>
+										</li>
+										<li>
+											<div class="left01">
+												<div class="left01_top"><span>￥</span>100</div>
+												<div class="left01_bottom">满100元使用</div>
+											</div>
+											<div class="center01">
+												<div class="title01">浩星旗舰店</div>
+												<div class="date01">2017.1.12-2017.12.31</div>
+											</div>
+											<div class="right01">
+												<a href="#">去使用</a>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="clear"></div>
+							</div>
+						</div>
+
+					</div>
+
+					<!--领取优惠劵结束//-->
+
+					<div id="waitLoadingBg"></div>
+
+				</ul>
+				<ul>
+					<div></div>
+				</ul>
+
+			</div>
+			<!--商品详情结束//-->
+		</div>
+
+		<script type="text/javascript">
+			jQuery(".lh_slideTxtBox").slide();
+		</script>
+
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span></a>
+		</div>
+
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+		<!--通用头尾  add by lizhenyou 2015-3-30 -->
+
+		<script type="text/javascript">
+			var intDiff = parseInt(60); //倒计时总秒数量
+			function timer(intDiff) {
+				window.setInterval(function() {
+					var day = 0,
+						hour = 0,
+						minute = 0,
+						second = 0; //时间默认值
+					if(intDiff > 0) {
+						day = Math.floor(intDiff / (60 * 60 * 24));
+						hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+						minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+						second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+					}
+					if(minute <= 9) minute = '0' + minute;
+					if(second <= 9) second = '0' + second;
+					$('.hour_show').html('<s id="h"></s>' + hour + '时');
+					$('.minute_show').html('<s></s>' + minute + '分');
+					$('.second_show').html('<s></s>' + second + '秒');
+					intDiff--;
+				}, 1000);
+			}
+			$(function() {
+				timer(intDiff);
+			});
+		</script>
+
+		<script type="text/javascript" src="$!webPath/resources/new/js/shoppingcart.js"></script>
+	</body>
+
+</html>

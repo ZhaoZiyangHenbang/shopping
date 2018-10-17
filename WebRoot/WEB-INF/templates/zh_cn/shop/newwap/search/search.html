@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>$!config.title</title>
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<meta content="telephone=no" name="format-detection">
+<meta name="keywords" content="济南浩星装饰工程有限公司">
+<meta name="description" content="济南浩星装饰工程有限公司">
+<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+<meta name="msapplication-navbutton-color" content="#DB1011">
+
+<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+<link href="$!webPath/resources/new/css/j_master.css" rel="stylesheet">
+<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="$!webPath/resources/new/css/mui.min.css" />
+<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+
+<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js" ></script>
+<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js" ></script>
+<script type="text/javascript" src="$!webPath/resources/new/js/nav.js" ></script>
+
+ <style type="text/css">
+     @font-face {font-family: "iconfont";  src: url('$!webPath/resources/new/font/iconfont.eot'); /* IE9*/ src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */ url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */  }
+    .iconfont {font-family:"iconfont" !important;font-style:normal; -webkit-font-smoothing: antialiased;-webkit-text-stroke-width: 0.2px; -moz-osx-font-smoothing: grayscale;  }
+</style>
+</head>
+
+<body class="j_huibg">
+<!--//header开始-->
+<header >
+    <div class="j_hdindex">
+   <span class="lh_back" a href= "# " onclick= "history.go(-1) "><i class="icon iconfont">&#xe601;</i></span>
+        <form action="$!webPath/search_wap.htm" method="post"  id="searchForm">
+			<div class="j_search_bg_k">
+							<select name="type" id="type" class="j_sea_xx">
+								<option value="goods"> <li class="this" type="goods"><a href="javascript:void(0);">商品<s></s></a></li></option>
+								<option value="store">  <li style="display:none" type="store"><a href="javascript:void(0);">店铺</a></li></option>
+							</select>
+							<input name="keyword" type="text" id="keyword"
+								   x-webkit-speech lang="zh-CN" onwebkitspeechchange="jQuery('#searchForm').submit()"
+								   class="input1" style=" line-height:1.5rem; height: 1.5rem;  background:none ; font-size: 0.5rem;
+								    padding:0; border: none; width:70% ; float: left;"  placeholder="请输入要搜索的内容">
+			</div>
+			<div>
+				<a href="javaScript:;" class="j_l_pw_btn" onclick="search_form();" style="cursor:pointer;">搜索</a>
+            </div>
+        </form>
+  </div>
+	<script>
+		function search_form(keyword,type){
+			if(keyword!=""&&keyword!=undefined){
+				$("#keyword").val(keyword);
+			}
+			if(type!=""&&type!=undefined){
+				$("#type").val(type);
+			}
+			$("#searchForm").submit();
+		}
+		function search_content(content){
+			var type=$("#type").val();
+			if(content!=""&&content!=undefined){
+				$("#keyword").val(content);
+			}
+			if(type!=""&&type!=undefined){
+				$("#type").val(type);
+			}
+			$("#searchForm").submit();
+		}
+	</script>
+</header>
+<!--header结束//-->
+		<div class="clear"></div>
+		<div class="j_search_ci">
+			<ul>
+				<li>
+					<h2 class="j_search_ci_t">热门宝贝:</h2>
+					<span style="width: auto">
+                        <div class="keyword"> #foreach($info in $CommUtil.splitByChar("$!config.hotSearch",",")) <a
+                                href="javascript:void(0);" onclick="search_form('$!info','goods');">$!info</a> #end </div>
+					</span>
+				</li>
+				<li>
+					<h2 class="j_search_ci_t">热门商铺:</h2>
+					<span>
+							#foreach($st in $CommUtil.splitByChar("$!config.hotStore",",")) <a
+							href="javascript:void(0);"
+							onclick="search_form('$!st','store');">
+						$!st
+					</a>
+							#end
+					</span>
+				</li>
+			</ul>
+
+		</div>
+			<script>
+				function removeone(neir) {
+                    jQuery.ajax({type:'POST',
+                        url:'$!webPath/sousuo_delet.htm?valu='+neir,
+                        beforeSend:function(){
+                        },
+                        success:function(data){
+                            //alert("删除成功！");
+                            location=location;
+                        }
+                    });
+                }
+			</script>
+		<div class="j_ls_ss">
+			<div class="j_ls_ss_t">
+				<h2>历史搜索:</h2>
+				<span><a href="javaScript:;" onclick="removeone(null)">清空搜索记录</a></span>
+			</div>
+			<div class="j_ls_ss_list">
+				<ul>
+					<!--#foreach($obj in $obj)
+					<li>
+						<a href="javaScript:void(0)" onclick="search_content('$!obj.consult_content')">$!obj.consult_content</a><i class="icon iconfont"><a href="$!webPath/sousuo_delet.htm?id=$!obj.id">&#xe602;</a></i>
+					</li>
+					#end-->
+					#foreach($obj in $!list)
+					#if(""!=$!obj)
+					<li>
+						<a href="javaScript:void(0)" onclick="search_content('$!obj')">$!obj</a><i class="icon iconfont"><a href="javaScript:;" onclick="removeone('$!obj')">&#xe602;</a></i>
+					</li>
+					#end
+					#end
+				</ul>
+			</div>
+			</div>
+</body>
+</html>
+

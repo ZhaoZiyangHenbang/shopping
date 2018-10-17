@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<!--商家店铺不同背景-->
+		<link rel="stylesheet" href="$!webPath/resources/new/css/dianpu_bag/bag_red.css" /> <!--红色背景-->
+		<!--<link rel="stylesheet" href="$!webPath/resources/new/css/dianpu_bag/bag_org.css" />--> <!--橙色背景-->
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/qrcode.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/layer/layer.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="lh_hdindex dianpu_bag">
+				<span class="lh_back" onclick="history.go(-1)"><i class="icon iconfont">&#xe601;</i> </span>
+				<form action="$!webPath/store_goods_search.htm" method="post" id="store_search_form">
+				<input class="shop_search" type="search" placeholder="搜索店铺内商品"  name="keyword" />
+					<input type="hidden" value="$!store.id" name="store_id">
+			<!--	<input type="submit" value="搜索">-->
+				</form>
+				<span class="shop_classify"><i class="icon iconfont ">&#xe67c;</i><br /><a href="$!webPath/store_classify.htm?id=$!{store.id}">分类</a> </span>
+				<span class="lh_xiala" id="stateBut" data-show="hide"><i class="icon iconfont">&#xe67b;</i></span>
+				<div id="class1content" style="display: none;">
+					$!httpInclude.include("/wap/wap_navv.htm")
+				</div>
+			</div>
+		</header>
+		<div class="clear"></div>
+		<div class="shangjia">
+			#if($!store.store_logo)
+			#set($store_logo="$!webPath/$!{store.store_logo.path}/$!{store.store_logo.name}")
+			#else
+			#set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+			#end
+			<div class="shangjia_img"><img src="$!store_logo" /> </div>
+			<div class="shangjia_tex">
+
+				<h3>$!{store.store_name}</h3>
+				<p>$!CommUtil.substring("$!{store.store_info}",18)</p>
+			</div>
+			<div class="shangjia_icon">
+				<div style="float: left;width: 50px;height: 40px">
+				<a href="#" onclick="guanzhu()">
+					<i class="icon iconfont" style="font-size: 1.2rem;" id="a">&#xe639;</i>
+					<i class="icon iconfont" style="font-size: 1.2rem;color: red;display: none" id="aa">&#xe639;</i></a>
+					<a href="javaScript:;" onclick="fenx()" class="bshare-more bshare-more-icon more-style-addthis"><i class="icon iconfont" >&#xe627;</i></a>
+					<script>
+                        function fenx() {
+                            var a=$("#fen").attr("class");
+                            if(1==a){
+                                $("#fen").show();
+                                var a=$("#fen").attr("class",0);
+                            }else{
+                                $("#fen").hide();
+                                var a=$("#fen").attr("class",1);
+                            }
+                        }
+					</script>
+				</div>
+
+			</div>
+			<p class="shangjia_ewm"><a href="#" class="btn1"><img src="$!webPath/resources/new/images/Bushop_03.png" /></a></p>
+		</div>
+		<div style="display: none; background: #FFF;" id="fen" class="1">
+			<a href="javaScript:;" id="hide01" ><i class="icon iconfont"><ol  >
+				<li class="row" style="padding: 0;">
+					<div id="share-2"></div>
+				</li>
+			</ol></i></a>
+		</div>
+
+		<link rel="stylesheet" href="$!webPath/resources/new/css/share.min.css">
+		<style>
+			.row { padding: 20px 0 0 20px }
+			.row-pad { padding: 20px 0 0 60px }
+		</style>
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<script src="$!webPath/resources/new/js/jquery.share.min.js"></script>
+		<script>
+            $('#share-1').share();
+            $('#share-2').share({sites: ['qzone', 'qq', 'weibo','wechat']});
+            $('#share-3').share();
+            $('#share-4').share();
+		</script>
+
+
+		<script>
+			$(function () {
+				erweima();
+			})
+			function erweima() {
+				document.getElementById("qrcode").innerHTML="";
+				var qrcode = new QRCode(document.getElementById("qrcode"), {
+					width : 200,//设置宽高?
+					height : 200
+				});
+				qrcode.makeCode("http://www.yijia1234.com/store.htm?id=$!{store.id}&&view=wap&&userid=$!user.id");
+			}
+		</script>
+
+		<div class="dianpu_meau">
+			<ul>
+				<li >
+					<a class="on2" href="$!webPath/store_info2.htm?id=$!{store.id}">
+					<p><i class="icon iconfont">&#xe645;</i></p>
+					<p>店铺首页</p></a>
+				</li>
+				<li>
+					<a href="$!webPath/goods_list.htm?store_id=$!{store.id}"><p><span>$goodsStoreAll</span></p>
+					<p>全部商品</p></a>
+				</li>
+				<li>
+					<a href="$!webPath/goods_new.htm?store_id=$!{store.id}&goods_type=cuxiao"><p><span>$goodsStoreCX</span></p>
+					<p>促销</p></a>
+				</li>
+				<li>
+					<a href="$!webPath/goods_new.htm?store_id=$!{store.id}&goods_type=shangxin">
+					<p><span>$goodsStoreSX</span></p>
+					<p>上新</p></a>
+				</li>
+				<li style="border: none;">
+					<a href="$!webPath/store_dynamic.htm?id=$!{store.id}">
+					<p><span>$goodsStoreDPDT</span></p>
+					<p>店铺动态</p></a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="dianpu_yhj">
+			#foreach($!coupon in $!cou)
+			<a href="#" class="dianpu_yhj_img" onclick="lingquan($coupon.id)">
+				<div class="dianpu_yhj_qian"><em>￥</em><strong>$!CommUtil.StringInt($!coupon.coupon_amount)</strong>优惠劵</div>
+				<div class="dianpu_yhj_ljlq"><strong id="bian">立即领取</strong></div>
+				<div class="dianpu_yhj_wz">(满$!CommUtil.StringInt($!coupon.coupon_order_amount)减$!CommUtil.StringInt($!coupon.coupon_amount)元)</div>
+			</a>
+			#end
+		</div>
+		<script>
+            function lingquan(id,man,jian) {
+                if("$!user"==null||"$!user"==""){
+                    alert("请先登录！");
+                    return;
+                }else{
+                    jQuery.ajax({
+                        type:'post',
+                        url:'$!webPath/second/youhuiquanlingqu.htm?coupon_id='+id,
+                        beforeSend:function () {
+
+                        },
+                        success:function (data) {
+                            var result=eval("("+data+")");
+                            var ss = result.save;
+                            alert(ss);
+                            $("#bian").innerHTML="";
+                            $("#bian").html(ss);
+
+                           // window.location.href="$!webPath/goods_$!{obj.id}.htm?gg_id=$!gg_id"
+                        }
+                    })
+                }
+            }
+		</script>
+		<div class="main">
+			<div class="dianpu_ad">
+				<script src="$!webPath/advert_invoke.htm?id=262249&&store_id=$!store.id"></script>
+			</div>
+			<div class="dianpu_ad">
+				<script src="$!webPath/advert_invoke.htm?id=262250&&store_id=$!store.id"></script>
+			</div>
+
+			<div class="dianpu_bg">
+				<h3><img src="$!webPath/resources/new/images/Bushop_15.png" /> </h3>
+				<ul class="dianpu_bim">
+
+					<li>
+
+						<script src="$!webPath/advert_invoke.htm?id=262251&&store_id=$!store.id"></script>
+						<!--<div class="dianpu_bim_tex">
+							<p>PAIGE DEMIN.S</p>
+							<h3>$158.68</h3>
+							<a href="$!webPath/goods_$!{goods.id}.htm">立即查看 >></a>
+						</div>-->
+					</li>
+					<li>
+						<script src="$!webPath/advert_invoke.htm?id=262252&&store_id=$!store.id"></script>
+						<!--<div class="dianpu_bim_tex">
+							<p>PAIGE DEMIN.S</p>
+							<h3>$158.68</h3>
+							<a href="">立即查看 >></a>
+						</div>-->
+					</li>
+					<li>
+						<script src="$!webPath/advert_invoke.htm?id=262253&&store_id=$!store.id"></script>
+						<!--<div class="dianpu_bim_tex">
+							<p>PAIGE DEMIN.S</p>
+							<h3>$158.68</h3>
+							<a href="">立即查看 >></a>
+						</div>-->
+					</li>
+					<li>
+						<script src="$!webPath/advert_invoke.htm?id=262254&&store_id=$!store.id"></script>
+						<!--<div class="dianpu_bim_tex">
+							<p>PAIGE DEMIN.S</p>
+							<h3>$158.68</h3>
+							<a href="">立即查看 >></a>
+						</div>-->
+					</li>
+				</ul>
+			</div>
+			
+			
+			<div class="dianpu_bg">
+				<h3><img src="$!webPath/resources/new/images/Bushop_16.png" /> </h3>
+				<ul class="dianpu_tem">
+
+					<li>
+
+						<script src="$!webPath/advert_invoke.htm?id=262255&&store_id=$!store.id"></script>
+						<!--<div class="dianpu_tem_tex">
+							<p>PAIGE DEMIN.S</p>
+							<h3>$158.68</h3>
+							<a href="$!webPath/goods_$!{goods.id}.htm">立即查看 >></a>
+						</div>-->
+					</li>
+					<li>
+						<script src="$!webPath/advert_invoke.htm?id=262256&&store_id=$!store.id"></script>
+						<!--<div class="dianpu_tem_tex">
+							<p>PAIGE DEMIN.S</p>
+							<h3>$158.68</h3>
+							<a href="">立即查看 >></a>
+						</div>-->
+					</li>
+					<li>
+						<script src="$!webPath/advert_invoke.htm?id=262257&&store_id=$!store.id"></script>
+						<!--<div class="dianpu_tem_tex">
+							<p>PAIGE DEMIN.S</p>
+							<h3>$158.68</h3>
+							<a href="">立即查看 >></a>
+						</div>-->
+					</li>
+				</ul>
+			</div>
+
+		</div>
+		<div class="n_foot dianpu_bag">
+			<ul>
+				<li><a href="$!webPath/goods_new.htm?store_id=$!{store.id}&goods_type=jingxuan">精品筛选</a></li>
+				<li><a href="$!webPath/store_info3.htm?id=$!{store.id}">店铺详情</a></li>
+				<li><a href="http://wpa.qq.com/msgrd?v=3&uin=$!{store.store_qq}&Site=$!{store.store_qq}&Menu=yes">联系客服</a></li>
+				<li><a href="$!webPath/wap/index.htm">首页</a></li>
+			</ul>
+		</div>
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span>
+			</a>
+		</div>
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+	<script>
+		function guanzhu() {
+			if("$!user"!=null && "$!user"!=""){
+				if("$!user.id"=="$!store.user.id"){
+					alert("不能收藏自己的店铺");
+				}else{
+					jQuery.post("$!webPath/add_store_favorite.htm",{"id":"$!store.id"},function(data){
+						if(data==0){
+							alert("店铺收藏成功！");
+							$("#aa").show();
+							$("#a").hide()
+						}
+						if(data==1){
+							alert("该店铺已经被收藏！");
+							$("#a").show();
+							$("#aa").hide();
+						}
+					},"text");
+				}
+			}else{
+				window.location.href = "$!webPath/user/login.htm";
+			}
+		}
+	</script>
+
+		<div class="box"></div>
+		<div class="hint" style="top: 30%;">
+			<div class="hint-in1">
+				<div class="hint3"></div>
+			</div>
+			<div class="hint-in2" id="qrcode">
+				<!--<p>请关注微信二维码！</p>
+				<img src="images/ewm1.jpg" />-->
+			</div>
+			<script type="text/javascript">
+				$(document).ready(function($) {
+
+					$(".btn1").click(function(event) {
+						$(".hint").css({
+							"display": "block"
+						});
+						$(".box").css({
+							"display": "block"
+						});
+					});
+
+					$(".hint3").click(function(event) {
+						$(this).parent().parent().css({
+							"display": "none"
+						});
+						$(".box").css({
+							"display": "none"
+						});
+					});
+
+				});
+			</script>
+		</div>
+	</body>
+
+</html>

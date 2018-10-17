@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+	<title>$!config.title</title>
+	<meta name="keywords" content="颐佳超市">
+	<meta name="description" content="颐佳超市">
+	<meta name="GENERATOR" content="颐佳超市">
+	<meta name="author" content="颐佳超市">
+	<meta name="copyright" content="颐佳超市">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+
+	<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+	<link href="$!webPath/resources/new_pc/css/public_auto.css" rel="stylesheet" type="text/css">
+	<link href="$!webPath/resources/new_pc/css/index.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+
+	<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+	<script src="$!webPath/resources/new_pc/js/DataLazyLoad.min.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.lazyload.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.shop.common.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.validate.min.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery-ui-1.8.21.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.shop.validate.js"></script>
+	<script src="$!webPath/resources/new_pc/js/jquery.KinSlideshow.min.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+	<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+
+	<style type="text/css">
+		@font-face {
+			font-family: "iconfont";
+			src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+			/* IE9*/
+			src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+			url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+	</style>
+	<!--<link href="$!webPath/resources/style/system/front/wap/css/style.css" rel="stylesheet" type="text/css">-->
+	<script src="$!webPath/resources/style/system/front/wap/js/jquery-1.10.2.min.js"></script>
+	<script>
+		/*function goods_count_adjust(cart_id,store_id,count){
+		 jQuery.post("$!webPath/goods_count_adjust.htm",{"cart_id":cart_id,"store_id":store_id,"count":count},function(data){
+		 if(data.error=="100"){
+		 jQuery("#goods_count_"+cart_id).val(count);
+		 jQuery("#goods_count_"+cart_id).attr("goods_count",count)
+		 jQuery("#goods_total_price_"+cart_id).html("¥"+data.goods_total_price);
+		 jQuery("#total_price_"+store_id).html(data.sc_total_price);
+		 jQuery("#top_total_price_"+store_id).html(data.sc_total_price);
+		 //
+		 jQuery("#__"+cart_id).val(data.goods_total_price);
+
+		 var every=document.getElementsByName("every");
+		 var characters=0;
+
+		 if(every.length>0) {
+		 for (var i = 0; i < every.length; i++) {
+
+		 if (every[i].checked) {
+		 //alert(every[i].value);
+		 characters += parseFloat(every[i].value);
+		 }
+		 }
+		 $("#jiliguala").text(characters)
+
+
+		 }
+		 }
+		 if(data.error=="200"){
+		 alert("库存不足，请重新选择数量！");
+		 jQuery("#goods_count_"+cart_id).val(jQuery("#goods_count_"+cart_id).attr("goods_count"));
+		 }
+		 if(data.error=="300"){
+		 alert("团购库存不足，请重新选择数量！");
+		 jQuery("#goods_count_"+cart_id).val(jQuery("#goods_count_"+cart_id).attr("goods_count"));
+		 }
+		 },"json");
+		 }*/
+		/*function confirm_cart(sc_id){
+		 jQuery("#cart_"+sc_id).hide();
+		 jQuery("#cart_"+sc_id).attr("status","submit");
+		 if(jQuery("form[id^=cart_][status=no_submit]").length==0){
+		 jQuery("#cart_"+sc_id).attr("target","_self");
+		 }
+		 jQuery("#cart_"+sc_id).submit();
+		 }*/
+		jQuery(document).ready(function(){
+			jQuery("a[id^=favorite_]").click(function(){
+				#if($!user)
+				#if($!user.id==$!obj.goods_store.user.id)
+				alert("不能收藏自己的商品");
+	#else
+				var id=jQuery(this).attr("id").substring(9);
+				jQuery.post("$!webPath/add_goods_favorite.htm",{"id":id},function(data){
+					if(data==0){
+						alert("收藏成功!");
+					}
+					if(data==1){
+						alert("您已经收藏过该商品!");
+					}
+				},"text");
+	#end
+  #else
+				if(confirm("登录后才可收藏商品，现在登录？"))
+					window.location.href="$!webPath/user/login.htm?url=$!webPath/goods_cart1.htm"
+  #end
+			});
+			/*jQuery("a[id^=count_down]").click(function(){
+			 var cart_id=jQuery(this).attr("cart_id");
+			 var count=jQuery("#goods_count_"+cart_id).val();
+			 var store_id=jQuery(this).attr("store_id");
+			 if(count>1){
+			 count--;
+			 goods_count_adjust(cart_id,store_id,count)
+			 }
+			 });
+			 jQuery("a[id^=count_up]").click(function(){
+			 var cart_id=jQuery(this).attr("cart_id");
+			 var count=jQuery("#goods_count_"+cart_id).val();
+			 var store_id=jQuery(this).attr("store_id");
+			 if(count>0){
+			 count++;
+			 goods_count_adjust(cart_id,store_id,count);
+			 }
+			 });
+			 jQuery("input[id^=goods_count_]").keyup(function(){
+			 var cart_id=jQuery(this).attr("cart_id");
+			 var count=jQuery("#goods_count_"+cart_id).val().replace(/\D/g,'');
+			 if(count==""){
+			 count=1;
+			 }
+			 var store_id=jQuery(this).attr("store_id");
+			 if(count>0){
+			 goods_count_adjust(cart_id,store_id,count);
+			 }
+			 });*/
+			//
+			jQuery(".baby_gp>a").mouseover(function(){
+				jQuery(this).parent().find(".arrow").show();
+				jQuery(this).parent().find(".baby_group").show();
+			});
+			jQuery(".baby_gp").mouseleave(function(){
+				jQuery(this).parent().find(".arrow").hide();
+				jQuery(this).parent().find(".baby_group").hide();
+			});
+			//
+		});
+		//删除商品
+		function cart_remove2(objid, del_store_id) {
+			//var type = arguments[1];
+			var type = "1";
+			var method = function() {
+				jQuery.post("$!webPath/remove_goods_cart.htm",
+						{
+							"id" : objid,
+							"store_id": del_store_id
+
+						},
+
+						function(data) {
+							if (type == "one_combin") {
+								window.location.href = "$!webPath/goods_cart0.htm";
+							} else {
+								window.location.reload();
+							}
+						}, "json");
+			};
+			if (type == "1" || type == undefined) {
+				if (confirm("确定删除已选中的商品！")) {
+					method();
+				}
+			}
+
+		}
+
+	</script>
+</head>
+
+<body>
+<!-- top -->
+$!httpInclude.include("/second/topZ.htm")
+<!-- top结束 -->
+
+<!-- heard -->
+$!httpInclude.include("/second/head_index.htm")
+<!-- heard结束 -->
+
+<!-- 导航 -->
+$!httpInclude.include("/nav1.htm")
+<!-- 导航结束 -->
+
+<div class="main">
+	<div class="lh_wdgwc">
+		<div class="lh_wdgwc_top fl">
+			<span class="fl">我的购物车</span>
+			<ul class="lh_wdgwc_top_right fr">
+				<li class="cartcur">1.我的购物车</li>
+				<li>2.确认订单</li>
+				<li>3.支付订单</li>
+			</ul>
+		</div>
+
+		<div class="lh_wdgwc_cszdsp">
+			<ul>
+				<script>
+					function xuanD(id) {
+						if($("#Z"+id).is(":checked")){
+							//quanxiao();
+							$('input[type=checkbox]').prop("checked",false);
+							$('#Z'+id).prop("checked",true);
+							$("ul input[class='_Z"+id+"']").prop("checked",true);
+
+							var quan = document.getElementsByClassName("_Z"+id);
+							var characters="";
+							if(quan.length>0){
+								for(var i=0;i<quan.length;i++){
+									if(quan[i].checked){
+										characters+=quan[i].id+',';
+									}
+								}
+							}
+							//alert(characters);
+							$("#ids").val(characters);
+							jQuery.ajax({type:'post',url:'$!webPath/cart_gc_status.htm?characters='+characters+'&isorno=true',
+								beforeSend:function(){
+								},
+								success:function(data){
+								}
+							})
+						}else{
+							$("ul input[class='_Z"+id+"']").prop("checked",false);
+							var quan = document.getElementsByClassName("_Z"+id);
+							var characters="";
+							if(quan.length>0){
+								for(var i=0;i<quan.length;i++){
+									if(!quan[i].checked){
+										characters+=quan[i].id+',';
+									}
+								}
+							}
+							jQuery.ajax({type:'post',url:'$!webPath/cart_gc_status.htm?characters='+characters+'&isorno=false',
+								beforeSend:function(){
+								},
+								success:function(data){
+								}
+							})
+						}
+					}
+				</script>
+				<script>
+					$(function () {
+						var every=document.getElementsByName("every");
+						var characters=0;
+						if(every.length>0){
+							for(var i=0; i<every.length; i++){
+								if(every[i].checked){
+									//alert(every[i].value);
+									characters+=parseFloat(every[i].value);
+								}
+							}
+							$("#jiliguala").text(characters)
+						}
+						$("ul input[type='checkbox']").change(function () {
+							var every=document.getElementsByName("every");
+							var characters=0;
+							if(every.length>0){
+								for(var i=0; i<every.length; i++){
+									if(every[i].checked){
+										//alert(every[i].value);
+										characters+=parseFloat(every[i].value);
+									}
+								}
+								$("#jiliguala").text(characters)
+							}
+						})
+					});
+					var ids = null;
+					function status(id) {
+						if(ids == null){
+							ids = id;
+						}else{
+							ids = ids+","+id;
+						}
+						$("#ids").val(ids);
+						var a=document.getElementById(id);
+						var b=a.getAttribute("pro");
+						var d=id;
+						if(a.checked){
+							$('input[type=checkbox]._Z'+b+':checked').attr("che","1");
+							var allLength = $("input[type=checkbox]._Z"+b).length;
+							var allCheckedLength = $('input[type=checkbox]._Z'+b+':checked').length;
+							if(allLength == allCheckedLength){
+								$('#Z'+b).attr("che","1");
+							}
+							$('input[type=checkbox]').prop("checked",false);
+							var c=document.getElementsByName("every");
+							for(var i=0;i<c.length;i++) {
+								d=c[i].id;
+								if (null!=c[i].getAttribute("che")&&c[i].getAttribute("che")!=""){
+									c[i].checked=true;
+									c[i].setAttribute("che","");
+									jQuery.ajax({type:'post',url:'$!webPath/cart_gc_status.htm?characters='+d+'&isorno=true',
+										beforeSend:function(){
+										},
+										success:function(data){
+										}
+									});
+								}else {
+									jQuery.ajax({type:'post',url:'$!webPath/cart_gc_status.htm?characters='+d+'&isorno=false',
+										beforeSend:function(){
+										},
+										success:function(data){
+										}
+									});
+								}
+							}
+							var allLength1 = $("input[type=checkbox]._Z"+b).length;
+							var allCheckedLength1 = $('input[type=checkbox]._Z'+b+':checked').length;
+							if(allLength1 == allCheckedLength1){
+								$('#Z'+b).prop('checked',true);
+							}
+						}else{
+							$('#Z'+b).removeProp('checked');
+							jQuery.ajax({type:'post',url:'$!webPath/cart_gc_status.htm?characters='+d+'&isorno=false',
+								beforeSend:function(){
+								},
+								success:function(data){
+								}
+							})
+						}
+					}
+
+				</script>
+				<div class="lh_wdgwc_w-bond">
+					<div class="lh_wdgwc_w-bond-title">
+						<p class="lh_wdgwc_w-title-qx">
+							<!--<label><input disabled="disabled" type="checkbox" id="cookieZ" name="quan" onclick="quanxuan()" checked="checked" value="">全选</label>-->
+						</p>
+						<p class="lh_wdgwc_w-title-name3" style="text-align: center;">商品</p>
+						<p class="w-title-time3">单价</p>
+						<p class="lh_wdgwc_w-title-time3">数量</p>
+						<p class="lh_wdgwc_w-title-time3">小计</p>
+						<p class="lh_wdgwc_w-title-mony3">操作</p>
+					</div>
+				</div>
+
+				<form status="no_submit" method="post" name="cart_$!{sc.store.id}" target="_blank" id="cart__">
+					#foreach($sc in $cart)
+					<div class="lh_wdgwc_w-bond-jd" >
+						<div class="lh_wdgwc_w-bond-155" style=" width:35px;margin-top: 0px; margin-left: 10px;">
+							<label><input type="checkbox" id="Z$!sc.store.id" che="" onchange="xuanD($!sc.store.id)" name="data[cookie]"></label>
+						</div>
+						<div class="lh_wdgwc_w-bond-jd_bt">
+							<span>$!sc.store.store_name </span>
+							<!--<a href="http://wpa.qq.com/msgrd?v=3&uin=88888888&Site=88888888&Menu=yes">QQ客服</a>
+                            <a href="#">优惠卷</a>-->
+						</div>
+						<div class="lh_wdgwc_w-bond-jd_jrdp">
+							<a href="$!webPath/store_$!{sc.store.id}.htm">进入店铺></a>
+						</div>
+					</div>
+					#foreach($obj in $sc.gcs)
+					<div class="lh_wdgwc_w-bond-list1 fl" style=" border-top:2px solid #f9cf75">
+
+						<div class="lh_wdgwc_w-bond-info1">
+							<div class="lh_wdgwc_w-bond-155">
+								#set($total_price=$!obj.count * $!obj.price)
+								<label><input type="checkbox" id="$!obj.id" pro="$!sc.store.id" che="" she="$!obj.goods.id,,$!obj.count" onchange="status(this.id)" class="_Z$!sc.store.id" name="every" value="$!total_price"></label>
+							</div>
+							<div class="lh_wdgwc_w-bond-16" style="width: 370px">
+
+								#if($!obj.goods.goods_main_photo)
+								#set($img="$!imageWebServer/$!{obj.goods.goods_main_photo.path}/$!{obj.goods.goods_main_photo.name}_small.$!{obj.goods.goods_main_photo.ext}")
+								#else
+								#set($img="$!imageWebServer/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+								#end
+								<div class="lh_wdgwc_w-bond-img1 fl">
+									<a href="$!webPath/goods_$!{obj.goods.id}.htm"><img src="$!img" /></a>
+								</div>
+								<div class="lh_wdgwc_w-bond-name1 fl">
+									<a href="">$!CommUtil.substring("$!obj.goods.goods_name",25)</a>
+									<span><i>$!obj.spec_info</i></span>
+								</div>
+								<div class="w-clear"></div>
+							</div>
+							<div class="lh_wdgwc_w-bond-17">
+								<span>¥$!obj.price</span>
+							</div>
+							<script>
+								function goods_count_adjust(cart_id,store_id,count){
+									jQuery.post("$!webPath/goods_count_adjust.htm",{"cart_id":cart_id,"store_id":store_id,"count":count},function(data){
+										if(data.error=="100"){
+											jQuery("#goods_count_"+cart_id).val(count);
+											jQuery("#goods_count_"+cart_id).attr("goods_count",count)
+											jQuery("#goods_total_price_"+cart_id).html("¥"+data.goods_total_price);
+											/*jQuery("#total_price_"+store_id).html(data.sc_total_price);
+											 jQuery("#top_total_price_"+store_id).html(data.sc_total_price);*/
+											//
+											jQuery("#"+cart_id).val(data.goods_total_price);
+											var every=document.getElementsByName("every");
+											var characters=0;
+											if(every.length>0) {
+												for (var i = 0; i < every.length; i++) {
+													if (every[i].checked) {
+														//alert(every[i].value);
+														characters += parseFloat(every[i].value);
+													}
+												}
+												$("#jiliguala").text(characters)
+											}
+										}
+										if(data.error=="200"){
+											alert("库存不足,当前库存为【"+data.goods_inventory+"】，请重新选择数量！");
+											jQuery("#goods_count_"+cart_id).val(jQuery("#goods_count_"+cart_id).attr("goods_count"));
+										}
+										if(data.error=="300"){
+											alert("团购库存不足,当前库存为【"+data.goods_inventory+"】，请重新选择数量！");
+											jQuery("#goods_count_"+cart_id).val(jQuery("#goods_count_"+cart_id).attr("goods_count"));
+										}
+									},"json");
+								}
+							</script>
+							<div class="lh_wdgwc_w-bond-18">
+								<div class="mui-numbox" style="width: 50px; padding: 0 20px;">
+									<!--	<button class="mui-btn mui-btn-numbox-minus" type="button" style="width: 24px;">-</button>
+										<input class="mui-input-numbox" name="goods_count_$!{obj.id}" type="number" id="goods_count_$!{obj.id}" value="$!obj.count" cart_id="$!obj.id" store_id="$!sc.store.id" goods_count="$!obj.count" />
+										<button class="mui-btn mui-btn-numbox-plus" type="button" style="width: 24px;">+</button>-->
+									<button class="mui-btn mui-btn-numbox-minus" type="button" style="width: 24px;">
+										<span><a href="javascript:void(0);" class="count_down" id="$!obj.id,$!sc.store.id" cart_id="$!obj.id" store_id="$!sc.store.id" onclick="countDown(this.id)"><img src="$!imageWebServer/resources/style/system/front/default/images/jian.jpg" width="12" height="12" /></a></span>
+									</button>
+									<input style="width: 30px;height: 26px;text-align: center;" name="goods_count_$!{obj.id}" type="text" id="goods_count_$!{obj.id}" value="$!obj.count" cart_id="$!obj.id" store_id="$!sc.store.id" goods_count="$!obj.count" onkeyup="goodsCount(this.id)"/>
+									<button class="mui-btn mui-btn-numbox-plus" type="button" style="width: 24px;">
+										<span><a href="javascript:void(0);" id="$!obj.id,,$!sc.store.id" cart_id="$!obj.id" store_id="$!sc.store.id"  onclick="countUp(this.id)"><img src="$!imageWebServer/resources/style/system/front/default/images/add.jpg" width="12" height="12"/></a></span>
+									</button>
+								</div>
+							</div>
+							#set($total_price=$!obj.count * $!obj.price)
+							<div class="lh_wdgwc_w-bond-19"  id="goods_total_price_$!{obj.id}">¥$!total_price</div>
+							<div class="lh_wdgwc_w-bond-20" style="float:right;width: 215px;text-align: center" >
+								<a style="margin-left: 40px" href="javascript:void(0);" onclick="cart_remove2('$!obj.id','$!sc.store.id');" class="cart_common">删除</a>
+							</div>
+						</div>
+					</div>
+					#end
+					<input name="store_id" type="hidden" id="store_id" value="$!sc.store.id" />
+					#end
+					<div class="w-clear"></div>
+					<div class="lh_wdgwc_js fl">
+						<p class="lh_wdgwc_w-title-qx fl">
+							<!--	<label><input type="checkbox" id="cook" onclick="quanxuan2()" name="data[cookie]" value="1" style="margin-top: 22px;">全选</label>-->
+						</p>
+						<p class="lh_wdgwc_js_sc">
+							<!--<a href="javascript:void(0);" onclick="">删除选择商品</a>-->
+						</p>
+						<p class="lh_wdgwc_js_ze">
+							<span>总额：<i id="jiliguala"></i> (不含运费）</span>
+						</p>
+						<!--<a  href="javascript:void(0);"  onclick="confirm_cart1();"><p class="lh_wdgwc_js_an">
+							去结算
+						</p></a>-->
+
+						<a  href="javascript:void(0);"  onclick="confirm_cart1();">
+							<p class="lh_wdgwc_js_an" style="font-size: 16px ;color: #fff" >去结算</p></a>
+					</div>
+				</form>
+				<input type="hidden" name="ids" id="ids">
+			</ul>
+		</div>
+		<script>
+			function quanxuan2() {
+				if($("#cook").is(":checked")){
+					$("ul input[type='checkbox']").prop("checked",true);
+				}else{
+					$("ul input[type='checkbox']").prop("checked",false);
+				}
+			}
+			function countDown(id){
+				var cart_id=id.split(",")[0];
+				var count=jQuery("#goods_count_"+id.split(",")[0]).val();
+				var store_id=id.split(",")[1];
+				if(count>1){
+					count--;
+					goods_count_adjust(cart_id,store_id,count)
+				}else if(count==1){
+					alert("当前商品为1，不可继续减少！")
+				}
+			}
+			function countUp(id){
+				var cart_id=id.split(",,")[0];
+				var count=jQuery("#goods_count_"+id.split(",,")[0]).val();
+				var store_id=id.split(",,")[1];
+				if(count>0){
+					count++;
+					goods_count_adjust(cart_id,store_id,count)
+				}
+			}
+			function goodsCount(id){
+				var count=$("#"+id).val();
+				if(count==""){
+					count=1;
+				}
+				var store_id=$("#"+id).attr("store_id");
+				if(count>0){
+					goods_count_adjust(id.replace("goods_count_",""),store_id,count);
+				}
+			}
+		</script>
+		<script>
+			function confirm_cart1() {
+				var val=$("#ids").val();
+				if(""==val||null==val){
+					alert("请选择商品");
+					return ;
+				}
+
+				//把总额传过去
+				var communt=$("#jiliguala").html();
+
+
+				//把总额传过去
+				var every=document.getElementsByName("every")
+				var ids="";
+				var she = "";
+				if(every.length>0) {
+					for (var i = 0; i < every.length; i++) {
+						if (every[i].checked) {
+							ids +=every[i].id+",";
+							she += every[i].getAttribute("she")+"!";
+						}
+					}
+					$("form").attr("action","$!webPath/goods_cart2.htm?ids="+ids+"&communt="+communt+"&che="+she);
+					$("#cart__").submit();
+				}
+			}
+		</script>
+		<div class="lh_wdgwc_wu" #if($!cart.size()>0) style="display:none;"#end >
+			<div class="lh_gwczt">
+				<span><i class="icon iconfont">&#xe653;</i></span>
+				<p>您的购物车还没任何商品</p>
+				<span><button><a href="$!webPath/index.htm">去购物</a></button></span>
+			</div>
+		</div>
+		<!--<div class="lh_wdgwc_wu">
+            <div class="lh_gwczt">
+                <span><i class="icon iconfont">&#xe622;</i></span>
+                <p>您的购物车还没任何商品</p>
+                <button>去购物</button>
+            </div>-->
+	</div>
+</div>
+</div>
+
+<!--footer开始-->
+<!--footer开始-->
+$!httpInclude.include("/second/footZ.htm")
+<!--footer结束-->
+
+<!-- 右侧 -->
+$!httpInclude.include("/second/rightZ.htm")
+<!-- 右侧结束 -->
+<script src="$!webPath/resources/new_pc/js/mui.js"></script>
+<script>
+	mui.init();
+	document.getElementById("btn").addEventListener('tap', function(event) {
+		mui.alert('当前值: ' + document.getElementById("box").value, null, "提示");
+	});
+	var testBox = document.getElementById("test");
+	testBox.addEventListener('change', function() {
+		console.log(testBox.value);
+	});
+</script>
+</body>
+
+</html>

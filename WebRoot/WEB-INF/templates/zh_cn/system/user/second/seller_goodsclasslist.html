@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		<link href="$!webPath/resources/style/common/css/jquery-ui-1.8.22.custom.css" type="text/css" rel="stylesheet" />
+		<link href="$!webPath/resources/style/common/css/overlay.css" type="text/css" rel="stylesheet" />
+		<script src="$!webPath/resources/js/jquery-ui-1.8.21.js"></script>
+		<script src="$!webPath/resources/js/jquery.poshytip.min.js"></script>
+		<script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+		<script src="$!webPath/resources/js/jquery.validate.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+
+
+
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/headZ.htm")
+		<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				$!httpInclude.include("/second/leftZ.htm")
+					<div class="l-fr tgar">
+						<div class="w-title">
+							<h3>商品分类</h3>
+						</div>
+						<div class="vip_b2">
+							<div class="vip_b2_quanxuan">
+								<label><input name="all" type="checkbox" id="all" value="" onclick="selectAll(this);"/><!--<input type="checkbox" id="cookie" name="data[cookie]" value="1">--></label>
+
+								<span class="alldel_lb"><label for="all">全选</label></span>
+							</div>
+							<div class="vip_b2_qh">
+								<ul>
+									<li>
+										<a href="javascript:void(0);" onclick="cmd('$!webPath/seller/usergoodsclass_del.htm','')" class="button_common">删除</a>
+									</li>
+								</ul>
+							</div>
+							<a href="">
+								<div class="vip_a14 fr" style="margin-right: 13px;"><a href="javascript:void(0);" dialog_uri="$!webPath/seller/usergoodsclass_add.htm?currentPage=$!currentPage" dialog_title="新增分类" dialog_width="480" dialog_height="100" dialog_id="cart_address" style="color: #fff;">新增分类</a></div>
+							</a>
+						</div>
+						<div class="lh_cszdsp">
+							<form action="" method="post" name="ListForm" id="ListForm">
+								<div class="operation" style="width: 940px">
+									<table id="opertable" cellspacing="0" cellpadding="0" border="0" width="940">
+										<tbody>
+											<tr id="opertitle">
+												<td class="classname">分类名称
+													<input name="mulitId" id="mulitId" type="hidden"></td>
+												<td class="sort" align="center">排序</td>
+												<td class="show">显示</td>
+												<td align="center">操作</td>
+											</tr>
+											<script>
+												jQuery(function (jQuery) {
+
+													jQuery("span[id=jian]").click(function () {
+														     var a=    jQuery(this).attr("type");
+														if (a=="show") {
+															jQuery(this).find("img").attr("src", "$!webPath/resources/style/system/front/default/images/usercenter/xiaji.jpg");
+															$("tr[name=child]").hide();
+															jQuery(this).attr("type", "hide")
+														}
+														if (a=="hide"){
+															jQuery(this).find("img").attr("src","$!webPath/resources/style/system/front/default/images/usercenter/jian.jpg");
+															$("tr[name=child]").show();
+															jQuery(this).attr("type", "show")
+														}
+													});
+
+												})
+
+
+											</script>
+											#foreach($obj in $objs)
+											<tr class="opertr" >
+												<td class="classname">
+													<span>
+                                                       <input name="id" id="id" value="$obj.id" type="checkbox">
+                                                    </span>
+													#if($!obj.childs.size()>0)
+                                                    <span class="classname2" id="jian" type="show"><img src="$!webPath/resources/style/system/front/default/images/usercenter/jian.jpg" height="14" width="14"></span>#else
+													<span class="classname2" id="xiaji">
+													<img src="$!webPath/resources/style/system/front/default/images/usercenter/xiaji.jpg" /> #end</span>
+                                                    <span class="classname3">$!obj.className</span>
+                                                    <span class="classname4">
+                                                    	<a href="javascript:void(0);" dialog_uri="$!webPath/seller/usergoodsclass_add.htm?pid=$!obj.id&currentPage=$!currentPage" dialog_title="新增分类" dialog_width="480" dialog_height="100" dialog_id="cart_address">新增下级</a>
+                                                    </span>
+												</td>
+												<td class="sort" align="center">$!obj.sequence</td>
+												<td class="show"><img src="$!webPath/resources/style/system/front/default/images/usercenter/$!{obj.display}.jpg" height="14" width="16"></td>
+												<td class="operajt">
+													<span class="edit"><a href="javascript:void(0);" dialog_uri="$!webPath/seller/usergoodsclass_edit.htm?id=$!obj.id&currentPage=$!currentPage" dialog_title="编辑地址" dialog_width="480" dialog_height="100" dialog_id="cart_address">编辑</a></span>
+													<span class="del"><a onclick="if(confirm('是否确定删除商品分类?'))window.location.href='$!webPath/seller/usergoodsclass_del.htm?mulitId=$!obj.id'" href="javascript:void(0);">删除</a></span>
+												</td>
+											</tr>
+											#foreach($child in $obj.childs)
+											#if(false==$!child.deleteStatus)
+											<tr class="opertr" name="child">
+												<td class="classname">
+													<span>
+                                                       <input name="id" id="id" value="$!child.id" type="checkbox" style="p">
+                                                    </span>
+                                                    <span class="classname2">&nbsp;</span>
+                                                    <span class="classname5">$!child.className</span>
+												</td>
+												<td class="sort" align="center">$!{child.sequence}</td>
+												<td class="show"><img src="$!webPath/resources/style/system/front/default/images/usercenter/$!{child.display}.jpg" height="14" width="16"></td>
+												<td class="operajt">
+													<span class="edit">
+													   <a href="javascript:void(0);" dialog_uri="$!webPath/seller/usergoodsclass_edit.htm?id=$!child.id&currentPage=$!currentPage" dialog_title="编辑地址" dialog_width="480" dialog_height="100" dialog_id="cart_address">编辑</a>
+												    </span>
+												    <span class="del">
+												      <a onclick="if(confirm('是否确定删除商品分类?'))window.location.href='$!webPath/seller/usergoodsclass_del.htm?mulitId=$!child.id'" href="javascript:void(0);">删除</a>
+												    </span>
+
+												</td>
+											</tr>
+											#end
+											#end
+											#end
+
+
+										</tbody>
+									</table>
+								</div>
+							</form>
+							<div class="vip_b2">
+							<div class="w-page" style="width: 300px; float: right; padding: 10px 10px 20px 0;;">
+								<div class="alldel">
+
+									<div  class="userfenye">$!gotoPageHTML
+
+									</div>
+								</div>
+							<!--<a href="">首页</a>
+							<a href="" class="on">1</a>
+							<a href="">2</a>
+							<a href="">3</a>
+							<a href="">末页</a>-->
+						</div>
+						</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!--我是卖家-->
+
+
+
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+
+	</body>
+
+</html>

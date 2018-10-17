@@ -1,0 +1,39 @@
+<!-- 右侧 -->
+		<div class="floating_ck">
+			<dl>
+				<dt></dt>
+				<dd class="consult">
+					<span><i class="icon iconfont">&#xe622;</i></span>
+					<div class="floating_left">
+
+						#foreach($str in $stri)
+						<a href="http://wpa.qq.com/msgrd?v=3&uin=$!{str}&Site=$!{str}&Menu=yes">客服$!velocityCount</a>
+						#end
+					</div>
+				</dd>
+				<dd class="words">
+					<span><i class="icon iconfont">&#xe609;</i></span>
+					<div class="floating_left">
+						#foreach($str in $stri2)
+						<a href="#">$!str</a>
+						#end
+					</div>
+				</dd>
+				<dd class="quote">
+					<a href="#"><span><i class="icon iconfont">&#xe64e;</i></span></a>
+
+				</dd>
+				<!--<dd class="qrcord">
+					<span></span>
+					<div class="floating_left floating_ewm">
+						<i></i>
+						<p class="qrcord_p01">扫一扫<br>莱诺赠送神秘大礼</p>
+						<p class="qrcord_p02">全国免费服务热线<br><b>4000-123-123<b></p>
+            </div>
+        </dd>-->
+				<dd class="return">
+					<span onClick="gotoTop();return false;"><i class="icon iconfont">&#xe6a3;</i></span>
+				</dd>
+			</dl>
+		</div>
+		<!-- 右侧结束 -->

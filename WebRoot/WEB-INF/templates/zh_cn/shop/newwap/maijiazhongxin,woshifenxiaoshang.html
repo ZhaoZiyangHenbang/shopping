@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>$!config.title</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="keywords" content="济南浩星装饰工程有限公司">
+		<meta name="description" content="济南浩星装饰工程有限公司">
+		<meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+		<meta name="msapplication-navbutton-color" content="#DB1011">
+		<link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+		<link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+		<link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css" />
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+		<link href="$!webPath/resources/style/system/front/default/css/user.css" type="text/css" rel="stylesheet" />
+
+
+		<!--二维码-->
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/qrcode.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/layer/layer.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--//header开始-->
+		<header>
+			<div class="hdindex">
+				<span class="lh_back" a href= "# " onclick= "history.go(-1) "><i class="icon iconfont">&#xe601;</i></span>
+				<span>会员中心</span>
+				<span class="lh_xiala" id="stateBut" data-show="hide"><i class="icon iconfont">&#xe67b;</i></span>
+				<div id="class1content" style="display: none;">
+					$!httpInclude.include("/wap/wap_navv.htm")
+				</div>
+			</div>
+		</header>
+		<!--header结束//-->
+
+		<!--//会员中心-->
+		<div class="lh-buyer-01 bj_white tgar bort lh-bot">
+			<div class="lh-buyer01-img">
+				<a href="$!webPath/buyer/account_data.htm">
+					<img src="$!imageWebServer/$!{user.photo.path}/$!{user.photo.name}">
+				</a>
+			</div>
+			<div class="lh-buyer01-txt">
+				<h3 style="width:auto!important; padding-right:1rem">
+					<span>	$!{user.userName}</span>
+				</h3>
+				#set($credit=$!storeViewTools.generic_user_credit("$!user.id"))
+					<span>	<i>
+						#if($!credit==0)
+
+											#end
+											#if($!credit==1)
+											<img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%" width="15" height="14" />
+											#end
+											#if($!credit==2)
+											<img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%"  width="15" height="14" />
+											#end
+											#if($!credit==3)
+											<img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%" width="15" height="14" />
+											#end
+											#if($!credit==4)
+											<img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%" width="15" height="14" />
+											#end
+											#if($!credit==5)
+											<img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" style="border:0 none;width:7% ; height: 1%" width="15" height="14" />
+											#end
+				</i></span>
+
+
+				<a href="$!webPath/buyer/account.htm">
+					<h4><span>账户管理<i class="icon iconfont">&#xe643;</i></span></h4></a>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="lh_grzx_qh tgar">
+			<div class="hd">
+				<ul>
+					<li class="borb2">我是分销商</li>
+					<li>我是买家</li>
+				</ul>
+			</div>
+			<div class="bd tgar">
+				<!--//我是分销商-->
+				<ul>
+					<div class="zhongjiannr">
+						<div class="lh_grzx_qh_wswfx">
+							<div class="lh_grzx_qh_wswfx_title">
+								<div class="lh_grzx_qh_wswfx_title_left">我的收益：<span>$!sum</span></div>
+								<div class="lh_grzx_qh_wswfx_title_right">
+
+									<a href="#" class="btn1">二维码</a>
+									<a href="$!webPath/fenxiaoguize.htm" >分销规则<i class="icon iconfont">&#xe643;</i></a>
+								</div>
+							</div>
+							<script>
+								$(function () {
+									erweima();
+								})
+								function erweima() {
+									document.getElementById("qrcode").innerHTML="";
+									var qrcode = new QRCode(document.getElementById("qrcode"), {
+										width : 200,//设置宽高?
+										height : 200
+									});
+									qrcode.makeCode("http://www.yijia1234.com/wap/index.htm?shopping_view_type=wap&&yqm=$!user.id");
+								}
+							</script>
+							<div class="lh_grzx_qh_wswfx_nr">
+								<ul>
+									<li>
+										<div>
+											<a href="$!webPath/second/xiaoshouticheng.htm?type=0">
+											<p class="red">$finish</p>
+											<p>销售提成</p>
+											</a>
+										</div>
+									</li>
+									<li>
+										<div>
+											<a href="$!webPath/second/xiaxianticheng.htm">
+											<p class="red">$junior</p>
+											<p>下线提成</p>
+											</a>
+										</div>
+									</li>
+									<li>
+										<div>
+											<a href="$!webPath/second/yujiticheng.htm?type=1">
+											<p class="red">$predict</p>
+											<p>预计提成</p>
+											</a>
+										</div>
+									</li>
+									<li>
+										<div>
+											<a href="$!webPath/second/tixianjilu.htm">
+											<p class="red">$getMoney</p>
+											<p>已发提成</p>
+											</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="lh_grzx_qh_wswfx_an tgar">
+						<a href="$!webPath/second/shenqingtixian.htm">我要提现（￥$!mayWithdraw）</a>
+					</div>
+					<div class="lh_grzx_qh_wswfx_foot tgar">
+						<ul>
+							<li>
+								<a href="$!webPath/store.htm?id=$!user.store.id">
+									<p><i class="icon iconfont">&#xe645;</i></p>
+									<p>我的店</p>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<p>$!user.id</p>
+									<p>推荐码</p>
+								</a>
+							</li>
+							<li>
+								<a href="$!webPath/second/fenxiaoshang.htm?type=1">
+									<p>$fenXiaoShang</p>
+									<p>分销商</p>
+								</a>
+							</li>
+							<li>
+								<a href="$!webPath/second/fensituan.htm">
+									<p>$fans</p>
+									<p>粉丝团</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</ul>
+				<!--我是分销商//-->
+				<!--//我是买家-->
+				<ul>
+					<div class="zhongjiannr">
+						<div class="lh_grzx_qh_wswfx">
+							<div class="lh_grzx_qh_wswfx_title">
+								<div class="lh_grzx_qh_wswfx_title_left"><a href="$!webPath/buyer/order.htm" style="color: black;margin-left: 40px">我的订单</a></div>
+								<div class="lh_grzx_qh_wswfx_title_right">
+									<a href="$!webPath/buyer/order.htm"><i class="icon iconfont">&#xe643;</i></a>
+								</div>
+							</div>
+							<div class="lh_grzx_wsmj_nr">
+								<ul>
+									<li>
+										<a href="/buyer/order.htm?order_status=order_submit">
+											<p><i class="icon iconfont">&#xe68f;</i></p>
+											<p>待付款</p>
+										</a>
+									</li>
+									<li>
+										<a href="/buyer/order.htm?order_status=order_pay">
+											<p><i class="icon iconfont">&#xe646;</i></p>
+											<p>待发货</p>
+										</a>
+									</li>
+									<li>
+										<a href="/buyer/order.htm?order_status=order_shipping">
+											<p><i class="icon iconfont">&#xe621;</i></p>
+											<p>待收货</p>
+										</a>
+									</li>
+									<li>
+										<a href="/buyer/order.htm?order_status=order_tuihuo">
+											<p><i class="icon iconfont">&#xe651;</i></p>
+											<p>退货/退款</p>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="lh_grzx_wsmj_gwxx tgar">
+						<ul>
+							<li class="borb2">
+								<a href="$!webPath/goods_cart1.htm" class="on">购物车</a>
+							</li>
+							<li >
+								<a href="$!webPath/wap/index.htm">购物入口</a>
+							</li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+					<div class="lh_grzx_wsmj_fl tgar bort">
+						<ul>
+							<li>
+								<a href="$!webPath/buyer/favorite_goods.htm?type=0" class="bj_white">
+									<div class="fl"><i class="icon iconfont lh_bg11">&#xe603;</i><span>我的收藏</span></div>
+									<div class="fr"><i class="icon iconfont l_s_icon_1">&#xe643;</i></div>
+									<div class="clear"></div>
+								</a>
+							</li>
+							<li>
+								<a href="$!webPath/buyer/goods_evaluate.htm?id=$!{user.id}" class="bj_white">
+									<div class="fl"><i class="icon iconfont lh_bg12">&#xe7a9;</i><span>商品评价</span></div>
+									<div class="fr"><i class="icon iconfont l_s_icon_1">&#xe643;</i></div>
+									<div class="clear"></div>
+								</a>
+							</li>
+							<li>
+								<a href="$!webPath/buyer/nearby_stores.htm" class="bj_white">
+									<div class="fl"><i class="icon iconfont lh_bg13">&#xe606;</i><span>附近门店</span></div>
+									<div class="fr"><i class="icon iconfont l_s_icon_1">&#xe643;</i></div>
+									<div class="clear"></div>
+								</a>
+							</li>
+							<li>
+								<a href="$!webPath/buyer/feedback.htm" class="bj_white">
+									<div class="fl"><i class="icon iconfont lh_bg14">&#xe6e5;</i><span>意见反馈</span></div>
+									<div class="fr"><i class="icon iconfont l_s_icon_1">&#xe643;</i></div>
+									<div class="clear"></div>
+								</a>
+							</li>
+							<li>
+								<a href="/second/service.htm" class="bj_white">
+									<div class="fl"><i class="icon iconfont lh_bg15">&#xe622;</i><span>在线客服</span></div>
+									<div class="fr"><i class="icon iconfont l_s_icon_1">&#xe643;</i></div>
+									<div class="clear"></div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+					<div class="lh_grzx_qh_wswfx_an tgar" style="margin-bottom: 0.3rem;">
+						<a href="$!webPath/shopping_logout.htm">退出</a>
+					</div>
+
+				</ul>
+				<!--我是买家//-->
+			</div>
+		</div>
+		<script type="text/javascript">
+			jQuery(".lh_grzx_qh").slide();
+		</script>
+
+		<!--会员中心//-->
+
+		<div class="cbtn-top">
+			<a href="javascript:;">
+				<span><img src="$!webPath/resources/new/images/top.png" alt="" /></span></a>
+		</div>
+
+		<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+		<div class="box"></div>
+		<div class="hint">
+			<div class="hint-in1">
+				<div class="hint3"></div>
+			</div>
+			<div class="hint-in2" id="qrcode">
+				<p>请关注微信二维码！</p>
+				<!--<img src="$!webPath/resources/new/images/ewm1.jpg" />-->
+			</div>
+			<script type="text/javascript">
+				$(document).ready(function($) {
+
+					$(".btn1").click(function(event) {
+						$(".hint").css({
+							"display": "block"
+						});
+						$(".box").css({
+							"display": "block"
+						});
+					});
+
+					$(".hint3").click(function(event) {
+						$(this).parent().parent().css({
+							"display": "none"
+						});
+						$(".box").css({
+							"display": "none"
+						});
+					});
+
+				});
+			</script>
+	</body>
+
+</html>

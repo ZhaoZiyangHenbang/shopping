@@ -1,0 +1,102 @@
+.black_overlay {
+	left: 0%; top: 0%; width: 100%; height: 100%; position: absolute; z-index: 10000000; opacity: 0.5; background-color: rgb(0, 0, 0); -moz-opacity: 0.5;
+}
+.white_content {
+	left: 40%; top: 50%; width: 404px; overflow: auto; margin-top: -60px; position: absolute; z-index: 2147483647;
+}
+.content_load {
+	background: url("../images/ajax_loader.gif") no-repeat center; width: 400px; height: 50px; margin-top: 10px; float: left; display: block;
+}
+/*.white_close {
+	background: url("../images/close.jpg") no-repeat right; top: 10px; width: 14px; height: 14px; right: 15px; float: right; display: block; position: absolute; z-index: 1000000;
+}*/
+.white_box {
+	background: rgb(255, 255, 255); border: 2px solid rgb(204, 204, 204); border-image: none; width: 98%; text-align: center; overflow: hidden; padding-bottom: 30px; margin-right: auto; margin-left: auto;
+}
+.white_dl {
+	width: 400px; overflow: hidden; float: left;
+}
+.white_dl dt {
+	background: url("../images/bag.jpg") no-repeat right; width: 150px; height: 55px; overflow: hidden; float: left;
+}
+.white_dl dd {
+	width: 250px; overflow: hidden; float: left;
+}
+.white_box h1 {
+	background: rgb(255, 255, 255); width: 100%; text-align: left; color: rgb(233, 137, 0); line-height: 30px; padding-left: 10px; font-size: 16px; margin-bottom: 20px; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: solid; float: left;
+}
+.wx_content {
+	left: 36%; top: 50%; width: 454px; overflow: auto; margin-top: -60px; position: absolute; z-index: 2147483647;
+}
+.wx_box {
+	background: rgb(255, 255, 255); border: 2px solid rgb(204, 204, 204); border-image: none; width: 98%; text-align: center; overflow: hidden; padding-bottom: 30px; margin-right: auto; margin-left: auto;
+}
+.wx_dl {
+	width: 450px; overflow: hidden; float: left;
+}
+.wx_dl dt {
+	background: url("../images/bag.jpg") no-repeat right; width: 200px; height: 200px; overflow: hidden; float: left;
+}
+.wx_dl dd {
+	width: 250px; overflow: hidden; float: left;
+}
+.wx_box h1 {
+	background: rgb(255, 255, 255); width: 100%; text-align: left; color: rgb(233, 137, 0); line-height: 30px; padding-left: 10px; font-size: 16px; margin-bottom: 20px; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: solid; float: left;
+}
+.message_black_overlay {
+	left: 0%; top: 0%; width: 100%; height: 100%; position: absolute; z-index: 9999; opacity: 0.5; background-color: rgb(0, 0, 0); -moz-opacity: 0.5;
+}
+.message_white_content {
+	left: 55%; top: 40%; width: 400px; overflow: auto; margin-left: -300px; position: absolute; z-index: 10000005; _margin-left: -100px;
+}
+.message_white_iframe {
+	background: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); border-image: none; width: 392px; height: 150px; margin-right: auto; margin-left: auto;
+}
+.message_white_title {
+	background: rgb(102, 153, 255); margin: 0px; padding: 0px; height: 30px; line-height: 30px; font-size: 14px;
+}
+.message_white_title_bottom {
+	margin: 0px; height: 30px; text-align: left; color: rgb(153, 153, 153); line-height: 30px; padding-left: 15px; font-family: "΢���ź�"; font-size: 10px; border-top-color: rgb(204, 204, 204); border-top-width: 1px; border-top-style: solid;
+}
+.message_white_title span {
+	color: rgb(255, 255, 255); padding-left: 20px;
+}
+.message_white_box {
+	height: 55px; padding-top: 30px; padding-left: 70px;
+}
+.message_white_img_succeed {
+	background: url("../images/icon/succeed.png") no-repeat; width: 48px; height: 48px; text-align: center; margin-right: 10px; float: left;
+}
+.message_white_img_warning {
+	background: url("../images/icon/warning.png") no-repeat; width: 48px; height: 48px; text-align: center; margin-right: 10px; float: left;
+}
+.message_white_img_question {
+	background: url("../images/icon/question.png") no-repeat; width: 48px; height: 48px; text-align: center; margin-right: 10px; float: left;
+}
+.message_white_img_smile {
+	background: url("../images/icon/smile.png") no-repeat; width: 48px; height: 48px; text-align: center; margin-right: 10px; float: left;
+}
+.message_white_img_sad {
+	background: url("../images/icon/sad.png") no-repeat; width: 48px; height: 48px; text-align: center; margin-right: 10px; float: left;
+}
+.message_white_img_error {
+	background: url("../images/icon/error.png") no-repeat; width: 48px; height: 48px; text-align: center; margin-right: 10px; float: left;
+}
+.message_white_font {
+	width: 255px; font-family: "΢���ź�"; font-size: 16px; font-weight: bold; margin-top: 8px; float: left;
+}
+.message_white_box1 {
+	padding: 10px 85px; margin-top: 5px; margin-bottom: 10px; float: left;
+}
+.message_white_box1 input {
+	margin: 0px 15px; border: 1px solid rgb(51, 102, 255); border-image: none; width: 60px; color: rgb(255, 255, 255); line-height: 22px; float: left; cursor: pointer; background-color: rgb(99, 154, 255); _height: 24px;
+}
+.message_white_box_del {
+	height: 45px; padding-top: 30px; padding-left: 20px; float: left;
+}
+.message_white_iframe_del {
+	background: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); border-image: none; width: 392px; height: 160px; margin-right: auto; margin-left: auto;
+}
+.message_white_title_bottom_del {
+	margin: 0px; width: 377px; height: 30px; text-align: left; color: rgb(153, 153, 153); line-height: 30px; padding-left: 15px; font-family: "΢���ź�"; font-size: 10px; border-top-color: rgb(204, 204, 204); border-top-width: 1px; border-top-style: solid; float: left;
+}

@@ -1,0 +1,79 @@
+<script>
+
+    function search_form() {
+        var keyword = arguments[0];
+        var type = arguments[1];
+        if (keyword != "" && keyword != undefined) {
+            jQuery("#keyword").val(keyword);
+        }
+        if (type != "" && type != undefined) {
+            jQuery("#type").val(type);
+        }
+        jQuery("#searchForm").submit();
+        jQuery("#keyword").val("");
+    }
+</script>
+<!--<script>
+    $(document).ready(function () {
+        var url=document.location.href;
+        var id=url.split("=")[1];
+        if(null!=id&&id!=undefined)
+        /*window.location.href="$!webPath/admin/login.htm";*/
+        window.location.href="$!webPath/second/head_index.htm";
+
+    })
+
+</script>-->
+
+<!-- heard -->
+<div id="header_form">
+    <div class="head_width" id="head_h">
+        <div class="head clearfix">
+            <div class="logo">
+                <a href="$!webPath/index.htm"><img src="$!webPath/resources/new_pc/images/logo.png" border="0">  </a>
+            </div>
+            #if($!user&&$!user.user_credit==0 && $!user2.photo.id)
+            <div class="lh_touxiang"><img src="$!imageWebServer/$!{user2.photo.path}/$!{user2.photo.name}" /></div>
+            #elseif($!user&&$!user.user_credit>0 && $!user.photo.id)
+            <div class="lh_touxiang"><img src="$!imageWebServer/$!{user.photo.path}/$!{user.photo.name}" /></div>
+            #else
+            <div class="lh_touxiang"><img src="$!webPath/resources/new_pc/images/lh_13.jpg" /></div>
+            #end
+
+            <div class="searchform">
+                <form id="searchForm" action="$!webPath/search.htm" method="post" target="_blank">
+                    <!--<input name="type" id="type" type="hidden" value="$!goods">-->
+                    <input name="type" id="type" type="hidden" value="$!type" />
+                    <div class="toph_bigsearch">
+                        <div class="toph_sear">
+                            <ul class="toph_bgsear">
+                                <li class="this" type="goods"><a href="javascript:void(0);">宝贝<s></s></a></li>
+                                <li style="display:none" type="store"><a href="javascript:void(0);">店铺</a></li>
+                            </ul>
+                            <input name="keyword" type="text" id="keyword" placeholder="搜索其实真的很简单！" x-webkit-speech lang="zh-CN" onwebkitspeechchange="jQuery('#searchForm').submit()" class="toph_sear_txt"/>
+                            <input name="input" type="button" value="搜索" style="cursor:pointer;" onclick="search_form();" class="toph_sear_btn" />
+                        </div>
+                       <!-- <div class="keyword">
+                            <a onclick="search_form('iphone5s','goods');" href="javascript:void(0);">iphone5s</a>
+                            <a onclick="search_form('男装','goods');" href="javascript:void(0);">男装</a>
+                            <a onclick="search_form('女装','goods');" href="javascript:void(0);">女装</a>
+                            <a onclick="search_form('毛呢外套','goods');" href="javascript:void(0);">毛呢外套</a>
+                            <a onclick="search_form('雪地靴','goods');" href="javascript:void(0);">雪地靴</a>
+                            <a onclick="search_form('羽绒服','goods');" href="javascript:void(0);">羽绒服</a>
+                            <a onclick="search_form('流行男鞋','goods');" href="javascript:void(0);">流行男鞋</a>
+                            <a onclick="search_form('潮棉衣','goods');" href="javascript:void(0);">潮棉衣</a>
+                            <a onclick="search_form('秋冬连衣裙','goods');" href="javascript:void(0);">秋冬连衣裙</a>
+                            <a onclick="search_form('打底裤','goods');" href="javascript:void(0);">打底裤</a>
+                            <a onclick="search_form('时尚女包','goods');" href="javascript:void(0);">时尚女包</a>
+                        </div>-->
+                        <div class="keyword"> #foreach($info in $CommUtil.splitByChar("$!config.hotSearch",",")) <a
+                                href="javascript:void(0);" onclick="search_form('$info','goods');">$!info</a> #end </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="lh_gwc"><span><a href="$!webPath/goods_cart1.htm"><i class="icon iconfont">&#xe653;</i>购物车</a></span></div>
+        </div>
+    </div>
+</div>
+<!-- heard结束 -->

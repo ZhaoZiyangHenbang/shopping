@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/headZ.htm")
+		<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				<div class="h_seat">
+					<a href="">首页</a>>
+					<a href="">买家中心</a>
+				</div>
+				<!--我是买家-->
+				<div class="h_content">
+					$!httpInclude.include("/second/left_buy.htm")
+					<div class="w-buyers">
+						<div class="w-buyers2">
+							<div class="w-buy-name">
+								#if($!user.photo)
+								<div class="img"><img src="$!imageWebServer/$!{user.photo.path}/$!{user.photo.name}" /></div>
+								#else
+								<div class="img"><img src="$!webPath/resources/new_pc/images/lh_13.jpg" /></div>
+								#end
+								<div class="txt">
+									<h3> <span class="user_info_name"><i>$!{user.userName}</i></span>
+										#set($credit=$!storeViewTools.generic_user_credit("$!user.id"))
+										<span class="user_info_grade">
+											#if($!credit==0)
+
+											#end
+											#if($!credit==1)
+											<img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" />
+											#end
+											#if($!credit==2)
+											<img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" />
+											#end
+											#if($!credit==3)
+											<img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" />
+											#end
+											#if($!credit==4)
+											<img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" />
+											#end
+											#if($!credit==5)
+											<img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" /><img src="$!webPath/resources/new_pc/images/starsy.png" width="15" height="14" />
+											#end
+										</span></h3>
+
+									<span id="lingquan">
+										<a id="lingquanle" href="javaScript:;" onclick="qiandao()" class="qiandao">签到</a>
+										<a id="nolingquanle" href="javaScript:;" class="qiandao" style="display: none">已签到</a>
+									</span>
+								</div>
+								<script>
+									if($integralLog=="1"){
+										$("#lingquanle").css("display","none");
+										$("#nolingquanle").css("display","block");
+									}
+
+									function qiandao() {
+										//alert(0);
+										jQuery.ajax({
+											type:'post',
+											url:'$!webPath/second/qiandao.htm',
+											beforeSend:function () {
+
+											},
+											success:function (data) {
+												//alert(1);
+												var result=eval("("+data+")");
+												var ss = result.qian;
+												alert(ss);
+												/*$("#lingquanle").remove();*/
+												$("#lingquanle").css("display","none");
+												$("#nolingquanle").css("display","block");
+											}
+										})
+									}
+
+								</script>
+								<div class="txt">
+									<ul>
+										<li class="txt-03">
+											<a href="$!webPath/buyer/order.htm?order_status=order_submit">待付款(<b class="red">$!orderViewTools.query_user_order("order_submit")</b>)</a>
+										</li>
+										<li class="txt-03">
+											<a href="$!webPath/buyer/order.htm?order_status=order_pay">待发货(<b class="black">$!orderViewTools.query_user_order("order_pay")</b>)</a>
+										</li>
+										<li class="txt-03">
+											<a href="$!webPath/buyer/order.htm?order_status=order_shipping">待收货(<b class="black">$!orderViewTools.query_user_order("order_shipping")</b>)</a>
+										</li>
+										<li class="txt-03">
+											<a href="$!webPath/buyer/order.htm?order_status=order_receive">待评价(<b class="black">$!orderViewTools.query_user_order("order_receive")</b>)</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="right01">
+								<div class="wsfxs01">
+									<a href="$!webPath/second/fenxiao.htm">我是分销商</a>
+								</div>
+								<div class="wsfxs02">
+									<a href="javaScript:;" dialog_uri="$!webPath/fenxiaoguize.htm" dialog_title="分销规则" dialog_width="600" dialog_height="600" dialog_id="user_login">分销规则</a>
+								</div>
+							</div>
+						</div>
+						<div class="l-fr tgar" style="padding-bottom: 20px">
+							<div class="w-title">
+								<h3 class="fl">我的订单</h3>
+								<a href="$!webPath/buyer/order.htm" style="text-align: right; padding: 0 15px; float: right; color: #c7171e;">查看全部订单</a>
+							</div>
+							#if($!objs.size()>0)
+							#foreach($obj in $objs)
+
+							#if($!obj.order_status==0)
+							#set($status="已取消")
+							#end
+							#if($!obj.order_status==10)
+							#set($status="待付款")
+							#end
+							#if($!obj.order_status==15)
+							#set($status="线下支付待审核")
+							#end
+							#if($!obj.order_status==16)
+							#set($status="货到付款待发货")
+							#end
+							#if($!obj.order_status==20)
+							#set($status="已付款")
+							#end
+							#if($!obj.order_status==30)
+							#set($status="已发货")
+							#end
+							#if($!obj.order_status==40)
+							#set($status="已收货")
+							#end
+							#if($!obj.order_status==45)
+							#set($status="买家申请退货")
+							#end
+							#if($!obj.order_status==46)
+							#set($status="退货中")
+							#end
+							#if($!obj.order_status==47)
+							#set($status="退货完成，已结束")
+							#end
+							#if($!obj.order_status==48)
+							#set($status="卖家拒绝退货")
+							#end
+							#if($!obj.order_status==49)
+							#set($status="退货失败")
+							#end
+							#if($!obj.order_status==50)
+							#set($status="已完成,已评价")
+							#end
+							#if($!obj.order_status==60)
+							#set($status="已结束")
+							#end
+							#if($!obj.order_status==65)
+							#set($status="已结束，不可评价")
+							#end
+						<div class="w-bond-list3">
+							<div class="w-bond-tit3">
+								<div class="w-bond-num fl">[订单编号：$!obj.order_id]</div>
+								<div class="clear"></div>
+							</div>
+
+							<div class="w-bond-info3">
+								#foreach($list in $obj.gcs)
+								#if($!list.goods.goods_main_photo)
+								#set($img="$!webPath/$!{list.goods.goods_main_photo.path}/$!{list.goods.goods_main_photo.name}_small.$!{list.goods.goods_main_photo.ext}")
+								#else
+								#set($img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+								#end
+								<div class="w-bond-013 borb2" style="width: 330px;">
+
+									<div style="width: 100%;float: left;margin-bottom: 15px;cursor: pointer" >
+
+										<div class="w-bond-img3 fl">
+
+											<a href="javaScript:;" onclick="window.location.href='$!webPath/goods_$!{list.goods.id}.htm'">#if($img)<img src="$img">	#else<img src=""> #end</a>
+
+										</div>
+										<div class="w-bond-name3 fl">
+											<a href="javaScript:;" onclick="window.location.href='$!webPath/goods_$!{list.goods.id}.htm'">#if($!list.goods.goods_name) $!list.goods.goods_name #else 暂无  #end</a></div>
+									</div>
+
+									<div class="clear"></div>
+
+
+								</div>
+
+								#end
+
+								<div class="w-bond-023" style="width: 150px;">
+									<strong>￥$!{obj.totalPrice}</strong>
+								</div>
+								<div class="w-bond-033" style="width: 150px;">
+									<a href="">$!CommUtil.formatLongDate($!{obj.addTime})</a>
+								</div>
+								<div class="w-bond-043">$!status</div>
+								<div class="w-bond-053">
+									<button type="button" class="btn-danger03"><a href="$!webPath/buyer/order_view.htm?id=$!obj.id" style="color: white">查看订单</a></button>
+								</div>
+								<div class="clear"></div>
+							</div>
+						</div>
+							#end
+							#end
+						<!--<div class="w-page">
+
+							$!gotoPageHTML
+						</div>-->
+				</div>
+
+
+					<div class="l-fr  " >
+							<div class="w-title">
+								<h3 class="fl">我收藏的商品</h3>
+								<a href="$!webPath/buyer/favorite_goods.htm?type=0" style="text-align: right; padding: 0 15px; float: right; color: #c7171e;">查看全部收藏</a>
+							</div>
+						#if($!fav.size()>0)
+						<div class="lh_dpyytg01">
+							<ul>
+								#foreach($obj in $fav)
+								#if($!obj.goods.goods_main_photo)
+								#set($img="$!webPath/$!{obj.goods.goods_main_photo.path}/$!{obj.goods.goods_main_photo.name}_small.$!{obj.goods.goods_main_photo.ext}")
+								#else
+								#set($img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+								#end
+								#if($!velocityCount%4==0)
+								<li class="item item2">
+									<div class="goods-content" id="taotian">
+										<div class="">
+											<a isconvert="1" data-itemid="544015300167" href="$!webPath/goods_$!{obj.goods.id}.htm" target="_blank">
+												<img src=$!img>
+											</a>
+										</div>
+										<!--<div class="goods-info">
+											<div class="goods-name">
+												<a isconvert="1" data-itemid="544015300167" href="$!webPath/goods_$!{obj.goods.id}.htm" target="_blank">$!CommUtil.substring("$!obj.goods.goods_name",10)</a>
+											</div>
+											<div class="goods-price">
+												<em class="sale-price">$!{config.currency_code}$!{obj.goods.store_price}</em>
+												&lt;!&ndash;<span class="yuanjia"><a href="$!webPath/goods_$!{obj.goods.id}.htm">$!obj.goods.goods_store.store_name</a></span>&ndash;&gt;
+												<span class="goods_buy"><i class="icon iconfont" style="width: 20px;">&#xe668;</i>收藏商品</span>
+											</div>
+										</div>-->
+									</div>
+								</li>
+								#else
+
+								<li class="item">
+									<div class="goods-content" id="taotian">
+										<div class="">
+											<a isconvert="1" data-itemid="544015300167" href="$!webPath/goods_$!{obj.goods.id}.htm" target="_blank">
+												<img src=$!img>
+											</a>
+										</div>
+										<!--<div class="goods-info">
+											<div class="goods-name">
+												<a isconvert="1" data-itemid="544015300167" href="$!webPath/goods_$!{obj.goods.id}.htm" target="_blank">$!CommUtil.substring("$!obj.goods.goods_name",10)</a>
+											</div>
+											<div class="goods-price">
+												<em class="sale-price">$!{config.currency_code}$!{obj.goods.store_price}</em>
+												&lt;!&ndash;<span class="yuanjia"><a href="$!webPath/goods_$!{obj.goods.id}.htm">$!obj.goods.goods_store.store_name</a></span>&ndash;&gt;
+												<span class="goods_buy"><i class="icon iconfont" style="width: 20px;">&#xe668;</i>收藏商品</span>
+											</div>
+										</div>-->
+									</div>
+								</li>
+								#end
+								#end
+							</ul>
+
+							</div>
+						#else
+						<div  class="l-fr tgar" style="width: 915px">
+							<p>暂无收藏</p>
+						</div>
+						#end
+						</div>
+					</div>
+
+
+
+		</div>
+				</div>
+
+			</div>
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+	</body>
+
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/user.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery_002.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+	<!--	<link href="$!webPath/resources/style/system/front/default/css/public.css" type="text/css" rel="stylesheet" />
+		<link href="$!webPath/resources/style/system/front/default/css/user.css" type="text/css" rel="stylesheet" />-->
+		<link href="$!webPath/resources/style/common/css/overlay.css" type="text/css" rel="stylesheet" />
+		<script src="$!webPath/resources/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/js/jquery.shop.common.js"></script>
+		<script src="$!webPath/resources/js/jquery.validate.min.js"></script>
+		<script src="$!webPath/resources/js/jquery.poshytip.min.js"></script>
+	</head>
+
+	<body>
+	<!-- top -->
+	$!httpInclude.include("/second/topZ.htm")
+	<!-- top结束 -->
+
+	<!-- heard -->
+	$!httpInclude.include("/second/headZ.htm")
+	<!-- heard结束 -->
+
+		<div style="background: #f6f6f6;">
+			<div class="main">
+				<!-- 左侧nav -->
+				$!httpInclude.include("/second/leftZ.htm")
+				<!-- 左侧nav结束 -->
+						<script>
+
+							function xiaochu() {
+								/*$(".zzy").attr("style","display:none");*/
+								$(".zzy").hide();
+							}
+
+						</script>
+					<div class="l-fr tgar">
+						#if($!goods_status==3)
+						<div class="w-title">
+							<h3>参加活动的商品</h3>
+						</div>
+						#else
+						<div class="w-title">
+							<h3>出售中的商品</h3>
+						</div>
+						#end
+						<form action="$!webPath/seller/goods.htm" method="post" name="ListForm" id="ListForm">
+							<input type="hidden" id="mulitId" name="mulitId"/>
+						<div class="vip_b1">
+							<div class="vip_a13">商城
+								<select name="shop" class="lbcd1" id="shop" onclick="xiaochu()">
+									#if($!shop)
+									<option value="$!shop" class="zzy" >$!shopp</option>
+									#else
+									<option value=""class="zzy">--请选择--</option>
+									#end
+									<option value="1">平台商城</option>
+									<option value="4">颐佳超市</option>
+									<option value="5">商学院</option>
+								</select></div>
+							<div class="vip_a13">标签
+								<select name="biao" class="lbcd1" id="biao" onclick="xiaochu()">
+
+									#if($!biao)
+									<option value="$!biao" class="zzy" >$!bia</option>
+									#else
+									<option value=""class="zzy" >--请选择--</option>
+									#end
+									<option value="jingxuan">精选</option>
+									<option value="cuxiao">促销</option>
+									<option value="shangxin">上新</option>
+								</select>
+							</div>
+                            <div class="vip_a13">分类
+
+								<select name="user_class_id" class="lbcd1" id="user_class_id">
+
+									<option value="">--请选择分类--</option>
+									#foreach($user_class in $goodsViewTools.query_user_class(""))
+									<option value="$!user_class.id">$!user_class.className</option>
+									#foreach($c_user_class in $user_class.childs)
+									<option value="$!c_user_class.id">&nbsp;&nbsp;$!c_user_class.className</option>
+									#end
+									#end
+								</select>
+
+							</div>
+							<div class="vip_a13">名称  <input name="goods_name" placeholder="请输入商品名字" value="$!goods_name" type="text" id="goods_name"  class="q"/></div>
+
+								<div >
+
+									<input class="vip_a14" type="submit" value="搜索" ></div>
+
+						</div>
+					    <div class="vip_b2">
+					    	<div class="vip_b2_quanxuan">
+					    		<label><input name="all" type="checkbox" id="all" value="" onclick="selectAll(this)" /></label>
+					    		<span>全选</span>
+					    	</div>
+					    	<div class="vip_b2_qh">
+					    		<ul>
+					    			<li><a class="button_common" href="javascript:void(0);" onclick="cmd('$!webPath/seller/goods_sale.htm','')">下架</a></li>
+					    		<!--	<li><a href="#">取消精品</a></li>
+					    			<li><a href="#">取消促销</a></li>
+					    			<li><a href="#">取消上新</a></li>-->
+					    		</ul>
+					    	</div>	
+					    </div>
+					    <div class="lh_cszdsp">
+								<ul>
+									<div class="w-bond">
+										<div class="w-bond-title">
+											<p class="w-title-qx">
+												<label><input type="checkbox" id="cookie" name="data[cookie]" value="1"></label>
+											</p>
+											<p class="w-title-name3" style="text-align: center;">商品名称</p>
+											<p class="w-title-time3">商品分类</p>
+											<p class="w-title-time2">所属商城</p>
+											<p class="w-title-time3">商品标签</p>
+											<p class="w-title-mony3">价格</p>
+											<p class="w-title-mony3">操作</p>
+											
+										</div>
+									</div>
+
+									#foreach($obj in $objs)
+									<div class="w-bond-list1">
+										<div class="w-bond-info1">
+											<div class="w-bond-155">
+												<label><input type="checkbox" value="$!obj.id" /></label>
+											</div>
+											#if($!obj.goods_main_photo)
+											#set($img="$!webPath/$!{obj.goods_main_photo.path}/$!{obj.goods_main_photo.name}_small.$!{obj.goods_main_photo.ext}")
+											#else
+											#set($img="$!webPath/$!{config.goodsImage.path}/$!{config.goodsImage.name}")
+											#end
+											<div class="w-bond-16">
+												<div class="w-bond-img1 fl">
+													<a href="$!webPath/goods_$!{obj.id}.htm" target="_blank"><img src="$!img" /></a>
+												</div>
+												<div class="w-bond-name2 fl">
+													<a href="$!webPath/goods_$!{obj.id}.htm" target="_blank">$!obj.goods_name.</a>
+												</div>
+												<div class="w-clear"></div>
+											</div>
+											<div class="w-bond-17">
+												<span>#if($!obj.gc)$!storeTools.generic_goods_class_info($!obj.gc)#end</span>
+											</div>
+											#if($!obj.gc.bc_location==5)
+											<div class="w-bond-18">商学院</div>
+											#end
+											#if($!obj.gc.bc_location==4)
+											<div class="w-bond-18">颐佳超市</div>
+											#end
+											#if($!obj.gc.bc_location!=5&&$!obj.gc.bc_location!=4)
+											<div class="w-bond-18">平台商城</div>
+											#end
+											#if(!$!obj.gc)
+											<div class="w-bond-18">平台商城</div>
+											#end
+
+											#if($!obj.goods_type=='jingxuan')
+											#set($bbb='精选')
+											#end
+											#if($!obj.goods_type=='cuxiao')
+											#set($bbb='促销')
+											#end
+											#if($!obj.goods_type=='shangxin')
+											#set($bbb='上新')
+											#end
+
+											<div class="w-bond-19">$!bbb</div>
+											<div class="w-bond-19">$!obj.store_price</div>
+											<div class="w-bond-20">
+												<a href="$!webPath/seller/goods_edit.htm?id=$!obj.id">编辑</a><a href="javascript:if(confirm('下架后将会取消此商品参加的所有活动，确定要下架吗？'))window.location.href='$!webPath/seller/goods_sale.htm?mulitId=$!obj.id'">下架</a><a href="javascript:if(confirm('删除后不可恢复?'))window.location.href='$!webPath/seller/goods_del.htm?mulitId=$!obj.id'">删除</a>
+											</div>
+											<div class="w-clear"></div>
+										</div>
+									</div>
+									#end
+								</ul>	
+						</div>
+						<!--fenye-->
+						<div class="alldel">
+							<div  class="userfenye">$!gotoPageHTML</div>
+							<div class="alldel_l">
+								<span class="alldel_la">
+                					<input name="all1" type="checkbox" id="all1" onclick="selectAll(this)" value="" />
+             				 	</span>
+								<span class="alldel_lb"><label for="all">全选</label></span>
+								<span class="alldel_ld"><a class="button_common" href="javascript:void(0);" onclick="cmd('$!webPath/seller/goods_sale.htm','')">下架</a></span>
+							</div>
+						</div>
+						<!--fenye-->
+							</form>
+					</div>
+
+				</div>
+			</div>
+			<!--我是卖家_限时抢购管理结束-->
+
+		</div>
+		</div>
+	<!--footer开始-->
+	$!httpInclude.include("/second/footZ.htm")
+	<!--footer结束-->
+	<!-- 右侧 -->
+	$!httpInclude.include("/second/rightZ.htm")
+	<!-- 右侧结束 -->
+	</body>
+
+</html>

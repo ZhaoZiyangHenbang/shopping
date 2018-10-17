@@ -1,0 +1,382 @@
+<div id="comment">
+		<div id="comment01">
+			<div class="lh_spxq_nr_zj_pj">
+				<ul>
+
+					#foreach($obj in $objs)
+					<li>
+						<div class="top_pj">
+					    			  <span>
+										#if($!obj.description_evaluate==0)
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==1)
+										  <i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==2)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==3)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==4)
+										 <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==5)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont on" >&#xe668;</i>
+										#end
+					    			  </span>
+							<div class="top_pj_date">
+								<em>$!obj.evaluate_user.userName</em>
+								<b>$!obj.addTime</b>
+							</div>
+						</div>
+						<p>$!obj.evaluate_info</p>
+						<ul>
+							#if($!obj.pic_status==0)
+							<li><img src="$!webPath/$!obj.pic_url"/></li>
+							#end
+						</ul>
+						#if($!obj.evaluate_seller_info)
+						<div style=" float:left;padding: 15px 0; font-size: 12px; color: #af874d;">
+							<span style=" color: #bbbbbb;">[回复]</span>
+							$!obj.evaluate_seller_info
+						</div>
+						#end
+					</li>
+
+					#end
+
+				</ul>
+			</div>
+			$!gotoPageFormHTML
+		</div>
+		<div id="comment02" style="display: none;">
+			<div class="lh_spxq_nr_zj_pj">
+				<ul>
+
+					#foreach($obj in $objs1)
+					<li>
+						<div class="top_pj">
+					    			  <span>
+										#if($!obj.description_evaluate==0)
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==1)
+										  <i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==2)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==3)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==4)
+										 <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==5)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont on" >&#xe668;</i>
+										#end
+					    			  </span>
+							<div class="top_pj_date">
+								<em>$!obj.evaluate_user.userName</em>
+								<b>$!obj.addTime</b>
+							</div>
+						</div>
+						<p>$!obj.evaluate_info</p>
+						<ul>
+							#if($!obj.pic_status==0)
+							<li><img src="$!webPath/$!obj.pic_url"/></li>
+							#end
+						</ul>
+						#if($!obj.evaluate_seller_info)
+						<div style=" float:left;padding: 15px 0; font-size: 12px; color: #af874d;">
+							<span style=" color: #bbbbbb;">[回复]</span>
+							$!obj.evaluate_seller_info
+						</div>
+						#end
+					</li>
+
+					#end
+
+				</ul>
+			</div>
+			$!gotoPageFormHTML1
+		</div>
+		<div id="comment03" style="display: none;">
+			<div class="lh_spxq_nr_zj_pj">
+				<ul>
+
+					#foreach($obj in $objs2)
+					<li>
+						<div class="top_pj">
+					    			  <span>
+										#if($!obj.description_evaluate==0)
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==1)
+										  <i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==2)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==3)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==4)
+										 <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==5)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont on" >&#xe668;</i>
+										#end
+					    			  </span>
+							<div class="top_pj_date">
+								<em>$!obj.evaluate_user.userName</em>
+								<b>$!obj.addTime</b>
+							</div>
+						</div>
+						<p>$!obj.evaluate_info</p>
+						<ul>
+							#if($!obj.pic_status==0)
+							<li><img src="$!webPath/$!obj.pic_url"/></li>
+							#end
+						</ul>
+						#if($!obj.evaluate_seller_info)
+						<div style=" float:left;padding: 15px 0; font-size: 12px; color: #af874d;">
+							<span style=" color: #bbbbbb;">[回复]</span>
+							$!obj.evaluate_seller_info
+						</div>
+						#end
+					</li>
+
+					#end
+
+				</ul>
+			</div>
+			$!gotoPageFormHTML2
+		</div>
+		<div id="comment04" style="display: none;">
+			<div class="lh_spxq_nr_zj_pj">
+				<ul>
+
+					#foreach($obj in $objs3)
+					<li>
+						<div class="top_pj">
+					    			  <span>
+										#if($!obj.description_evaluate==0)
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==1)
+										  <i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==2)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==3)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==4)
+										 <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==5)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont on" >&#xe668;</i>
+										#end
+					    			  </span>
+							<div class="top_pj_date">
+								<em>$!obj.evaluate_user.userName</em>
+								<b>$!obj.addTime</b>
+							</div>
+						</div>
+						<p>$!obj.evaluate_info</p>
+						<ul>
+							#if($!obj.pic_status==0)
+							<li><img src="$!webPath/$!obj.pic_url"/></li>
+							#end
+						</ul>
+						#if($!obj.evaluate_seller_info)
+						<div style=" float:left;padding: 15px 0; font-size: 12px; color: #af874d;">
+							<span style=" color: #bbbbbb;">[回复]</span>
+							$!obj.evaluate_seller_info
+						</div>
+						#end
+					</li>
+
+					#end
+
+				</ul>
+			</div>
+			$!gotoPageFormHTML3
+		</div>
+		<div id="comment05" style="display: none;">
+			<div class="lh_spxq_nr_zj_pj">
+				<ul>
+
+					#foreach($obj in $objs4)
+					<li>
+						<div class="top_pj">
+					    			  <span>
+										#if($!obj.description_evaluate==0)
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==1)
+										  <i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==2)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==3)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==4)
+										 <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont">&#xe668;</i>
+										#end
+										  #if($!obj.description_evaluate==5)
+										  <i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+					    			  	<i class="icon iconfont on" >&#xe668;</i>
+										  <i class="icon iconfont on" >&#xe668;</i>
+										#end
+					    			  </span>
+							<div class="top_pj_date">
+								<em>$!obj.evaluate_user.userName</em>
+								<b>$!obj.addTime</b>
+							</div>
+						</div>
+						<p>$!obj.evaluate_info</p>
+						<ul>
+							#if($!obj.pic_status==0)
+							<li><img src="$!webPath/$!obj.pic_url"/></li>
+							#end
+						</ul>
+						#if($!obj.evaluate_seller_info)
+						<div style=" float:left;padding: 15px 0; font-size: 12px; color: #af874d;">
+							<span style=" color: #bbbbbb;">[回复]</span>
+							$!obj.evaluate_seller_info
+						</div>
+						#end
+					</li>
+
+					#end
+
+				</ul>
+			</div>
+			$!gotoPageFormHTML4
+		</div>
+</div>

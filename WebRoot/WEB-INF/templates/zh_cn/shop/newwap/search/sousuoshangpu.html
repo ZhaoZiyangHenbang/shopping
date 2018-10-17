@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 118.53333333333333px; " class="hb-loaded j_huibg">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>$!config.title</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="keywords" content="济南浩星装饰工程有限公司">
+    <meta name="description" content="济南浩星装饰工程有限公司">
+    <meta name="google-site-verification" content="vDJDt0eLizo98mTqFjhG4ONEm8DlFI7bdonVyRDi-EY">
+    <meta name="msapplication-navbutton-color" content="#DB1011">
+    <link href="$!webPath/resources/new/css/style.css" rel="stylesheet">
+    <link href="$!webPath/resources/new/css/j_master.css" rel="stylesheet">
+    <link href="$!webPath/resources/new/css/combocss.css" media="screen" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="$!webPath/resources/new/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" charset="utf-8" href="$!webPath/resources/new/css/header.css">
+    <link rel="stylesheet" href="$!webPath/resources/new/css/style_lxx.css"/>
+    <script type="text/javascript" src="$!webPath/resources/new/js/jquery1.42.min.js"></script>
+    <script type="text/javascript" src="$!webPath/resources/new/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="$!webPath/resources/new/js/haoxing.js"></script>
+    <script type="text/javascript" src="$!webPath/resources/new/js/nav.js"></script>
+
+    <style type="text/css">
+        @font-face {
+            font-family: "iconfont";
+            src: url('$!webPath/resources/new/font/iconfont.eot');
+            /* IE9*/
+            src: url('$!webPath/resources/new/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('$!webPath/resources/new/font/iconfont.woff') format('woff'), /* chrome, firefox */ url('$!webPath/resources/new/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url('$!webPath/resources/new/font/iconfont.svg#iconfont') format('svg');
+            /* iOS 4.1- */
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+
+<body class="j_huibg">
+<!--//header开始-->
+<header>
+    <div class="j_hdindex">
+        <a href="$!webPath/sousuo.htm" style="color: grey"><span class="lh_back" ><i class="icon iconfont">&#xe601;</i></span></a>
+        <div class="j_search_bg_k">
+            <form action="$!webPath/search.htm" method="post" target="_self" id="searchForm">
+            <select name="" class="j_sea_xx">
+                #if($!type=='goods')
+                <option value="">商品</option>
+                <option value="">商铺</option>
+                #else
+                <option value="">商铺</option>
+                <option value="">商品</option>
+                #end
+            </select>
+            <i class="icon iconfont">&#xe613;</i>
+            <input name="keyword" type="search" id="keyword"
+                   x-webkit-speech lang="zh-CN" onwebkitspeechchange="jQuery('#searchForm').submit()"
+                   class="input1" style=" line-height:1.5rem; height: 1.5rem;  background:none ; font-size: 0.5rem;
+								    padding:0; border: none; width:70% ; float: left;"  placeholder="请输入要搜索的内容" value="$!keyword">
+                <input type="hidden" id="recommend" name="recommend">
+                <input type="hidden" id="area_id" name="area_id" value="$!area_id">
+                <input type="hidden" id="area2_id" name="area2_id" value="$!area2_id">
+                <input type="hidden" id="store_price_begin" name="store_price_begin" value="$!p_begin">
+                <input type="hidden" id="store_price_end" name="store_price_end" value="$!p_end">
+                <input type="hidden" id="salenum" name="salenum">
+                <input type="hidden" id="price" name="price">
+                </form>
+        </div>
+        <span class="lh_xiala" id="stateBut" onclick="$use()"><i class="icon iconfont">&#xe67b;</i></span>
+        <div id="class1content" style="display: none;">
+            $!httpInclude.include("/wap/wap_navv.htm")
+        </div>
+    </div>
+</header>
+<!--header结束//-->
+
+<!--//商铺列表开始-->
+<div class="clear"></div>
+<div class="j_dp_list">
+    <ul>
+        <input type="hidden" id="type" name="type" value="$!type"/>
+        <input type="hidden" id="currentPage" name="currentPage" value="$!currentPage"/>
+        <input type="hidden" id="orderType" name="orderType" value="$!orderType"/>
+        <input type="hidden" id="orderBy" name="orderBy" value="$!orderBy"/>
+        <input type="hidden" id="sc_id" name="sc_id" value="$!sc_id"/>
+        <input type="hidden" id="storeGrade_id" name="storeGrade_id" value="$!storeGrade_id"/>
+        <input type="hidden" id="checkbox_id" name="checkbox_id" value="$!checkbox_id"/>
+        <input type="hidden" id="storepoint" name="storepoint" value="$!storepoint"/>
+        <input type="hidden" id="keyword2" name="keyword" value="$!store_name"/>
+        <input type="hidden" id="area_id" name="area_id" value="$!area_id"/>
+
+        <!--店铺列表开始-->
+        #set($store_list_class_count= 0)
+        #foreach($obj in $objs)
+        #if($!obj.store_logo)
+        #set($store_logo="$!webPath/$!{obj.store_logo.path}/$!{obj.store_logo.name}")
+        #else
+        #set($store_logo="$!webPath/$!config.storeImage.path/$!config.storeImage.name")
+        #end
+        #if($!store_list_class_count== 0)
+        #set($store_list_class ="")
+        #end
+        #if($!store_list_class_count== 1)
+        #set($store_list_class ="_c")
+        #end
+        #set($store_list_class_count = $!store_list_class_count + 1)
+        <!--左侧 start-->
+        <!--<div class="Hot_cf_main_list_left">-->
+        <li>
+            <div class="j_dp_list_t">
+                <div class="j_dp_list_t_pic"><img src="$!store_logo" width="100px" height="100px"></div>
+                <div class="j_dp_list_t_tex">
+                    <h2><a class="hc" href="$!webPath/store_$!{obj.id}.htm" target="_blank">$!obj.store_name</a>
+                        #set($credit=$!storeViewTools.generic_store_credit("$!obj.id"))</h2>
+                    <P>$!obj.store_info</P>
+                </div>
+            </div>
+            <div class="j_dp_list_cp">
+                <ul>
+
+                    #set($recommend_goods=$!storeViewTools.query_recommend_store_goods($!obj,-1,-1))
+                    #if($!recommend_goods.size()>0)
+
+
+                    #foreach($goods in $recommend_goods)
+                    #if($!CommUtil.isNotNull($!{goods}))
+                    #set($goodsImg = "$!webPath/resources/style/common/images/thumb.jpg")
+                    #if($!goods.goods_main_photo)
+                    #set($goodsImg = "$!webPath/$!goods.goods_main_photo.path/$!goods.goods_main_photo.name")
+                    #end
+                    <li #if($!velocityCount>4)style="display:none;"#end><a href="$!webPath/goods_$!{goods.id}.htm"><img width="60" height="150"  src="$!goodsImg"></a><div class="jieshao01"><span>￥$!{goods.store_price}</span></div></li>
+                    #else
+                    <li #if($!velocityCount>4)style="display:none;"#end><a href="javascript:void(0);"> <img src="$!webPath/resources/style/common/images/thumb.jpg" width="60" height="60" /> </a></li>
+                    #end
+
+                    #end
+                    #end
+
+                </ul>
+            </div>
+        </li>
+        #end
+    </ul>
+</div>
+<div class="cbtn-top">
+    <a href="javascript:;">
+        <span><img src="$!webPath/resources/new/images/top.png" alt=""/></span>
+    </a>
+</div>
+<script type="text/javascript" src="$!webPath/resources/new/js/touchslider.js"></script>
+<script type="text/javascript" src="$!webPath/resources/new/js/jquery.js"></script>
+<script type="text/javascript" src="$!webPath/resources/new/js/scroll.js"></script>
+<!--通用头尾  add by lizhenyou 2015-3-30 -->
+
+</body>
+
+</html>

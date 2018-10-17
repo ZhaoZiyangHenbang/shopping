@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+		<title>$!config.title</title>
+		<meta name="keywords" content="颐佳超市">
+		<meta name="description" content="颐佳超市">
+		<meta name="GENERATOR" content="颐佳超市">
+		<meta name="author" content="颐佳超市">
+		<meta name="copyright" content="颐佳超市">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="3c0d2bedd819ab1c" property="wb:webmaster">
+		<link href="$!webPath/resources/new_pc/css/public.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/public_auto.css" rel="stylesheet" type="text/css">
+		<link href="$!webPath/resources/new_pc/css/index.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="$!webPath/resources/new_pc/css/style.css" />
+		<script src="$!webPath/resources/new_pc/js/jquery-1.6.2.js"></script>
+		<script src="$!webPath/resources/new_pc/js/DataLazyLoad.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.lazyload.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.common.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.validate.min.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery-ui-1.8.21.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.shop.validate.js"></script>
+		<script src="$!webPath/resources/new_pc/js/jquery.KinSlideshow.min.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/haoxing.js"></script>
+		<script type="text/javascript" src="$!webPath/resources/new_pc/js/top.js"></script>
+		<style type="text/css">
+			@font-face {
+				font-family: "iconfont";
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot');
+				/* IE9*/
+				src: url('$!webPath/resources/new_pc/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('$!webPath/resources/new_pc/font/iconfont.woff') format('woff'), /* chrome, firefox */
+				url('$!webPath/resources/new_pc/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+				url('$!webPath/resources/new_pc/font/iconfont.svg#iconfont') format('svg');
+				/* iOS 4.1- */
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+		</style>
+
+		<script type="text/javascript" >
+			var CHECKNAME="^[0-9a-zA-Z\u4e00-\u9fa5_]{2,16}$";
+			var CHECKPHONE="^1[3,5,7,8][0-9]{9}$";
+			var CHECKDETAILS="^[0-9a-zA-Z\u4e00-\u9fa5_]{5,500}$";
+			var rex=new RegExp(CHECKNAME);
+			var rex1=new RegExp(CHECKPHONE);
+			var rex2=new RegExp(CHECKDETAILS);
+
+
+
+			function checkname(){
+				var xingming=$("#username").val();
+				if(rex.test(xingming)){
+					$("#xianshi").html("√");
+					return true;
+				}else{
+					$("#xianshi").html("<font color='red'>请输入2到16个字符</font>");
+					//alert("请输入3到16个字符")
+					return false;
+				}
+			}
+			function checktel(){
+				var phone=$("#phone").val();
+				if(rex1.test(phone)){
+					$("#tel").html("√");
+					return true;
+
+				}else{
+					$("#tel").html("<font color='red'>请输入正确的电话号码</font>");
+					//alert("请输入正确的电话号码")
+					return false;
+				}
+			}
+			function checkdetails(){
+				var details=$("#remark").val();
+				if(rex2.test(details)){
+					$("#details").html("√");
+					return true;
+				}else{
+					$("#details").html("<font color='red'>请输入5到500个字符</font>");
+
+					return false;
+				}
+			}
+			function check(){
+				if(checkname()&&checktel()&&checkdetails()){
+					$("#brandFM").submit();
+					alert("信息提交成功！");
+				}else{
+					alert("输入信息不符合标准！");
+					return false;
+				}
+
+			}
+
+		</script>
+	</head>
+
+	<body>
+		<!-- top -->
+		$!httpInclude.include("/second/topZ.htm")
+		<!-- top结束 -->
+
+		<!-- heard -->
+		$!httpInclude.include("/second/head_index.htm")
+		<!-- heard结束 -->
+		$!httpInclude.include("/nav1.htm")
+		<!-- 导航结束 -->
+		
+		
+		<div class="main">
+			<div class="h_seat">
+				<a href="">首页</a>>
+				<a href="">品牌入住</a>
+			</div>
+			<div class="lh_pprz"><img src="$!webPath/resources/new_pc/images/lh_pprz.png"/></div>
+			<div class="lh_spfb">
+					<div class="cart_main">
+						
+						<form class="lh_password" action="$!webPath/brandsServlet.htm" method="post" name="brandFM" id="brandFM">
+							
+							<div class="">
+								<input type="text" placeholder="姓名" name="name" id="username" onblur="checkname()" class="lh_password_m">
+							</div>
+							<div id="xianshi"></div>
+							<div >
+								<input type="text" placeholder="电话" name="tel" id="phone" onblur="checktel()" class="lh_password_m">
+							</div>
+							<div id="tel"></div>
+							<div >
+								<textarea name="descripe" cols="50" rows="4" id="remark" name="商品详情" placeholder="请输入备注信息" class="lh_password_mm" onblur="checkdetails()"></textarea>
+							</div>
+							<div id="details"></div>
+						</form>
+
+                        <button class="lx_btn01 lh_password_t" id="t1" onclick="check()" style="margin: 0 auto;">提交申请</button>
+                        <div class="lh_password_t" style="margin-top: 20px">感谢您对我们的关注，我们会尽快给您回复！</div>
+
+					</div>
+				</div>
+		</div>
+
+		<!--footer开始-->
+		$!httpInclude.include("/second/footZ.htm")
+		<!--footer结束-->
+
+		<!-- 右侧 -->
+		$!httpInclude.include("/second/rightZ.htm")
+		<!-- 右侧结束 -->
+
+	</body>
+
+</html>
